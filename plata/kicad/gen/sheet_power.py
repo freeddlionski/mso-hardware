@@ -141,7 +141,8 @@ def build(proj):
     C(sh, '1u 50V', xr + 40.64, y + 5.08, '+24V_P', 'GND', 'C1206')
     p = sh.part('Device:C_Polarized', 'C', '100u 50V', (xr + 45.72, y + 22.86), fp='Capacitor_SMD:CP_Elec_10x10.5')
     sh.connect(p, {'1': '+24V_P', '2': 'GND'})
-    flag(sh, xr + 76.2, y - 7.62, '+24V_P')
+    flag(sh, x + 66.04, y - 7.62, 'VIN_F')      # +24V_P питает выход eFuse (power_out) — флаг не нужен
+    flag(sh, x + 66.04, y + 66.04, 'VIN_B')
     flag(sh, x - 15.24, y + 25.4, 'GND')
     led(sh, xr + 76.2, y + 2.54, '+24V_P', r='22k')
 
