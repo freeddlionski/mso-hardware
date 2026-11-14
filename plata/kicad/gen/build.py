@@ -42,6 +42,10 @@ def check_footprints(proj, official):
                 bad.append('%s: нет %s' % (p.ref, fp))
     if bad:
         raise SystemExit('Посадочные места:\n' + '\n'.join(bad))
+    own = sorted({p.ref + ' ' + p.fp for sh in proj.sheets for p in sh.parts if p.fp.startswith('mso74:')})
+    if own:
+        # своя библиотека посадочных мест ещё не создана — к разводке обязательна (аудит 2, п. 16)
+        print('ВНИМАНИЕ: нет своих посадочных мест:', ', '.join(own))
 
 
 def main(official):

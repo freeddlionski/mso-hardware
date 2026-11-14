@@ -5,8 +5,8 @@
 подтяжка 10 кОм к 3,3 В. Выходы — ключ на минус DMN6140L (60 В): до 0,5 А, TVS 33 В на стоке от индуктивной нагрузки,
 самовосст. 0,75 А. Прерывание PCA9555 не подключено (нет свободного вывода) — прошивка опрашивает раз в 10–20 мс.
 """
-from sheet_io import TERM, guard
-from sheet_power import C, R, two
+from sheet_io import TERM, blocked_input
+from sheet_power import C, R, tvs, two
 
 IN = ['EXT_IN1', 'EXT_IN2', 'EXT_IN3', 'EXT_IN4']
 OUT = ['EXT_OUT1', 'EXT_OUT2', 'EXT_OUT3', 'EXT_OUT4']
@@ -29,20 +29,29 @@ def build(proj):
     C(sh, '100n', x - 50.8, y - 30.48, '+3V3', 'GND')
 
     # входы
-    for i in range(4):
-        yy = 50.8 + 22.86 * i
-        guard(sh, 40.64, yy, IN[i], 'EXT_IP%d' % (i + 1))
-        R(sh, '1k', 78.74, yy, 'EXT_IP%d' % (i + 1), 'EXT_I%d' % (i + 1))
-        R(sh, '10k', 78.74, yy + 10.16, '+3V3', 'EXT_I%d' % (i + 1))
+    for i in range(4):   # доп. замечание аудитора: без блокирующего диода +24 В питало бы 3,3 В через диоды PCA9555
+        blocked_input(sh, 50.8, 45.72 + 25.4 * i, IN[i], 'EXT_I%d' % (i + 1), 'EXTI%d' % (i + 1))
 
     # выходы
+    # аудит 2, п. 13: RDS(on) DMN6140L нормирован при VGS 4,5 В → затворы от буфера 74AHCT125 (питание 5 В, вход понимает 3,3 В)
+    bref = proj.next_ref('U')
+    gates = [('2', '1', '3'), ('5', '4', '6'), ('9', '10', '8'), ('12', '13', '11')]   # A, OE, Y
+    for i, (a, oe, yq) in enumerate(gates):
+        b = sh.part('74xx:74AHCT125', 'U', '74AHCT125', (190.5, 165.1 + 25.4 * i), unit=i + 1, ref=bref,
+                    fp='Package_SO:TSSOP-14_4.4x5mm_P0.65mm', mpn='74AHCT125PW')
+        sh.connect(b, {a: 'EXT_G%d' % (i + 1), oe: 'GND', yq: 'EXT_GB%d' % (i + 1)})
+        R(sh, '100k', 157.48, 172.72 + 25.4 * i, 'EXT_G%d' % (i + 1), 'GND')    # при сбросе выводы PCA9555 — входы: ключ закрыт
+    b = sh.part('74xx:74AHCT125', 'U', '74AHCT125', (190.5, 271.78), unit=5, ref=bref,
+                fp='Package_SO:TSSOP-14_4.4x5mm_P0.65mm', mpn='74AHCT125PW')
+    sh.connect(b, {'VCC': '+5V', 'GND': 'GND'})
+    C(sh, '100n', 157.48, 271.78, '+5V', 'GND')
     for i in range(4):
         yy = 165.1 + 25.4 * i
-        R(sh, '100', 228.6, yy, 'EXT_G%d' % (i + 1), 'EXT_GG%d' % (i + 1))
-        R(sh, '100k', 228.6, yy + 10.16, 'EXT_GG%d' % (i + 1), 'GND')        # при сбросе выводы PCA9555 — входы: ключ закрыт
+        R(sh, '100', 228.6, yy, 'EXT_GB%d' % (i + 1), 'EXT_GG%d' % (i + 1))
+        R(sh, '100k', 228.6, yy + 10.16, 'EXT_GG%d' % (i + 1), 'GND')
         q = sh.part('Transistor_FET:DMN6140L', 'Q', 'DMN6140L', (264.16, yy + 2.54), mpn='DMN6140L-7')
         sh.connect(q, {'G': 'EXT_GG%d' % (i + 1), 'S': 'GND', 'D': 'EXT_D%d' % (i + 1)})
-        two(sh, 'Device:D_TVS', 'D', 'SMAJ33A', 299.72, yy + 10.16, 'GND', 'EXT_D%d' % (i + 1), fp='Diode_SMD:D_SMA', mpn='SMAJ33A')
+        tvs(sh, 'SMAJ33A', 299.72, yy + 10.16, 'EXT_D%d' % (i + 1))     # аудит 2, п. 4: катод к стоку (было наоборот)
         two(sh, 'Device:Polyfuse', 'F', '0.75A удерж.', 299.72, yy, 'EXT_D%d' % (i + 1), OUT[i], fp='Fuse:Fuse_1206_3216Metric')
 
     two(sh, 'Device:Polyfuse', 'F', '1A удерж.', 299.72, 147.32, '+24V_P', 'EXT_24V', fp='Fuse:Fuse_1812_4532Metric')

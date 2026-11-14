@@ -25,6 +25,12 @@ def two(sh, lib, prefix, value, x, y, n1, n2, fp='', lcsc='', mpn='', **kw):
     return p
 
 
+def tvs(sh, value, x, y, pos, neg='GND', fp='Diode_SMD:D_SMA'):
+    """Однонаправленный TVS: вывод 1 (площадка 1 корпуса D_SMA/D_SMC = катод, полоска) — к положительной цепи.
+    Аудит 2, п. 4: у символов KiCad SMAJxxA выводы A1/A2 без полярности — порядок задаём только здесь."""
+    return two(sh, 'Device:D_TVS', 'D', value, x, y, pos, neg, fp=fp, mpn=value)
+
+
 def R(sh, v, x, y, a, b, fp='R0603'):
     return two(sh, 'Device:R', 'R', v, x, y, a, b, FP[fp])
 
@@ -98,8 +104,10 @@ def lm61460(sh, x, y, tag, out, term_ref_note):
     flag(sh, x + 139.7, y + 20.32, out)
     flag(sh, x + 139.7, y + 33.02, raw)    # BIAS питается от выхода до предохранителя
     led(sh, x + 78.74, y + 45.72, out, r='1k')
+    # аудит 2, п. 7: защиту выхода 5 В / 5 А от +24 В делаем механически — разъём другой системы (Mini-Fit), клемма 24 В в него не войдёт
     j = sh.part('Connector_Generic:Conn_01x02', 'J', 'Табло ' + tag[-1] + ': +5V / GND', (x + 124.46, y + 2.54),
-                fp=FP['TERM2_508'], fields={'Примечание': 'разъёмный 5,08, другой цвет, чем +24 В',
+                fp='Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical', mpn='Molex 5566-02A',
+                fields={'Примечание': 'Mini-Fit Jr 2 конт. — не стыкуется с клеммами 24 В',
                                             'Шелкография': '+5V LED%s, GND' % tag[-1]})
     sh.connect(j, {'1': out, '2': 'GND'})
 
@@ -118,14 +126,19 @@ def build(proj):
     sh.connect(j, {'1': 'VIN_RAW', '2': 'GND'})
     two(sh, 'Device:Fuse', 'F', '7.5A', x + 30.48, y, 'VIN_RAW', 'VIN_F',
         fp='Fuse:Fuseholder_Blade_Mini_Keystone_3568', fields={'Примечание': 'держатель mini-blade, вставка 7,5 А'})
-    two(sh, 'Device:D_TVS', 'D', 'SMCJ36CA', x + 30.48, y + 12.7, 'VIN_F', 'GND', fp='Diode_SMD:D_SMC', mpn='SMCJ36CA')
+    # SMCJ33CA (двунаправленный): не проводит при 32 В (пробой ≥ 36,7 В), ограничение ≤ 53,3 В — ниже 60 В рабочего TPS26631
+    two(sh, 'Device:D_TVS', 'D', 'SMCJ33CA', x + 30.48, y + 12.7, 'VIN_F', 'GND', fp='Diode_SMD:D_SMC', mpn='SMCJ33CA')
     C(sh, '100n 100V', x + 30.48, y + 25.4, 'VIN_F', 'GND')
-    q = sh.part('Transistor_FET:CSD18563Q5A', 'Q', 'CSD18563Q5A', (x + 30.48, y + 50.8), mpn='CSD18563Q5A')
+    # аудит 2, п. 2: IN_SYS–OUT до −85 В (TPS2663 abs max с блокирующим FET) → ключ на 100 В
+    q = sh.part('Transistor_FET:CSD19534Q5A', 'Q', 'CSD19534Q5A', (x + 30.48, y + 50.8), mpn='CSD19534Q5A')
     sh.connect(q, {'S': 'VIN_F', 'D': 'VIN_B', 'G': 'EF_BGATE'})   # диод корпуса: исток→сток, при переполюсовке заперт
     u = sh.part('Power_Management:TPS26631PWP', 'U', 'TPS26631PWPR', (x + 106.68, y + 30.48), mpn='TPS26631PWPR')
     sh.connect(u, {'IN': 'VIN_B', 'IN_SYS': 'VIN_F', 'B_GATE': 'EF_BGATE', 'UVLO': 'EF_UVLO', 'OVP': 'EF_OVP',
                    'GND': 'GND', 'dVdT': 'EF_DVDT', 'ILIM': 'EF_ILIM', 'MODE': 'GND', '~{SHDN}': 'EF_SHDN',
-                   'PGTH': 'EF_PGTH', 'OUT': '+24V_P'}, nc=['DRV', 'IMON', '~{FLT}', 'PGOOD'])
+                   'PGTH': 'EF_PGTH', 'OUT': '+24V_P', 'DRV': 'EF_DRV'}, nc=['IMON', '~{FLT}', 'PGOOD'])
+    # аудит 2, п. 1: ключ быстрого разряда затвора Q1 по схеме TI — затвор к DRV, сток к B_GATE, исток к IN_SYS
+    q2 = sh.part('Transistor_FET:2N7002', 'Q', '2N7002', (x + 63.5, y + 66.04), mpn='2N7002')
+    sh.connect(q2, {'G': 'EF_DRV', 'D': 'EF_BGATE', 'S': 'VIN_F'})
     # делитель UVLO/OVP от IN_SYS, пороги 1,2 В: UVLO = 1,2·424,1/34,1 ≈ 14,9 В; OVP = 1,2·424,1/15 ≈ 33,9 В
     xr = x + 160.02
     R(sh, '390k 1%', xr, y - 5.08, 'VIN_F', 'EF_UVLO')
