@@ -94,6 +94,19 @@ PARTS = {
     # --- кварцы ---
     ('25MHz 20ppm', 'Crystal_SMD_3225-4Pin_3.2x2.5mm'): ('C9006', 'X322525MOB4SI', 'YXC, CL 12 пФ, осн.'),
 
+    # --- клеммы: разъёмные колодки KANGNEX (аналог Phoenix MC 1,5/…-G-3,81 и MSTBA 2,5/…-G-5,08).
+    #     Ответные вилки с винтами (15EDGK / 2EDGK) в монтаж не входят — заказываются к жгутам.
+    #     Перед разводкой сверить шаг, диаметр отверстий и выступ корпуса с посадочным местом Phoenix в KiCad.
+    ('RS-485: A / B / GND', 'PhoenixContact_MC_1,5_3-G-3.81_1x03_P3.81mm_Horizontal'): ('C8406', 'WJ15EDGRC-3.81-03P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Vendotek RS-232: TXD / RXD / GND', 'PhoenixContact_MC_1,5_3-G-3.81_1x03_P3.81mm_Horizontal'): ('C8406', 'WJ15EDGRC-3.81-03P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Монетник: +12V / GND / ИМП / БЛОК', 'PhoenixContact_MC_1,5_4-G-3.81_1x04_P3.81mm_Horizontal'): ('C7245', 'WJ15EDGRC-3.81-04P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Купюрник имп.: +24V / +12V / GND / ИМП', 'PhoenixContact_MC_1,5_4-G-3.81_1x04_P3.81mm_Horizontal'): ('C7245', 'WJ15EDGRC-3.81-04P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Сервис: КН / GND', 'PhoenixContact_MC_1,5_2-G-3.81_1x02_P3.81mm_Horizontal'): ('C8387', 'WJ15EDGRC-3.81-02P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Входы: ВХ1–ВХ4 / GND / GND', 'PhoenixContact_MC_1,5_6-G-3.81_1x06_P3.81mm_Horizontal'): ('C7246', 'WJ15EDGRC-3.81-06P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Выходы: +24V / ВЫХ1–ВЫХ4 / GND', 'PhoenixContact_MC_1,5_6-G-3.81_1x06_P3.81mm_Horizontal'): ('C7246', 'WJ15EDGRC-3.81-06P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Питание +24V / GND', 'PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal'): ('C3697', 'WJ2EDGRC-5.08-02P-14-00A', 'KANGNEX 10 А, вилка 2EDGK-5.08'),
+    ('Vendotek: +24V / GND', 'PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal'): ('C3697', 'WJ2EDGRC-5.08-02P-14-00A', 'KANGNEX 10 А, вилка 2EDGK-5.08'),
+
     # --- резисторы 0603 (UNI-ROYAL 0603WAF, ±1 %, 75 В) ---
     ('0', 'R_0603_1608Metric'): ('C21189', '0603WAF0000T5E', 'осн.'),
     ('10', 'R_0603_1608Metric'): ('C22859', '0603WAF100JT5E', 'осн.'),
