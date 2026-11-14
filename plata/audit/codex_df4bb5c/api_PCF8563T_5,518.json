@@ -1,0 +1,73 @@
+{
+  "query": "PCF8563T_5,518",
+  "endpoint": "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/selectSmtComponentList/v2",
+  "date_utc": "2026-11-14",
+  "original_code": 200,
+  "total": 8,
+  "list": [
+    {
+      "componentCode": "C2834465",
+      "componentModelEn": "HT8563ARZ",
+      "componentBrandEn": "HTCSEMI",
+      "componentSpecificationEn": "SOIC-8",
+      "stockCount": 376,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C5368958",
+      "componentModelEn": "D8563F",
+      "componentBrandEn": "Silicore",
+      "componentSpecificationEn": "SOP-8",
+      "stockCount": 674,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C18723596",
+      "componentModelEn": "PCF8563DTR(XBLW)",
+      "componentBrandEn": "XBLW",
+      "componentSpecificationEn": "SOP-8",
+      "stockCount": 17127,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C5367068",
+      "componentModelEn": "JXR260",
+      "componentBrandEn": "Juxuan",
+      "componentSpecificationEn": "SOP-8",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C7440",
+      "componentModelEn": "PCF8563T/5,518",
+      "componentBrandEn": "NXP Semicon",
+      "componentSpecificationEn": "SO-8",
+      "stockCount": 93527,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C46682557",
+      "componentModelEn": "PCF8563T/5,518-CN",
+      "componentBrandEn": "ChipNobo",
+      "componentSpecificationEn": "SOP-8",
+      "stockCount": 8,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C9900288504",
+      "componentModelEn": "PCF8563T/5,518-CN",
+      "componentBrandEn": "JLCPCB Assembly",
+      "componentSpecificationEn": "SO-8",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C55213774",
+      "componentModelEn": "PCF8563T/5,518-TUDI",
+      "componentBrandEn": "Tudi",
+      "componentSpecificationEn": "SOP-8",
+      "stockCount": 2785,
+      "componentLibraryType": "expand"
+    }
+  ]
+}
