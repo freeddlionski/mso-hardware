@@ -1,0 +1,2919 @@
+{
+  "audit_commit": "929198e4bce0ac9849e29535c30b98ebcf460e57",
+  "collection_date_utc": "2026-11-14",
+  "source": "https://www.lcsc.com/product-detail/{code}.html; public page webData",
+  "scope": "LCSC snapshot, not JLCPCB order availability; 0 stock does not imply manufacturer EOL",
+  "parts": {
+    "C15725": {
+      "url": "https://www.lcsc.com/product-detail/C15725.html",
+      "refs": [
+        "C1",
+        "C3"
+      ],
+      "productModel": "CL10B104KC8NNNC",
+      "brandNameEn": "Samsung Electro-Mechanics",
+      "encapStandard": "0603",
+      "stockNumber": 721800,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C15725",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "100nF",
+        "Temperature Coefficient": "X7R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "100V"
+      }
+    },
+    "C277528": {
+      "url": "https://www.lcsc.com/product-detail/C277528.html",
+      "refs": [
+        "C2",
+        "C63"
+      ],
+      "productModel": "CC0603JRX7R9BB223",
+      "brandNameEn": "YAGEO",
+      "encapStandard": "0603",
+      "stockNumber": 411900,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/23ccee80ee542e7cf156a772bb589942.pdf?productCode=C277528",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "22nF",
+        "Temperature Coefficient": "X7R",
+        "Tolerance": "±5%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C1848": {
+      "url": "https://www.lcsc.com/product-detail/C1848.html",
+      "refs": [
+        "C4"
+      ],
+      "productModel": "CL31B105KBHNNNE",
+      "brandNameEn": "Samsung Electro-Mechanics",
+      "encapStandard": "1206",
+      "stockNumber": 176700,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C1848",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "1uF",
+        "Temperature Coefficient": "X7R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C5158069": {
+      "url": "https://www.lcsc.com/product-detail/C5158069.html",
+      "refs": [
+        "C5"
+      ],
+      "productModel": "MAL214699103E3",
+      "brandNameEn": "VISHAY",
+      "encapStandard": "SMD",
+      "stockNumber": 23,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/db9d01df2ab120eb4cce2cc215a32bc7.pdf?productCode=C5158069",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Voltage Rating": "50V",
+        "Tolerance": "±20%",
+        "Lifetime": "1500hrs@125℃",
+        "Capacitance": "100uF",
+        "Ripple Current": "360mA@100Hz",
+        "Polarity type": "Polarized",
+        "Operating Temperature": "-55℃~+125℃",
+        "Height - Seated (Max)": "-",
+        "Diameter": "-"
+      }
+    },
+    "C77102": {
+      "url": "https://www.lcsc.com/product-detail/C77102.html",
+      "refs": [
+        "C6",
+        "C12",
+        "C18",
+        "C24",
+        "C25",
+        "C35",
+        "C36"
+      ],
+      "productModel": "GRM32ER71H106KA12L",
+      "brandNameEn": "muRata",
+      "encapStandard": "1210",
+      "stockNumber": 44995,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/a4d1e2744bd5d44ba57842651a3fd598.pdf?productCode=C77102",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "10uF",
+        "Temperature Coefficient": "X7R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C14663": {
+      "url": "https://www.lcsc.com/product-detail/C14663.html",
+      "refs": [
+        "C7",
+        "C8",
+        "C11",
+        "C13",
+        "C14",
+        "C17",
+        "C19",
+        "C20",
+        "C23",
+        "C26",
+        "C27",
+        "C29",
+        "C37",
+        "C38",
+        "C40",
+        "C48",
+        "C49",
+        "C51",
+        "C54",
+        "C55",
+        "C56",
+        "C57",
+        "C67",
+        "C68",
+        "C70",
+        "C71",
+        "C72",
+        "C73",
+        "C74",
+        "C75",
+        "C76",
+        "C79",
+        "C80",
+        "C82",
+        "C83",
+        "C84",
+        "C85",
+        "C88",
+        "C89",
+        "C90",
+        "C91",
+        "C92",
+        "C93",
+        "C94",
+        "C95",
+        "C96",
+        "C99",
+        "C100",
+        "C101",
+        "C102",
+        "C103",
+        "C104",
+        "C105",
+        "C109"
+      ],
+      "productModel": "CC0603KRX7R9BB104",
+      "brandNameEn": "YAGEO",
+      "encapStandard": "0603",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/23ccee80ee542e7cf156a772bb589942.pdf?productCode=C14663",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "100nF",
+        "Temperature Coefficient": "X7R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C52306": {
+      "url": "https://www.lcsc.com/product-detail/C52306.html",
+      "refs": [
+        "C9",
+        "C10"
+      ],
+      "productModel": "CL32A226KAJNNNE",
+      "brandNameEn": "Samsung Electro-Mechanics",
+      "encapStandard": "1210",
+      "stockNumber": 96020,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C52306",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "22uF",
+        "Temperature Coefficient": "X5R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "25V"
+      }
+    },
+    "C90146": {
+      "url": "https://www.lcsc.com/product-detail/C90146.html",
+      "refs": [
+        "C15",
+        "C16",
+        "C21",
+        "C22",
+        "C46"
+      ],
+      "productModel": "CL31A226KOHNNNE",
+      "brandNameEn": "Samsung Electro-Mechanics",
+      "encapStandard": "1206",
+      "stockNumber": 208425,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/015e8892be1d4004ad7b0cd1139329c7.pdf?productCode=C90146",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "22uF",
+        "Temperature Coefficient": "X5R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "16V"
+      }
+    },
+    "C157684": {
+      "url": "https://www.lcsc.com/product-detail/C157684.html",
+      "refs": [
+        "C28",
+        "C39",
+        "C50",
+        "C87",
+        "C98",
+        "C106"
+      ],
+      "productModel": "0603X105K500NT",
+      "brandNameEn": "FH",
+      "encapStandard": "0603",
+      "stockNumber": 696350,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/09fe2daf22580a99fa7fea93ccb20fb7.pdf?productCode=C157684",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "1uF",
+        "Temperature Coefficient": "X5R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C76680": {
+      "url": "https://www.lcsc.com/product-detail/C76680.html",
+      "refs": [
+        "C30",
+        "C31",
+        "C32",
+        "C33",
+        "C41",
+        "C42",
+        "C43",
+        "C44"
+      ],
+      "productModel": "C3225X5R1A476MT000E",
+      "brandNameEn": "TDK",
+      "encapStandard": "1210",
+      "stockNumber": 3506,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/38af89a3abb50324a7de8b759d1fdf7e.pdf?productCode=C76680",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "47uF",
+        "Temperature Coefficient": "X5R",
+        "Tolerance": "±20%",
+        "Voltage Rating": "10V"
+      }
+    },
+    "C5289730": {
+      "url": "https://www.lcsc.com/product-detail/C5289730.html",
+      "refs": [
+        "C34",
+        "C45"
+      ],
+      "error": "'NoneType' object has no attribute 'get'"
+    },
+    "C224050": {
+      "url": "https://www.lcsc.com/product-detail/C224050.html",
+      "refs": [
+        "D1"
+      ],
+      "productModel": "SMCJ33CA",
+      "brandNameEn": "Littelfuse",
+      "encapStandard": "DO-214AB",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/4ffc39069ef6aef3785dfbfda82b9e7d.pdf?productCode=C224050",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Clamping Voltage": "53.3V",
+        "Operating Temperature": "-65℃~+150℃",
+        "Peak Pulse Current (Ipp)": "28.2A@10/1000us",
+        "Peak Pulse Power Dissipation (Ppp)": "1.5kW@10/1000us",
+        "Number of Channels": "Single-channel",
+        "Voltage - Breakdown": "40.6V",
+        "type": "TVS",
+        "Reverse Leakage Current (Ir)": "1uA",
+        "Polarity": "Bidirectional",
+        "Reverse Stand-Off Voltage (Vrwm)": "33V"
+      }
+    },
+    "C22395547": {
+      "url": "https://www.lcsc.com/product-detail/C22395547.html",
+      "refs": [
+        "D2"
+      ],
+      "productModel": "MMSZ4688",
+      "brandNameEn": "R+O",
+      "encapStandard": "SOD-123",
+      "stockNumber": 1480,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/dac6e12c937791d32d23d0e535417713.pdf?productCode=C22395547",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Diode Configuration": "1 Independent",
+        "Tolerance": "-",
+        "Operating Junction Temperature Range": "-55℃~+150℃",
+        "Pd - Power Dissipation": "500mW",
+        "Reverse Leakage Current (Ir)": "10uA@3V",
+        "Impedance(Zzt)": "-",
+        "Zener Voltage(Range)": "4.47V~4.94V",
+        "Zener Voltage(Nom)": "4.7V",
+        "Impedance(Zzk)": "-"
+      }
+    },
+    "C2289": {
+      "url": "https://www.lcsc.com/product-detail/C2289.html",
+      "refs": [
+        "D3",
+        "D4",
+        "D5",
+        "D6",
+        "D7",
+        "D8",
+        "D9",
+        "D10",
+        "D12"
+      ],
+      "productModel": "KT-0603YG",
+      "brandNameEn": "Hubei KENTO Elec",
+      "encapStandard": "0603",
+      "stockNumber": 29750,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/26e5131f4b051119ebc8b24acf5eb4fa.pdf?productCode=C2289",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Installation method": "Top-mount",
+        "Color Temperature": "-",
+        "Peak Wavelength": "576nm",
+        "Lens Color": "Water Clear",
+        "Viewing Angle": "120°",
+        "Luminous Intensity": "30mcd~42mcd",
+        "Forward Current": "20mA",
+        "Illumination Color": "Yellow Green",
+        "Operating Temperature": "-40℃~+85℃",
+        "Lamp Holder Type": "1.6mm x 0.8mm square LED",
+        "Voltage - Forward(Vf)": "2V~2.2V",
+        "Diode Configuration": "Discrete Diode",
+        "Wavelength": "567nm~573nm"
+      }
+    },
+    "C5249699": {
+      "url": "https://www.lcsc.com/product-detail/C5249699.html",
+      "refs": [
+        "F1"
+      ],
+      "productModel": "3568",
+      "brandNameEn": "Keystone",
+      "encapStandard": "Through Hole",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/d912d1948fc4834625de84bea1fbaefd.pdf?productCode=C5249699",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Fuse Type": "Blade",
+        "Fuseholder Type": "Clip"
+      }
+    },
+    "C315903": {
+      "url": "https://www.lcsc.com/product-detail/C315903.html",
+      "refs": [
+        "F2",
+        "F8",
+        "F19"
+      ],
+      "productModel": "2920L110/60MR",
+      "brandNameEn": "Littelfuse",
+      "encapStandard": "2920",
+      "stockNumber": 3651,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/c68bdfe0ee09d70175cc0639d399379a.pdf?productCode=C315903",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+85℃",
+        "Voltage - Max": "60V",
+        "Hold Current": "1.1A",
+        "Current - Max": "20A",
+        "Power Dissipation": "2W",
+        "Trip Current": "2.2A",
+        "Pitch": "-",
+        "Height": "2mm",
+        "Length": "7.98mm",
+        "Width": "5.44mm",
+        "Time to Trip(Max)": "500ms",
+        "Resistance @ 25℃": "120mΩ",
+        "Resistance - Post Trip (R1) (Max)": "410mΩ"
+      }
+    },
+    "C6165178": {
+      "url": "https://www.lcsc.com/product-detail/C6165178.html",
+      "refs": [
+        "F3"
+      ],
+      "productModel": "SMD2920-150/60N",
+      "brandNameEn": "BORN",
+      "encapStandard": "2920",
+      "stockNumber": 5260,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/c5c31c5e81cd8d34dd9f58b488c23a56.pdf?productCode=C6165178",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+85℃",
+        "Voltage - Max": "60V",
+        "Hold Current": "1.5A",
+        "Current - Max": "40A",
+        "Power Dissipation": "1.5W",
+        "Trip Current": "3A",
+        "Pitch": "-",
+        "Height": "-",
+        "Length": "-",
+        "Width": "-",
+        "Resistance @ 25℃": "35mΩ",
+        "Time to Trip(Max)": "2s",
+        "Resistance - Post Trip (R1) (Max)": "230mΩ"
+      }
+    },
+    "C207091": {
+      "url": "https://www.lcsc.com/product-detail/C207091.html",
+      "refs": [
+        "F4",
+        "F5"
+      ],
+      "productModel": "2920L500/16MR",
+      "brandNameEn": "Littelfuse",
+      "encapStandard": "2920",
+      "stockNumber": 645,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/c68bdfe0ee09d70175cc0639d399379a.pdf?productCode=C207091",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+85℃",
+        "Voltage - Max": "16V",
+        "Hold Current": "5A",
+        "Current - Max": "40A",
+        "Power Dissipation": "2W",
+        "Trip Current": "10A",
+        "Pitch": "-",
+        "Height": "1.6mm",
+        "Length": "7.98mm",
+        "Width": "5.44mm",
+        "Time to Trip(Max)": "5s",
+        "Resistance @ 25℃": "5mΩ",
+        "Resistance - Post Trip (R1) (Max)": "25mΩ"
+      }
+    },
+    "C3697": {
+      "url": "https://www.lcsc.com/product-detail/C3697.html",
+      "refs": [
+        "J1",
+        "J2"
+      ],
+      "productModel": "WJ2EDGRC-5.08-02P-14-00A",
+      "brandNameEn": "KANGNEX",
+      "encapStandard": "Through Hole,Right Angle,P=5.08mm",
+      "stockNumber": 67410,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/dce87f2b59e72b104c944c4b7a080558.pdf?productCode=C3697",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Wire Gauge - mm2": "-",
+        "Wire Gauge - AWG": "-",
+        "Number of Positions or Pins": "1x2P",
+        "Number of Pins": "2P",
+        "Operating Temperature": "-40℃~+105℃",
+        "Number of PINs Per Row": "2",
+        "Number of Rows": "1",
+        "Current Rating": "10A",
+        "Outlet Direction (Vertical Basis)": "-",
+        "Connection Type": "-",
+        "Voltage Rating": "300V",
+        "Pitch": "5.08mm",
+        "Color": "Green",
+        "Connector Type": "Board Side/Socket - Closed",
+        "Termination Style": "No Mounting",
+        "Mounting Type": "Right-Angle"
+      }
+    },
+    "C20539146": {
+      "url": "https://www.lcsc.com/product-detail/C20539146.html",
+      "refs": [
+        "J3",
+        "J4"
+      ],
+      "productModel": "HC-5566-2*1A-05",
+      "brandNameEn": "HCTL",
+      "encapStandard": "Through Hole,P=4.2mm",
+      "stockNumber": 1645,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/1be9ac5184b1094eab7f3521c1b1c041.pdf?productCode=C20539146",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Connector Type": "Through Hole",
+        "Reference Series": "-",
+        "Voltage Rating (Max)": "300V",
+        "Contact Material": "Brass",
+        "Number of PINs Per Row": "1",
+        "Number of Rows": "2",
+        "Pitch": "4.2mm",
+        "Flame Retardant Rating": "-",
+        "Current Rating": "9A",
+        "Supplementary Features": "Hollow Pin",
+        "Operating Temperature": "-25℃~+85℃",
+        "Contact Plating": "Tin",
+        "Number of PINs": "2P",
+        "Plastic Material": "PA66",
+        "Color": "Transparent",
+        "X-Length of Bottom Edge on Board (Spacing Line)": "-",
+        "Pin Structure": "2x1P",
+        "Row Spacing": "4.2mm"
+      }
+    },
+    "C222949": {
+      "url": "https://www.lcsc.com/product-detail/C222949.html",
+      "refs": [
+        "L1"
+      ],
+      "productModel": "NRS5040T100MMGJ",
+      "brandNameEn": "Taiyo Yuden",
+      "encapStandard": "SMD,4.9x4.9mm",
+      "stockNumber": 0,
+      "productCycle": "stop_product",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/a07bea6ca3dedbac622a78094c9da23b.pdf?productCode=C222949",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Current Rating": "2.1A",
+        "Inductance": "10uH",
+        "Tolerance": "±20%",
+        "Current - Saturation(Isat)": "2.3A",
+        "DC Resistance(DCR)": "56mΩ",
+        "Type": "-",
+        "Application Grade": "Consumer grade"
+      }
+    },
+    "C222948": {
+      "url": "https://www.lcsc.com/product-detail/C222948.html",
+      "refs": [
+        "L2"
+      ],
+      "productModel": "NRS5040T6R8MMGJ",
+      "brandNameEn": "Taiyo Yuden",
+      "encapStandard": "SMD,4.9x4.9mm",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/a07bea6ca3dedbac622a78094c9da23b.pdf?productCode=C222948",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Current Rating": "2.4A",
+        "Inductance": "6.8uH",
+        "Tolerance": "±20%",
+        "Current - Saturation(Isat)": "2.8A",
+        "DC Resistance(DCR)": "49mΩ",
+        "Type": "-",
+        "Application Grade": "Automotive Grade"
+      }
+    },
+    "C223064": {
+      "url": "https://www.lcsc.com/product-detail/C223064.html",
+      "refs": [
+        "L3"
+      ],
+      "productModel": "NR5040T4R7N",
+      "brandNameEn": "Taiyo Yuden",
+      "encapStandard": "SMD,4.9x4.9mm",
+      "stockNumber": 0,
+      "productCycle": "stop_product",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/af24f6a47538a3f1f3d04cda44f31232.pdf?productCode=C223064",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Current Rating": "3.1A",
+        "Inductance": "4.7uH",
+        "Tolerance": "±30%",
+        "DC Resistance(DCR)": "37.7mΩ",
+        "Current - Saturation(Isat)": "3.3A",
+        "Type": "-",
+        "Application Grade": "Consumer grade"
+      }
+    },
+    "C2051060": {
+      "url": "https://www.lcsc.com/product-detail/C2051060.html",
+      "refs": [
+        "L4",
+        "L5"
+      ],
+      "productModel": "SRR1280A-6R8Y",
+      "brandNameEn": "BOURNS",
+      "encapStandard": "SMD,12.5x12.5mm",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0ee2e74803f41748eb51f260da4a5971.pdf?productCode=C2051060",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Current Rating": "7.6A",
+        "Inductance": "6.8uH",
+        "Tolerance": "±30%",
+        "Current - Saturation(Isat)": "8A",
+        "DC Resistance(DCR)": "18.5mΩ",
+        "Application Grade": "Automotive Grade"
+      }
+    },
+    "C114200": {
+      "url": "https://www.lcsc.com/product-detail/C114200.html",
+      "refs": [
+        "Q1"
+      ],
+      "productModel": "CSD19534Q5A",
+      "brandNameEn": "TI",
+      "encapStandard": "SON-8(5x6)",
+      "stockNumber": 444,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/e8270c7496449b4bc2582f3dbd82a252.pdf?productCode=C114200",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Output Capacitance(Coss)": "330pF",
+        "Ciss-Input Capacitance": "1.68nF",
+        "Pd - Power Dissipation": "63W",
+        "Configuration": "-",
+        "Operating Temperature": "-55℃~+150℃",
+        "Drain to Source Voltage": "100V",
+        "Current - Continuous Drain(Id)": "50A",
+        "Reverse Transfer Capacitance (Crss)": "5.7pF",
+        "RDS(on)": "17.6mΩ@6V",
+        "Number": "1 N-channel",
+        "Gate Charge(Qg)": "22nC@10V",
+        "Vgs": "±20V",
+        "Gate Threshold Voltage (Vgs(th))": "3.4V",
+        "Type": "N-Channel"
+      }
+    },
+    "C85049": {
+      "url": "https://www.lcsc.com/product-detail/C85049.html",
+      "refs": [
+        "Q2",
+        "Q5"
+      ],
+      "productModel": "2N7002-7-F",
+      "brandNameEn": "DIODES",
+      "encapStandard": "SOT-23",
+      "stockNumber": 225400,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/d589d9149e081098f2f41139b9f40246.pdf?productCode=C85049",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-55℃~+150℃",
+        "Drain to Source Voltage": "60V",
+        "Current - Continuous Drain(Id)": "210mA",
+        "Ciss-Input Capacitance": "50pF",
+        "Pd - Power Dissipation": "370mW",
+        "Reverse Transfer Capacitance (Crss)": "5pF",
+        "RDS(on)": "7.5Ω@5V",
+        "Number": "1 N-channel",
+        "Gate Charge(Qg)": "223pC@4.5V",
+        "Gate Threshold Voltage (Vgs(th))": "2.5V"
+      }
+    },
+    "C23150": {
+      "url": "https://www.lcsc.com/product-detail/C23150.html",
+      "refs": [
+        "R1"
+      ],
+      "productModel": "0603WAF3903T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 101800,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23150",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "390kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C22897": {
+      "url": "https://www.lcsc.com/product-detail/C22897.html",
+      "refs": [
+        "R2"
+      ],
+      "productModel": "0603WAF1912T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 50900,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22897",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "19.1kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C22809": {
+      "url": "https://www.lcsc.com/product-detail/C22809.html",
+      "refs": [
+        "R3"
+      ],
+      "productModel": "0603WAF1502T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 1635600,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22809",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "15kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C4211": {
+      "url": "https://www.lcsc.com/product-detail/C4211.html",
+      "refs": [
+        "R4"
+      ],
+      "productModel": "0603WAF3001T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 4442000,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C4211",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "3kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C25803": {
+      "url": "https://www.lcsc.com/product-detail/C25803.html",
+      "refs": [
+        "R5",
+        "R11",
+        "R13",
+        "R16",
+        "R18",
+        "R21",
+        "R23",
+        "R26",
+        "R30",
+        "R33",
+        "R37",
+        "R73",
+        "R100",
+        "R101",
+        "R102",
+        "R103",
+        "R105",
+        "R107",
+        "R109",
+        "R111"
+      ],
+      "productModel": "0603WAF1003T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 5795700,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C25803",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "100kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C22807": {
+      "url": "https://www.lcsc.com/product-detail/C22807.html",
+      "refs": [
+        "R6"
+      ],
+      "productModel": "0603WAF1503T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 435200,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22807",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "150kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C25804": {
+      "url": "https://www.lcsc.com/product-detail/C25804.html",
+      "refs": [
+        "R7",
+        "R27",
+        "R34",
+        "R40",
+        "R41",
+        "R42",
+        "R43",
+        "R55",
+        "R65",
+        "R67",
+        "R70",
+        "R75",
+        "R84",
+        "R93",
+        "R95",
+        "R97",
+        "R99",
+        "R113"
+      ],
+      "productModel": "0603WAF1002T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 2314100,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C25804",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "10kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C31850": {
+      "url": "https://www.lcsc.com/product-detail/C31850.html",
+      "refs": [
+        "R8",
+        "R9",
+        "R10"
+      ],
+      "productModel": "0603WAF2202T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 1096000,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C31850",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "22kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C23114": {
+      "url": "https://www.lcsc.com/product-detail/C23114.html",
+      "refs": [
+        "R12",
+        "R17",
+        "R22"
+      ],
+      "productModel": "0603WAF8661T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 7300,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23114",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "8.66kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C23068": {
+      "url": "https://www.lcsc.com/product-detail/C23068.html",
+      "refs": [
+        "R14"
+      ],
+      "productModel": "0603WAF5231T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 18300,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23068",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Resistance": "5.23kΩ",
+        "Power(Watts)": "100mW",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C4190": {
+      "url": "https://www.lcsc.com/product-detail/C4190.html",
+      "refs": [
+        "R15",
+        "R20",
+        "R25"
+      ],
+      "productModel": "0603WAF2201T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 1862300,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C4190",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "2.2kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C22793": {
+      "url": "https://www.lcsc.com/product-detail/C22793.html",
+      "refs": [
+        "R19"
+      ],
+      "productModel": "0603WAF1372T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 211600,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22793",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "13.7kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C2960862": {
+      "url": "https://www.lcsc.com/product-detail/C2960862.html",
+      "refs": [
+        "R24"
+      ],
+      "productModel": "FRC0603F2212TS",
+      "brandNameEn": "FOJAN",
+      "encapStandard": "0603",
+      "stockNumber": 299800,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/106fb934f95f063b695dad1b31b1eab8.pdf?productCode=C2960862",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "22.1kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C185338": {
+      "url": "https://www.lcsc.com/product-detail/C185338.html",
+      "refs": [
+        "R28",
+        "R35"
+      ],
+      "productModel": "RC0603FR-0733K2L",
+      "brandNameEn": "YAGEO",
+      "encapStandard": "0603",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/b426be3ce22c6de3e0c3a2248e49159e.pdf?productCode=C185338",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "33.2kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C21189": {
+      "url": "https://www.lcsc.com/product-detail/C21189.html",
+      "refs": [
+        "R29",
+        "R36"
+      ],
+      "productModel": "0603WAF0000T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 8171800,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/f42da6c80a0747bae77c2f98f4e46d1d.pdf?productCode=C21189",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "0Ω",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "-",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C137761": {
+      "url": "https://www.lcsc.com/product-detail/C137761.html",
+      "refs": [
+        "R31",
+        "R38"
+      ],
+      "productModel": "RC0603FR-0724K9L",
+      "brandNameEn": "YAGEO",
+      "encapStandard": "0603",
+      "stockNumber": 561000,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/b426be3ce22c6de3e0c3a2248e49159e.pdf?productCode=C137761",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "24.9kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C21190": {
+      "url": "https://www.lcsc.com/product-detail/C21190.html",
+      "refs": [
+        "R32",
+        "R39",
+        "R56",
+        "R57",
+        "R68",
+        "R71"
+      ],
+      "productModel": "0603WAF1001T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 2039800,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C21190",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "1kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C2866319": {
+      "url": "https://www.lcsc.com/product-detail/C2866319.html",
+      "refs": [
+        "U1"
+      ],
+      "productModel": "TPS26631PWPR",
+      "brandNameEn": "TI",
+      "encapStandard": "HTSSOP-20",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/1e673a9d3411456469018b12bc5dcb14.pdf?productCode=C2866319",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Features": "Overcurrent Protection;Short-Circuit  Protection;Overvoltage clamping protection;Under-voltage lockout;Thermal Protection;Overload protection",
+        "Trigger Current": "600mA~6A",
+        "FET Type": "Integrated FET",
+        "Width": "4.4mm",
+        "Length": "6.5mm",
+        "Height": "1.2mm",
+        "Number of Channels": "1",
+        "Voltage - Supply": "4.5V~60V",
+        "RDS(on)": "31mΩ",
+        "Operating Temperature": "-40℃~+125℃"
+      }
+    },
+    "C5185863": {
+      "url": "https://www.lcsc.com/product-detail/C5185863.html",
+      "refs": [
+        "U2",
+        "U3",
+        "U4"
+      ],
+      "productModel": "LMR51430XDDCR",
+      "brandNameEn": "TI",
+      "encapStandard": "SOT-23-6",
+      "stockNumber": 7858,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/2abe6d28001db846b928dba24a5e98c2.pdf?productCode=C5185863",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+150℃@(TJ)",
+        "Frequency - Switching": "500kHz",
+        "Function": "Step-down type",
+        "Number of Outputs": "1",
+        "Features": "Cycle-by-cycle current limiting;Hiccup current limiting;Light load efficient mode;Overcurrent Protection",
+        "Output Type": "Adjustable",
+        "Topology": "Buck",
+        "Operating Voltage": "4.5V~36V",
+        "Switch tube (built-in/external)": "Built-in",
+        "Output Voltage": "600mV~34.2V",
+        "Output Current": "3A",
+        "Quiescent Current": "40uA"
+      }
+    },
+    "C2864505": {
+      "url": "https://www.lcsc.com/product-detail/C2864505.html",
+      "refs": [
+        "U5",
+        "U6"
+      ],
+      "productModel": "LM61460AANRJRR",
+      "brandNameEn": "TI",
+      "encapStandard": "VQFN-14-HR(3.5x4)",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/daee94ce2cfe14323e6f6840466718dc.pdf?productCode=C2864505",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+150℃@(TJ)",
+        "Frequency - Switching": "200kHz~2.2MHz",
+        "Function": "Step-down type",
+        "Number of Outputs": "1",
+        "Features": "Cycle-by-cycle current limiting;Hiccup current limiting;Frequency synchronization;Built-in LDO regulator;Operating status indication",
+        "Output Type": "Adjustable",
+        "Topology": "Buck",
+        "Operating Voltage": "3V~36V",
+        "Switch tube (built-in/external)": "Built-in",
+        "Output Voltage": "1V~34.2V",
+        "Output Current": "6A",
+        "Quiescent Current": "7uA"
+      }
+    },
+    "C1713": {
+      "url": "https://www.lcsc.com/product-detail/C1713.html",
+      "refs": [
+        "C47",
+        "C52",
+        "C53",
+        "C58",
+        "C97"
+      ],
+      "productModel": "CL21A106KOQNNNE",
+      "brandNameEn": "Samsung Electro-Mechanics",
+      "encapStandard": "0805",
+      "stockNumber": 156580,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C1713",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "10uF",
+        "Temperature Coefficient": "X5R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "16V"
+      }
+    },
+    "C2894897": {
+      "url": "https://www.lcsc.com/product-detail/C2894897.html",
+      "refs": [
+        "J5"
+      ],
+      "productModel": "HC-TYPE-C-16P-01A",
+      "brandNameEn": "HCTL",
+      "encapStandard": "SMD",
+      "stockNumber": 35945,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/56ee7a8aaa8e7d5af9b0640b00fc6bb3.pdf?productCode=C2894897",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Protocol Standard": "-",
+        "Number of Ports": "1",
+        "Number of Contacts": "16P",
+        "Connector Type": "Type-C",
+        "Voltage Rating": "20V",
+        "Operating Temperature": "-55℃~+85℃",
+        "Length": "7.35mm",
+        "Mounting Type": "Surface Mount, Right Angle",
+        "Gender": "Female"
+      }
+    },
+    "C49257": {
+      "url": "https://www.lcsc.com/product-detail/C49257.html",
+      "refs": [
+        "J6"
+      ],
+      "productModel": "2.54-1*3P",
+      "brandNameEn": "BOOMELE(Boom Precision Elec)",
+      "encapStandard": "Through Hole,P=2.54mm",
+      "stockNumber": 187560,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/d52c83a07830c4e9e9a614accc55f5cd.pdf?productCode=C49257",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Connector Type": "Through Hole",
+        "Voltage Rating (Max)": "-",
+        "Contact Material": "Brass",
+        "Number of Rows": "1",
+        "Pitch": "2.54mm",
+        "Circluar Pins/Square Pins": "Square pin",
+        "Current Rating": "3A",
+        "Insulation Height": "2.5mm",
+        "Length of Mating Pin": "6mm",
+        "Number of PINs": "3P",
+        "Length of End Connection Pin": "3mm",
+        "Operating Temperature": "-40℃~+105℃",
+        "Contact Plating": "Gold",
+        "Color": "Black",
+        "Pin Structure": "1x3P",
+        "Row Spacing": "-"
+      }
+    },
+    "C20526": {
+      "url": "https://www.lcsc.com/product-detail/C20526.html",
+      "refs": [
+        "Q3",
+        "Q4"
+      ],
+      "productModel": "MMBT3904(RANGE:100-300)",
+      "brandNameEn": "JSCJ",
+      "encapStandard": "SOT-23",
+      "stockNumber": 3853450,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/9335632bcfa83df8351353eab379720e.pdf?productCode=C20526",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-55℃~+150℃",
+        "Current - Collector Cutoff": "100nA",
+        "Transition frequency(fT)": "300MHz",
+        "Collector - Emitter Voltage VCEO": "40V",
+        "Emitter-Base Voltage VEBO": "6V",
+        "DC Current Gain": "100",
+        "Current - Collector(Ic)": "200mA",
+        "Pd - Power Dissipation": "200mW",
+        "Configuration": "Standalone",
+        "Number": "1 NPN",
+        "type": "NPN",
+        "Vce Saturation(VCE(sat))": "300mV"
+      }
+    },
+    "C23186": {
+      "url": "https://www.lcsc.com/product-detail/C23186.html",
+      "refs": [
+        "R44",
+        "R45"
+      ],
+      "productModel": "0603WAF5101T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 14077200,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23186",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "5.1kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C2886898": {
+      "url": "https://www.lcsc.com/product-detail/C2886898.html",
+      "refs": [
+        "SW1",
+        "SW2",
+        "SW3"
+      ],
+      "productModel": "TL3342F160QG",
+      "brandNameEn": "E-Switch",
+      "encapStandard": "SMD-4P,5.2x5.2mm",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/353355a957a341cf3267b86a7b417f7f.pdf?productCode=C2886898",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "with Bracket": "Without Bracket",
+        "Length": "5.2mm",
+        "Height": "1.54mm",
+        "Operating Force": "1.6N",
+        "Voltage Rating": "12V",
+        "Switching Life": "100,000 cycles",
+        "Operating Temperature": "-20℃~+70℃",
+        "Width": "5.2mm",
+        "Termination Style": "Gull Wing",
+        "Actuator Style": "Round Button",
+        "Mounting Type": "Surface Mount,Vertical",
+        "Actuator/Cap Color": "Yellow",
+        "Circuit": "SPST",
+        "Contact Current": "50mA"
+      }
+    },
+    "C3013945": {
+      "url": "https://www.lcsc.com/product-detail/C3013945.html",
+      "refs": [
+        "U7"
+      ],
+      "productModel": "ESP32-S3-WROOM-1U-N16R2",
+      "brandNameEn": "ESPRESSIF",
+      "encapStandard": "SMD,19.2x18mm",
+      "stockNumber": 4015,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/24a44651a4767a6582addcdaa9cab2ca.pdf?productCode=C3013945",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Frequency Range": "2.4GHz",
+        "Voltage - Supply": "3V~3.6V",
+        "Utilized IC / Part": "ESP32-S3",
+        "Output Power": "20.5dBm",
+        "Wireless Standard": "Bluetooth5.0",
+        "Sensitivity": "-103.5dBm",
+        "Receive  Current": "95mA",
+        "Interface": "GPIO;SPI;UART;I2C;I2S",
+        "Operating Temperature": "-40℃~+85℃",
+        "Current Of Transmitting": "355mA"
+      }
+    },
+    "C968586": {
+      "url": "https://www.lcsc.com/product-detail/C968586.html",
+      "refs": [
+        "U8"
+      ],
+      "productModel": "CH340K",
+      "brandNameEn": "WCH",
+      "encapStandard": "ESSOP-10-150mil-1mm",
+      "stockNumber": 29151,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/a3b2ca2c7638da2635df3f5b1d90bcc0.pdf?productCode=C968586",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-20℃~+70℃",
+        "Voltage - Supply": "3.3V;5V",
+        "Number of ports": "-",
+        "Features": "Programmable baud rate;Power-on reset;Built-in clock generator;Power-off protection",
+        "Applications Function": "USB to serial",
+        "Data Rate": "2Mbps",
+        "USB Protocol": "USB 2.0"
+      }
+    },
+    "C7519": {
+      "url": "https://www.lcsc.com/product-detail/C7519.html",
+      "refs": [
+        "U9"
+      ],
+      "productModel": "USBLC6-2SC6",
+      "brandNameEn": "ST",
+      "encapStandard": "SOT-23-6L",
+      "stockNumber": 38100,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0d3a2ab954b34651a0695e7ccf534db0.pdf?productCode=C7519",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Clamping Voltage": "17V",
+        "Operating Temperature": "-40℃~+125℃",
+        "Peak Pulse Current (Ipp)": "5A",
+        "Number of Channels": "2",
+        "Voltage - Breakdown": "6V",
+        "type": "ESD",
+        "Reverse Leakage Current (Ir)": "150nA",
+        "Polarity": "Unidirectional",
+        "Reverse Stand-Off Voltage (Vrwm)": "5.25V"
+      }
+    },
+    "C1779": {
+      "url": "https://www.lcsc.com/product-detail/C1779.html",
+      "refs": [
+        "C59"
+      ],
+      "productModel": "CL21A475KAQNNNE",
+      "brandNameEn": "Samsung Electro-Mechanics",
+      "encapStandard": "0805",
+      "stockNumber": 642620,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C1779",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "4.7uF",
+        "Temperature Coefficient": "X5R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "25V"
+      }
+    },
+    "C57112": {
+      "url": "https://www.lcsc.com/product-detail/C57112.html",
+      "refs": [
+        "C60",
+        "C66",
+        "C77",
+        "C78"
+      ],
+      "productModel": "0603B103K500NT",
+      "brandNameEn": "FH",
+      "encapStandard": "0603",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/09fe2daf22580a99fa7fea93ccb20fb7.pdf?productCode=C57112",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "10nF",
+        "Temperature Coefficient": "X7R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C1647": {
+      "url": "https://www.lcsc.com/product-detail/C1647.html",
+      "refs": [
+        "C61",
+        "C62",
+        "C107",
+        "C108"
+      ],
+      "productModel": "CL10C180JB8NNNC",
+      "brandNameEn": "Samsung Electro-Mechanics",
+      "encapStandard": "0603",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C1647",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "18pF",
+        "Temperature Coefficient": "C0G",
+        "Tolerance": "±5%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C107097": {
+      "url": "https://www.lcsc.com/product-detail/C107097.html",
+      "refs": [
+        "C64",
+        "C65"
+      ],
+      "productModel": "CC0603KRX7R9BB682",
+      "brandNameEn": "YAGEO",
+      "encapStandard": "0603",
+      "stockNumber": 214600,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/23ccee80ee542e7cf156a772bb589942.pdf?productCode=C107097",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "6.8nF",
+        "Temperature Coefficient": "X7R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C1017": {
+      "url": "https://www.lcsc.com/product-detail/C1017.html",
+      "refs": [
+        "FB1"
+      ],
+      "error": "'NoneType' object has no attribute 'get'"
+    },
+    "C12074": {
+      "url": "https://www.lcsc.com/product-detail/C12074.html",
+      "refs": [
+        "J7",
+        "J18"
+      ],
+      "productModel": "HR911105A",
+      "brandNameEn": "HANRUN(Zhongshan HanRun Elec)",
+      "encapStandard": "Through Hole",
+      "stockNumber": 31170,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0ad5e0c00dfc47fb8e582f15f877f290.pdf?productCode=C12074",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Shielding": "Shielded",
+        "Number of Ports": "1",
+        "Mounting Type": "Right Angle",
+        "Contact Plating": "Gold",
+        "Contact Material": "Phosphor Bronze",
+        "Operating Temperature": "0℃~+70℃",
+        "Connector Type": "RJ45 Jack"
+      }
+    },
+    "C22865": {
+      "url": "https://www.lcsc.com/product-detail/C22865.html",
+      "refs": [
+        "R46"
+      ],
+      "productModel": "0603WAF1242T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 65500,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22865",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "12.4kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C22935": {
+      "url": "https://www.lcsc.com/product-detail/C22935.html",
+      "refs": [
+        "R47"
+      ],
+      "productModel": "0603WAF1004T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 687100,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22935",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "1MΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C23185": {
+      "url": "https://www.lcsc.com/product-detail/C23185.html",
+      "refs": [
+        "R48",
+        "R49"
+      ],
+      "productModel": "0603WAF499JT5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 326200,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23185",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Resistance": "49.9Ω",
+        "Power(Watts)": "100mW",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C22859": {
+      "url": "https://www.lcsc.com/product-detail/C22859.html",
+      "refs": [
+        "R50"
+      ],
+      "productModel": "0603WAF100JT5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 1266720,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22859",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "10Ω",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Tolerance": "±1%",
+        "Temperature Coefficient": "±400ppm/℃",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C23255": {
+      "url": "https://www.lcsc.com/product-detail/C23255.html",
+      "refs": [
+        "R51",
+        "R52",
+        "R53"
+      ],
+      "productModel": "0603WAF820JT5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 264200,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23255",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "82Ω",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C23138": {
+      "url": "https://www.lcsc.com/product-detail/C23138.html",
+      "refs": [
+        "R54",
+        "R64",
+        "R74",
+        "R92",
+        "R94",
+        "R96",
+        "R98",
+        "R114"
+      ],
+      "productModel": "0603WAF3300T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23138",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "330Ω",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C42418465": {
+      "url": "https://www.lcsc.com/product-detail/C42418465.html",
+      "refs": [
+        "T1",
+        "T2"
+      ],
+      "productModel": "H1102N",
+      "brandNameEn": "CND-tek",
+      "encapStandard": "SMD-16P,12.7x7mm",
+      "stockNumber": 2435,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/d0ddb65e9322a1831ab12f5c8c0a8655.pdf?productCode=C42418465",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Isolation Voltage(Vrms)": "1.5kV",
+        "Turns Ratio": "1:1",
+        "rate": "100M",
+        "Inductance": "350uH",
+        "Application Grade": "Consumer grade",
+        "Operating Temperature": "-40℃~+85℃"
+      }
+    },
+    "C32843": {
+      "url": "https://www.lcsc.com/product-detail/C32843.html",
+      "refs": [
+        "U10"
+      ],
+      "productModel": "W5500",
+      "brandNameEn": "WIZNET",
+      "encapStandard": "LQFP-48(7x7)",
+      "stockNumber": 8299,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/30476b02c653bde72f85075618aea7c4.pdf?productCode=C32843",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Features": "Low-power mode;Wake-up function;Programmable LED indication",
+        "MAC Interface": "SPI",
+        "Voltage - Supply": "3.3V",
+        "Integrated PHY": "Yes",
+        "Operating Temperature": "-40℃~+85℃",
+        "Protocol": "SPI",
+        "Memory Space": "32KB",
+        "Ethernet Speed Standards": "10BASE-T;100BASE-TX"
+      }
+    },
+    "C9006": {
+      "url": "https://www.lcsc.com/product-detail/C9006.html",
+      "refs": [
+        "Y1",
+        "Y3"
+      ],
+      "productModel": "X322525MOB4SI",
+      "brandNameEn": "YXC Crystal Oscillators",
+      "encapStandard": "SMD3225-4P",
+      "stockNumber": 186940,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/a84bd8d530dd46e4b0f6d0ee59d8a89c.pdf?productCode=C9006",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Normal temperature Frequency Tolerance": "±10ppm",
+        "Frequency Stability": "±20ppm",
+        "Operating Temperature": "-40℃~+85℃",
+        "Load Capacitance": "12pF",
+        "Equivalent Series Resistance(ESR)": "50Ω",
+        "Frequency": "25MHz"
+      }
+    },
+    "C344180": {
+      "url": "https://www.lcsc.com/product-detail/C344180.html",
+      "refs": [
+        "C69"
+      ],
+      "productModel": "TCC0805X7R104K101DT",
+      "brandNameEn": "CCTC",
+      "encapStandard": "0805",
+      "stockNumber": 292580,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/71a9f8eccc4da164324d4a716182c5e3.pdf?productCode=C344180",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "100nF",
+        "Temperature Coefficient": "X7R",
+        "Tolerance": "±10%",
+        "Voltage Rating": "100V"
+      }
+    },
+    "C2286": {
+      "url": "https://www.lcsc.com/product-detail/C2286.html",
+      "refs": [
+        "D11"
+      ],
+      "productModel": "KT-0603R",
+      "brandNameEn": "Hubei KENTO Elec",
+      "encapStandard": "0603",
+      "stockNumber": 3359400,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/011ec3e8cb1e825f6961d29bc4db4c7a.pdf?productCode=C2286",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Installation method": "-",
+        "Color Temperature": "-",
+        "Peak Wavelength": "645nm",
+        "Lens Color": "Water Clear",
+        "Luminous Intensity": "300mcd",
+        "Viewing Angle": "120°",
+        "Forward Current": "20mA",
+        "Illumination Color": "Red",
+        "Lamp Holder Type": "1.6mm x 0.8mm square LED",
+        "Voltage - Forward(Vf)": "1.8V~2.4V",
+        "Operating Temperature": "-40℃~+85℃",
+        "Wavelength": "615nm~630nm",
+        "Diode Configuration": "Discrete Diode"
+      }
+    },
+    "C5249597": {
+      "url": "https://www.lcsc.com/product-detail/C5249597.html",
+      "refs": [
+        "D13",
+        "D14"
+      ],
+      "productModel": "SMAJ36CA",
+      "brandNameEn": "ElecSuper",
+      "encapStandard": "SMA(DO-214AC)",
+      "stockNumber": 4730,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/a669486d3bf37703012087b7488ed903.pdf?productCode=C5249597",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Clamping Voltage": "58.1V",
+        "Operating Temperature": "-65℃~+150℃",
+        "Peak Pulse Current (Ipp)": "6.9A",
+        "Peak Pulse Power Dissipation (Ppp)": "400W",
+        "Number of Channels": "Single-channel",
+        "Voltage - Breakdown": "40V",
+        "type": "TVS",
+        "Polarity": "Bidirectional",
+        "Reverse Leakage Current (Ir)": "1uA",
+        "Reverse Stand-Off Voltage (Vrwm)": "36V"
+      }
+    },
+    "C173500": {
+      "url": "https://www.lcsc.com/product-detail/C173500.html",
+      "refs": [
+        "D15",
+        "D16"
+      ],
+      "productModel": "SMAJ8.0CA",
+      "brandNameEn": "MDD(Microdiode Semiconductor)",
+      "encapStandard": "DO-214AC(SMA)",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/57d80c866df506764ddd60be335ccdff.pdf?productCode=C173500",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Clamping Voltage": "13.6V",
+        "Operating Temperature": "-65℃~+150℃",
+        "Peak Pulse Current (Ipp)": "29.4A",
+        "Peak Pulse Power Dissipation (Ppp)": "400W@10/1000us",
+        "Number of Channels": "Single-channel",
+        "Voltage - Breakdown": "9.83V",
+        "type": "TVS",
+        "Polarity": "Bidirectional",
+        "Reverse Leakage Current (Ir)": "50uA",
+        "Reverse Stand-Off Voltage (Vrwm)": "8V"
+      }
+    },
+    "C8406": {
+      "url": "https://www.lcsc.com/product-detail/C8406.html",
+      "refs": [
+        "J8",
+        "J9"
+      ],
+      "productModel": "WJ15EDGRC-3.81-03P-14-00A",
+      "brandNameEn": "KANGNEX",
+      "encapStandard": "Through Hole,Right Angle,P=3.81mm",
+      "stockNumber": 55630,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/e76c1f40005fdcfb29a7fd927a19562f.pdf?productCode=C8406",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Wire Gauge - mm2": "-",
+        "Wire Gauge - AWG": "-",
+        "Number of Positions or Pins": "1x3P",
+        "Number of Pins": "3P",
+        "Operating Temperature": "-40℃~+105℃",
+        "Number of PINs Per Row": "3",
+        "Number of Rows": "1",
+        "Current Rating": "8A",
+        "Outlet Direction (Vertical Basis)": "-",
+        "Connection Type": "-",
+        "Voltage Rating": "300V",
+        "Pitch": "3.81mm",
+        "Color": "Green",
+        "Connector Type": "Board Side/Socket - Closed",
+        "Termination Style": "No Mounting",
+        "Mounting Type": "Right-Angle"
+      }
+    },
+    "C492401": {
+      "url": "https://www.lcsc.com/product-detail/C492401.html",
+      "refs": [
+        "JP1"
+      ],
+      "productModel": "PZ254V-11-02P",
+      "brandNameEn": "XFCN",
+      "encapStandard": "Through Hole,P=2.54mm",
+      "stockNumber": 720500,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/3b85a1cdf6ed945f2e278f00c1e42442.pdf?productCode=C492401",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Connector Type": "Through Hole",
+        "Voltage Rating (Max)": "250V",
+        "Contact Material": "Brass",
+        "Number of Rows": "1",
+        "Pitch": "2.54mm",
+        "Circluar Pins/Square Pins": "Square pin",
+        "Current Rating": "3A",
+        "Insulation Height": "2.5mm",
+        "Length of Mating Pin": "6.1mm",
+        "Number of PINs": "2P",
+        "Operating Temperature": "-40℃~+105℃",
+        "Length of End Connection Pin": "3mm",
+        "Contact Plating": "Gold",
+        "Color": "Black",
+        "Pin Structure": "1x2P",
+        "Row Spacing": "-"
+      }
+    },
+    "C17437": {
+      "url": "https://www.lcsc.com/product-detail/C17437.html",
+      "refs": [
+        "R58"
+      ],
+      "productModel": "0805W8F1200T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0805",
+      "stockNumber": 290900,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C17437",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "125mW",
+        "Resistance": "120Ω",
+        "Voltage Rating": "150V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C23228": {
+      "url": "https://www.lcsc.com/product-detail/C23228.html",
+      "refs": [
+        "R59",
+        "R60"
+      ],
+      "productModel": "0603WAF6800T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 673700,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23228",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "680Ω",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C453411": {
+      "url": "https://www.lcsc.com/product-detail/C453411.html",
+      "refs": [
+        "R61",
+        "R62"
+      ],
+      "productModel": "RC-12K2201FT",
+      "brandNameEn": "FH",
+      "encapStandard": "2512",
+      "stockNumber": 1220,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/5766a1b01c174da7b2ce3abec546f8ce.pdf?productCode=C453411",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "1W",
+        "Resistance": "2.2kΩ",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C1849398": {
+      "url": "https://www.lcsc.com/product-detail/C1849398.html",
+      "refs": [
+        "U11"
+      ],
+      "productModel": "THVD2410DR",
+      "brandNameEn": "TI",
+      "encapStandard": "SOIC-8",
+      "stockNumber": 4824,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/10cad1ecf324dbae8d5fbe24e4cd47d3.pdf?productCode=C1849398",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Voltage - Supply": "3V~5.5V",
+        "Type": "Transceiver",
+        "Data Rate": "500Kbps",
+        "Number of Nodes": "256",
+        "Operating Temperature": "-40℃~+125℃",
+        "ESD Protect": "±16kV",
+        "Communication Mode": "Half-Duplex",
+        "Number of Drivers": "1",
+        "Features": "Tx/Rx enable;Enable shutdown;Fail-safe;Overcurrent Protection;Thermal shutdown protection;Low-power mode",
+        "Number of Receivers": "1",
+        "Quiescent Supply Current": "1uA"
+      }
+    },
+    "C193666": {
+      "url": "https://www.lcsc.com/product-detail/C193666.html",
+      "refs": [
+        "U12"
+      ],
+      "productModel": "MAX3232EIDR",
+      "brandNameEn": "TI",
+      "encapStandard": "SOIC-16",
+      "stockNumber": 45984,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/7ecdbc584168893f2d7e6fa9f2d4098d.pdf?productCode=C193666",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Type": "Transceiver",
+        "Voltage - Supply": "3V~5.5V",
+        "Data Rate": "250Kbps",
+        "Operating Temperature": "-40℃~+85℃",
+        "ESD Protect": "±15kV",
+        "charge pump": "Yes",
+        "Number of Drivers": "2",
+        "Features": "-",
+        "Number of Receivers": "2",
+        "Quiescent Supply Current": "0.3mA"
+      }
+    },
+    "C7420332": {
+      "url": "https://www.lcsc.com/product-detail/C7420332.html",
+      "refs": [
+        "D17",
+        "D18",
+        "D21",
+        "D29",
+        "D33",
+        "D36",
+        "D39",
+        "D42"
+      ],
+      "productModel": "BAT46W",
+      "brandNameEn": "R+O",
+      "encapStandard": "SOD-123",
+      "stockNumber": 646040,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/2f7f37f502efefee1d82933f9084ff3e.pdf?productCode=C7420332",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Junction Temperature Range": "-",
+        "Diode Configuration": "Standalone",
+        "Voltage - DC Reverse (Vr) (Max)": "100V",
+        "Pd - Power Dissipation": "500mW",
+        "Voltage - Forward(Vf@If)": "450mV@10mA",
+        "Reverse Leakage Current (Ir)": "2uA@100V",
+        "Non-Repetitive Peak Forward Surge Current": "750mA",
+        "Current - Rectified": "150mA"
+      }
+    },
+    "C223988": {
+      "url": "https://www.lcsc.com/product-detail/C223988.html",
+      "refs": [
+        "D19",
+        "D20",
+        "D24",
+        "D26",
+        "D28",
+        "D32",
+        "D35",
+        "D38",
+        "D41",
+        "D44",
+        "D45",
+        "D46",
+        "D47"
+      ],
+      "productModel": "SMAJ33A",
+      "brandNameEn": "Littelfuse",
+      "encapStandard": "DO-214AC(SMA)",
+      "stockNumber": 11700,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/bf298e2c0542e0172af23908598fa548.pdf?productCode=C223988",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Clamping Voltage": "53.3V",
+        "Operating Temperature": "-65℃~+150℃",
+        "Peak Pulse Current (Ipp)": "7.5A@10/1000us",
+        "Peak Pulse Power Dissipation (Ppp)": "400W@10/1000us",
+        "Number of Channels": "Single-channel",
+        "Voltage - Breakdown": "40.6V",
+        "type": "TVS",
+        "Polarity": "Unidirectional",
+        "Reverse Leakage Current (Ir)": "1uA",
+        "Reverse Stand-Off Voltage (Vrwm)": "33V"
+      }
+    },
+    "C47546": {
+      "url": "https://www.lcsc.com/product-detail/C47546.html",
+      "refs": [
+        "D22",
+        "D30",
+        "D34",
+        "D37",
+        "D40",
+        "D43"
+      ],
+      "productModel": "BAT54S,215",
+      "brandNameEn": "Nexperia",
+      "encapStandard": "SOT-23",
+      "stockNumber": 249720,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/3fa70e0d1f2c320a83604c0e0e47ce24.pdf?productCode=C47546",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Non-Repetitive Peak Forward Surge Current": "600mA",
+        "Diode Configuration": "1 Pair Series Connection",
+        "Current - Rectified": "200mA",
+        "Voltage - DC Reverse(Vr)": "30V",
+        "Reverse Leakage Current (Ir)": "2uA@25V",
+        "Voltage - Forward(Vf@If)": "800mV@100mA"
+      }
+    },
+    "C81598": {
+      "url": "https://www.lcsc.com/product-detail/C81598.html",
+      "refs": [
+        "D23",
+        "D25"
+      ],
+      "productModel": "1N4148W",
+      "brandNameEn": "ST(Semtech)",
+      "encapStandard": "SOD-123",
+      "stockNumber": 1820650,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/8abd7fc00ebe41ffb03ad1383c10753b.pdf?productCode=C81598",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Reverse Recovery Time (trr)": "4ns",
+        "Operating Junction Temperature Range": "-",
+        "Voltage - DC Reverse (Vr) (Max)": "75V",
+        "Diode Configuration": "Standalone",
+        "Pd - Power Dissipation": "400mW",
+        "Voltage - Forward(Vf@If)": "1V@50mA",
+        "Reverse Leakage Current (Ir)": "1uA@75V",
+        "Non-Repetitive Peak Forward Surge Current": "1A",
+        "Current - Rectified": "150mA"
+      }
+    },
+    "C8678": {
+      "url": "https://www.lcsc.com/product-detail/C8678.html",
+      "refs": [
+        "D27"
+      ],
+      "productModel": "SS34",
+      "brandNameEn": "MDD(Microdiode Semiconductor)",
+      "encapStandard": "SMA(DO-214AC)",
+      "stockNumber": 1846820,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/dfa1ff67dea875d0135103ba9ada713a.pdf?productCode=C8678",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Junction Temperature Range": "-55℃~+125℃",
+        "Voltage - DC Reverse (Vr) (Max)": "40V",
+        "Diode Configuration": "Standalone",
+        "Pd - Power Dissipation": "-",
+        "Voltage - Forward(Vf@If)": "550mV@3A",
+        "Reverse Leakage Current (Ir)": "500uA@40V",
+        "Non-Repetitive Peak Forward Surge Current": "80A",
+        "Current - Rectified": "3A"
+      }
+    },
+    "C315892": {
+      "url": "https://www.lcsc.com/product-detail/C315892.html",
+      "refs": [
+        "F6",
+        "F7",
+        "F10",
+        "F11",
+        "F12",
+        "F13",
+        "F14"
+      ],
+      "productModel": "1206L005/60WR",
+      "brandNameEn": "Littelfuse",
+      "encapStandard": "1206",
+      "stockNumber": 17600,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/a54e5411abf1153e443b4b285981f895.pdf?productCode=C315892",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+85℃",
+        "Voltage - Max": "60V",
+        "Hold Current": "50mA",
+        "Current - Max": "10A",
+        "Power Dissipation": "600mW",
+        "Trip Current": "150mA",
+        "Pitch": "-",
+        "Height": "-",
+        "Length": "-",
+        "Width": "-",
+        "Time to Trip(Max)": "1.5s",
+        "Resistance @ 25℃": "3.6Ω",
+        "Resistance - Post Trip (R1) (Max)": "20Ω"
+      }
+    },
+    "C70065": {
+      "url": "https://www.lcsc.com/product-detail/C70065.html",
+      "refs": [
+        "F9"
+      ],
+      "productModel": "nSMD010",
+      "brandNameEn": "TECHFUSE",
+      "encapStandard": "1206",
+      "stockNumber": 965220,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/3a51277284f2a9abab8cdac90ec54d85.pdf?productCode=C70065",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+85℃",
+        "Voltage - Max": "60V",
+        "Hold Current": "100mA",
+        "Current - Max": "100A",
+        "Power Dissipation": "400mW",
+        "Trip Current": "250mA",
+        "Pitch": "-",
+        "Height": "-",
+        "Length": "-",
+        "Width": "-",
+        "Time to Trip(Max)": "1s",
+        "Resistance @ 25℃": "1.6Ω",
+        "Resistance - Post Trip (R1) (Max)": "15Ω"
+      }
+    },
+    "C20539148": {
+      "url": "https://www.lcsc.com/product-detail/C20539148.html",
+      "refs": [
+        "J10"
+      ],
+      "productModel": "HC-5566-2*3A-05",
+      "brandNameEn": "HCTL",
+      "encapStandard": "Through Hole,P=4.2mm",
+      "stockNumber": 2690,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/1be9ac5184b1094eab7f3521c1b1c041.pdf?productCode=C20539148",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Connector Type": "Through Hole",
+        "Reference Series": "-",
+        "Voltage Rating (Max)": "300V",
+        "Contact Material": "Brass",
+        "Number of PINs Per Row": "3",
+        "Number of Rows": "2",
+        "Pitch": "4.2mm",
+        "Flame Retardant Rating": "-",
+        "Current Rating": "9A",
+        "Supplementary Features": "Hollow Pin",
+        "Operating Temperature": "-25℃~+85℃",
+        "Contact Plating": "Tin",
+        "Number of PINs": "6P",
+        "Plastic Material": "PA66",
+        "Color": "Transparent",
+        "X-Length of Bottom Edge on Board (Spacing Line)": "-",
+        "Pin Structure": "2x3P",
+        "Row Spacing": "4.2mm"
+      }
+    },
+    "C7245": {
+      "url": "https://www.lcsc.com/product-detail/C7245.html",
+      "refs": [
+        "J11",
+        "J12"
+      ],
+      "productModel": "WJ15EDGRC-3.81-04P-14-00A",
+      "brandNameEn": "KANGNEX",
+      "encapStandard": "Through Hole,Right Angle,P=3.81mm",
+      "stockNumber": 70000,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/e76c1f40005fdcfb29a7fd927a19562f.pdf?productCode=C7245",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Wire Gauge - mm2": "-",
+        "Wire Gauge - AWG": "-",
+        "Number of Positions or Pins": "1x4P",
+        "Number of Pins": "4P",
+        "Operating Temperature": "-40℃~+105℃",
+        "Number of PINs Per Row": "4",
+        "Number of Rows": "1",
+        "Current Rating": "8A",
+        "Outlet Direction (Vertical Basis)": "-",
+        "Connection Type": "-",
+        "Voltage Rating": "300V",
+        "Pitch": "3.81mm",
+        "Color": "Green",
+        "Connector Type": "Board Side/Socket - Closed",
+        "Termination Style": "No Mounting",
+        "Mounting Type": "Right-Angle"
+      }
+    },
+    "C8387": {
+      "url": "https://www.lcsc.com/product-detail/C8387.html",
+      "refs": [
+        "J13"
+      ],
+      "productModel": "WJ15EDGRC-3.81-02P-14-00A",
+      "brandNameEn": "KANGNEX",
+      "encapStandard": "Through Hole,Right Angle,P=3.81mm",
+      "stockNumber": 144160,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/e76c1f40005fdcfb29a7fd927a19562f.pdf?productCode=C8387",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Wire Gauge - mm2": "-",
+        "Wire Gauge - AWG": "-",
+        "Number of Positions or Pins": "1x2P",
+        "Number of Pins": "2P",
+        "Operating Temperature": "-40℃~+105℃",
+        "Number of PINs Per Row": "2",
+        "Number of Rows": "1",
+        "Current Rating": "8A",
+        "Outlet Direction (Vertical Basis)": "-",
+        "Connection Type": "-",
+        "Voltage Rating": "300V",
+        "Pitch": "3.81mm",
+        "Color": "Green",
+        "Connector Type": "Board Side/Socket - Closed",
+        "Termination Style": "No Mounting",
+        "Mounting Type": "Right-Angle"
+      }
+    },
+    "C17471": {
+      "url": "https://www.lcsc.com/product-detail/C17471.html",
+      "refs": [
+        "R63"
+      ],
+      "productModel": "0805W8F1500T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0805",
+      "stockNumber": 114300,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C17471",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "125mW",
+        "Resistance": "150Ω",
+        "Voltage Rating": "150V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C22843": {
+      "url": "https://www.lcsc.com/product-detail/C22843.html",
+      "refs": [
+        "R66",
+        "R69"
+      ],
+      "productModel": "0603WAF1501T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 1494600,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22843",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "1.5kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C22775": {
+      "url": "https://www.lcsc.com/product-detail/C22775.html",
+      "refs": [
+        "R72",
+        "R104",
+        "R106",
+        "R108",
+        "R110"
+      ],
+      "productModel": "0603WAF1000T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 3161000,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C22775",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "100Ω",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Tolerance": "±1%",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C7484": {
+      "url": "https://www.lcsc.com/product-detail/C7484.html",
+      "refs": [
+        "U13",
+        "U14"
+      ],
+      "productModel": "SN74AHCT1G125DBVR",
+      "brandNameEn": "TI",
+      "encapStandard": "SOT-23-5",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/74b1f7dfbe12452e8a365e0596ae902b.pdf?productCode=C7484",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Function": "Output enable",
+        "Input type": "-",
+        "Current - Output High(IOH)": "8mA",
+        "Voltage - Supply": "4.5V~5.5V",
+        "Series": "74AHCT",
+        "Output Type": "Tri-State",
+        "Current - Output Low(IOL)": "8mA",
+        "Number of Bits per Element": "1",
+        "Channel Type": "Unidirectional",
+        "Number of Elements": "1",
+        "Operating Temperature": "-40℃~+125℃",
+        "Quiescent Supply Current": "10uA",
+        "Propagation Delay": "6.5ns@5V,15pF"
+      }
+    },
+    "C42379244": {
+      "url": "https://www.lcsc.com/product-detail/C42379244.html",
+      "refs": [
+        "U15",
+        "U16"
+      ],
+      "productModel": "EL357N(C)(TA)-G",
+      "brandNameEn": "EVERLIGHT",
+      "encapStandard": "SOP-4-2.54mm",
+      "stockNumber": 207095,
+      "productCycle": "normal",
+      "pdfUrl": "https://www.everlighteurope.com/custom/files/datasheets/DPC-0000014.pdf",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Rise time": "3us",
+        "Fall time": "4us",
+        "Output Current": "50mA",
+        "Vce Saturation(VCE(sat))": "200mV@20mA,1mA",
+        "Operating Temperature": "-55℃~+110℃",
+        "Load Voltage": "80V",
+        "Reverse Voltage": "6V",
+        "Voltage - Forward(Vf)": "1.2V",
+        "Current transfer ratio": "200%;400%",
+        "Forward Current(If)": "50mA",
+        "Number of Channels": "1",
+        "Total Power Dissipation(Pd)": "200mW",
+        "Output Type": "Phototransistor",
+        "Input type": "DC",
+        "Isolation Voltage(Vrms)": "3.75kV",
+        "Features": "-"
+      }
+    },
+    "C2979167": {
+      "url": "https://www.lcsc.com/product-detail/C2979167.html",
+      "refs": [
+        "BT1"
+      ],
+      "productModel": "BS-07-A1BJ001",
+      "brandNameEn": "MYOUNG",
+      "encapStandard": "-",
+      "stockNumber": 2070,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/fcfe81010ef1b91d8aa89bbdaa7da201.pdf?productCode=C2979167",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Applicable battery specifications": "CR2032",
+        "Contact coating": "Nickel Plated",
+        "Contact material": "Manganese Steel",
+        "Operating Temperature": "-25~85℃",
+        "Type": "Battery base"
+      }
+    },
+    "C1634": {
+      "url": "https://www.lcsc.com/product-detail/C1634.html",
+      "refs": [
+        "C81"
+      ],
+      "productModel": "CL10C100JB8NNNC",
+      "brandNameEn": "Samsung Electro-Mechanics",
+      "encapStandard": "0603",
+      "stockNumber": 769400,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/02336ea48ea44ca18c72517dd3cb7b47.pdf?productCode=C1634",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Capacitance": "10pF",
+        "Temperature Coefficient": "C0G",
+        "Tolerance": "±5%",
+        "Voltage Rating": "50V"
+      }
+    },
+    "C2135": {
+      "url": "https://www.lcsc.com/product-detail/C2135.html",
+      "refs": [
+        "D31"
+      ],
+      "productModel": "BAT54C",
+      "brandNameEn": "JSCJ",
+      "encapStandard": "SOT-23",
+      "stockNumber": 158840,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/5b474f3ae31f4955b5e416442eaeaed8.pdf?productCode=C2135",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Diode Configuration": "1 Pair Common Cathode",
+        "Voltage - DC Reverse (Vr) (Max)": "30V",
+        "Voltage - Forward(Vf@If)": "1V@100mA",
+        "Reverse Leakage Current (Ir)": "2uA@25V",
+        "Non-Repetitive Peak Forward Surge Current": "600mA",
+        "Current - Rectified": "200mA"
+      }
+    },
+    "C3406": {
+      "url": "https://www.lcsc.com/product-detail/C3406.html",
+      "refs": [
+        "J14"
+      ],
+      "productModel": "2.54-2*8P",
+      "brandNameEn": "BOOMELE(Boom Precision Elec)",
+      "encapStandard": "Through Hole,P=2.54mm",
+      "stockNumber": 45530,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/6416e4a2715b48aa921258a38e859b93.pdf?productCode=C3406",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Number of Positions or Pins": "2x8P",
+        "colour": "Black",
+        "Number of Rows": "2",
+        "Row spacing": "2.54mm",
+        "Operating Temperature": "-55℃~+105℃",
+        "Number of PINs Per Row": "8",
+        "Connector Type": "IDC Header",
+        "Pitch": "2.54mm",
+        "Contact Plating": "Gold",
+        "Current Rating": "1A",
+        "Mounting Type": "Through Hole",
+        "Contact Material": "Brass"
+      }
+    },
+    "C23140": {
+      "url": "https://www.lcsc.com/product-detail/C23140.html",
+      "refs": [
+        "R76",
+        "R77",
+        "R78",
+        "R79",
+        "R80",
+        "R81",
+        "R82",
+        "R83",
+        "R85",
+        "R86",
+        "R87",
+        "R88",
+        "R89"
+      ],
+      "productModel": "0603WAF330JT5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 997700,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23140",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "33Ω",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C23162": {
+      "url": "https://www.lcsc.com/product-detail/C23162.html",
+      "refs": [
+        "R90",
+        "R91"
+      ],
+      "productModel": "0603WAF4701T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 2661300,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C23162",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "4.7kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±1%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C5980": {
+      "url": "https://www.lcsc.com/product-detail/C5980.html",
+      "refs": [
+        "U17",
+        "U18"
+      ],
+      "productModel": "74HCT245PW,118",
+      "brandNameEn": "Nexperia",
+      "encapStandard": "TSSOP-20",
+      "stockNumber": 9577,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/ac6d5b49b0abc6289d6e72273f1dbd57.pdf?productCode=C5980",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Function": "Output enable",
+        "Input type": "-",
+        "Current - Output High(IOH)": "6mA",
+        "Voltage - Supply": "4.5V~5.5V",
+        "Series": "74HCT",
+        "Output Type": "Tri-State",
+        "Current - Output Low(IOL)": "6mA",
+        "Number of Bits per Element": "8",
+        "Channel Type": "Bidirectional",
+        "Number of Elements": "1",
+        "Operating Temperature": "-40℃~+125℃",
+        "Quiescent Supply Current": "160uA",
+        "Propagation Delay": "12ns@4.5V,50pF"
+      }
+    },
+    "C7440": {
+      "url": "https://www.lcsc.com/product-detail/C7440.html",
+      "refs": [
+        "U19"
+      ],
+      "productModel": "PCF8563T/5,518",
+      "brandNameEn": "NXP",
+      "encapStandard": "SO-8",
+      "stockNumber": 76883,
+      "productCycle": "normal",
+      "pdfUrl": "https://www.nxp.com/docs/en/data-sheet/PCF8563.pdf",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+85℃",
+        "Voltage - Supply": "1V~5.5V",
+        "Features": "Programmable clock output;Battery low voltage detection;Alarm function;Countdown timer",
+        "crystal oscillator": "External",
+        "Alarm Output": "Yes",
+        "Current - Supply": "800uA"
+      }
+    },
+    "C32346": {
+      "url": "https://www.lcsc.com/product-detail/C32346.html",
+      "refs": [
+        "Y2"
+      ],
+      "productModel": "Q13FC13500004",
+      "brandNameEn": "EPSON",
+      "encapStandard": "SMD3215-2P",
+      "stockNumber": 272035,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/d4d1bd2e87b2e72a8e8e7fe7d590f4c0.pdf?productCode=C32346",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Normal temperature Frequency Tolerance": "±20ppm",
+        "Operating Temperature": "-40℃~+85℃",
+        "Load Capacitance": "12.5pF",
+        "Equivalent Series Resistance(ESR)": "70kΩ",
+        "Frequency": "32.768kHz"
+      }
+    },
+    "C207083": {
+      "url": "https://www.lcsc.com/product-detail/C207083.html",
+      "refs": [
+        "F15",
+        "F16",
+        "F17",
+        "F18"
+      ],
+      "productModel": "2920L075/60MR",
+      "brandNameEn": "Littelfuse",
+      "encapStandard": "2920",
+      "stockNumber": 945,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/c68bdfe0ee09d70175cc0639d399379a.pdf?productCode=C207083",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+85℃",
+        "Voltage - Max": "60V",
+        "Hold Current": "750mA",
+        "Current - Max": "10A",
+        "Power Dissipation": "1.5W",
+        "Trip Current": "1.5A",
+        "Pitch": "-",
+        "Height": "1.8mm",
+        "Length": "7.98mm",
+        "Width": "5.44mm",
+        "Time to Trip(Max)": "300ms",
+        "Resistance @ 25℃": "300mΩ",
+        "Resistance - Post Trip (R1) (Max)": "950mΩ"
+      }
+    },
+    "C7246": {
+      "url": "https://www.lcsc.com/product-detail/C7246.html",
+      "refs": [
+        "J15",
+        "J16"
+      ],
+      "productModel": "WJ15EDGRC-3.81-06P-14-00A",
+      "brandNameEn": "KANGNEX",
+      "encapStandard": "Through Hole,Right Angle,P=3.81mm",
+      "stockNumber": 18140,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/e76c1f40005fdcfb29a7fd927a19562f.pdf?productCode=C7246",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Wire Gauge - mm2": "-",
+        "Wire Gauge - AWG": "-",
+        "Number of Positions or Pins": "1x6P",
+        "Number of Pins": "6P",
+        "Operating Temperature": "-40℃~+105℃",
+        "Number of PINs Per Row": "6",
+        "Number of Rows": "1",
+        "Current Rating": "8A",
+        "Outlet Direction (Vertical Basis)": "-",
+        "Connection Type": "-",
+        "Voltage Rating": "300V",
+        "Pitch": "3.81mm",
+        "Color": "Green",
+        "Connector Type": "Board Side/Socket - Closed",
+        "Termination Style": "No Mounting",
+        "Mounting Type": "Right-Angle"
+      }
+    },
+    "C492422": {
+      "url": "https://www.lcsc.com/product-detail/C492422.html",
+      "refs": [
+        "J17"
+      ],
+      "productModel": "PZ254V-12-10P",
+      "brandNameEn": "XFCN",
+      "encapStandard": "Through Hole,P=2.54mm",
+      "stockNumber": 129950,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/50ec9710cee52ae98bff43fbb8887c5b.pdf?productCode=C492422",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Connector Type": "Through Hole",
+        "Voltage Rating (Max)": "-",
+        "Contact Material": "Brass",
+        "Number of Rows": "2",
+        "Pitch": "2.54mm",
+        "Circluar Pins/Square Pins": "Square pin",
+        "Current Rating": "-",
+        "Insulation Height": "2.5mm",
+        "Length of Mating Pin": "6mm",
+        "Number of PINs": "10P",
+        "Operating Temperature": "-40℃~+105℃",
+        "Length of End Connection Pin": "3mm",
+        "Contact Plating": "-",
+        "Color": "Black",
+        "Pin Structure": "2x5P",
+        "Row Spacing": "2.54mm"
+      }
+    },
+    "C156306": {
+      "url": "https://www.lcsc.com/product-detail/C156306.html",
+      "refs": [
+        "Q6",
+        "Q7",
+        "Q8",
+        "Q9"
+      ],
+      "productModel": "DMN6140L-7",
+      "brandNameEn": "DIODES",
+      "encapStandard": "SOT-23",
+      "stockNumber": 25365,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/f336cbb3cd9cb71adc6dc67b1e864b07.pdf?productCode=C156306",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Output Capacitance(Coss)": "18pF",
+        "Ciss-Input Capacitance": "315pF",
+        "Pd - Power Dissipation": "1.3W",
+        "Configuration": "-",
+        "Operating Temperature": "-55℃~+150℃",
+        "Drain to Source Voltage": "60V",
+        "Current - Continuous Drain(Id)": "2.3A",
+        "Reverse Transfer Capacitance (Crss)": "16pF",
+        "RDS(on)": "170mΩ@4.5V",
+        "Number": "1 N-channel",
+        "Gate Charge(Qg)": "8.6nC@10V",
+        "Vgs": "±20V",
+        "Gate Threshold Voltage (Vgs(th))": "3V",
+        "Type": "N-Channel"
+      }
+    },
+    "C128392": {
+      "url": "https://www.lcsc.com/product-detail/C128392.html",
+      "refs": [
+        "U20"
+      ],
+      "productModel": "PCA9555PW,118",
+      "brandNameEn": "NXP",
+      "encapStandard": "TSSOP-24",
+      "stockNumber": 59082,
+      "productCycle": "normal",
+      "pdfUrl": "https://www.nxp.com/docs/en/data-sheet/PCA9555.pdf",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Operating Temperature": "-40℃~+85℃",
+        "Interrupt Output": "Interrupt Output",
+        "Number of I/O": "16",
+        "Features": "Reset function;Cascade and address expansion",
+        "Voltage - Supply": "2.3V~5.5V",
+        "Quiescent Supply Current": "1.1uA",
+        "Number of Supporting Devices": "8",
+        "Current - Output High(IOH)": "-",
+        "Interface": "I2C;SMBus"
+      }
+    },
+    "C148198": {
+      "url": "https://www.lcsc.com/product-detail/C148198.html",
+      "refs": [
+        "U21"
+      ],
+      "productModel": "74AHCT125PW,118",
+      "brandNameEn": "Nexperia",
+      "encapStandard": "TSSOP-14",
+      "stockNumber": 0,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/33455ddf1a2caad74dbc68b2f4560849.pdf?productCode=C148198",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Input type": "Schmitt trigger",
+        "Voltage - Supply": "4.5V~5.5V",
+        "Output Type": "Tri-State",
+        "Operating Temperature": "-40℃~+125℃",
+        "Quiescent Supply Current": "40uA",
+        "Function": "Output enable;Level shifting",
+        "Current - Output High(IOH)": "8mA",
+        "Series": "74AHCT",
+        "Current - Output Low(IOL)": "8mA",
+        "Number of Bits per Element": "1",
+        "Channel Type": "Unidirectional",
+        "Number of Elements": "4",
+        "Propagation Delay": "4.3ns@4.5V,50pF"
+      }
+    },
+    "C2833309": {
+      "url": "https://www.lcsc.com/product-detail/C2833309.html",
+      "refs": [
+        "C86"
+      ],
+      "productModel": "RVT220UF10V67RV0037",
+      "brandNameEn": "KNSCHA",
+      "encapStandard": "SMD,D6.3xL5.4mm",
+      "stockNumber": 124920,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/a8c52298cc357d802d3e16e0432ec659.pdf?productCode=C2833309",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Tolerance": "±20%",
+        "Voltage Rating": "10V",
+        "Lifetime": "2000hrs@105℃",
+        "Capacitance": "220uF",
+        "Ripple Current": "70mA@120Hz",
+        "Polarity type": "Polarized",
+        "Operating Temperature": "-55℃~+105℃",
+        "Equivalent Series Resistance(ESR)": "-",
+        "Height - Seated (Max)": "5.4mm",
+        "Diameter": "6.3mm"
+      }
+    },
+    "C407609": {
+      "url": "https://www.lcsc.com/product-detail/C407609.html",
+      "refs": [
+        "R112"
+      ],
+      "productModel": "0603WAD2491T5E",
+      "brandNameEn": "UNI-ROYAL",
+      "encapStandard": "0603",
+      "stockNumber": 4300,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0a975aaa49b7c97f38a963127be4a823.pdf?productCode=C407609",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Power(Watts)": "100mW",
+        "Resistance": "2.49kΩ",
+        "Voltage Rating": "75V",
+        "Type": "Thick Film Resistor",
+        "Temperature Coefficient": "±100ppm/℃",
+        "Tolerance": "±0.5%",
+        "Operating Temperature": "-55℃~+155℃"
+      }
+    },
+    "C3010343": {
+      "url": "https://www.lcsc.com/product-detail/C3010343.html",
+      "refs": [
+        "U22"
+      ],
+      "productModel": "RTL8305NB-VB-CG",
+      "brandNameEn": "REALTEK",
+      "encapStandard": "QFN-48-EP(6x6)",
+      "stockNumber": 6749,
+      "productCycle": "normal",
+      "pdfUrl": "https://datasheet.lcsc.com/datasheet/pdf/0bad82140d1f6af3f41d0f91c198c363.pdf?productCode=C3010343",
+      "pdfLinkUrl": null,
+      "parameters": {
+        "Type": "-",
+        "Voltage - Supply": "3.3V;1.2V",
+        "Ethernet Speed Standards": "10BASE-T;100BASE-TX",
+        "Data Rate": "10Mbit/s;100Mbit/s",
+        "number of channels": "5",
+        "Operating Temperature": "0℃~+70℃",
+        "Features": "Programmable LED indication;Low-power mode;Cable diagnostics",
+        "Interface": "MII"
+      }
+    }
+  }
+}
