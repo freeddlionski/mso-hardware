@@ -1,0 +1,17 @@
+{
+  "query": "PCA9555PW,118",
+  "endpoint": "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/selectSmtComponentList/v2",
+  "date_utc": "2026-11-14",
+  "original_code": 200,
+  "total": 1,
+  "list": [
+    {
+      "componentCode": "C128392",
+      "componentModelEn": "PCA9555PW,118",
+      "componentBrandEn": "NXP Semicon",
+      "componentSpecificationEn": "TSSOP-24",
+      "stockCount": 59483,
+      "componentLibraryType": "expand"
+    }
+  ]
+}

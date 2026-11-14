@@ -1,0 +1,105 @@
+{
+  "query": "H1102N",
+  "endpoint": "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/selectSmtComponentList/v2",
+  "date_utc": "2026-11-14",
+  "original_code": 200,
+  "total": 12,
+  "list": [
+    {
+      "componentCode": "C42418465",
+      "componentModelEn": "H1102N",
+      "componentBrandEn": "CND-tek",
+      "componentSpecificationEn": "SMD-16P,12.7x7mm",
+      "stockCount": 2436,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C9900041967",
+      "componentModelEn": "H1102NL",
+      "componentBrandEn": "JLCPCB Assembly",
+      "componentSpecificationEn": "SMD-16",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C20622336",
+      "componentModelEn": "H1102NL",
+      "componentBrandEn": "Pulse Elec",
+      "componentSpecificationEn": "SMD-16P",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C9900222168",
+      "componentModelEn": "H1102NL",
+      "componentBrandEn": "JLCPCB Assembly",
+      "componentSpecificationEn": "SOP-16_L12.7-W6.9-LS9.4-H2.2",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C9900276607",
+      "componentModelEn": "H1102NL",
+      "componentBrandEn": "JLCPCB Assembly",
+      "componentSpecificationEn": "SOIC-16_L10.3-W7.4-P1.27-LS10.3-BL",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C9900329844",
+      "componentModelEn": "H1102NL",
+      "componentBrandEn": "JLCPCB Assembly",
+      "componentSpecificationEn": "SOP-16",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C18584",
+      "componentModelEn": "H1102NLT",
+      "componentBrandEn": "Pulse Elec",
+      "componentSpecificationEn": "SMD,12.7x7.1mm",
+      "stockCount": 66238,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C20623173",
+      "componentModelEn": "H1102NLT",
+      "componentBrandEn": "DEXU Electronics",
+      "componentSpecificationEn": "SMD-16P,12.7x9.5mm",
+      "stockCount": 61147,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C9900237161",
+      "componentModelEn": "H1102NLT_2",
+      "componentBrandEn": "JLCPCB Assembly",
+      "componentSpecificationEn": "DIP-12_L14_0-W7_5-P2_00-LS4_8-BL",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C55376150",
+      "componentModelEn": "H1102NLT-TA",
+      "componentBrandEn": "Taisko",
+      "componentSpecificationEn": "SMD-16P,12.8x6.8mm",
+      "stockCount": 566,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C48392688",
+      "componentModelEn": "H1102NLTP-CND",
+      "componentBrandEn": "CND-tek",
+      "componentSpecificationEn": "SMD-16P,12.7x7mm",
+      "stockCount": 2074,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C55376147",
+      "componentModelEn": "H1102NLT-1-TA",
+      "componentBrandEn": "Taisko",
+      "componentSpecificationEn": "SMD-16P,12.8x7.1mm",
+      "stockCount": 1821,
+      "componentLibraryType": "expand"
+    }
+  ]
+}

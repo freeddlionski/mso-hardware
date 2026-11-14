@@ -1,0 +1,82 @@
+Reference,Pin,Old_net,New_net,Old_pin_function,New_pin_function
+C1,1,/Питание/VIN_F,VIN_F,,
+C30,1,/Питание/LCD1_RAW,+5V_LCD1,,
+C31,1,/Питание/LCD1_RAW,+5V_LCD1,,
+C32,1,/Питание/LCD1_RAW,+5V_LCD1,,
+C33,1,/Питание/LCD1_RAW,+5V_LCD1,,
+C41,1,/Питание/LCD2_RAW,+5V_LCD2,,
+C42,1,/Питание/LCD2_RAW,+5V_LCD2,,
+C43,1,/Питание/LCD2_RAW,+5V_LCD2,,
+C44,1,/Питание/LCD2_RAW,+5V_LCD2,,
+C86,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C87,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C88,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C89,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C90,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C91,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C92,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C93,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C94,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C95,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+C96,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,,
+D1,1,/Питание/VIN_F,VIN_F,A1,A1
+D13,1,/RS-485 и RS-232/RS485_A,RS485_A,A1,A1
+D14,1,/RS-485 и RS-232/RS485_B,RS485_B,A1,A1
+F1,2,/Питание/VIN_F,VIN_F,,
+J18,8,GND,/Коммутатор Ethernet/ETH_SH2,,
+J18,SH,GND,/Коммутатор Ethernet/ETH_SH2,,
+J6,1,/ESP32-S3 и USB/U0_TX,U0_TX,Pin_1,Pin_1
+J6,2,/ESP32-S3 и USB/U0_RX,U0_RX,Pin_2,Pin_2
+J7,8,GND,/Ethernet/ETH_SH1,,
+J7,SH,GND,/Ethernet/ETH_SH1,,
+J8,1,/RS-485 и RS-232/RS485_A,RS485_A,Pin_1,Pin_1
+J8,2,/RS-485 и RS-232/RS485_B,RS485_B,Pin_2,Pin_2
+JP1,2,/RS-485 и RS-232/RS485_B,RS485_B,Pin_2,Pin_2
+L4,2,/Питание/LCD1_RAW,+5V_LCD1,2,2
+L5,2,/Питание/LCD2_RAW,+5V_LCD2,2,2
+Q1,1,/Питание/VIN_F,VIN_F,S,S
+Q1,2,/Питание/VIN_F,VIN_F,S,S
+Q1,3,/Питание/VIN_F,VIN_F,S,S
+Q2,2,/Питание/VIN_F,VIN_F,S,S
+Q4,3,/ESP32-S3 и USB/ESP_IO0,ESP_IO0,C,C
+Q5,2,GND,/MDB и входы/COIN_INH_D,S,D
+Q5,3,/MDB и входы/COIN_INH_D,GND,D,S
+Q6,2,GND,/Расширитель входов-выходов/EXT_D1,S,D
+Q6,3,/Расширитель входов-выходов/EXT_D1,GND,D,S
+Q7,2,GND,/Расширитель входов-выходов/EXT_D2,S,D
+Q7,3,/Расширитель входов-выходов/EXT_D2,GND,D,S
+Q8,2,GND,/Расширитель входов-выходов/EXT_D3,S,D
+Q8,3,/Расширитель входов-выходов/EXT_D3,GND,D,S
+Q9,2,GND,/Расширитель входов-выходов/EXT_D4,S,D
+Q9,3,/Расширитель входов-выходов/EXT_D4,GND,D,S
+R1,1,/Питание/VIN_F,VIN_F,,
+R30,1,/Питание/LCD1_RAW,+5V_LCD1,,
+R37,1,/Питание/LCD2_RAW,+5V_LCD2,,
+R41,2,/ESP32-S3 и USB/ESP_IO0,ESP_IO0,,
+R5,1,/Питание/VIN_F,VIN_F,,
+R58,1,/RS-485 и RS-232/RS485_A,RS485_A,,
+R59,2,/RS-485 и RS-232/RS485_A,RS485_A,,
+R60,1,/RS-485 и RS-232/RS485_B,RS485_B,,
+R72,2,/MDB и входы/Q_INH_G,GND,,
+R73,1,/MDB и входы/Q_INH_G,/MDB и входы/Q_INH_B,,
+R73,2,GND,/MDB и входы/Q_INH_G,,
+SW2,1,/ESP32-S3 и USB/ESP_IO0,ESP_IO0,1,1
+U1,6,/Питание/VIN_F,VIN_F,IN_SYS,IN_SYS
+U11,6,/RS-485 и RS-232/RS485_A,RS485_A,A,A
+U11,7,/RS-485 и RS-232/RS485_B,RS485_B,B,B
+U22,1,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,AVDDL,AVDDL
+U22,13,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,AVDDL,AVDDL
+U22,23,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,AVDDL,AVDDL
+U22,24,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,DVDDL,DVDDL
+U22,35,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,DVDDL,DVDDL
+U22,36,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,V12OUT,V12OUT
+U22,41,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,AVDDLPLL,AVDDLPLL
+U22,43,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,AVDDL,AVDDL
+U22,7,/Коммутатор Ethernet/SW_VCORE,SW_VCORE,DVDDL,DVDDL
+U5,1,/Питание/LCD1_RAW,+5V_LCD1,BIAS,BIAS
+U6,1,/Питание/LCD2_RAW,+5V_LCD2,BIAS,BIAS
+U7,27,/ESP32-S3 и USB/ESP_IO0,ESP_IO0,IO0,IO0
+U7,36,/ESP32-S3 и USB/U0_RX,U0_RX,RXD0,RXD0
+U7,37,/ESP32-S3 и USB/U0_TX,U0_TX,TXD0,TXD0
+U8,8,/ESP32-S3 и USB/U0_RX,U0_RX,TXD,TXD
+U8,9,/ESP32-S3 и USB/U0_TX,U0_TX,RXD,RXD
