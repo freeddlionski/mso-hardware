@@ -2847,6 +2847,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -2889,7 +2890,7 @@
 		(dnp no)
 		(uuid "41dbd9b1-2532-531d-8e30-7e49392ac1dc")
 		(property "Reference" "F1"
-			(at 60.96 34.29 0)
+			(at 60.96 34.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2897,7 +2898,7 @@
 			)
 		)
 		(property "Value" "7.5A"
-			(at 60.96 41.91 0)
+			(at 60.96 41.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3007,7 +3008,7 @@
 		(dnp no)
 		(uuid "b65e1789-b6e2-5cc9-9464-d9d46a65b94e")
 		(property "Reference" "D1"
-			(at 60.96 46.99 0)
+			(at 60.96 46.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3015,7 +3016,7 @@
 			)
 		)
 		(property "Value" "SMCJ33CA"
-			(at 60.96 54.61 0)
+			(at 60.96 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3129,6 +3130,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -3363,7 +3365,7 @@
 		(dnp no)
 		(uuid "4a00ac84-18c1-56a8-b0bd-6ded1b1d754f")
 		(property "Reference" "D2"
-			(at 139.7 49.53 0)
+			(at 139.7 49.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3371,7 +3373,7 @@
 			)
 		)
 		(property "Value" "15V"
-			(at 139.7 57.15 0)
+			(at 139.7 57.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3527,7 +3529,7 @@
 		(dnp no)
 		(uuid "bddef39d-0a4f-5a1e-843b-4d1996ddb71d")
 		(property "Reference" "R1"
-			(at 139.7 57.15 0)
+			(at 139.7 57.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3535,7 +3537,7 @@
 			)
 		)
 		(property "Value" "47k"
-			(at 139.7 64.77 0)
+			(at 139.7 64.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3641,6 +3643,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -3903,6 +3906,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -3945,7 +3949,7 @@
 		(dnp no)
 		(uuid "0356880d-5036-59a6-a8b5-b2fe839f37dd")
 		(property "Reference" "R2"
-			(at 170.18 39.37 0)
+			(at 170.18 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3953,7 +3957,7 @@
 			)
 		)
 		(property "Value" "22k"
-			(at 170.18 46.99 0)
+			(at 170.18 46.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4194,6 +4198,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -4257,7 +4262,7 @@
 		(dnp no)
 		(uuid "a6395566-229c-5450-8925-4bb54d6841d4")
 		(property "Reference" "F2"
-			(at 60.96 95.25 0)
+			(at 60.96 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4265,7 +4270,7 @@
 			)
 		)
 		(property "Value" "1.1A удерж."
-			(at 60.96 102.87 0)
+			(at 60.96 102.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4537,6 +4542,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -4579,7 +4585,7 @@
 		(dnp no)
 		(uuid "a73ede10-2896-5050-9777-c940c14f8af9")
 		(property "Reference" "R3"
-			(at 132.08 95.25 0)
+			(at 132.08 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4587,7 +4593,7 @@
 			)
 		)
 		(property "Value" "22k"
-			(at 132.08 102.87 0)
+			(at 132.08 102.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4781,6 +4787,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -4844,7 +4851,7 @@
 		(dnp no)
 		(uuid "dd97f382-601f-5dd8-b1cb-f7f05918bfc1")
 		(property "Reference" "F3"
-			(at 60.96 118.11 0)
+			(at 60.96 118.11 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4852,7 +4859,7 @@
 			)
 		)
 		(property "Value" "1.5A удерж."
-			(at 60.96 125.73 0)
+			(at 60.96 125.73 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5001,7 +5008,7 @@
 		(dnp no)
 		(uuid "4412feda-8f12-5473-a531-d619fa7b912e")
 		(property "Reference" "R4"
-			(at 132.08 118.11 0)
+			(at 132.08 118.11 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5009,7 +5016,7 @@
 			)
 		)
 		(property "Value" "22k"
-			(at 132.08 125.73 0)
+			(at 132.08 125.73 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5203,6 +5210,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -5472,6 +5480,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -5577,7 +5586,7 @@
 		(dnp no)
 		(uuid "3c84f7d1-df05-5799-b78b-0e3c45ff68f7")
 		(property "Reference" "C1"
-			(at 30.48 156.21 0)
+			(at 30.48 156.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5585,7 +5594,7 @@
 			)
 		)
 		(property "Value" "10u 50V"
-			(at 30.48 163.83 0)
+			(at 30.48 163.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5738,6 +5747,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -5780,7 +5790,7 @@
 		(dnp no)
 		(uuid "d7a93ae8-68c7-53bb-9215-09395654e291")
 		(property "Reference" "C2"
-			(at 30.48 163.83 0)
+			(at 30.48 163.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5788,7 +5798,7 @@
 			)
 		)
 		(property "Value" "100n 50V"
-			(at 30.48 171.45 0)
+			(at 30.48 171.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5941,6 +5951,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -5983,7 +5994,7 @@
 		(dnp no)
 		(uuid "24211fcd-492e-5a6e-a062-d8274b4e14fe")
 		(property "Reference" "R5"
-			(at 30.48 171.45 0)
+			(at 30.48 171.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5991,7 +6002,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 30.48 179.07 0)
+			(at 30.48 179.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6139,7 +6150,7 @@
 		(dnp no)
 		(uuid "72029e3d-cddf-50a9-9e0a-aae5f1f56c6f")
 		(property "Reference" "R6"
-			(at 30.48 179.07 0)
+			(at 30.48 179.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6147,7 +6158,7 @@
 			)
 		)
 		(property "Value" "8.66k"
-			(at 30.48 186.69 0)
+			(at 30.48 186.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6253,6 +6264,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -6295,7 +6307,7 @@
 		(dnp no)
 		(uuid "5fb0b49f-6715-5635-9594-67daaae5f264")
 		(property "Reference" "C3"
-			(at 106.68 151.13 0)
+			(at 106.68 151.13 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6303,7 +6315,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 106.68 158.75 0)
+			(at 106.68 158.75 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6404,7 +6416,7 @@
 		(dnp no)
 		(uuid "385d17c4-fba3-572f-ba51-d0b2f431fab9")
 		(property "Reference" "L1"
-			(at 106.68 158.75 0)
+			(at 106.68 158.75 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6412,7 +6424,7 @@
 			)
 		)
 		(property "Value" "15u"
-			(at 106.68 166.37 0)
+			(at 106.68 166.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6560,7 +6572,7 @@
 		(dnp no)
 		(uuid "4f08a7ab-9b46-579b-ae6d-47619335bfef")
 		(property "Reference" "R7"
-			(at 106.68 166.37 0)
+			(at 106.68 166.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6568,7 +6580,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 106.68 173.99 0)
+			(at 106.68 173.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6716,7 +6728,7 @@
 		(dnp no)
 		(uuid "34a182ef-b78a-58d4-a8f7-6ffd21bf9e1e")
 		(property "Reference" "R8"
-			(at 106.68 173.99 0)
+			(at 106.68 173.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6724,7 +6736,7 @@
 			)
 		)
 		(property "Value" "5.23k 1%"
-			(at 106.68 181.61 0)
+			(at 106.68 181.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6830,6 +6842,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -6872,7 +6885,7 @@
 		(dnp no)
 		(uuid "420befb0-7aec-51bf-aa0d-96fc36c35137")
 		(property "Reference" "C4"
-			(at 147.32 158.75 0)
+			(at 147.32 158.75 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6880,7 +6893,7 @@
 			)
 		)
 		(property "Value" "22u"
-			(at 147.32 166.37 0)
+			(at 147.32 166.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7033,6 +7046,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -7075,7 +7089,7 @@
 		(dnp no)
 		(uuid "f1f53ef3-e0a2-54b5-8b0c-ccd6793c6442")
 		(property "Reference" "C5"
-			(at 147.32 166.37 0)
+			(at 147.32 166.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7083,7 +7097,7 @@
 			)
 		)
 		(property "Value" "22u"
-			(at 147.32 173.99 0)
+			(at 147.32 173.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7236,6 +7250,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -7278,7 +7293,7 @@
 		(dnp no)
 		(uuid "b332024f-9676-5e3a-a880-8dfb0a9fe383")
 		(property "Reference" "C6"
-			(at 147.32 173.99 0)
+			(at 147.32 173.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7286,7 +7301,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 147.32 181.61 0)
+			(at 147.32 181.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7439,6 +7454,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -7612,7 +7628,7 @@
 		(dnp no)
 		(uuid "d80aef50-187d-5fb5-996d-210f926012ab")
 		(property "Reference" "R9"
-			(at 177.8 168.91 0)
+			(at 177.8 168.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7620,7 +7636,7 @@
 			)
 		)
 		(property "Value" "2.2k"
-			(at 177.8 176.53 0)
+			(at 177.8 176.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -7861,6 +7877,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -8130,6 +8147,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -8235,7 +8253,7 @@
 		(dnp no)
 		(uuid "2b56e966-4b78-567f-81a0-84c2fca11b79")
 		(property "Reference" "C7"
-			(at 30.48 207.01 0)
+			(at 30.48 207.01 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8243,7 +8261,7 @@
 			)
 		)
 		(property "Value" "10u 50V"
-			(at 30.48 214.63 0)
+			(at 30.48 214.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8396,6 +8414,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -8438,7 +8457,7 @@
 		(dnp no)
 		(uuid "a10e88c8-d456-5470-bf22-a5d1c25e938a")
 		(property "Reference" "C8"
-			(at 30.48 214.63 0)
+			(at 30.48 214.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8446,7 +8465,7 @@
 			)
 		)
 		(property "Value" "100n 50V"
-			(at 30.48 222.25 0)
+			(at 30.48 222.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8599,6 +8618,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -8641,7 +8661,7 @@
 		(dnp no)
 		(uuid "96e7667d-2263-5b56-9686-8fb0cb77b807")
 		(property "Reference" "R10"
-			(at 30.48 222.25 0)
+			(at 30.48 222.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8649,7 +8669,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 30.48 229.87 0)
+			(at 30.48 229.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8797,7 +8817,7 @@
 		(dnp no)
 		(uuid "ee291691-ee03-547d-82c9-868b9f7de222")
 		(property "Reference" "R11"
-			(at 30.48 229.87 0)
+			(at 30.48 229.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8805,7 +8825,7 @@
 			)
 		)
 		(property "Value" "8.66k"
-			(at 30.48 237.49 0)
+			(at 30.48 237.49 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8911,6 +8931,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -8953,7 +8974,7 @@
 		(dnp no)
 		(uuid "a06c0442-add4-5019-a857-0f607e5999c4")
 		(property "Reference" "C9"
-			(at 106.68 201.93 0)
+			(at 106.68 201.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8961,7 +8982,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 106.68 209.55 0)
+			(at 106.68 209.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9062,7 +9083,7 @@
 		(dnp no)
 		(uuid "b71ca04b-b7bc-5208-aca8-93d1b41376bc")
 		(property "Reference" "L2"
-			(at 106.68 209.55 0)
+			(at 106.68 209.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9070,7 +9091,7 @@
 			)
 		)
 		(property "Value" "10u"
-			(at 106.68 217.17 0)
+			(at 106.68 217.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9218,7 +9239,7 @@
 		(dnp no)
 		(uuid "4b1c082b-3fca-585b-ad7f-9f34e8240dc0")
 		(property "Reference" "R12"
-			(at 106.68 217.17 0)
+			(at 106.68 217.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9226,7 +9247,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 106.68 224.79 0)
+			(at 106.68 224.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9374,7 +9395,7 @@
 		(dnp no)
 		(uuid "6a9d1d25-7767-59c2-901c-47a4e9d60a61")
 		(property "Reference" "R13"
-			(at 106.68 224.79 0)
+			(at 106.68 224.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9382,7 +9403,7 @@
 			)
 		)
 		(property "Value" "13.7k 1%"
-			(at 106.68 232.41 0)
+			(at 106.68 232.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9488,6 +9509,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -9530,7 +9552,7 @@
 		(dnp no)
 		(uuid "d1d519f6-f8a8-5ebd-82dc-24a41a60bc98")
 		(property "Reference" "C10"
-			(at 147.32 209.55 0)
+			(at 147.32 209.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9538,7 +9560,7 @@
 			)
 		)
 		(property "Value" "22u"
-			(at 147.32 217.17 0)
+			(at 147.32 217.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9691,6 +9713,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -9733,7 +9756,7 @@
 		(dnp no)
 		(uuid "4238bfe4-b704-5aef-932e-dcf54edaa779")
 		(property "Reference" "C11"
-			(at 147.32 217.17 0)
+			(at 147.32 217.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9741,7 +9764,7 @@
 			)
 		)
 		(property "Value" "22u"
-			(at 147.32 224.79 0)
+			(at 147.32 224.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9894,6 +9917,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -9936,7 +9960,7 @@
 		(dnp no)
 		(uuid "9a836d70-66c9-54ae-aac8-fcff9a30bb05")
 		(property "Reference" "C12"
-			(at 147.32 224.79 0)
+			(at 147.32 224.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9944,7 +9968,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 147.32 232.41 0)
+			(at 147.32 232.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10097,6 +10121,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -10270,7 +10295,7 @@
 		(dnp no)
 		(uuid "4e4b7235-f227-5a4d-90d2-d6f0bc8515a2")
 		(property "Reference" "R14"
-			(at 177.8 219.71 0)
+			(at 177.8 219.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10278,7 +10303,7 @@
 			)
 		)
 		(property "Value" "2.2k"
-			(at 177.8 227.33 0)
+			(at 177.8 227.33 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10519,6 +10544,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -10788,6 +10814,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -10893,7 +10920,7 @@
 		(dnp no)
 		(uuid "934b8cb3-b225-54d8-bff2-bb3b7d2a36b8")
 		(property "Reference" "C13"
-			(at 30.48 257.81 0)
+			(at 30.48 257.81 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10901,7 +10928,7 @@
 			)
 		)
 		(property "Value" "10u 50V"
-			(at 30.48 265.43 0)
+			(at 30.48 265.43 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11054,6 +11081,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -11096,7 +11124,7 @@
 		(dnp no)
 		(uuid "a4c81778-cdbb-5732-8b8b-61c1c54d022c")
 		(property "Reference" "C14"
-			(at 30.48 265.43 0)
+			(at 30.48 265.43 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11104,7 +11132,7 @@
 			)
 		)
 		(property "Value" "100n 50V"
-			(at 30.48 273.05 0)
+			(at 30.48 273.05 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11257,6 +11285,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -11299,7 +11328,7 @@
 		(dnp no)
 		(uuid "e1a9eb51-7588-5df1-b4a3-1356afce6ea5")
 		(property "Reference" "R15"
-			(at 30.48 273.05 0)
+			(at 30.48 273.05 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11307,7 +11336,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 30.48 280.67 0)
+			(at 30.48 280.67 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11455,7 +11484,7 @@
 		(dnp no)
 		(uuid "e2464c4f-6939-552a-a0b5-ed9242aa0f6e")
 		(property "Reference" "R16"
-			(at 30.48 280.67 0)
+			(at 30.48 280.67 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11463,7 +11492,7 @@
 			)
 		)
 		(property "Value" "8.66k"
-			(at 30.48 288.29 0)
+			(at 30.48 288.29 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11569,6 +11598,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -11611,7 +11641,7 @@
 		(dnp no)
 		(uuid "1037a655-6c59-523d-9b5c-ac9d8950b35e")
 		(property "Reference" "C15"
-			(at 106.68 252.73 0)
+			(at 106.68 252.73 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11619,7 +11649,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 106.68 260.35 0)
+			(at 106.68 260.35 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11720,7 +11750,7 @@
 		(dnp no)
 		(uuid "76118fc8-5a0b-5e4c-aaf2-efd4d3967188")
 		(property "Reference" "L3"
-			(at 106.68 260.35 0)
+			(at 106.68 260.35 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11728,7 +11758,7 @@
 			)
 		)
 		(property "Value" "6.8u"
-			(at 106.68 267.97 0)
+			(at 106.68 267.97 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11876,7 +11906,7 @@
 		(dnp no)
 		(uuid "a4c005cd-6b3e-5c73-a7f1-f4f350ee908b")
 		(property "Reference" "R17"
-			(at 106.68 267.97 0)
+			(at 106.68 267.97 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11884,7 +11914,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 106.68 275.59 0)
+			(at 106.68 275.59 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12032,7 +12062,7 @@
 		(dnp no)
 		(uuid "3f28c986-397d-5144-8031-e3ad9bb29e14")
 		(property "Reference" "R18"
-			(at 106.68 275.59 0)
+			(at 106.68 275.59 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12040,7 +12070,7 @@
 			)
 		)
 		(property "Value" "22.1k 1%"
-			(at 106.68 283.21 0)
+			(at 106.68 283.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12146,6 +12176,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -12188,7 +12219,7 @@
 		(dnp no)
 		(uuid "fcc30db1-dfd4-57b2-9e26-b60a3d0ad604")
 		(property "Reference" "C16"
-			(at 147.32 260.35 0)
+			(at 147.32 260.35 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12196,7 +12227,7 @@
 			)
 		)
 		(property "Value" "22u"
-			(at 147.32 267.97 0)
+			(at 147.32 267.97 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12349,6 +12380,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -12391,7 +12423,7 @@
 		(dnp no)
 		(uuid "0bbd21e2-4b0d-5031-a1d6-a4b83e3fb9f4")
 		(property "Reference" "C17"
-			(at 147.32 267.97 0)
+			(at 147.32 267.97 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12399,7 +12431,7 @@
 			)
 		)
 		(property "Value" "22u"
-			(at 147.32 275.59 0)
+			(at 147.32 275.59 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12552,6 +12584,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -12594,7 +12627,7 @@
 		(dnp no)
 		(uuid "6b5c6ea8-b55e-5542-a63d-88bb74286382")
 		(property "Reference" "C18"
-			(at 147.32 275.59 0)
+			(at 147.32 275.59 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12602,7 +12635,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 147.32 283.21 0)
+			(at 147.32 283.21 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12755,6 +12788,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -12928,7 +12962,7 @@
 		(dnp no)
 		(uuid "770829cb-df56-5723-b96f-0cbf68245a8c")
 		(property "Reference" "R19"
-			(at 177.8 270.51 0)
+			(at 177.8 270.51 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12936,7 +12970,7 @@
 			)
 		)
 		(property "Value" "2.2k"
-			(at 177.8 278.13 0)
+			(at 177.8 278.13 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13177,6 +13211,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -13687,6 +13722,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -13754,6 +13790,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -13821,6 +13858,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -13863,7 +13901,7 @@
 		(dnp no)
 		(uuid "5d0b1e62-b412-5c7b-a800-c31bfff482da")
 		(property "Reference" "C19"
-			(at 261.62 52.07 0)
+			(at 261.62 52.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13871,7 +13909,7 @@
 			)
 		)
 		(property "Value" "10u 50V"
-			(at 261.62 59.69 0)
+			(at 261.62 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14024,6 +14062,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -14066,7 +14105,7 @@
 		(dnp no)
 		(uuid "00b12f5a-4857-51ed-b1d3-5967296560e5")
 		(property "Reference" "C20"
-			(at 261.62 59.69 0)
+			(at 261.62 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14074,7 +14113,7 @@
 			)
 		)
 		(property "Value" "10u 50V"
-			(at 261.62 67.31 0)
+			(at 261.62 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14227,6 +14266,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -14269,7 +14309,7 @@
 		(dnp no)
 		(uuid "713e85fd-6b3a-5bda-8175-2d1dfe59d289")
 		(property "Reference" "C21"
-			(at 261.62 67.31 0)
+			(at 261.62 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14277,7 +14317,7 @@
 			)
 		)
 		(property "Value" "100n 50V"
-			(at 261.62 74.93 0)
+			(at 261.62 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14430,6 +14470,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -14472,7 +14513,7 @@
 		(dnp no)
 		(uuid "efab3f9e-0854-5484-bbb7-43964b9bf568")
 		(property "Reference" "C22"
-			(at 261.62 74.93 0)
+			(at 261.62 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14480,7 +14521,7 @@
 			)
 		)
 		(property "Value" "100n 50V"
-			(at 261.62 82.55 0)
+			(at 261.62 82.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14633,6 +14674,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -14675,7 +14717,7 @@
 		(dnp no)
 		(uuid "9f986e48-7fd3-5a72-b94c-2b4fefff2d90")
 		(property "Reference" "R20"
-			(at 261.62 82.55 0)
+			(at 261.62 82.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14683,7 +14725,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 261.62 90.17 0)
+			(at 261.62 90.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14831,7 +14873,7 @@
 		(dnp no)
 		(uuid "eee861ee-f181-52df-ba48-09b59af36087")
 		(property "Reference" "R21"
-			(at 261.62 90.17 0)
+			(at 261.62 90.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14839,7 +14881,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 261.62 97.79 0)
+			(at 261.62 97.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14945,6 +14987,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -14987,7 +15030,7 @@
 		(dnp no)
 		(uuid "d29d03e3-c3c0-53ee-9e50-9a74fea131ee")
 		(property "Reference" "R22"
-			(at 261.62 97.79 0)
+			(at 261.62 97.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14995,7 +15038,7 @@
 			)
 		)
 		(property "Value" "33.2k 1%"
-			(at 261.62 105.41 0)
+			(at 261.62 105.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15101,6 +15144,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -15143,7 +15187,7 @@
 		(dnp no)
 		(uuid "66585cdf-dd6f-5dd5-a59e-1410302e3ba3")
 		(property "Reference" "C23"
-			(at 261.62 105.41 0)
+			(at 261.62 105.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15151,7 +15195,7 @@
 			)
 		)
 		(property "Value" "1u"
-			(at 261.62 113.03 0)
+			(at 261.62 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15257,6 +15301,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -15299,7 +15344,7 @@
 		(dnp no)
 		(uuid "9802ad9b-549f-5680-8cd5-002d5cb7688c")
 		(property "Reference" "C24"
-			(at 342.9 46.99 0)
+			(at 342.9 46.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15307,7 +15352,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 342.9 54.61 0)
+			(at 342.9 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15408,7 +15453,7 @@
 		(dnp no)
 		(uuid "2a14c667-11ab-5809-a003-6bc42d25975d")
 		(property "Reference" "R23"
-			(at 342.9 54.61 0)
+			(at 342.9 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15416,7 +15461,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 342.9 62.23 0)
+			(at 342.9 62.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15517,7 +15562,7 @@
 		(dnp no)
 		(uuid "d9539ea7-ee96-5c0b-8fdb-12f2983d01e4")
 		(property "Reference" "L4"
-			(at 342.9 62.23 0)
+			(at 342.9 62.23 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15525,7 +15570,7 @@
 			)
 		)
 		(property "Value" "6.8u 8A"
-			(at 342.9 69.85 0)
+			(at 342.9 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15626,7 +15671,7 @@
 		(dnp no)
 		(uuid "d16ed1f0-a724-5e02-a0b1-8f721bd07f9c")
 		(property "Reference" "R24"
-			(at 342.9 69.85 0)
+			(at 342.9 69.85 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15634,7 +15679,7 @@
 			)
 		)
 		(property "Value" "100k 1%"
-			(at 342.9 77.47 0)
+			(at 342.9 77.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15735,7 +15780,7 @@
 		(dnp no)
 		(uuid "740641a8-fdbf-5160-a90b-aa213e7c3ca2")
 		(property "Reference" "R25"
-			(at 342.9 77.47 0)
+			(at 342.9 77.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15743,7 +15788,7 @@
 			)
 		)
 		(property "Value" "24.9k 1%"
-			(at 342.9 85.09 0)
+			(at 342.9 85.09 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15849,6 +15894,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -15891,7 +15937,7 @@
 		(dnp no)
 		(uuid "8c523c58-271a-59f4-aeb9-ab2dcd707c90")
 		(property "Reference" "C25"
-			(at 383.54 52.07 0)
+			(at 383.54 52.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15899,7 +15945,7 @@
 			)
 		)
 		(property "Value" "47u 10V"
-			(at 383.54 59.69 0)
+			(at 383.54 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16005,6 +16051,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -16047,7 +16094,7 @@
 		(dnp no)
 		(uuid "66e482bc-167e-5a3a-8577-3de489b7d9b3")
 		(property "Reference" "C26"
-			(at 383.54 59.69 0)
+			(at 383.54 59.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16055,7 +16102,7 @@
 			)
 		)
 		(property "Value" "47u 10V"
-			(at 383.54 67.31 0)
+			(at 383.54 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16161,6 +16208,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -16203,7 +16251,7 @@
 		(dnp no)
 		(uuid "26d45d53-4aef-5674-ac3f-2126f2e5c879")
 		(property "Reference" "C27"
-			(at 383.54 67.31 0)
+			(at 383.54 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16211,7 +16259,7 @@
 			)
 		)
 		(property "Value" "47u 10V"
-			(at 383.54 74.93 0)
+			(at 383.54 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16317,6 +16365,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -16359,7 +16408,7 @@
 		(dnp no)
 		(uuid "7bc16f91-eb38-5be0-bbd0-5a80b2ee5981")
 		(property "Reference" "C28"
-			(at 383.54 74.93 0)
+			(at 383.54 74.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16367,7 +16416,7 @@
 			)
 		)
 		(property "Value" "47u 10V"
-			(at 383.54 82.55 0)
+			(at 383.54 82.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16473,6 +16522,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -16515,7 +16565,7 @@
 		(dnp no)
 		(uuid "9ff82403-76fe-5cbb-85fc-6c11ced2bc98")
 		(property "Reference" "F4"
-			(at 383.54 85.09 0)
+			(at 383.54 85.09 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16523,7 +16573,7 @@
 			)
 		)
 		(property "Value" "5A удерж."
-			(at 383.54 92.71 0)
+			(at 383.54 92.71 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16833,6 +16883,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -16867,7 +16918,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 414.02 99.06 0)
+		(at 444.5 83.82 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16875,7 +16926,7 @@
 		(dnp no)
 		(uuid "840104fe-e75e-5b6e-97e8-a224557f7f18")
 		(property "Reference" "#FLG06"
-			(at 414.02 96.52 0)
+			(at 444.5 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16883,7 +16934,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 414.02 95.25 0)
+			(at 444.5 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16891,7 +16942,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 414.02 99.06 0)
+			(at 444.5 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16900,7 +16951,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 414.02 99.06 0)
+			(at 444.5 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16909,7 +16960,7 @@
 			)
 		)
 		(property "LCSC" ""
-			(at 414.02 99.06 0)
+			(at 444.5 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16931,8 +16982,8 @@
 	)
 	(wire
 		(pts
-			(xy 414.02 99.06)
-			(xy 414.02 101.6)
+			(xy 444.5 83.82)
+			(xy 444.5 86.36)
 		)
 		(stroke
 			(width 0)
@@ -16942,7 +16993,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 414.02 101.6 180)
+		(at 444.5 86.36 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -16950,7 +17001,7 @@
 		(dnp no)
 		(uuid "bed9940b-0582-51a2-930c-9a6253801697")
 		(property "Reference" "#PWR0100"
-			(at 414.02 101.6 0)
+			(at 444.5 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16959,7 +17010,7 @@
 			)
 		)
 		(property "Value" "+5V_LCD1"
-			(at 414.02 106.68 0)
+			(at 444.5 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16967,7 +17018,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 414.02 101.6 0)
+			(at 444.5 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16976,7 +17027,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 414.02 101.6 0)
+			(at 444.5 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -16998,7 +17049,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 414.02 109.22 0)
+		(at 444.5 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -17006,7 +17057,7 @@
 		(dnp no)
 		(uuid "1ce95686-9114-5214-9bcd-ac51febcccbd")
 		(property "Reference" "#FLG07"
-			(at 414.02 106.68 0)
+			(at 444.5 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17014,7 +17065,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 414.02 105.41 0)
+			(at 444.5 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17022,7 +17073,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 414.02 109.22 0)
+			(at 444.5 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17031,7 +17082,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 414.02 109.22 0)
+			(at 444.5 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17040,7 +17091,7 @@
 			)
 		)
 		(property "LCSC" ""
-			(at 414.02 109.22 0)
+			(at 444.5 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17062,8 +17113,8 @@
 	)
 	(wire
 		(pts
-			(xy 414.02 109.22)
-			(xy 414.02 111.76)
+			(xy 444.5 96.52)
+			(xy 444.5 99.06)
 		)
 		(stroke
 			(width 0)
@@ -17072,7 +17123,7 @@
 		(uuid "73d567ec-0c42-5096-8cdf-94ef5900b561")
 	)
 	(label "LCD1_RAW"
-		(at 414.02 111.76 270)
+		(at 444.5 99.06 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -17091,7 +17142,7 @@
 		(dnp no)
 		(uuid "647c84d3-edc5-5dd3-b28b-1d286a4bcf28")
 		(property "Reference" "R26"
-			(at 383.54 100.33 0)
+			(at 383.54 100.33 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17099,7 +17150,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 383.54 107.95 0)
+			(at 383.54 107.95 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17340,6 +17391,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -17573,6 +17625,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -18062,6 +18115,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -18129,6 +18183,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -18196,6 +18251,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -18238,7 +18294,7 @@
 		(dnp no)
 		(uuid "b7f323e9-44de-5b5d-bb1e-47b30440add6")
 		(property "Reference" "C30"
-			(at 261.62 168.91 0)
+			(at 261.62 168.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18246,7 +18302,7 @@
 			)
 		)
 		(property "Value" "10u 50V"
-			(at 261.62 176.53 0)
+			(at 261.62 176.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18399,6 +18455,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -18441,7 +18498,7 @@
 		(dnp no)
 		(uuid "c0307a8e-f075-5dbc-ad75-0d74f663df59")
 		(property "Reference" "C31"
-			(at 261.62 176.53 0)
+			(at 261.62 176.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18449,7 +18506,7 @@
 			)
 		)
 		(property "Value" "10u 50V"
-			(at 261.62 184.15 0)
+			(at 261.62 184.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18602,6 +18659,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -18644,7 +18702,7 @@
 		(dnp no)
 		(uuid "721575dd-e94a-55f0-94f6-2646aacbeaa2")
 		(property "Reference" "C32"
-			(at 261.62 184.15 0)
+			(at 261.62 184.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18652,7 +18710,7 @@
 			)
 		)
 		(property "Value" "100n 50V"
-			(at 261.62 191.77 0)
+			(at 261.62 191.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18805,6 +18863,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -18847,7 +18906,7 @@
 		(dnp no)
 		(uuid "988a3f66-b78d-59d9-a72e-f77d0bdc62c1")
 		(property "Reference" "C33"
-			(at 261.62 191.77 0)
+			(at 261.62 191.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -18855,7 +18914,7 @@
 			)
 		)
 		(property "Value" "100n 50V"
-			(at 261.62 199.39 0)
+			(at 261.62 199.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19008,6 +19067,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -19050,7 +19110,7 @@
 		(dnp no)
 		(uuid "0f2b94ca-3394-5a4d-8e83-f4d90cb30be6")
 		(property "Reference" "R27"
-			(at 261.62 199.39 0)
+			(at 261.62 199.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19058,7 +19118,7 @@
 			)
 		)
 		(property "Value" "100k"
-			(at 261.62 207.01 0)
+			(at 261.62 207.01 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19206,7 +19266,7 @@
 		(dnp no)
 		(uuid "e380a296-9a6b-51e2-ae48-17b488f8cb26")
 		(property "Reference" "R28"
-			(at 261.62 207.01 0)
+			(at 261.62 207.01 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19214,7 +19274,7 @@
 			)
 		)
 		(property "Value" "10k"
-			(at 261.62 214.63 0)
+			(at 261.62 214.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19320,6 +19380,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -19362,7 +19423,7 @@
 		(dnp no)
 		(uuid "b3537e49-4b03-580a-a7dd-87e09b0ec18d")
 		(property "Reference" "R29"
-			(at 261.62 214.63 0)
+			(at 261.62 214.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19370,7 +19431,7 @@
 			)
 		)
 		(property "Value" "33.2k 1%"
-			(at 261.62 222.25 0)
+			(at 261.62 222.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19476,6 +19537,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -19518,7 +19580,7 @@
 		(dnp no)
 		(uuid "3cb59213-483c-563f-92a7-f83b65aec774")
 		(property "Reference" "C34"
-			(at 261.62 222.25 0)
+			(at 261.62 222.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19526,7 +19588,7 @@
 			)
 		)
 		(property "Value" "1u"
-			(at 261.62 229.87 0)
+			(at 261.62 229.87 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19632,6 +19694,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -19674,7 +19737,7 @@
 		(dnp no)
 		(uuid "3ab1bfc1-eaf7-53d1-9be5-17f4bc1db947")
 		(property "Reference" "C35"
-			(at 342.9 163.83 0)
+			(at 342.9 163.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19682,7 +19745,7 @@
 			)
 		)
 		(property "Value" "100n"
-			(at 342.9 171.45 0)
+			(at 342.9 171.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19783,7 +19846,7 @@
 		(dnp no)
 		(uuid "6fb3b5e2-f0d5-5d80-a68a-6826eb77f653")
 		(property "Reference" "R30"
-			(at 342.9 171.45 0)
+			(at 342.9 171.45 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19791,7 +19854,7 @@
 			)
 		)
 		(property "Value" "0"
-			(at 342.9 179.07 0)
+			(at 342.9 179.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19892,7 +19955,7 @@
 		(dnp no)
 		(uuid "4d0ea11e-694c-5b66-b336-0fe4f5bc3a2c")
 		(property "Reference" "L5"
-			(at 342.9 179.07 0)
+			(at 342.9 179.07 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19900,7 +19963,7 @@
 			)
 		)
 		(property "Value" "6.8u 8A"
-			(at 342.9 186.69 0)
+			(at 342.9 186.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20001,7 +20064,7 @@
 		(dnp no)
 		(uuid "138953b2-de0c-5109-a11e-f13f330701e2")
 		(property "Reference" "R31"
-			(at 342.9 186.69 0)
+			(at 342.9 186.69 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20009,7 +20072,7 @@
 			)
 		)
 		(property "Value" "100k 1%"
-			(at 342.9 194.31 0)
+			(at 342.9 194.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20110,7 +20173,7 @@
 		(dnp no)
 		(uuid "11a47b81-5820-5204-a4b7-45ac5d6d281d")
 		(property "Reference" "R32"
-			(at 342.9 194.31 0)
+			(at 342.9 194.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20118,7 +20181,7 @@
 			)
 		)
 		(property "Value" "24.9k 1%"
-			(at 342.9 201.93 0)
+			(at 342.9 201.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20224,6 +20287,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -20266,7 +20330,7 @@
 		(dnp no)
 		(uuid "f931fc0b-003c-582e-bd25-793067d0226b")
 		(property "Reference" "C36"
-			(at 383.54 168.91 0)
+			(at 383.54 168.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20274,7 +20338,7 @@
 			)
 		)
 		(property "Value" "47u 10V"
-			(at 383.54 176.53 0)
+			(at 383.54 176.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20380,6 +20444,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -20422,7 +20487,7 @@
 		(dnp no)
 		(uuid "a45db252-7cbc-5bf6-b790-b9db71046b0f")
 		(property "Reference" "C37"
-			(at 383.54 176.53 0)
+			(at 383.54 176.53 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20430,7 +20495,7 @@
 			)
 		)
 		(property "Value" "47u 10V"
-			(at 383.54 184.15 0)
+			(at 383.54 184.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20536,6 +20601,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -20578,7 +20644,7 @@
 		(dnp no)
 		(uuid "e9a80f05-bbef-5a60-b065-78a9e0a70016")
 		(property "Reference" "C38"
-			(at 383.54 184.15 0)
+			(at 383.54 184.15 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20586,7 +20652,7 @@
 			)
 		)
 		(property "Value" "47u 10V"
-			(at 383.54 191.77 0)
+			(at 383.54 191.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20692,6 +20758,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -20734,7 +20801,7 @@
 		(dnp no)
 		(uuid "ed8f5e80-c7f5-559d-b8de-3371758c06b2")
 		(property "Reference" "C39"
-			(at 383.54 191.77 0)
+			(at 383.54 191.77 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20742,7 +20809,7 @@
 			)
 		)
 		(property "Value" "47u 10V"
-			(at 383.54 199.39 0)
+			(at 383.54 199.39 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20848,6 +20915,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -20890,7 +20958,7 @@
 		(dnp no)
 		(uuid "f4b566b4-82ad-5288-82b3-226b13e82360")
 		(property "Reference" "F5"
-			(at 383.54 201.93 0)
+			(at 383.54 201.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -20898,7 +20966,7 @@
 			)
 		)
 		(property "Value" "5A удерж."
-			(at 383.54 209.55 0)
+			(at 383.54 209.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21208,6 +21276,7 @@
 				(font
 					(size 1.27 1.27)
 				)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -21242,7 +21311,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 414.02 215.9 0)
+		(at 444.5 200.66 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -21250,7 +21319,7 @@
 		(dnp no)
 		(uuid "0c1c18df-a53d-5bce-8fd0-acb47d1e1cec")
 		(property "Reference" "#FLG08"
-			(at 414.02 213.36 0)
+			(at 444.5 198.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21258,7 +21327,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 414.02 212.09 0)
+			(at 444.5 196.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21266,7 +21335,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 414.02 215.9 0)
+			(at 444.5 200.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21275,7 +21344,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 414.02 215.9 0)
+			(at 444.5 200.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21284,7 +21353,7 @@
 			)
 		)
 		(property "LCSC" ""
-			(at 414.02 215.9 0)
+			(at 444.5 200.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21306,8 +21375,8 @@
 	)
 	(wire
 		(pts
-			(xy 414.02 215.9)
-			(xy 414.02 218.44)
+			(xy 444.5 200.66)
+			(xy 444.5 203.2)
 		)
 		(stroke
 			(width 0)
@@ -21317,7 +21386,7 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 414.02 218.44 180)
+		(at 444.5 203.2 180)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -21325,7 +21394,7 @@
 		(dnp no)
 		(uuid "8b63d4fd-4590-502a-8f08-62c3340539b6")
 		(property "Reference" "#PWR0130"
-			(at 414.02 218.44 0)
+			(at 444.5 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21334,7 +21403,7 @@
 			)
 		)
 		(property "Value" "+5V_LCD2"
-			(at 414.02 223.52 0)
+			(at 444.5 208.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21342,7 +21411,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 414.02 218.44 0)
+			(at 444.5 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21351,7 +21420,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 414.02 218.44 0)
+			(at 444.5 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21373,7 +21442,7 @@
 	)
 	(symbol
 		(lib_id "power:PWR_FLAG")
-		(at 414.02 226.06 0)
+		(at 444.5 213.36 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -21381,7 +21450,7 @@
 		(dnp no)
 		(uuid "1c5faeed-3ff3-5f46-ab91-f9476e020a2a")
 		(property "Reference" "#FLG09"
-			(at 414.02 223.52 0)
+			(at 444.5 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21389,7 +21458,7 @@
 			)
 		)
 		(property "Value" "PWR_FLAG"
-			(at 414.02 222.25 0)
+			(at 444.5 209.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21397,7 +21466,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 414.02 226.06 0)
+			(at 444.5 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21406,7 +21475,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 414.02 226.06 0)
+			(at 444.5 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21415,7 +21484,7 @@
 			)
 		)
 		(property "LCSC" ""
-			(at 414.02 226.06 0)
+			(at 444.5 213.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21437,8 +21506,8 @@
 	)
 	(wire
 		(pts
-			(xy 414.02 226.06)
-			(xy 414.02 228.6)
+			(xy 444.5 213.36)
+			(xy 444.5 215.9)
 		)
 		(stroke
 			(width 0)
@@ -21447,7 +21516,7 @@
 		(uuid "4313bbae-ae92-5492-bdce-3fa5f7e4df18")
 	)
 	(label "LCD2_RAW"
-		(at 414.02 228.6 270)
+		(at 444.5 215.9 270)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -21466,7 +21535,7 @@
 		(dnp no)
 		(uuid "74e66bea-e59d-5769-b151-646ed301bec6")
 		(property "Reference" "R33"
-			(at 383.54 217.17 0)
+			(at 383.54 217.17 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21474,7 +21543,7 @@
 			)
 		)
 		(property "Value" "1k"
-			(at 383.54 224.79 0)
+			(at 383.54 224.79 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -21715,6 +21784,7 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
@@ -21948,6 +22018,7 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
