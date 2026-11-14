@@ -11,10 +11,35 @@ sys.path.insert(0, HERE)
 
 import custom_syms  # noqa: E402
 import kisch  # noqa: E402
+import sheet_comm  # noqa: E402
+import sheet_eth  # noqa: E402
 import sheet_power  # noqa: E402
 
 OUT = os.path.dirname(HERE)
-POWER_NETS = ['GND', '+24V_P', '+12V', '+5V', '+3V3', '+5V_LCD1', '+5V_LCD2']
+POWER_NETS = ['GND', '+24V_P', '+12V', '+5V', '+3V3', '+3V3A', '+5V_LCD1', '+5V_LCD2']
+# межлистовые цепи, чей второй конец — на ещё не нарисованном листе (лист MCU ждёт решения по модулю)
+PENDING = ['ETH_CS', 'ETH_SCLK', 'ETH_MISO', 'ETH_MOSI', 'ETH_INT', 'ETH_RST', 'RS485_TX', 'RS485_RX', 'RS485_DE',
+           'VTK_TX', 'VTK_RX', 'MDB_24V']
+
+
+def check_footprints(proj, official):
+    lst = os.path.join(os.path.dirname(official.rstrip('/')), 'footprints.txt')
+    have = set(open(lst).read().split())
+    bad = []
+    for sh in proj.sheets:
+        for p in sh.parts:
+            fp = p.fp
+            if not fp:
+                from sexp import findall
+                fp = next((str(x[2]) for x in findall(p.sym, 'property') if x[1] == 'Footprint'), '')
+            if p.ref.startswith('#'):
+                continue
+            if not fp:
+                bad.append('%s: нет посадочного места' % p.ref)
+            elif not fp.startswith('mso74:') and fp not in have:
+                bad.append('%s: нет %s' % (p.ref, fp))
+    if bad:
+        raise SystemExit('Посадочные места:\n' + '\n'.join(bad))
 
 
 def main(official):
@@ -24,7 +49,11 @@ def main(official):
     os.makedirs('/tmp/mso74lib', exist_ok=True)
     # mso74:X ищется как файл mso74.kicad_sym
     proj = kisch.Project([official, libdir], POWER_NETS)
+    proj.pending = set(PENDING)
     sheet_power.build(proj)
+    sheet_eth.build(proj)
+    sheet_comm.build(proj)
+    check_footprints(proj, official)
     proj.write(OUT)
     with open(os.path.join(OUT, 'sym-lib-table'), 'w') as f:
         f.write('(sym_lib_table\n  (version 7)\n  (lib (name "mso74")(type "KiCad")(uri "${KIPRJMOD}/lib/mso74.kicad_sym")(options "")(descr "Свои символы МСО74"))\n)\n')
