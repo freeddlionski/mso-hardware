@@ -10418,7 +10418,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C7245"
+			(at 279.4 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "WJ15EDGRC-3.81-04P-14-00A"
 			(at 279.4 116.84 0)
 			(effects
 				(font
@@ -10632,7 +10641,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C7245"
+			(at 279.4 152.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "WJ15EDGRC-3.81-04P-14-00A"
 			(at 279.4 152.4 0)
 			(effects
 				(font
@@ -10857,7 +10875,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C8387"
+			(at 279.4 246.38 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "WJ15EDGRC-3.81-02P-14-00A"
 			(at 279.4 246.38 0)
 			(effects
 				(font

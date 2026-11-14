@@ -3578,7 +3578,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C3697"
+			(at 30.48 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "WJ2EDGRC-5.08-02P-14-00A"
 			(at 30.48 45.72 0)
 			(effects
 				(font
@@ -8053,7 +8062,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C3697"
+			(at 106.68 139.7 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "WJ2EDGRC-5.08-02P-14-00A"
 			(at 106.68 139.7 0)
 			(effects
 				(font

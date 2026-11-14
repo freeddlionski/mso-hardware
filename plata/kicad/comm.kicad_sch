@@ -4647,7 +4647,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C8406"
+			(at 297.18 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "WJ15EDGRC-3.81-03P-14-00A"
 			(at 297.18 76.2 0)
 			(effects
 				(font
@@ -6764,7 +6773,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C8406"
+			(at 256.54 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "WJ15EDGRC-3.81-03P-14-00A"
 			(at 256.54 195.58 0)
 			(effects
 				(font
