@@ -137,7 +137,7 @@ def build(proj):
                    'GND': 'GND', 'dVdT': 'EF_DVDT', 'ILIM': 'EF_ILIM', 'MODE': 'GND', '~{SHDN}': 'EF_SHDN',
                    'PGTH': 'EF_PGTH', 'OUT': '+24V_P', 'DRV': 'EF_DRV'}, nc=['IMON', '~{FLT}', 'PGOOD'])
     # аудит 2, п. 1: ключ быстрого разряда затвора Q1 по схеме TI — затвор к DRV, сток к B_GATE, исток к IN_SYS
-    q2 = sh.part('Transistor_FET:2N7002', 'Q', '2N7002', (x + 63.5, y + 66.04), mpn='2N7002')
+    q2 = sh.part('Transistor_FET:2N7002', 'Q', '2N7002', (x + 63.5, y + 66.04), mpn='2N7002-7-F (Diodes Inc.)')   # Ciss ≤ 50 пФ
     sh.connect(q2, {'G': 'EF_DRV', 'D': 'EF_BGATE', 'S': 'VIN_F'})
     # делитель UVLO/OVP от IN_SYS, пороги 1,2 В: UVLO = 1,2·424,1/34,1 ≈ 14,9 В; OVP = 1,2·424,1/15 ≈ 33,9 В
     xr = x + 160.02
