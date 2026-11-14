@@ -13,7 +13,7 @@ FP = {
     'LED0603': 'LED_SMD:LED_0603_1608Metric',
     'PTC1812': 'Fuse:Fuse_1812_4532Metric',
     'PTC2920': 'Fuse:Fuse_2920_7451Metric',
-    'TERM2_508': 'Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal',
+    'TERM2_508': 'mso74:KANGNEX_WJ2EDGRC_1x02_P5.08mm_Drill1.7',
 }
 
 
@@ -131,7 +131,8 @@ def build(proj):
     two(sh, 'Device:D_TVS', 'D', 'SMCJ33CA', x + 30.48, y + 12.7, 'VIN_F', 'GND', fp='Diode_SMD:D_SMC', mpn='SMCJ33CA')
     C(sh, '100n 100V', x + 30.48, y + 25.4, 'VIN_F', 'GND')
     # аудит 2, п. 2: IN_SYS–OUT до −85 В (TPS2663 abs max с блокирующим FET) → ключ на 100 В
-    q = sh.part('Transistor_FET:CSD19534Q5A', 'Q', 'CSD19534Q5A', (x + 30.48, y + 50.8), mpn='CSD19534Q5A')
+    q = sh.part('Transistor_FET:CSD19534Q5A', 'Q', 'CSD19534Q5A', (x + 30.48, y + 50.8), mpn='CSD19534Q5A',
+                fp='mso74:Texas_DQJ_VSONP-8_5x6mm_CSD19534Q5A')
     sh.connect(q, {'S': 'VIN_F', 'D': 'VIN_B', 'G': 'EF_BGATE'})   # диод корпуса: исток→сток, при переполюсовке заперт
     u = sh.part('Power_Management:TPS26631PWP', 'U', 'TPS26631PWPR', (x + 106.68, y + 30.48), mpn='TPS26631PWPR')
     sh.connect(u, {'IN': 'VIN_B', 'IN_SYS': 'VIN_F', 'B_GATE': 'EF_BGATE', 'UVLO': 'EF_UVLO', 'OVP': 'EF_OVP',

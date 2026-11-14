@@ -4665,7 +4665,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MC:PhoenixContact_MC_1,5_3-G-3.81_1x03_P3.81mm_Horizontal"
+		(property "Footprint" "mso74:KANGNEX_WJ15EDGRC_1x03_P3.81mm_Drill1.4"
 			(at 297.18 76.2 0)
 			(effects
 				(font
@@ -6791,7 +6791,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MC:PhoenixContact_MC_1,5_3-G-3.81_1x03_P3.81mm_Horizontal"
+		(property "Footprint" "mso74:KANGNEX_WJ15EDGRC_1x03_P3.81mm_Drill1.4"
 			(at 256.54 195.58 0)
 			(effects
 				(font

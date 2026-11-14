@@ -4,7 +4,7 @@
 """
 from sheet_power import C, R, FP, two
 
-TERM3 = 'Connector_Phoenix_MC:PhoenixContact_MC_1,5_3-G-3.81_1x03_P3.81mm_Horizontal'
+TERM3 = 'mso74:KANGNEX_WJ15EDGRC_1x03_P3.81mm_Drill1.4'
 
 
 def build(proj):

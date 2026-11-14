@@ -32,7 +32,7 @@ PARTS = {
     ('74AHCT125', 'TSSOP-14_4.4x5mm_P0.65mm'): ('C148198', '74AHCT125PW,118', 'Nexperia'),
 
     # --- транзисторы, диоды, защита ---
-    ('CSD19534Q5A', 'TDSON-8-1'): ('C114200', 'CSD19534Q5A', 'TI'),
+    ('CSD19534Q5A', 'Texas_DQJ_VSONP-8_5x6mm_CSD19534Q5A'): ('C114200', 'CSD19534Q5A', 'TI'),
     ('2N7002', 'SOT-23'): ('C85049', '2N7002-7-F', 'Diodes Inc.'),
     ('MMBT3904', 'SOT-23'): ('C20526', 'MMBT3904', 'JSCJ, осн.'),
     ('DMN6140L', 'SOT-23'): ('C156306', 'DMN6140L-7', 'Diodes Inc.'),
@@ -113,15 +113,15 @@ PARTS = {
     # --- клеммы: разъёмные колодки KANGNEX (аналог Phoenix MC 1,5/…-G-3,81 и MSTBA 2,5/…-G-5,08).
     #     Ответные вилки с винтами (15EDGK / 2EDGK) в монтаж не входят — заказываются к жгутам.
     #     Перед разводкой сверить шаг, диаметр отверстий и выступ корпуса с посадочным местом Phoenix в KiCad.
-    ('RS-485: A / B / GND', 'PhoenixContact_MC_1,5_3-G-3.81_1x03_P3.81mm_Horizontal'): ('C8406', 'WJ15EDGRC-3.81-03P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
-    ('Vendotek RS-232: TXD / RXD / GND', 'PhoenixContact_MC_1,5_3-G-3.81_1x03_P3.81mm_Horizontal'): ('C8406', 'WJ15EDGRC-3.81-03P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
-    ('Монетник: +12V / GND / ИМП / БЛОК', 'PhoenixContact_MC_1,5_4-G-3.81_1x04_P3.81mm_Horizontal'): ('C7245', 'WJ15EDGRC-3.81-04P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
-    ('Купюрник имп.: +24V / +12V / GND / ИМП', 'PhoenixContact_MC_1,5_4-G-3.81_1x04_P3.81mm_Horizontal'): ('C7245', 'WJ15EDGRC-3.81-04P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
-    ('Сервис: КН / GND', 'PhoenixContact_MC_1,5_2-G-3.81_1x02_P3.81mm_Horizontal'): ('C8387', 'WJ15EDGRC-3.81-02P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
-    ('Входы: ВХ1–ВХ4 / GND / GND', 'PhoenixContact_MC_1,5_6-G-3.81_1x06_P3.81mm_Horizontal'): ('C7246', 'WJ15EDGRC-3.81-06P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
-    ('Выходы: +24V / ВЫХ1–ВЫХ4 / GND', 'PhoenixContact_MC_1,5_6-G-3.81_1x06_P3.81mm_Horizontal'): ('C7246', 'WJ15EDGRC-3.81-06P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
-    ('Питание +24V / GND', 'PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal'): ('C3697', 'WJ2EDGRC-5.08-02P-14-00A', 'KANGNEX 10 А, вилка 2EDGK-5.08'),
-    ('Vendotek: +24V / GND', 'PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal'): ('C3697', 'WJ2EDGRC-5.08-02P-14-00A', 'KANGNEX 10 А, вилка 2EDGK-5.08'),
+    ('RS-485: A / B / GND', 'KANGNEX_WJ15EDGRC_1x03_P3.81mm_Drill1.4'): ('C8406', 'WJ15EDGRC-3.81-03P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Vendotek RS-232: TXD / RXD / GND', 'KANGNEX_WJ15EDGRC_1x03_P3.81mm_Drill1.4'): ('C8406', 'WJ15EDGRC-3.81-03P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Монетник: +12V / GND / ИМП / БЛОК', 'KANGNEX_WJ15EDGRC_1x04_P3.81mm_Drill1.4'): ('C7245', 'WJ15EDGRC-3.81-04P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Купюрник имп.: +24V / +12V / GND / ИМП', 'KANGNEX_WJ15EDGRC_1x04_P3.81mm_Drill1.4'): ('C7245', 'WJ15EDGRC-3.81-04P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Сервис: КН / GND', 'KANGNEX_WJ15EDGRC_1x02_P3.81mm_Drill1.4'): ('C8387', 'WJ15EDGRC-3.81-02P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Входы: ВХ1–ВХ4 / GND / GND', 'KANGNEX_WJ15EDGRC_1x06_P3.81mm_Drill1.4'): ('C7246', 'WJ15EDGRC-3.81-06P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Выходы: +24V / ВЫХ1–ВЫХ4 / GND', 'KANGNEX_WJ15EDGRC_1x06_P3.81mm_Drill1.4'): ('C7246', 'WJ15EDGRC-3.81-06P-14-00A', 'KANGNEX, вилка 15EDGK-3.81'),
+    ('Питание +24V / GND', 'KANGNEX_WJ2EDGRC_1x02_P5.08mm_Drill1.7'): ('C3697', 'WJ2EDGRC-5.08-02P-14-00A', 'KANGNEX 10 А, вилка 2EDGK-5.08'),
+    ('Vendotek: +24V / GND', 'KANGNEX_WJ2EDGRC_1x02_P5.08mm_Drill1.7'): ('C3697', 'WJ2EDGRC-5.08-02P-14-00A', 'KANGNEX 10 А, вилка 2EDGK-5.08'),
 
     ('USB-C', 'USB_C_Receptacle_HCTL_HC-TYPE-C-16P-01A'): ('C2894897', 'HC-TYPE-C-16P-01A', 'HCTL'),
     ('CR2032', 'BatteryHolder_MYOUNG_BS-07-A1BJ001_CR2032'): ('C2979167', 'BS-07-A1BJ001', 'MYOUNG, −25…+85 °C'),
