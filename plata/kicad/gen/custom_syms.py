@@ -56,17 +56,6 @@ SYMBOLS = [
        right=[('14', 'CBOOT', 'passive'), ('13', 'RBOOT', 'passive'), ('10', 'SW', 'power_out'),
               ('4', 'FB', 'input'), ('5', 'PGOOD', 'open_collector')],
        bottom=[('3', 'AGND', 'power_in'), ('9', 'PGND1', 'power_in'), ('11', 'PGND2', 'power_in')], w=17.78),
-    # Распиновка: MAX13223E pin-to-pin с MAX3223E (TSSOP-20): 1 EN, 2 C1+, 3 V+, 4 C1-, 5 C2+, 6 C2-, 7 V-, 8 T2OUT, 9 R2IN,
-    # 10 R2OUT, 11 INVALID, 12 T2IN, 13 T1IN, 14 FORCEON, 15 R1OUT, 16 R1IN, 17 T1OUT, 18 GND, 19 VCC, 20 FORCEOFF
-    # (сверено по TI SN75C3223 / TRSF3223E, 2026-11-14). Сверить с даташитом Maxim перед разводкой.
-    ic('MAX13223E', 'U', 'RS-232 2Tx/2Rx, 3–5,5 В, защита линий ±70 В, TSSOP-20',
-       'Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm', 'https://www.analog.com/en/products/max13223e.html',
-       left=[('19', 'VCC', 'power_in'), ('2', 'C1+', 'passive'), ('4', 'C1-', 'passive'), ('5', 'C2+', 'passive'),
-             ('6', 'C2-', 'passive'), ('3', 'V+', 'power_out'), ('7', 'V-', 'power_out'), ('13', 'T1IN', 'input'),
-             ('12', 'T2IN', 'input'), ('15', 'R1OUT', 'output'), ('10', 'R2OUT', 'output')],
-       right=[('17', 'T1OUT', 'output'), ('8', 'T2OUT', 'output'), ('16', 'R1IN', 'input'), ('9', 'R2IN', 'input'),
-              ('1', 'EN', 'input'), ('14', 'FORCEON', 'input'), ('20', 'FORCEOFF', 'input'), ('11', 'INVALID', 'output'),
-              ('18', 'GND', 'power_in')], w=20.32),
 ]
 
 

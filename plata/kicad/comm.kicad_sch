@@ -944,6 +944,608 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Interface_UART:MAX3232"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(symbol "MAX3232_0_0"
+				(text "LOGIC"
+					(at -11.43 -22.86 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(text "RS232"
+					(at 11.43 -22.86 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "MAX3232_0_1"
+				(rectangle
+					(start -15.24 -25.4)
+					(end 15.24 25.4)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -0.635)
+						(xy -3.81 -4.445)
+						(xy 0 -2.54)
+						(xy -3.81 -0.635)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -2.54)
+						(xy -8.255 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -5.715)
+						(xy -3.81 -9.525)
+						(xy 0 -7.62)
+						(xy -3.81 -5.715)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.81 -7.62)
+						(xy -8.255 -7.62)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 -12.7)
+						(xy -8.255 -12.7)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 -17.78)
+						(xy -8.255 -17.78)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.54 -12.7)
+					(radius 0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center -2.54 -17.78)
+					(radius 0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0.635 -2.54)
+					(radius 0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 0.635 -7.62)
+					(radius 0.635)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -2.54)
+						(xy 6.35 -2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -7.62)
+						(xy 6.35 -7.62)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 -10.795)
+						(xy 1.905 -14.605)
+						(xy -1.905 -12.7)
+						(xy 1.905 -10.795)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 -12.7)
+						(xy 6.35 -12.7)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 -15.875)
+						(xy 1.905 -19.685)
+						(xy -1.905 -17.78)
+						(xy 1.905 -15.875)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 -17.78)
+						(xy 6.35 -17.78)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MAX3232_1_1"
+				(pin passive line
+					(at -20.32 22.86 0)
+					(length 5.08)
+					(name "C1+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -20.32 15.24 0)
+					(length 5.08)
+					(name "C1-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -20.32 -2.54 0)
+					(length 5.08)
+					(name "T1IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "11"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -20.32 -7.62 0)
+					(length 5.08)
+					(name "T2IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -20.32 -12.7 0)
+					(length 5.08)
+					(name "R1OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at -20.32 -17.78 0)
+					(length 5.08)
+					(name "R2OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 30.48 270)
+					(length 5.08)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "16"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -30.48 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 22.86 180)
+					(length 5.08)
+					(name "C2+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 20.32 15.24 180)
+					(length 5.08)
+					(name "C2-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 20.32 10.16 180)
+					(length 5.08)
+					(name "VS+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 20.32 2.54 180)
+					(length 5.08)
+					(name "VS-"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 20.32 -2.54 180)
+					(length 5.08)
+					(name "T1OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 20.32 -7.62 180)
+					(length 5.08)
+					(name "T2OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 20.32 -12.7 180)
+					(length 5.08)
+					(name "R1IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at 20.32 -17.78 180)
+					(length 5.08)
+					(name "R2IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+			(property "Reference" "U"
+				(at -2.54 28.575 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Value" "MAX3232"
+				(at -2.54 26.67 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify right)
+				)
+			)
+			(property "Footprint" ""
+				(at 1.27 -26.67 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://datasheets.maximintegrated.com/en/ds/MAX3222-MAX3241.pdf"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "3.0V to 5.5V, Low-Power, up to 1Mbps, True RS-232 Transceivers Using Four 0.1μF External Capacitors"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "rs232 uart transceiver line-driver"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOIC*P1.27mm* DIP*W7.62mm* TSSOP*4.4x5mm*P0.65mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+		)
 		(symbol "Interface_UART:THVD1450D"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -1396,431 +1998,6 @@
 						(size 1.27 1.27)
 					)
 					(hide yes)
-				)
-			)
-		)
-		(symbol "mso74:MAX13223E"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "U"
-				(at -10.16 16.51 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "MAX13223E"
-				(at -10.16 -16.51 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "https://www.analog.com/en/products/max13223e.html"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "RS-232 2Tx/2Rx, 3–5,5 В, защита линий ±70 В, TSSOP-20"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "MAX13223E_0_1"
-				(rectangle
-					(start -10.16 15.24)
-					(end 10.16 -15.24)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "MAX13223E_1_1"
-				(pin power_in line
-					(at -12.7 12.7 0)
-					(length 2.54)
-					(name "VCC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "19"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 10.16 0)
-					(length 2.54)
-					(name "C1+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 7.62 0)
-					(length 2.54)
-					(name "C1-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 5.08 0)
-					(length 2.54)
-					(name "C2+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -12.7 2.54 0)
-					(length 2.54)
-					(name "C2-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_out line
-					(at -12.7 0 0)
-					(length 2.54)
-					(name "V+"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_out line
-					(at -12.7 -2.54 0)
-					(length 2.54)
-					(name "V-"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -5.08 0)
-					(length 2.54)
-					(name "T1IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at -12.7 -7.62 0)
-					(length 2.54)
-					(name "T2IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at -12.7 -10.16 0)
-					(length 2.54)
-					(name "R1OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at -12.7 -12.7 0)
-					(length 2.54)
-					(name "R2OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 12.7 12.7 180)
-					(length 2.54)
-					(name "T1OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "17"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 12.7 10.16 180)
-					(length 2.54)
-					(name "T2OUT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 12.7 7.62 180)
-					(length 2.54)
-					(name "R1IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "16"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 12.7 5.08 180)
-					(length 2.54)
-					(name "R2IN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 12.7 2.54 180)
-					(length 2.54)
-					(name "EN"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 12.7 0 180)
-					(length 2.54)
-					(name "FORCEON"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin input line
-					(at 12.7 -2.54 180)
-					(length 2.54)
-					(name "FORCEOFF"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "20"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 12.7 -5.08 180)
-					(length 2.54)
-					(name "INVALID"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at 12.7 -7.62 180)
-					(length 2.54)
-					(name "GND"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "18"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
 				)
 			)
 		)
@@ -4600,7 +4777,7 @@
 		)
 	)
 	(symbol
-		(lib_id "mso74:MAX13223E")
+		(lib_id "Interface_UART:MAX3232")
 		(at 127 195.58 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -4609,24 +4786,43 @@
 		(dnp no)
 		(uuid "4db9dc2d-b8d7-55b6-83e7-b95453df2fa3")
 		(property "Reference" "U12"
-			(at 116.84 179.07 0)
+			(at 124.46 167.64 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "MAX3232EIDR"
+			(at 124.46 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "Package_SO:SOIC-16_3.9x9.9mm_P1.27mm"
+			(at 128.27 222.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left)
+				(hide yes)
 			)
 		)
-		(property "Value" "MAX13223EEUP+"
-			(at 116.84 212.09 0)
+		(property "Datasheet" "https://datasheets.maximintegrated.com/en/ds/MAX3222-MAX3241.pdf"
+			(at 127 193.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(hide yes)
 			)
 		)
-		(property "Footprint" "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm"
+		(property "LCSC" "C193666"
 			(at 127 195.58 0)
 			(effects
 				(font
@@ -4635,25 +4831,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.analog.com/en/products/max13223e.html"
-			(at 127 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C118523"
-			(at 127 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "MAX13223EEUP+"
+		(property "MPN" "MAX3232EIDR"
 			(at 127 195.58 0)
 			(effects
 				(font
@@ -4710,18 +4888,6 @@
 		(pin "16"
 			(uuid "8c88b8a3-5355-579f-95e7-5eb88de91a46")
 		)
-		(pin "17"
-			(uuid "9659e360-da78-520e-8172-600a7ff6f0ea")
-		)
-		(pin "18"
-			(uuid "7259be8e-1b9d-57cf-bc4b-77767d527e3a")
-		)
-		(pin "19"
-			(uuid "605495e3-1d92-5361-9aa6-e7d5341e3bc1")
-		)
-		(pin "20"
-			(uuid "6fb2c755-43a0-52a9-bed6-912de8751604")
-		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
@@ -4733,26 +4899,70 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 182.88)
-			(xy 111.76 182.88)
+			(xy 106.68 172.72)
+			(xy 104.14 172.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "fa56637a-031c-579f-8826-1f102604cc29")
+		(uuid "ea3b5d77-c53d-5849-a9a9-bd68a6e43db8")
 	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 111.76 182.88 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "6f9ea1ff-894c-5842-ae3a-a0e232e64ac0")
-		(property "Reference" "#PWR0244"
-			(at 111.76 182.88 0)
+	(label "VTK_C1P"
+		(at 104.14 172.72 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "bbaeace6-4fe5-5ed5-b3a1-22f9d7720c83")
+	)
+	(wire
+		(pts
+			(xy 106.68 180.34)
+			(xy 104.14 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1cb2ea39-3345-51be-8d84-4a1e8b2164cd")
+	)
+	(label "VTK_C1N"
+		(at 104.14 180.34 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7e183b20-8247-5f0e-935b-7b6a01d96916")
+	)
+	(wire
+		(pts
+			(xy 106.68 198.12)
+			(xy 104.14 198.12)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3ba219c-9b7b-5398-8cc4-3135113fd116")
+	)
+	(global_label "VTK_TX"
+		(shape bidirectional)
+		(at 104.14 198.12 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6b72f55a-bc11-5919-bbaf-3ad6ab3d8542")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 104.14 198.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4760,17 +4970,48 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "+3V3"
-			(at 107.95 182.88 0)
+	)
+	(wire
+		(pts
+			(xy 106.68 203.2)
+			(xy 104.14 203.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab6b5db4-5b44-5733-b927-ff5bcfed5746")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 104.14 203.2 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "121c3c4e-0e5d-5c05-97d1-274044114215")
+		(property "Reference" "#PWR0244"
+			(at 104.14 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 100.33 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 111.76 182.88 0)
+			(at 104.14 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4779,7 +5020,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 111.76 182.88 0)
+			(at 104.14 203.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4788,7 +5029,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "71532848-cbcd-5695-823a-1c43e2008172")
+			(uuid "33ab4919-540a-5c11-b21f-3b0987e394f3")
 		)
 		(instances
 			(project "mso74-plata"
@@ -4801,166 +5042,8 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 185.42)
-			(xy 111.76 185.42)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8cf85f0b-e239-5cc8-8b0b-1fd9d770010f")
-	)
-	(label "VTK_C1P"
-		(at 111.76 185.42 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "8f3a4998-b263-53ac-828d-f20a215a439b")
-	)
-	(wire
-		(pts
-			(xy 114.3 187.96)
-			(xy 111.76 187.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "e97c4b79-2612-5fb9-8401-3ccce72dd420")
-	)
-	(label "VTK_C1N"
-		(at 111.76 187.96 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "a15b38ef-5a59-511f-b763-de2d30ef50ec")
-	)
-	(wire
-		(pts
-			(xy 114.3 190.5)
-			(xy 111.76 190.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "db1846bd-ce00-5d0d-9121-1c0fed8b1c1b")
-	)
-	(label "VTK_C2P"
-		(at 111.76 190.5 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "d7fd4062-f0f3-5a5a-8888-288cbf1390ed")
-	)
-	(wire
-		(pts
-			(xy 114.3 193.04)
-			(xy 111.76 193.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "23968e42-40e1-59b7-b0c1-e157a84afa92")
-	)
-	(label "VTK_C2N"
-		(at 111.76 193.04 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "165ab109-8e96-5202-ae75-9344714802dd")
-	)
-	(wire
-		(pts
-			(xy 114.3 195.58)
-			(xy 111.76 195.58)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1cb2ea39-3345-51be-8d84-4a1e8b2164cd")
-	)
-	(label "VTK_VSP"
-		(at 111.76 195.58 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "7e183b20-8247-5f0e-935b-7b6a01d96916")
-	)
-	(wire
-		(pts
-			(xy 114.3 198.12)
-			(xy 111.76 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b2b9aadd-88ad-56ea-9371-6e47d8d5957c")
-	)
-	(label "VTK_VSN"
-		(at 111.76 198.12 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "98103e5a-8690-52e4-b7cd-dc8c280ecd34")
-	)
-	(wire
-		(pts
-			(xy 114.3 200.66)
-			(xy 111.76 200.66)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "bead6e01-03a4-5f46-9da9-37f91d0d377b")
-	)
-	(global_label "VTK_TX"
-		(shape bidirectional)
-		(at 111.76 200.66 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "85f0897a-fe98-57fa-981f-0da2aad2653e")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 111.76 200.66 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 114.3 203.2)
-			(xy 111.76 203.2)
+			(xy 106.68 208.28)
+			(xy 104.14 208.28)
 		)
 		(stroke
 			(width 0)
@@ -4968,17 +5051,53 @@
 		)
 		(uuid "a83d0a9e-1651-5a1c-9bde-072895194214")
 	)
+	(global_label "VTK_RX"
+		(shape bidirectional)
+		(at 104.14 208.28 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "a5dca33f-8039-542a-8212-bd94e622476d")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 104.14 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(no_connect
+		(at 106.68 213.36)
+		(uuid "934ab489-2de5-5a44-8bc1-8c7a4e27ed15")
+	)
+	(wire
+		(pts
+			(xy 127 165.1)
+			(xy 127 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5105871a-eb65-5b51-a52a-a8787f9b8b73")
+	)
 	(symbol
-		(lib_id "power:GND")
-		(at 111.76 203.2 270)
+		(lib_id "power:+5V")
+		(at 127 162.56 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "a5dca33f-8039-542a-8212-bd94e622476d")
+		(uuid "a53fcf69-d731-5d8e-bd03-107b3b96e5bf")
 		(property "Reference" "#PWR0245"
-			(at 111.76 203.2 0)
+			(at 127 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4986,18 +5105,16 @@
 				(hide yes)
 			)
 		)
-		(property "Value" "GND"
-			(at 107.95 203.2 0)
+		(property "Value" "+3V3"
+			(at 127 157.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
-				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 111.76 203.2 0)
+			(at 127 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5006,7 +5123,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 111.76 203.2 0)
+			(at 127 162.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5015,7 +5132,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "bff996b3-ff2b-54b7-94a6-57039500e9b5")
+			(uuid "1566f3d5-c91a-57a0-b11f-d81a687a4c93")
 		)
 		(instances
 			(project "mso74-plata"
@@ -5028,8 +5145,8 @@
 	)
 	(wire
 		(pts
-			(xy 114.3 205.74)
-			(xy 111.76 205.74)
+			(xy 127 226.06)
+			(xy 127 228.6)
 		)
 		(stroke
 			(width 0)
@@ -5037,103 +5154,17 @@
 		)
 		(uuid "ee413ccd-3bc1-5375-9f7c-220af88e065d")
 	)
-	(global_label "VTK_RX"
-		(shape bidirectional)
-		(at 111.76 205.74 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "30f0dfb4-aaaf-5d37-9702-c24c1dca4646")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 111.76 205.74 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(no_connect
-		(at 114.3 208.28)
-		(uuid "a3afea6c-cc4a-5119-a38a-fc58d92c9e2b")
-	)
-	(wire
-		(pts
-			(xy 139.7 182.88)
-			(xy 142.24 182.88)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0f9cb019-5738-5494-9f52-1b0ca5e0ef62")
-	)
-	(label "VTK_TX_T"
-		(at 142.24 182.88 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "abd654f8-7cf3-54d3-b4d2-9b31b4f0683f")
-	)
-	(no_connect
-		(at 139.7 185.42)
-		(uuid "ad51a70c-7f4f-596e-ac8e-c30cdaa0749c")
-	)
-	(wire
-		(pts
-			(xy 139.7 187.96)
-			(xy 142.24 187.96)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5105871a-eb65-5b51-a52a-a8787f9b8b73")
-	)
-	(label "VTK_RX_T"
-		(at 142.24 187.96 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "a53fcf69-d731-5d8e-bd03-107b3b96e5bf")
-	)
-	(no_connect
-		(at 139.7 190.5)
-		(uuid "934ab489-2de5-5a44-8bc1-8c7a4e27ed15")
-	)
-	(wire
-		(pts
-			(xy 139.7 193.04)
-			(xy 142.24 193.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ea3b5d77-c53d-5849-a9a9-bd68a6e43db8")
-	)
 	(symbol
 		(lib_id "power:GND")
-		(at 142.24 193.04 90)
+		(at 127 228.6 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "bbaeace6-4fe5-5ed5-b3a1-22f9d7720c83")
+		(uuid "30f0dfb4-aaaf-5d37-9702-c24c1dca4646")
 		(property "Reference" "#PWR0246"
-			(at 142.24 193.04 0)
+			(at 127 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5142,17 +5173,16 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 146.05 193.04 0)
+			(at 127 233.68 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 				(hide yes)
 			)
 		)
 		(property "Footprint" ""
-			(at 142.24 193.04 0)
+			(at 127 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5161,7 +5191,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 142.24 193.04 0)
+			(at 127 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5170,7 +5200,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "6a6bd5d0-3fe0-5e98-bb1e-2e766bb21b56")
+			(uuid "5db89249-02bb-5013-bfbc-b1cb813468f6")
 		)
 		(instances
 			(project "mso74-plata"
@@ -5183,8 +5213,92 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 195.58)
-			(xy 142.24 195.58)
+			(xy 147.32 172.72)
+			(xy 149.86 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e97c4b79-2612-5fb9-8401-3ccce72dd420")
+	)
+	(label "VTK_C2P"
+		(at 149.86 172.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a15b38ef-5a59-511f-b763-de2d30ef50ec")
+	)
+	(wire
+		(pts
+			(xy 147.32 180.34)
+			(xy 149.86 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db1846bd-ce00-5d0d-9121-1c0fed8b1c1b")
+	)
+	(label "VTK_C2N"
+		(at 149.86 180.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d7fd4062-f0f3-5a5a-8888-288cbf1390ed")
+	)
+	(wire
+		(pts
+			(xy 147.32 185.42)
+			(xy 149.86 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cf85f0b-e239-5cc8-8b0b-1fd9d770010f")
+	)
+	(label "VTK_VSP"
+		(at 149.86 185.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8f3a4998-b263-53ac-828d-f20a215a439b")
+	)
+	(wire
+		(pts
+			(xy 147.32 193.04)
+			(xy 149.86 193.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23968e42-40e1-59b7-b0c1-e157a84afa92")
+	)
+	(label "VTK_VSN"
+		(at 149.86 193.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "165ab109-8e96-5202-ae75-9344714802dd")
+	)
+	(wire
+		(pts
+			(xy 147.32 198.12)
+			(xy 149.86 198.12)
 		)
 		(stroke
 			(width 0)
@@ -5192,203 +5306,44 @@
 		)
 		(uuid "5e6df8b7-e240-5e45-b128-2c5ba23fbd74")
 	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 142.24 195.58 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
+	(label "VTK_TX_U"
+		(at 149.86 198.12 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
 		(uuid "eca46451-93dc-5c97-966f-3015c1dbb69d")
-		(property "Reference" "#PWR0247"
-			(at 142.24 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 146.05 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 142.24 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 142.24 195.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4f3d49c0-be2d-5683-ac72-b911f92774f2")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "#PWR0247")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 139.7 198.12)
-			(xy 142.24 198.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0710d297-bd02-5626-b859-eaf35215f777")
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 142.24 198.12 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "75a58d21-c99d-5ef5-b1c9-e807a800ade1")
-		(property "Reference" "#PWR0248"
-			(at 142.24 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+3V3"
-			(at 146.05 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" ""
-			(at 142.24 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 142.24 198.12 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "bab053bb-b9b8-5660-9f42-32114b9b43fc")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "#PWR0248")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(no_connect
-		(at 139.7 200.66)
-		(uuid "21a6d86d-9db0-505d-8a96-0c58e79ef84d")
+		(at 147.32 203.2)
+		(uuid "d9697a5b-377a-5f02-9db2-86c253bb3b24")
 	)
 	(wire
 		(pts
-			(xy 139.7 203.2)
-			(xy 142.24 203.2)
+			(xy 147.32 208.28)
+			(xy 149.86 208.28)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a27ac12c-c65c-5ad3-a24e-d2ff73ce08b2")
+		(uuid "bead6e01-03a4-5f46-9da9-37f91d0d377b")
 	)
-	(symbol
-		(lib_id "power:GND")
-		(at 142.24 203.2 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "cf6ebdc3-8811-5fde-b718-6384935639b7")
-		(property "Reference" "#PWR0249"
-			(at 142.24 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
+	(label "VTK_RX_U"
+		(at 149.86 208.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
 			)
+			(justify left bottom)
 		)
-		(property "Value" "GND"
-			(at 146.05 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 142.24 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 142.24 203.2 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1a03d8cb-f961-5c6c-b713-d40779211b9e")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "#PWR0249")
-					(unit 1)
-				)
-			)
-		)
+		(uuid "85f0897a-fe98-57fa-981f-0da2aad2653e")
+	)
+	(no_connect
+		(at 147.32 213.36)
+		(uuid "ad51a70c-7f4f-596e-ac8e-c30cdaa0749c")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -5716,7 +5671,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1c5938ff-c971-5d31-ba64-5d3223fc0490")
-		(property "Reference" "#PWR0250"
+		(property "Reference" "#PWR0247"
 			(at 62.23 195.58 0)
 			(effects
 				(font
@@ -5759,7 +5714,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "#PWR0250")
+					(reference "#PWR0247")
 					(unit 1)
 				)
 			)
@@ -5782,7 +5737,7 @@
 				)
 			)
 		)
-		(property "Value" "1u"
+		(property "Value" "100n"
 			(at 55.88 209.55 90)
 			(effects
 				(font
@@ -5873,7 +5828,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "73c35d12-f672-5a93-993c-e6660656a1e7")
-		(property "Reference" "#PWR0251"
+		(property "Reference" "#PWR0248"
 			(at 62.23 205.74 0)
 			(effects
 				(font
@@ -5916,7 +5871,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "#PWR0251")
+					(reference "#PWR0248")
 					(unit 1)
 				)
 			)
@@ -6009,7 +5964,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4c8b097d-0cd4-5f23-a084-08d9a5a8188b")
-		(property "Reference" "#PWR0252"
+		(property "Reference" "#PWR0249"
 			(at 49.53 215.9 0)
 			(effects
 				(font
@@ -6051,7 +6006,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "#PWR0252")
+					(reference "#PWR0249")
 					(unit 1)
 				)
 			)
@@ -6077,7 +6032,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c103e136-fd42-578a-97aa-ea0713561bdb")
-		(property "Reference" "#PWR0253"
+		(property "Reference" "#PWR0250"
 			(at 62.23 215.9 0)
 			(effects
 				(font
@@ -6120,11 +6075,579 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "#PWR0253")
+					(reference "#PWR0250")
 					(unit 1)
 				)
 			)
 		)
+	)
+	(symbol
+		(lib_id "Device:D_TVS")
+		(at 177.8 185.42 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "04affd24-2e19-5076-b068-2140d7269cef")
+		(property "Reference" "D15"
+			(at 177.8 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SMAJ8.0CA"
+			(at 177.8 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMA"
+			(at 177.8 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 177.8 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C173500"
+			(at 177.8 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SMAJ8.0CA"
+			(at 177.8 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "65b51117-7de0-53d4-ab3e-bcbd1b2e22a3")
+		)
+		(pin "2"
+			(uuid "c79659cf-6a8e-5568-b51d-5c0e4d7e6e5d")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
+					(reference "D15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 173.99 185.42)
+			(xy 171.45 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "94296da0-0d20-58db-b6bd-b848fc36847e")
+	)
+	(label "VTK_TX_U"
+		(at 171.45 185.42 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ad0c06aa-acbb-542e-b68d-e79985484b61")
+	)
+	(wire
+		(pts
+			(xy 181.61 185.42)
+			(xy 184.15 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3a39c41-d775-5e49-b63d-ccf6fbc8e277")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 184.15 185.42 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2649ce0a-ca03-5629-923a-5a49ec06f1f6")
+		(property "Reference" "#PWR0251"
+			(at 184.15 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 187.96 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 184.15 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 184.15 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "014c9498-acca-5ec4-ac59-119055188e92")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
+					(reference "#PWR0251")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:D_TVS")
+		(at 177.8 205.74 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "837e850c-d05c-5eca-b7e3-5417211f3689")
+		(property "Reference" "D16"
+			(at 177.8 203.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SMAJ8.0CA"
+			(at 177.8 208.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMA"
+			(at 177.8 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 177.8 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C173500"
+			(at 177.8 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SMAJ8.0CA"
+			(at 177.8 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7f9a04db-9bc2-5e7f-9e2e-9a947aeb5924")
+		)
+		(pin "2"
+			(uuid "6918b4ff-f6ef-5795-aa07-9de6a31936c6")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
+					(reference "D16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 173.99 205.74)
+			(xy 171.45 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e13a927b-c385-5dac-badf-84e8715cb747")
+	)
+	(label "VTK_RX_U"
+		(at 171.45 205.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "67440dc5-ddc0-5a08-8499-cbad07ea02e3")
+	)
+	(wire
+		(pts
+			(xy 181.61 205.74)
+			(xy 184.15 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e2849fa-0c84-53ca-a71c-b1e84134b287")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 184.15 205.74 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8eac92f3-dd72-5e81-903c-3bb6f520b351")
+		(property "Reference" "#PWR0252"
+			(at 184.15 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 187.96 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 184.15 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 184.15 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "64584147-ff0f-54cc-ab7d-0e3ec4e545e5")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
+					(reference "#PWR0252")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 198.12 185.42 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "45548091-c55c-5bea-aeba-736213a537b0")
+		(property "Reference" "R61"
+			(at 198.12 181.61 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2.2k 1W"
+			(at 198.12 189.23 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
+			(at 198.12 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 198.12 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C453411"
+			(at 198.12 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC-12K2201FT"
+			(at 198.12 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "cc53d7ea-4c92-5e71-8d1c-d4480f1a0876")
+		)
+		(pin "2"
+			(uuid "23fbb65c-d0c1-52b1-9ac8-6c1812287fad")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
+					(reference "R61")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 194.31 185.42)
+			(xy 191.77 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9396c870-e437-5acb-9892-24fbcc920c28")
+	)
+	(label "VTK_TX_U"
+		(at 191.77 185.42 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "6efda138-0ae2-59aa-bb61-c07bc1cd5daf")
+	)
+	(wire
+		(pts
+			(xy 201.93 185.42)
+			(xy 204.47 185.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "74f9dd8b-d2a4-5e68-bc44-2a8428c608e4")
+	)
+	(label "VTK_TX_T"
+		(at 204.47 185.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "02fb864d-db8a-5150-af38-64edd7878f4a")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 198.12 205.74 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "9fcd1e63-ab9e-56da-be5d-c172869bcfe3")
+		(property "Reference" "R62"
+			(at 198.12 201.93 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "2.2k 1W"
+			(at 198.12 209.55 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_2512_6332Metric"
+			(at 198.12 207.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 198.12 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C453411"
+			(at 198.12 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC-12K2201FT"
+			(at 198.12 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b3e7c96b-e23a-5116-8a87-15f8f095d737")
+		)
+		(pin "2"
+			(uuid "8f1a2451-e3c3-59c4-8f74-2997a61efef5")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
+					(reference "R62")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 194.31 205.74)
+			(xy 191.77 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75ebe701-8cb6-587d-837c-f6a3ea13f5c0")
+	)
+	(label "VTK_RX_U"
+		(at 191.77 205.74 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "9d29b4e8-0529-5554-a3d8-805c8546ec86")
+	)
+	(wire
+		(pts
+			(xy 201.93 205.74)
+			(xy 204.47 205.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec9d0cff-069b-5edb-a2e6-425a4649bb81")
+	)
+	(label "VTK_RX_T"
+		(at 204.47 205.74 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b4b29f9b-b8c2-512a-9740-9d6c75948c20")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x03")
@@ -6276,7 +6799,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "62367d35-761f-5f53-ac64-e101b81ba8d7")
-		(property "Reference" "#PWR0254"
+		(property "Reference" "#PWR0253"
 			(at 248.92 198.12 0)
 			(effects
 				(font
@@ -6319,7 +6842,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "#PWR0254")
+					(reference "#PWR0253")
 					(unit 1)
 				)
 			)
@@ -6347,7 +6870,7 @@
 		)
 		(uuid "3b2097ae-990b-57fb-bcab-fc1c9eae86bf")
 	)
-	(text "RS-232 терминал Vendotek (115200): MAX13223E от 3,3 В, линии T1OUT/R1IN выдерживают ±70 В — внешняя защита не нужна."
+	(text "RS-232 терминал Vendotek (115200): MAX3232E от 3,3 В; линии: 2,2 кОм 2512 + SMAJ8.0CA — +32 В на клемме безопасно."
 		(exclude_from_sim no)
 		(at 20.32 162.56 0)
 		(effects
@@ -6356,18 +6879,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "f8b03206-ae2c-518f-8314-0e133aac6946")
-	)
-	(text "EN = 0 — приёмники включены; FORCEON = FORCEOFF = VCC — автоотключение выключено."
-		(exclude_from_sim no)
-		(at 96.52 220.98 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "872bee6b-794c-56b4-b61a-3ec3df9c676b")
+		(uuid "7ca7174d-9825-5cd9-8519-59db7b4bfff0")
 	)
 	(embedded_fonts no)
 )
