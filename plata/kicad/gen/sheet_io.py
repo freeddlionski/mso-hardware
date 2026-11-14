@@ -39,6 +39,11 @@ def pulse_input(sh, x, y, term_net, gpio_net, tag):
     d = sh.part('Diode:1N4148W', 'D', '1N4148W', (x, y + 12.7), mpn='1N4148W')
     sh.connect(d, {'A': tag + '_K', 'K': k_in})
     tvs(sh, 'SMAJ33A', x, y + 22.86, k_in)
+    # C-009: встречный диод на светодиоде — обратное напряжение на нём не больше ~0,7 В при +32 В на клемме
+    sh.late = True
+    d = sh.part('Diode:1N4148W', 'D', '1N4148W', (x + 38.1, y + 17.78), mpn='1N4148W')
+    sh.late = False
+    sh.connect(d, {'A': tag + '_K', 'K': a})
     # ток светодиода (12 − 1,2 − 0,7) / 1,5 кОм ≈ 6,7 мА
     R(sh, '10k', x + 76.2, y - 7.62, '+3V3', c)
     R(sh, '1k', x + 76.2, y + 2.54, c, gpio_net)
@@ -64,6 +69,9 @@ def build(proj):
         sh.connect(d, {'A': 'MDB_TX_B%d' % k, 'K': 'MDB_TX_D'})   # +24 В на линии запирает диоды — в выходы буферов ток не идёт
     C(sh, '100n', x - 10.16, y + 20.32, '+5V', 'GND')
     C(sh, '100n', x - 10.16, y + 10.16, '+5V', 'GND')
+    sh.late = True
+    R(sh, '100k', x - 10.16, y + 30.48, '+3V3', 'MDB_TX')     # Kimi K-005: при старте ESP32 линия в покое (UART idle = 1)
+    sh.late = False
     R(sh, '150', x + 63.5, y, 'MDB_TX_D', 'MDB_TX_P', 'R0805')
     two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', x + 101.6, y, 'MDB_TX_P', 'MDB_TX_L', **PTC50)
     tvs(sh, 'SMAJ33A', x + 101.6, y + 10.16, 'MDB_TX_L')
@@ -80,7 +88,7 @@ def build(proj):
             (20.32, y - 17.78), 1.5)
     pulse_input(sh, x, y, 'COIN_IN', 'COIN_PULSE', 'CI')
     pulse_input(sh, x, y + 30.48, 'BILL_IN', 'BILL_PULSE', 'BI')
-    two(sh, 'Device:Polyfuse', 'F', '1.1A удерж.', x + 129.54, y - 12.7, '+12V', '+12V_F', fp='Fuse:Fuse_2920_7451Metric')
+    two(sh, 'Device:Polyfuse', 'F', '1.5A удерж.', x + 129.54, y - 12.7, '+12V', '+12V_F', fp='Fuse:Fuse_2920_7451Metric')
     # аудит 2, п. 6: +24 В на клемме +12 В не попадёт в шину 12 В и выход LMR51430 (падение ~0,4 В)
     d = sh.part('Device:D_Schottky', 'D', 'SS34', (x + 160.02, y - 12.7), fp='Diode_SMD:D_SMA', mpn='SS34')
     sh.connect(d, {'A': '+12V_F', 'K': '+12V_T'})
@@ -88,10 +96,17 @@ def build(proj):
 
     # блокировка монетника: ключ на минус, сток выдерживает 60 В
     x2, y2 = 40.64, 205.74
-    sh.text('Блокировка монетника: 2N7002 на минус (до 24 В / 100 мА), при сбросе выключена.', (20.32, y2 - 12.7), 1.5)
-    R(sh, '100', x2, y2, 'COIN_INH', 'Q_INH_G')
-    R(sh, '100k', x2, y2 + 10.16, 'Q_INH_G', 'GND')
-    q = sh.part('Transistor_FET:2N7002', 'Q', '2N7002', (x2 + 33.02, y2 + 2.54), mpn='2N7002-7-F (Diodes Inc.)')
+    sh.text('Блокировка монетника: защищённый ключ BSP75N на минус (60 В, ограничение тока), при сбросе выключен.', (20.32, y2 - 12.7), 1.5)
+    # C-004: 2N7002 при +32 В на включённом выходе сгорел бы раньше PTC. BSP75N нужен вход 5 В — через буфер 74AHCT1G125
+    R(sh, '10k', x2, y2 + 10.16, 'COIN_INH', 'GND')            # при сбросе ESP32 — ключ закрыт
+    sh.late = True
+    b = sh.part('74xGxx:74AHCT1G125', 'U', '74AHCT1G125', (x2 + 12.7, y2), fp='Package_TO_SOT_SMD:SOT-23-5', mpn='SN74AHCT1G125DBVR')
+    sh.connect(b, {'1': 'GND', '2': 'COIN_INH', '4': 'Q_INH_B', '5': '+5V', '3': 'GND'})
+    C(sh, '100n', x2 - 10.16, y2 + 20.32, '+5V', 'GND')
+    sh.late = False
+    R(sh, '100', x2 + 38.1, y2, 'Q_INH_B', 'Q_INH_G')
+    q = sh.part('Transistor_FET:BSP89', 'Q', 'BSP75N', (x2 + 55.88, y2 + 2.54), mpn='BSP75N',
+                fp='Package_TO_SOT_SMD:SOT-223-3_TabPin2')
     sh.connect(q, {'G': 'Q_INH_G', 'S': 'GND', 'D': 'COIN_INH_D'})
     two(sh, 'Device:Polyfuse', 'F', '100mA удерж.', x2 + 71.12, y2, 'COIN_INH_D', 'COIN_INH_T', **PTC50)
 

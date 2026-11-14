@@ -26,6 +26,9 @@ def build(proj):
         C(sh, '100n', x - 63.5, y - 15.24, '+5V', 'GND')
         if i == 1:
             R(sh, '10k', x - 63.5, y - 5.08, 'HUB_CLK', 'GND')   # GPIO3 — настроечный вывод: определённый уровень при сбросе
+            sh.late = True
+            R(sh, '10k', x - 63.5, y + 5.08, '+3V3', 'HUB_OE')   # Kimi K-006: до старта прошивки OE = 1 — табло погашено
+            sh.late = False
         for k, s in enumerate(sigs):
             R(sh, '33', x + 50.8, y - 25.4 + 7.62 * k, 'HUBB_' + s, 'HUBO_' + s)
 

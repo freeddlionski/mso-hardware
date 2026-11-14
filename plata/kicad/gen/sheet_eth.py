@@ -5,7 +5,7 @@ W5500 — по схеме платы той же серии (a147/Motherboard_Sc
 прислал Павел) и даташиту Realtek. Порт 0 — к W5500 через трансформатор H1102 (как кабель нулевой длины),
 порт 1 — RJ45 «Сеть», порт 2 — RJ45 «Vendotek», порты 3–4 не используются. Прошивка не меняется.
 """
-from sheet_power import C, R, two
+from sheet_power import C, R, flag, two
 
 
 def build(proj):
@@ -131,7 +131,7 @@ def rj45(sh, port, name, xr, yy):
     j = sh.part('Connector:RJ45_Hanrun_HR911105A_Horizontal', 'J', name, (xr, yy), mpn='HR911105A',
                 fields={'Шелкография': 'LAN' if port == 1 else 'VENDOTEK'})
     pins = {'1': 'SW_RXP%d' % port, '2': 'SW_RXN%d' % port, '3': 'SW_TXP%d' % port, '6': 'SW_TXN%d' % port,
-            '4': 'SW_CT%d' % port, '5': 'SW_CT%d' % port, '12': 'SW_LEDA%d' % port, '11': 'GND', '8': 'GND', 'SH': 'GND'}
+            '4': 'SW_CT%d' % port, '5': 'SW_CT%d' % port, '12': 'SW_LEDA%d' % port, '11': 'GND', '8': 'ETH_SH%d' % port, 'SH': 'ETH_SH%d' % port}
     nc = ['7']
     if port == 1:
         pins.update({'9': '+3V3A', '10': 'ETH_LED_G'})
@@ -139,4 +139,10 @@ def rj45(sh, port, name, xr, yy):
         nc += ['9', '10']
     sh.connect(j, pins, nc=nc)
     C(sh, '100n', xr - 50.8, yy + 15.24, 'SW_CT%d' % port, 'GND')
+    # Kimi K-002: экран и общая точка цепи Боба-Смита разъёма (конт. 8) — на землю через 1 нФ 2 кВ ∥ 1 МОм, как CGND в образце
+    sh.late = True
+    two(sh, 'Device:C', 'C', '1n 2kV', xr - 76.2, yy + 15.24, 'ETH_SH%d' % port, 'GND', fp='Capacitor_SMD:C_1206_3216Metric')
+    R(sh, '1M', xr - 76.2, yy + 25.4, 'ETH_SH%d' % port, 'GND')
+    sh.late = False
+    flag(sh, xr - 101.6, yy + 15.24, 'ETH_SH%d' % port)     # конт. 8 — «вход питания» в символе; цепь задают C и R
     R(sh, '330', xr - 50.8, yy + 25.4, 'SW_LED%d' % port, 'SW_LEDA%d' % port)
