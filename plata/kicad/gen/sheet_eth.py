@@ -13,13 +13,13 @@ def build(proj):
     sh.connect(u, {
         'AVDD': '+3V3A', 'AGND': 'GND', 'VDD': '+3V3', 'GND': 'GND',
         'EXRES1': 'ETH_EXRES', 'TOCAP': 'ETH_TOCAP', '1V2O': 'ETH_1V2',
-        'RSVD': 'GND',                      # 23, 38–42: по даташиту на землю
+        '23': 'GND',                        # RSVD 23 — на землю; 38–42 — NC (даташит W5500 с v1.0.2, внутренняя подтяжка к земле)
         'PMODE0': '+3V3', 'PMODE1': '+3V3', 'PMODE2': '+3V3',   # 111 — все режимы, автосогласование
         'XI/CLKIN': 'ETH_XI', 'XO': 'ETH_XO',
         '~{SCS}': 'ETH_CS', 'SCLK': 'ETH_SCLK', 'MISO': 'ETH_MISO', 'MOSI': 'ETH_MOSI', '~{INT}': 'ETH_INT', '~{RST}': 'ESP_EN',
         'TXP': 'ETH_TXP', 'TXN': 'ETH_TXN', 'RXP': 'ETH_RXP', 'RXN': 'ETH_RXN',
         'LINKLED': 'ETH_LINKLED', 'ACTLED': 'ETH_ACTLED',
-    }, nc=['DNC', 'NC', 'VBG', 'SPDLED', 'DUPLED'])
+    }, nc=['DNC', 'NC', 'VBG', 'SPDLED', 'DUPLED', '38', '39', '40', '41', '42'])
     sh.text('W5500: AVDD через ферритовую бусину (+3V3A), EXRES1 12,4 кОм 1 %. PMODE = 111 — автосогласование.', (x - 50.8, y - 60.96))
 
     # питание

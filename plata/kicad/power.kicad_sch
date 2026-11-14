@@ -6447,7 +6447,7 @@
 				)
 			)
 		)
-		(property "Value" "15u"
+		(property "Value" "12u"
 			(at 106.68 166.37 90)
 			(effects
 				(font
@@ -9114,7 +9114,7 @@
 				)
 			)
 		)
-		(property "Value" "10u"
+		(property "Value" "6.8u"
 			(at 106.68 224.79 90)
 			(effects
 				(font
@@ -11781,7 +11781,7 @@
 				)
 			)
 		)
-		(property "Value" "6.8u"
+		(property "Value" "5.6u"
 			(at 106.68 283.21 90)
 			(effects
 				(font

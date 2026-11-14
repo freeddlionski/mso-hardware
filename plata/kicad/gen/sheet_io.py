@@ -25,7 +25,7 @@ def clamp(sh, x, y, net):
 def pulse_input(sh, x, y, term_net, gpio_net, tag):
     """Оптрон: +12 В → 2,2 кОм → светодиод → клемма → открытый коллектор аппарата → минус."""
     a, k_in, c = tag + '_LA', term_net, tag + '_C'
-    R(sh, '2.2k', x, y, '+12V', a)
+    R(sh, '1.5k', x, y, '+12V', a)            # ~7 мА: запас по CTR оптрона при просадке 12 В
     o = sh.part('Isolator:PC817', 'U', 'EL357N(C)', (x + 38.1, y + 2.54), fp='Package_SO:SOP-4_3.8x4.1mm_P2.54mm', mpn='EL357N(C)-G')
     sh.connect(o, {'1': a, '2': k_in, '4': c, '3': 'GND'})
     d = sh.part('Diode:1N4148W', 'D', '1N4148W', (x, y + 12.7), mpn='1N4148W')
@@ -46,7 +46,8 @@ def build(proj):
     b = sh.part('74xGxx:74AHCT1G125', 'U', '74AHCT1G125', (x + 12.7, y), fp='Package_TO_SOT_SMD:SOT-23-5', mpn='SN74AHCT1G125DBVR')
     sh.connect(b, {'1': 'GND', '2': 'MDB_TX', '4': 'MDB_TX_B', '5': '+5V', '3': 'GND'})
     C(sh, '100n', x - 10.16, y + 20.32, '+5V', 'GND')
-    R(sh, '120', x + 50.8, y, 'MDB_TX_B', 'MDB_TX_P', 'R0805')
+    # 150 Ом (как в ТЗ): при +24 В на клемме TVS держит ~8 В, ток в выход буфера ≤ ~17 мА; рабочий ток ~10 мА (CashCode: 220 Ом внутри)
+    R(sh, '150', x + 50.8, y, 'MDB_TX_B', 'MDB_TX_P', 'R0805')
     guard(sh, x + 88.9, y, 'MDB_TX_L', 'MDB_TX_P')
     # приём
     guard(sh, x + 88.9, y + 30.48, 'MDB_RX_L', 'MDB_RX_P')
