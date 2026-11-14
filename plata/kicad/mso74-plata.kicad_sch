@@ -184,6 +184,92 @@
 			)
 		)
 	)
+	(sheet
+		(at 25.4 68.58)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "68564ffc-cef7-588d-a4f8-105d9d2433da")
+		(property "Sheetname" "MDB и входы"
+			(at 25.4 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "io.kicad_sch"
+			(at 25.4 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 88.9 68.58)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "3fc7ac76-e6eb-5506-b32f-6702a8f2d6cc")
+		(property "Sheetname" "Табло и часы"
+			(at 88.9 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "hub.kicad_sch"
+			(at 88.9 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4"
+					(page "7")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

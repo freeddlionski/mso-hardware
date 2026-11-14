@@ -13,15 +13,14 @@ import custom_syms  # noqa: E402
 import kisch  # noqa: E402
 import sheet_comm  # noqa: E402
 import sheet_eth  # noqa: E402
+import sheet_hub  # noqa: E402
+import sheet_io  # noqa: E402
 import sheet_mcu  # noqa: E402
 import sheet_power  # noqa: E402
 
 OUT = os.path.dirname(HERE)
 POWER_NETS = ['GND', '+24V_P', '+12V', '+5V', '+3V3', '+3V3A', '+5V_LCD1', '+5V_LCD2']
-# межлистовые цепи, чей второй конец — на ещё не нарисованном листе (лист MCU ждёт решения по модулю)
-PENDING = ['MDB_24V', 'MDB_RX', 'MDB_TX', 'BILL_PULSE', 'COIN_PULSE', 'COIN_INH', 'SERVICE_BTN', 'RTC_SCL', 'RTC_SDA',
-           'HUB_LAT', 'HUB_OE', 'HUB_CLK', 'HUB_A', 'HUB_B', 'HUB_C', 'HUB_D',
-           'HUB_R1', 'HUB_G1', 'HUB_B1', 'HUB_R2', 'HUB_G2', 'HUB_B2']
+PENDING = []   # межлистовые цепи, чей второй конец ещё не нарисован
 
 
 def check_footprints(proj, official):
@@ -56,6 +55,8 @@ def main(official):
     sheet_mcu.build(proj)
     sheet_eth.build(proj)
     sheet_comm.build(proj)
+    sheet_io.build(proj)
+    sheet_hub.build(proj)
     check_footprints(proj, official)
     proj.write(OUT)
     with open(os.path.join(OUT, 'sym-lib-table'), 'w') as f:
