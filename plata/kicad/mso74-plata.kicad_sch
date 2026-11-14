@@ -1,0 +1,64 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "2a62deec-1c98-5178-bbd2-bd42fc96dec4")
+	(paper "A4")
+	(title_block
+		(title "Плата контроллера МСО74 — ревизия A")
+		(date "2026-11-14")
+		(rev "A")
+		(company "МСО74 · mso74.ru · Кольман Павел")
+		(comment 1 "Сгенерировано plata/kicad/gen — правки в генераторе, не в файле")
+	)
+	(lib_symbols)
+	(sheet
+		(at 25.4 30.48)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "775054db-c86e-5b0e-b0ac-67333e238fd2")
+		(property "Sheetname" "Питание"
+			(at 25.4 29.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "power.kicad_sch"
+			(at 25.4 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+	(embedded_fonts no)
+)

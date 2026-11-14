@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "mso74")(type "KiCad")(uri "${KIPRJMOD}/lib/mso74.kicad_sym")(options "")(descr "Свои символы МСО74"))
+)

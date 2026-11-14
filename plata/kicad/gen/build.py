@@ -1,0 +1,41 @@
+"""Сборка схемы: python3 build.py <путь к symbols из ветки kicad-libs>
+
+Пишет plata/kicad/*.kicad_sch, mso74.kicad_sym, sym-lib-table и проект. Файлы схемы руками не правим — только здесь.
+"""
+import json
+import os
+import sys
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+
+import custom_syms  # noqa: E402
+import kisch  # noqa: E402
+import sheet_power  # noqa: E402
+
+OUT = os.path.dirname(HERE)
+POWER_NETS = ['GND', '+24V_P', '+12V', '+5V', '+3V3', '+5V_LCD1', '+5V_LCD2']
+
+
+def main(official):
+    libdir = os.path.join(OUT, 'lib')
+    os.makedirs(libdir, exist_ok=True)
+    custom_syms.write(os.path.join(libdir, 'mso74.kicad_sym'))
+    os.makedirs('/tmp/mso74lib', exist_ok=True)
+    # mso74:X ищется как файл mso74.kicad_sym
+    proj = kisch.Project([official, libdir], POWER_NETS)
+    sheet_power.build(proj)
+    proj.write(OUT)
+    with open(os.path.join(OUT, 'sym-lib-table'), 'w') as f:
+        f.write('(sym_lib_table\n  (version 7)\n  (lib (name "mso74")(type "KiCad")(uri "${KIPRJMOD}/lib/mso74.kicad_sym")(options "")(descr "Свои символы МСО74"))\n)\n')
+    pro = os.path.join(OUT, kisch.PROJECT + '.kicad_pro')
+    if not os.path.exists(pro):
+        with open(pro, 'w') as f:
+            json.dump({'meta': {'filename': kisch.PROJECT + '.kicad_pro', 'version': 3},
+                       'schematic': {'drawing': {}, 'legacy_lib_dir': '', 'legacy_lib_list': []},
+                       'sheets': [], 'text_variables': {}}, f, indent=2)
+    print('ok:', [s.name for s in proj.sheets])
+
+
+if __name__ == '__main__':
+    main(sys.argv[1] if len(sys.argv) > 1 else '/home/claude/kicad-libs/symbols')
