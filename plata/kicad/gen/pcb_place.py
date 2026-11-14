@@ -44,7 +44,7 @@ ANCHORS = {
     'J7': (222.74, 22, 90), 'U10': (196, 22, 0), 'Y1': (186, 22, 0),
     # табло: шлейф HUB75 на верхней кромке, буферы под ним; часы с батарейкой
     'J14': (96, 7, 90), 'U17': (100, 22, 0), 'U18': (114, 22, 0),
-    'BT1': (84, 40, 0), 'U19': (104, 40, 0), 'Y2': (112, 40, 0),
+    'BT1': (168, 60, 0), 'U19': (154, 60, 0), 'Y2': (154, 67, 0),
     # связь: над своими клеммами
     'U12': (72, 98, 0), 'U11': (92, 98, 0),
     # MDB, монетник, купюрник, сервис
@@ -71,6 +71,29 @@ def _pts(node):
     return out
 
 
+def _arc_pts(node):
+    """Крайние точки дуги (start, mid, end): концы + точки окружности на осях внутри дуги."""
+    g = {y[0]: (float(y[1]), float(y[2])) for y in node if isinstance(y, list) and y and y[0] in ('start', 'mid', 'end')}
+    (x1, y1), (x2, y2), (x3, y3) = g['start'], g['mid'], g['end']
+    d = 2 * (x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2))
+    if abs(d) < 1e-9:
+        return [g['start'], g['mid'], g['end']]
+    ux = ((x1 * x1 + y1 * y1) * (y2 - y3) + (x2 * x2 + y2 * y2) * (y3 - y1) + (x3 * x3 + y3 * y3) * (y1 - y2)) / d
+    uy = ((x1 * x1 + y1 * y1) * (x3 - x2) + (x2 * x2 + y2 * y2) * (x1 - x3) + (x3 * x3 + y3 * y3) * (x2 - x1)) / d
+    r = math.hypot(x1 - ux, y1 - uy)
+    a1, a2, a3 = (math.atan2(y - uy, x - ux) for x, y in (g['start'], g['mid'], g['end']))
+
+    def between(a, b, c):        # c на пути из a в b против часовой
+        return (c - a) % (2 * math.pi) <= (b - a) % (2 * math.pi)
+    ccw = between(a1, a3, a2)
+    out = [g['start'], g['mid'], g['end']]
+    for k in range(4):
+        ang = k * math.pi / 2
+        if (between(a1, a3, ang) if ccw else between(a3, a1, ang)):
+            out.append((ux + r * math.cos(ang), uy + r * math.sin(ang)))
+    return out
+
+
 def courtyard(path):
     """Прямоугольник курта (xmin, ymin, xmax, ymax) в координатах посадочного места; без курта — по площадкам + 0,25."""
     t = parse(open(path, encoding='utf-8').read())
@@ -84,6 +107,8 @@ def courtyard(path):
                     e = [y for y in x if isinstance(y, list) and y[0] == 'end'][0]
                     r = math.hypot(float(e[1]) - float(c[1]), float(e[2]) - float(c[2]))
                     pts += [(float(c[1]) - r, float(c[2]) - r), (float(c[1]) + r, float(c[2]) + r)]
+                elif x[0] == 'fp_arc':
+                    pts += _arc_pts(x)
                 else:
                     pts += _pts(x)
     if not pts:
