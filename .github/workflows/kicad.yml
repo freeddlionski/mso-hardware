@@ -45,6 +45,8 @@ jobs:
           [ -f plata/kicad/mso74-plata.kicad_sch ] || exit 0
           mkdir -p out
           kicad-cli sch export pdf --output out/mso74-plata-schematic.pdf plata/kicad/mso74-plata.kicad_sch
+          kicad-cli sch export netlist --format kicadsexpr --output out/mso74-plata.net plata/kicad/mso74-plata.kicad_sch
+          kicad-cli sch export netlist --format kicadxml --output out/mso74-plata.xml plata/kicad/mso74-plata.kicad_sch
           kicad-cli sch export bom --output out/bom.csv \
             --fields 'Reference,Value,Footprint,LCSC,${QUANTITY}' --group-by 'Value,Footprint,LCSC' \
             plata/kicad/mso74-plata.kicad_sch
