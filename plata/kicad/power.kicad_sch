@@ -5485,7 +5485,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C22897"
+			(at 190.5 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0603WAF1912T5E"
 			(at 190.5 50.8 0)
 			(effects
 				(font
@@ -5760,7 +5769,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C4211"
+			(at 190.5 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0603WAF3001T5E"
 			(at 190.5 71.12 0)
 			(effects
 				(font
@@ -6864,7 +6882,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C1848"
+			(at 231.14 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL31B105KBHNNNE"
 			(at 231.14 50.8 0)
 			(effects
 				(font
@@ -7070,7 +7097,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C5158069"
+			(at 236.22 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MAL214699103E3"
 			(at 236.22 68.58 0)
 			(effects
 				(font
@@ -10528,7 +10564,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C23068"
+			(at 106.68 220.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0603WAF5231T5E"
 			(at 106.68 220.98 0)
 			(effects
 				(font
@@ -13303,7 +13348,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C22793"
+			(at 106.68 279.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0603WAF1372T5E"
 			(at 106.68 279.4 0)
 			(effects
 				(font
@@ -16078,7 +16132,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2960862"
+			(at 106.68 337.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "FRC0603F2212TS"
 			(at 106.68 337.82 0)
 			(effects
 				(font
@@ -20920,7 +20983,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470u 10V"
+		(property "Value" "470u 16V"
 			(at 414.02 88.9 0)
 			(effects
 				(font
@@ -20947,7 +21010,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C5289730"
+			(at 414.02 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "EMK1CM471GB0D00R"
 			(at 414.02 86.36 0)
 			(effects
 				(font
@@ -21696,7 +21768,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C20539146"
 			(at 429.26 66.04 0)
 			(effects
 				(font
@@ -25511,7 +25583,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470u 10V"
+		(property "Value" "470u 16V"
 			(at 414.02 215.9 0)
 			(effects
 				(font
@@ -25538,7 +25610,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C5289730"
+			(at 414.02 213.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "EMK1CM471GB0D00R"
 			(at 414.02 213.36 0)
 			(effects
 				(font
@@ -26287,7 +26368,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C20539146"
 			(at 429.26 193.04 0)
 			(effects
 				(font

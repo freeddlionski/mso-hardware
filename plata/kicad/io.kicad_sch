@@ -4457,7 +4457,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C17471"
+			(at 104.14 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0805W8F1500T5E"
 			(at 104.14 50.8 0)
 			(effects
 				(font
@@ -5810,7 +5819,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C20539148"
 			(at 182.88 66.04 0)
 			(effects
 				(font

@@ -100,7 +100,7 @@ def lm61460(sh, x, y, tag, out, term_ref_note):
     for i in range(4):
         C(sh, '47u 10V', x + 78.74, y - 10.16 + 10.16 * i, raw, 'GND', 'C1210')
     two(sh, 'Device:Polyfuse', 'F', '5A удерж.', x + 78.74, y + 33.02, raw, out, fp=FP['PTC2920'])
-    p = sh.part('Device:C_Polarized', 'C', '470u 10V', (x + 109.22, y + 22.86), fp='Capacitor_SMD:CP_Elec_10x10.5')
+    p = sh.part('Device:C_Polarized', 'C', '470u 16V', (x + 109.22, y + 22.86), fp='Capacitor_SMD:CP_Elec_10x10.5')
     sh.connect(p, {'1': out, '2': 'GND'})
     flag(sh, x + 139.7, y + 20.32, out)
     flag(sh, x + 139.7, y + 33.02, raw)    # BIAS питается от выхода до предохранителя
