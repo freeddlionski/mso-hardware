@@ -24,6 +24,8 @@ def build(proj):
         nc = ['B%d' % k for k in range(len(sigs), 8)]
         sh.connect(u, m, nc=nc)
         C(sh, '100n', x - 63.5, y - 15.24, '+5V', 'GND')
+        if i == 1:
+            R(sh, '10k', x - 63.5, y - 5.08, 'HUB_CLK', 'GND')   # GPIO3 — настроечный вывод: определённый уровень при сбросе
         for k, s in enumerate(sigs):
             R(sh, '33', x + 50.8, y - 25.4 + 7.62 * k, 'HUBB_' + s, 'HUBO_' + s)
 
@@ -41,8 +43,8 @@ def build(proj):
                nc=['~{INT}', 'CLKO'])
     y1 = sh.part('Device:Crystal', 'Y', '32.768kHz', (x - 50.8, y + 25.4), fp='Crystal:Crystal_SMD_3215-2Pin_3.2x1.5mm')
     sh.connect(y1, {'1': 'RTC_XI', '2': 'RTC_XO'})
-    C(sh, '18p', x - 76.2, y + 38.1, 'RTC_XI', 'GND')
-    C(sh, '18p', x - 25.4, y + 38.1, 'RTC_XO', 'GND')
+    # у PCF8563 ёмкость на OSCO встроенная; на OSCI — только подстройка (не устанавливается), кварц CL 7–12,5 пФ
+    C(sh, '10p DNP', x - 76.2, y + 38.1, 'RTC_XI', 'GND').dnp = True
     d = sh.part('Diode:BAT54C', 'D', 'BAT54C', (x - 50.8, y - 15.24), mpn='BAT54C')
     sh.connect(d, {'1': '+3V3', '2': 'VBAT', '3': 'VRTC'})
     C(sh, '100n', x - 50.8, y - 2.54, 'VRTC', 'GND')
