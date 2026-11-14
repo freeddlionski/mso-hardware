@@ -30,7 +30,7 @@ def build(proj):
             R(sh, '33', x + 50.8, y - 25.4 + 7.62 * k, 'HUBB_' + s, 'HUBO_' + s)
 
     j = sh.part('Connector_Generic:Conn_02x08_Odd_Even', 'J', 'HUB75 IDC-16', (218.44, 96.52),
-                fp='Connector_IDC:IDC-Header_2x08_P2.54mm_Vertical', fields={'Примечание': 'с ключом; второе табло — цепочкой'})
+                fp='Connector_IDC:IDC-Header_2x08_P2.54mm_Vertical', fields={'Примечание': 'с ключом; второе табло — цепочкой', 'Шелкография': 'HUB75'})
     m = {str(n): 'HUBO_' + s for s, n in HUB_PIN.items()}
     m.update({'4': 'GND', '8': 'GND', '16': 'GND'})
     sh.connect(j, m)

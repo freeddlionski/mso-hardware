@@ -6,7 +6,7 @@
 """
 from sheet_power import C, R, FP, two
 
-TERM = {n: 'Connector_Phoenix_MC:PhoenixContact_MC_1,5_%d-G-3.81_1x%02d_P3.81mm_Horizontal' % (n, n) for n in (2, 3, 4)}
+TERM = {n: 'Connector_Phoenix_MC:PhoenixContact_MC_1,5_%d-G-3.81_1x%02d_P3.81mm_Horizontal' % (n, n) for n in (2, 3, 4, 5, 6)}
 PTC50 = dict(fp='Fuse:Fuse_1206_3216Metric')
 
 
@@ -55,7 +55,8 @@ def build(proj):
     R(sh, '4.7k', x + 50.8, y + 40.64, '+3V3', 'MDB_RX')
     clamp(sh, x + 12.7, y + 45.72, 'MDB_RX')
     j = sh.part('Connector_Generic:Conn_02x03_Odd_Even', 'J', 'MDB Mini-Fit Jr 2×3', (x + 142.24, y + 15.24),
-                fp='Connector_Molex:Molex_Mini-Fit_Jr_5566-06A_2x03_P4.20mm_Vertical', mpn='Molex 5566-06A')
+                fp='Connector_Molex:Molex_Mini-Fit_Jr_5566-06A_2x03_P4.20mm_Vertical', mpn='Molex 5566-06A',
+                fields={'Шелкография': 'MDB; 1 +24V, 2 GND, 4 RX, 5 TX, 6 COM'})
     sh.connect(j, {'1': 'MDB_24V', '2': 'GND', '4': 'MDB_RX_L', '5': 'MDB_TX_L', '6': 'GND'}, nc=['3'])
 
     # ---------- импульсные входы ----------
@@ -88,10 +89,13 @@ def build(proj):
     # клеммы
     xt = 279.4
     sh.text('Клеммы 3,81 мм (разъёмные). Подписи каждого контакта — на шелкографии.', (xt - 20.32, 96.52))
-    j = sh.part('Connector_Generic:Conn_01x04', 'J', 'Монетник: +12V / GND / ИМП / БЛОК', (xt, 116.84), fp=TERM[4])
+    j = sh.part('Connector_Generic:Conn_01x04', 'J', 'Монетник: +12V / GND / ИМП / БЛОК', (xt, 116.84), fp=TERM[4],
+                 fields={'Шелкография': 'МОНЕТНИК: +12V, GND, ИМП, БЛОК'})
     sh.connect(j, {'1': '+12V_T', '2': 'GND', '3': 'COIN_IN', '4': 'COIN_INH_T'})
-    j = sh.part('Connector_Generic:Conn_01x04', 'J', 'Купюрник имп.: +24V / +12V / GND / ИМП', (xt, 152.4), fp=TERM[4])
+    j = sh.part('Connector_Generic:Conn_01x04', 'J', 'Купюрник имп.: +24V / +12V / GND / ИМП', (xt, 152.4), fp=TERM[4],
+                 fields={'Шелкография': 'КУПЮРНИК: +24V, +12V, GND, ИМП'})
     sh.connect(j, {'1': 'MDB_24V', '2': '+12V_T', '3': 'GND', '4': 'BILL_IN'})
-    j = sh.part('Connector_Generic:Conn_01x02', 'J', 'Сервис: КН / GND', (xt, 246.38), fp=TERM[2])
+    j = sh.part('Connector_Generic:Conn_01x02', 'J', 'Сервис: КН / GND', (xt, 246.38), fp=TERM[2],
+                 fields={'Шелкография': 'СЕРВИС: КН, GND'})
     sh.connect(j, {'1': 'SVC_T', '2': 'GND'})
     return sh

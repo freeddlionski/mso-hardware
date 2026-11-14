@@ -13,6 +13,7 @@ import custom_syms  # noqa: E402
 import kisch  # noqa: E402
 import sheet_comm  # noqa: E402
 import sheet_eth  # noqa: E402
+import sheet_ext  # noqa: E402
 import sheet_hub  # noqa: E402
 import sheet_io  # noqa: E402
 import sheet_mcu  # noqa: E402
@@ -57,6 +58,7 @@ def main(official):
     sheet_comm.build(proj)
     sheet_io.build(proj)
     sheet_hub.build(proj)
+    sheet_ext.build(proj)
     check_footprints(proj, official)
     proj.write(OUT)
     with open(os.path.join(OUT, 'sym-lib-table'), 'w') as f:
