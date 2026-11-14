@@ -313,6 +313,49 @@
 			)
 		)
 	)
+	(sheet
+		(at 215.9 68.58)
+		(size 50.8 25.4)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "ac9d9848-6d43-5a60-9cdd-e03860c8e9f4")
+		(property "Sheetname" "Коммутатор Ethernet"
+			(at 215.9 67.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "sw.kicad_sch"
+			(at 215.9 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4"
+					(page "9")
+				)
+			)
+		)
+	)
 	(sheet_instances
 		(path "/"
 			(page "1")

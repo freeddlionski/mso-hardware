@@ -67,6 +67,7 @@ def main(official):
     sheet_io.build(proj)
     sheet_hub.build(proj)
     sheet_ext.build(proj)
+    sheet_eth.switch(proj)        # последним: новые позиции получают новые номера, старые не сдвигаются
     check_footprints(proj, official, own_fps)
     missing = lcsc.apply(proj)
     if missing:

@@ -3429,7 +3429,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "84effdf4-ee84-51d9-96b1-6ac9b89abf19")
-		(property "Reference" "#PWR0318"
+		(property "Reference" "#PWR0321"
 			(at 149.86 124.46 0)
 			(effects
 				(font
@@ -3472,7 +3472,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0318")
+					(reference "#PWR0321")
 					(unit 1)
 				)
 			)
@@ -3498,7 +3498,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1465f0f7-6f24-5e1e-858e-aeee9b9e4c6e")
-		(property "Reference" "#PWR0319"
+		(property "Reference" "#PWR0322"
 			(at 149.86 127 0)
 			(effects
 				(font
@@ -3541,7 +3541,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0319")
+					(reference "#PWR0322")
 					(unit 1)
 				)
 			)
@@ -3567,7 +3567,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9cc26727-fb72-50f8-9e00-1bdd9801a28b")
-		(property "Reference" "#PWR0320"
+		(property "Reference" "#PWR0323"
 			(at 149.86 129.54 0)
 			(effects
 				(font
@@ -3610,7 +3610,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0320")
+					(reference "#PWR0323")
 					(unit 1)
 				)
 			)
@@ -3636,7 +3636,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "60a6f50a-a162-5a80-8ac5-d34421882c99")
-		(property "Reference" "#PWR0321"
+		(property "Reference" "#PWR0324"
 			(at 165.1 81.28 0)
 			(effects
 				(font
@@ -3677,7 +3677,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0321")
+					(reference "#PWR0324")
 					(unit 1)
 				)
 			)
@@ -3703,7 +3703,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "396d89ae-3860-5bca-8096-5ccebf4da6d8")
-		(property "Reference" "#PWR0322"
+		(property "Reference" "#PWR0325"
 			(at 165.1 137.16 0)
 			(effects
 				(font
@@ -3745,7 +3745,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0322")
+					(reference "#PWR0325")
 					(unit 1)
 				)
 			)
@@ -4095,8 +4095,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "c46de128-5426-55ea-940b-a269321aed51")
-		(property "Reference" "C82"
+		(uuid "cab16724-4bd3-560a-98ff-651e63cbda0f")
+		(property "Reference" "C85"
 			(at 114.3 74.93 90)
 			(effects
 				(font
@@ -4149,15 +4149,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "c9822b94-902b-564a-8bb2-e1315b745b65")
+			(uuid "59e69346-af8b-52fe-8337-4ad4ac34686f")
 		)
 		(pin "2"
-			(uuid "1fd53d6e-5166-5554-a8d6-f18442c2faff")
+			(uuid "e1ba900b-6604-5bf4-bc79-9081cf8950ce")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "C82")
+					(reference "C85")
 					(unit 1)
 				)
 			)
@@ -4172,7 +4172,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "19b0a18b-4c66-5ec7-84ae-77900573a1ee")
+		(uuid "df030464-baaa-5951-ab53-46922bb8176a")
 	)
 	(symbol
 		(lib_id "power:+5V")
@@ -4182,8 +4182,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "25b82527-bb9e-5ccb-9a5e-23c09f75250f")
-		(property "Reference" "#PWR0323"
+		(uuid "dc57ca0c-37a0-595d-a3e8-b9bd87239a5f")
+		(property "Reference" "#PWR0326"
 			(at 107.95 78.74 0)
 			(effects
 				(font
@@ -4220,12 +4220,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "ec22e9dd-3222-585b-8554-49e2ee8b63f2")
+			(uuid "4a4f6b59-df98-5b0f-916a-cd45d19b5ef5")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0323")
+					(reference "#PWR0326")
 					(unit 1)
 				)
 			)
@@ -4240,7 +4240,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "430a458f-c51c-5cb8-b8b2-0b25123d47e9")
+		(uuid "4fd42beb-f5ed-5529-8380-d23360fb0405")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -4250,8 +4250,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "fe6315fc-eb0d-5b0a-9f61-f411b2e5532a")
-		(property "Reference" "#PWR0324"
+		(uuid "f8c261e2-d603-58b9-93b9-d62dd5b6988c")
+		(property "Reference" "#PWR0327"
 			(at 120.65 78.74 0)
 			(effects
 				(font
@@ -4289,12 +4289,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "7f3f0f82-1ae2-53f4-92cc-83145bbd6b3e")
+			(uuid "e03d69a1-cc26-5243-875c-9d27d3cc3127")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0324")
+					(reference "#PWR0327")
 					(unit 1)
 				)
 			)
@@ -4417,7 +4417,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "26963912-3428-535e-a7ec-6a85ee7c070f")
-		(property "Reference" "#PWR0325"
+		(property "Reference" "#PWR0328"
 			(at 133.35 55.88 0)
 			(effects
 				(font
@@ -4460,7 +4460,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0325")
+					(reference "#PWR0328")
 					(unit 1)
 				)
 			)
@@ -4917,7 +4917,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "045c0ff4-3743-5cf3-9d14-fe688a079b99")
-		(property "Reference" "#PWR0326"
+		(property "Reference" "#PWR0329"
 			(at 44.45 55.88 0)
 			(effects
 				(font
@@ -4959,7 +4959,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0326")
+					(reference "#PWR0329")
 					(unit 1)
 				)
 			)
@@ -5088,7 +5088,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "3b697138-2c50-54cb-aa70-6eb8b849de13")
-		(property "Reference" "#PWR0327"
+		(property "Reference" "#PWR0330"
 			(at 15.24 53.34 0)
 			(effects
 				(font
@@ -5131,7 +5131,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0327")
+					(reference "#PWR0330")
 					(unit 1)
 				)
 			)
@@ -5178,7 +5178,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e774abb9-0592-53d7-8f41-e1da969d7656")
-		(property "Reference" "#PWR0328"
+		(property "Reference" "#PWR0331"
 			(at 35.56 53.34 0)
 			(effects
 				(font
@@ -5220,7 +5220,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0328")
+					(reference "#PWR0331")
 					(unit 1)
 				)
 			)
@@ -5343,7 +5343,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ef152c32-1ac2-5044-96fb-af36cd7ac560")
-		(property "Reference" "#PWR0329"
+		(property "Reference" "#PWR0332"
 			(at 133.35 81.28 0)
 			(effects
 				(font
@@ -5386,7 +5386,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0329")
+					(reference "#PWR0332")
 					(unit 1)
 				)
 			)
@@ -5843,7 +5843,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8f44893c-a061-5c56-bec4-c1fb40f2358f")
-		(property "Reference" "#PWR0330"
+		(property "Reference" "#PWR0333"
 			(at 44.45 81.28 0)
 			(effects
 				(font
@@ -5885,7 +5885,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0330")
+					(reference "#PWR0333")
 					(unit 1)
 				)
 			)
@@ -6014,7 +6014,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b6975f1d-92d4-547c-9ddb-37bb786caf2a")
-		(property "Reference" "#PWR0331"
+		(property "Reference" "#PWR0334"
 			(at 15.24 78.74 0)
 			(effects
 				(font
@@ -6057,7 +6057,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0331")
+					(reference "#PWR0334")
 					(unit 1)
 				)
 			)
@@ -6104,7 +6104,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5d8a364a-df26-59a4-96e6-3d7c4c88675d")
-		(property "Reference" "#PWR0332"
+		(property "Reference" "#PWR0335"
 			(at 35.56 78.74 0)
 			(effects
 				(font
@@ -6146,7 +6146,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0332")
+					(reference "#PWR0335")
 					(unit 1)
 				)
 			)
@@ -6269,7 +6269,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "aad79117-44f8-55a7-bfaf-0fd040c6558d")
-		(property "Reference" "#PWR0333"
+		(property "Reference" "#PWR0336"
 			(at 133.35 106.68 0)
 			(effects
 				(font
@@ -6312,7 +6312,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0333")
+					(reference "#PWR0336")
 					(unit 1)
 				)
 			)
@@ -6769,7 +6769,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "1756a46f-1cb6-50df-b694-4af9c7732d83")
-		(property "Reference" "#PWR0334"
+		(property "Reference" "#PWR0337"
 			(at 44.45 106.68 0)
 			(effects
 				(font
@@ -6811,7 +6811,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0334")
+					(reference "#PWR0337")
 					(unit 1)
 				)
 			)
@@ -6940,7 +6940,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e94cdbcd-78df-5615-af3b-366723a983f3")
-		(property "Reference" "#PWR0335"
+		(property "Reference" "#PWR0338"
 			(at 15.24 104.14 0)
 			(effects
 				(font
@@ -6983,7 +6983,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0335")
+					(reference "#PWR0338")
 					(unit 1)
 				)
 			)
@@ -7030,7 +7030,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8d65c69a-26de-538f-b2ed-59eb9049ea7d")
-		(property "Reference" "#PWR0336"
+		(property "Reference" "#PWR0339"
 			(at 35.56 104.14 0)
 			(effects
 				(font
@@ -7072,7 +7072,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0336")
+					(reference "#PWR0339")
 					(unit 1)
 				)
 			)
@@ -7195,7 +7195,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "9c666ab2-7075-51aa-b326-450decfa4503")
-		(property "Reference" "#PWR0337"
+		(property "Reference" "#PWR0340"
 			(at 133.35 132.08 0)
 			(effects
 				(font
@@ -7238,7 +7238,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0337")
+					(reference "#PWR0340")
 					(unit 1)
 				)
 			)
@@ -7695,7 +7695,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "32e6b6de-e4da-5de8-8963-2e66005cd973")
-		(property "Reference" "#PWR0338"
+		(property "Reference" "#PWR0341"
 			(at 44.45 132.08 0)
 			(effects
 				(font
@@ -7737,7 +7737,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0338")
+					(reference "#PWR0341")
 					(unit 1)
 				)
 			)
@@ -7866,7 +7866,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b2180012-093a-56a5-a7c0-07c98cb73078")
-		(property "Reference" "#PWR0339"
+		(property "Reference" "#PWR0342"
 			(at 15.24 129.54 0)
 			(effects
 				(font
@@ -7909,7 +7909,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0339")
+					(reference "#PWR0342")
 					(unit 1)
 				)
 			)
@@ -7956,7 +7956,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ea32a8a1-7079-53fc-b62f-890e31b4a429")
-		(property "Reference" "#PWR0340"
+		(property "Reference" "#PWR0343"
 			(at 35.56 129.54 0)
 			(effects
 				(font
@@ -7998,7 +7998,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0340")
+					(reference "#PWR0343")
 					(unit 1)
 				)
 			)
@@ -8124,7 +8124,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ab2b88ff-4d53-5cfa-a46b-08cb645eb537")
-		(property "Reference" "#PWR0341"
+		(property "Reference" "#PWR0344"
 			(at 190.5 173.99 0)
 			(effects
 				(font
@@ -8166,7 +8166,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0341")
+					(reference "#PWR0344")
 					(unit 1)
 				)
 			)
@@ -8310,7 +8310,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "93c392e8-98da-5d9b-ad52-f63658a8e82c")
-		(property "Reference" "#PWR0342"
+		(property "Reference" "#PWR0345"
 			(at 163.83 172.72 0)
 			(effects
 				(font
@@ -8353,7 +8353,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0342")
+					(reference "#PWR0345")
 					(unit 1)
 				)
 			)
@@ -8479,7 +8479,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "aa458f2e-b245-5082-88c3-d6c505043fbe")
-		(property "Reference" "#PWR0343"
+		(property "Reference" "#PWR0346"
 			(at 190.5 199.39 0)
 			(effects
 				(font
@@ -8521,7 +8521,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0343")
+					(reference "#PWR0346")
 					(unit 1)
 				)
 			)
@@ -8665,7 +8665,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "39b9f7dc-3ce3-500a-8959-c675d95929a6")
-		(property "Reference" "#PWR0344"
+		(property "Reference" "#PWR0347"
 			(at 163.83 198.12 0)
 			(effects
 				(font
@@ -8708,7 +8708,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0344")
+					(reference "#PWR0347")
 					(unit 1)
 				)
 			)
@@ -8834,7 +8834,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "42bd0e45-ac02-5a1d-916d-c92ceeba3d8b")
-		(property "Reference" "#PWR0345"
+		(property "Reference" "#PWR0348"
 			(at 190.5 224.79 0)
 			(effects
 				(font
@@ -8876,7 +8876,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0345")
+					(reference "#PWR0348")
 					(unit 1)
 				)
 			)
@@ -9020,7 +9020,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7d420dbd-cd6f-57c1-a607-50fd0fc28fdd")
-		(property "Reference" "#PWR0346"
+		(property "Reference" "#PWR0349"
 			(at 163.83 223.52 0)
 			(effects
 				(font
@@ -9063,7 +9063,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0346")
+					(reference "#PWR0349")
 					(unit 1)
 				)
 			)
@@ -9189,7 +9189,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "11b123c6-9d2b-5abc-8cd8-5181cd697926")
-		(property "Reference" "#PWR0347"
+		(property "Reference" "#PWR0350"
 			(at 190.5 250.19 0)
 			(effects
 				(font
@@ -9231,7 +9231,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0347")
+					(reference "#PWR0350")
 					(unit 1)
 				)
 			)
@@ -9375,7 +9375,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "bffe2051-f3f1-5ce8-9083-7f20a4b2efd8")
-		(property "Reference" "#PWR0348"
+		(property "Reference" "#PWR0351"
 			(at 163.83 248.92 0)
 			(effects
 				(font
@@ -9418,7 +9418,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0348")
+					(reference "#PWR0351")
 					(unit 1)
 				)
 			)
@@ -9520,7 +9520,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "015fc8f0-e07a-5871-a91c-80aa04c1deda")
-		(property "Reference" "#PWR0349"
+		(property "Reference" "#PWR0352"
 			(at 190.5 256.54 0)
 			(effects
 				(font
@@ -9561,7 +9561,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0349")
+					(reference "#PWR0352")
 					(unit 1)
 				)
 			)
@@ -9587,7 +9587,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ca406b05-ddda-5956-acf1-7b710e275ccf")
-		(property "Reference" "#PWR0350"
+		(property "Reference" "#PWR0353"
 			(at 190.5 287.02 0)
 			(effects
 				(font
@@ -9629,7 +9629,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0350")
+					(reference "#PWR0353")
 					(unit 1)
 				)
 			)
@@ -9643,8 +9643,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "cc5f330f-c890-5eef-80b4-f68b4e5f9b15")
-		(property "Reference" "C83"
+		(uuid "8d75a682-3aad-569c-86f5-d41566d9ff41")
+		(property "Reference" "C86"
 			(at 157.48 267.97 90)
 			(effects
 				(font
@@ -9697,15 +9697,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "d25360ba-8f68-5f5e-b6ad-c4f03e00ad9b")
+			(uuid "4e9adef7-4384-5e66-b170-16a7d547be22")
 		)
 		(pin "2"
-			(uuid "75b2951d-e317-5b8d-bf0d-71eee3539f0d")
+			(uuid "17cb5d4e-7e5b-5886-982c-9d32dca93b24")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "C83")
+					(reference "C86")
 					(unit 1)
 				)
 			)
@@ -9720,7 +9720,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "04be6ca9-0aa1-5005-999c-f206dcae9254")
+		(uuid "81f595c8-adaf-557c-a14f-b164e4ed9d27")
 	)
 	(symbol
 		(lib_id "power:+5V")
@@ -9730,8 +9730,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1904099b-4806-5f4b-9fd7-26b35a4c55d1")
-		(property "Reference" "#PWR0351"
+		(uuid "6744d846-dc5a-5bff-95d9-0f368c8f0c1b")
+		(property "Reference" "#PWR0354"
 			(at 151.13 271.78 0)
 			(effects
 				(font
@@ -9768,12 +9768,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "e127050f-2092-5a6e-8291-1074f1879480")
+			(uuid "ae12a1b0-5920-5121-a5a4-73e17fd060c8")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0351")
+					(reference "#PWR0354")
 					(unit 1)
 				)
 			)
@@ -9788,7 +9788,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0f7f8f6f-dc8f-5627-b008-efae67e195a8")
+		(uuid "c2eaf061-772a-50f0-b05e-2820a482366b")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -9798,8 +9798,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "cca477ed-2e71-5647-ac79-52c0382876b0")
-		(property "Reference" "#PWR0352"
+		(uuid "a771cdcd-7818-5194-9ed9-1dbc6f4e0a60")
+		(property "Reference" "#PWR0355"
 			(at 163.83 271.78 0)
 			(effects
 				(font
@@ -9837,12 +9837,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "771c8b27-bd94-518e-b49e-c992ef957abb")
+			(uuid "197b6823-b872-5483-8064-4b8885d62d83")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0352")
+					(reference "#PWR0355")
 					(unit 1)
 				)
 			)
@@ -10083,7 +10083,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "da77a572-9ba0-5abe-94e0-cadef3037827")
-		(property "Reference" "#PWR0353"
+		(property "Reference" "#PWR0356"
 			(at 234.95 175.26 0)
 			(effects
 				(font
@@ -10126,7 +10126,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0353")
+					(reference "#PWR0356")
 					(unit 1)
 				)
 			)
@@ -10277,7 +10277,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "35a41014-6e76-54c0-a134-135abdaafb2b")
-		(property "Reference" "#PWR0354"
+		(property "Reference" "#PWR0357"
 			(at 266.7 175.26 0)
 			(effects
 				(font
@@ -10319,7 +10319,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0354")
+					(reference "#PWR0357")
 					(unit 1)
 				)
 			)
@@ -10442,7 +10442,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "d7d569d2-1d27-5d5a-9690-57743faeeb33")
-		(property "Reference" "#PWR0355"
+		(property "Reference" "#PWR0358"
 			(at 306.07 175.26 0)
 			(effects
 				(font
@@ -10485,7 +10485,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0355")
+					(reference "#PWR0358")
 					(unit 1)
 				)
 			)
@@ -10845,7 +10845,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "68c05308-9675-5321-891c-e9e548b021ff")
-		(property "Reference" "#PWR0356"
+		(property "Reference" "#PWR0359"
 			(at 234.95 200.66 0)
 			(effects
 				(font
@@ -10888,7 +10888,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0356")
+					(reference "#PWR0359")
 					(unit 1)
 				)
 			)
@@ -11039,7 +11039,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ac55b91f-73dd-5168-a97b-ee4d6788ef8d")
-		(property "Reference" "#PWR0357"
+		(property "Reference" "#PWR0360"
 			(at 266.7 200.66 0)
 			(effects
 				(font
@@ -11081,7 +11081,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0357")
+					(reference "#PWR0360")
 					(unit 1)
 				)
 			)
@@ -11204,7 +11204,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "c843e77a-b5a3-5276-ab8a-ae21ea135720")
-		(property "Reference" "#PWR0358"
+		(property "Reference" "#PWR0361"
 			(at 306.07 200.66 0)
 			(effects
 				(font
@@ -11247,7 +11247,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0358")
+					(reference "#PWR0361")
 					(unit 1)
 				)
 			)
@@ -11607,7 +11607,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "5a1b50ac-ef52-5cb1-950d-783aa5e1352d")
-		(property "Reference" "#PWR0359"
+		(property "Reference" "#PWR0362"
 			(at 234.95 226.06 0)
 			(effects
 				(font
@@ -11650,7 +11650,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0359")
+					(reference "#PWR0362")
 					(unit 1)
 				)
 			)
@@ -11801,7 +11801,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e44d550f-86fd-5da0-8f20-0dd2c02bf562")
-		(property "Reference" "#PWR0360"
+		(property "Reference" "#PWR0363"
 			(at 266.7 226.06 0)
 			(effects
 				(font
@@ -11843,7 +11843,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0360")
+					(reference "#PWR0363")
 					(unit 1)
 				)
 			)
@@ -11966,7 +11966,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "dc85f130-b35c-5e84-932f-218f63bffa51")
-		(property "Reference" "#PWR0361"
+		(property "Reference" "#PWR0364"
 			(at 306.07 226.06 0)
 			(effects
 				(font
@@ -12009,7 +12009,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0361")
+					(reference "#PWR0364")
 					(unit 1)
 				)
 			)
@@ -12369,7 +12369,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "b5564052-9e97-5fb1-97ae-d9076d858448")
-		(property "Reference" "#PWR0362"
+		(property "Reference" "#PWR0365"
 			(at 234.95 251.46 0)
 			(effects
 				(font
@@ -12412,7 +12412,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0362")
+					(reference "#PWR0365")
 					(unit 1)
 				)
 			)
@@ -12563,7 +12563,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2285c221-5306-59cc-950e-027ec3d6f707")
-		(property "Reference" "#PWR0363"
+		(property "Reference" "#PWR0366"
 			(at 266.7 251.46 0)
 			(effects
 				(font
@@ -12605,7 +12605,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0363")
+					(reference "#PWR0366")
 					(unit 1)
 				)
 			)
@@ -12728,7 +12728,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "08a0fd49-eb84-5989-9c91-ef74ae06dce4")
-		(property "Reference" "#PWR0364"
+		(property "Reference" "#PWR0367"
 			(at 306.07 251.46 0)
 			(effects
 				(font
@@ -12771,7 +12771,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0364")
+					(reference "#PWR0367")
 					(unit 1)
 				)
 			)
@@ -12993,7 +12993,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "2d792f2f-806c-5873-805a-50f579e194a6")
-		(property "Reference" "#PWR0365"
+		(property "Reference" "#PWR0368"
 			(at 293.37 147.32 0)
 			(effects
 				(font
@@ -13035,7 +13035,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0365")
+					(reference "#PWR0368")
 					(unit 1)
 				)
 			)
@@ -13263,7 +13263,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "be23f1ca-2fa7-556a-86dc-341d9abbdfbc")
-		(property "Reference" "#PWR0366"
+		(property "Reference" "#PWR0369"
 			(at 17.78 170.18 0)
 			(effects
 				(font
@@ -13306,7 +13306,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0366")
+					(reference "#PWR0369")
 					(unit 1)
 				)
 			)
@@ -13332,7 +13332,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "ef982577-8c3e-5579-bf85-da11b526235f")
-		(property "Reference" "#PWR0367"
+		(property "Reference" "#PWR0370"
 			(at 17.78 172.72 0)
 			(effects
 				(font
@@ -13375,7 +13375,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0367")
+					(reference "#PWR0370")
 					(unit 1)
 				)
 			)
@@ -13603,7 +13603,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "985caa22-9600-5466-a66b-f991678cf690")
-		(property "Reference" "#PWR0368"
+		(property "Reference" "#PWR0371"
 			(at 363.22 198.12 0)
 			(effects
 				(font
@@ -13646,7 +13646,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0368")
+					(reference "#PWR0371")
 					(unit 1)
 				)
 			)
@@ -13856,7 +13856,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7e0e4403-a101-5759-8d17-40eb75b83573")
-		(property "Reference" "#PWR0369"
+		(property "Reference" "#PWR0372"
 			(at 363.22 106.68 0)
 			(effects
 				(font
@@ -13898,7 +13898,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0369")
+					(reference "#PWR0372")
 					(unit 1)
 				)
 			)
@@ -14008,7 +14008,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "e73b45d8-0964-5e7e-a4cb-5e86e905efe5")
-		(property "Reference" "#PWR0370"
+		(property "Reference" "#PWR0373"
 			(at 381 106.68 0)
 			(effects
 				(font
@@ -14051,7 +14051,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/4ff3f698-4d12-5af8-8559-5f35a62bd1dc"
-					(reference "#PWR0370")
+					(reference "#PWR0373")
 					(unit 1)
 				)
 			)

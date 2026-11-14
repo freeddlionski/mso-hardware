@@ -50,7 +50,12 @@ PARTS = {
 
     # --- разъёмы ---
     # 0…+70 °C — принято (Павел, 14.11: «пойдет 0 до 70 градусов»)
-    ('RJ45 HR911105A', 'RJ45_Hanrun_HR911105A_Horizontal'): ('C12074', 'HR911105A', 'HanRun; 0…+70 °C'),
+    ('RJ45 Сеть', 'RJ45_Hanrun_HR911105A_Horizontal'): ('C12074', 'HR911105A', 'HanRun, 0…+70 °C (решение 8)'),
+    ('RJ45 Vendotek', 'RJ45_Hanrun_HR911105A_Horizontal'): ('C12074', 'HR911105A', 'HanRun, 0…+70 °C (решение 8)'),
+    ('RTL8305NB-VB-CG', 'QFN-48-1EP_6x6mm_P0.4mm_EP4.4x4.4mm'): ('C3010343', 'RTL8305NB-VB-CG', 'Realtek, 0…+70 °C'),
+    ('H1102N', 'Transformer_Ethernet_CNDtek_H1102N'): ('C42418465', 'H1102N', 'CND-tek; наличие проверить при заказе'),
+    ('220u 10V', 'CP_Elec_6.3x5.4'): ('C2833309', 'RVT220UF10V67RV0037', 'KNSCHA 105 °C'),
+    ('2.49k 1%', 'R_0603_1608Metric'): ('C407609', '0603WAD2491T5E', 'UNI-ROYAL ±0,5 %; наличие проверить'),
 
     # --- конденсаторы (напряжение — с запасом к цепи; X5R/X7R) ---
     ('100n', 'C_0603_1608Metric'): ('C14663', 'CC0603KRX7R9BB104', 'YAGEO 50 В X7R, осн.'),
