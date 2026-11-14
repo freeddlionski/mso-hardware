@@ -55,7 +55,7 @@ def main(official):
     libdir = os.path.join(OUT, 'lib')
     os.makedirs(libdir, exist_ok=True)
     custom_syms.write(os.path.join(libdir, 'mso74.kicad_sym'))
-    own_fps = custom_fps.write(libdir)
+    own_fps = custom_fps.write(libdir, os.path.join(os.path.dirname(official.rstrip('/')), 'footprints'))
     os.makedirs('/tmp/mso74lib', exist_ok=True)
     # mso74:X ищется как файл mso74.kicad_sym
     proj = kisch.Project([official, libdir], POWER_NETS)

@@ -6,7 +6,7 @@
 """
 from sheet_power import C, R, FP, tvs, two
 
-TERM = {n: 'Connector_Phoenix_MC:PhoenixContact_MC_1,5_%d-G-3.81_1x%02d_P3.81mm_Horizontal' % (n, n) for n in (2, 3, 4, 5, 6)}
+TERM = {n: 'mso74:KANGNEX_WJ15EDGRC_1x%02d_P3.81mm_Drill1.4' % n for n in (2, 3, 4, 5, 6)}
 PTC50 = dict(fp='Fuse:Fuse_1206_3216Metric')
 
 
