@@ -152,6 +152,7 @@ class Project:
         self.lib = Lib(lib_dirs)
         self.sheets = []
         self.power = set(power_nets)
+        self.pending = set()    # цепи, вторая сторона которых на листе, который ещё не нарисован
         self._refs = {}
         self.root_uuid = _uid('root')
 
@@ -183,7 +184,7 @@ class Project:
                 for num, net in part.nets.items():
                     if net:
                         cnt.setdefault(net, []).append('%s.%s' % (part.ref, num))
-        lonely = {n: v for n, v in cnt.items() if len(v) < 2}
+        lonely = {n: v for n, v in cnt.items() if len(v) < 2 and n not in self.pending}
         if lonely:
             raise ValueError('цепи с одним выводом: %s' % lonely)
         return cnt

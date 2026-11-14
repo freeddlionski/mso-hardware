@@ -25,9 +25,14 @@ jobs:
           mkdir -p snap/symbols
           for L in power Device RF_Module Interface_Ethernet Interface_UART Interface_USB Timer_RTC 74xx \
                    Regulator_Switching Regulator_Linear Isolator Connector Connector_Generic Power_Protection \
-                   Transistor_FET Transistor_BJT Diode Switch Mechanical; do
+                   Transistor_FET Transistor_BJT Diode Switch Mechanical 74xGxx Interface Battery; do
             cp "$SYM/$L.kicad_sym" snap/symbols/ || echo "нет библиотеки $L"
           done
+          mkdir -p footprints
+          for P in Connector_RJ Connector_USB RF_Module Connector_Molex Connector_IDC Battery Fuse; do
+            cp -r "$FP/$P.pretty" footprints/ || echo "нет $P"
+          done
+          mv footprints snap/
           for d in $FP/*.pretty; do
             n=$(basename "$d" .pretty)
             ls "$d" | sed "s/\.kicad_mod$//; s/^/$n:/"

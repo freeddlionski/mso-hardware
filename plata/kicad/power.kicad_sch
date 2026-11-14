@@ -4990,15 +4990,26 @@
 		)
 		(uuid "6c83606f-c069-550b-bbc9-7fed6c03a019")
 	)
-	(label "MDB_24V"
+	(global_label "MDB_24V"
+		(shape bidirectional)
 		(at 67.31 121.92 0)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify left)
 		)
 		(uuid "510a18f3-8471-5205-8970-696ee3ca45fb")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 67.31 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -5078,15 +5089,26 @@
 		)
 		(uuid "cd51fc18-1aee-5751-82e0-771aa6b47edd")
 	)
-	(label "MDB_24V"
+	(global_label "MDB_24V"
+		(shape bidirectional)
 		(at 125.73 121.92 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right bottom)
+			(justify right)
 		)
 		(uuid "9eed97b4-5565-5758-ac7e-c58028654105")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 125.73 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 	)
 	(wire
 		(pts
