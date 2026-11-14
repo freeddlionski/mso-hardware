@@ -52,9 +52,9 @@ def build(proj):
         q = sh.part('Transistor_FET:DMN6140L', 'Q', 'DMN6140L', (264.16, yy + 2.54), mpn='DMN6140L-7')
         sh.connect(q, {'G': 'EXT_GG%d' % (i + 1), 'S': 'GND', 'D': 'EXT_D%d' % (i + 1)})
         tvs(sh, 'SMAJ33A', 299.72, yy + 10.16, 'EXT_D%d' % (i + 1))     # аудит 2, п. 4: катод к стоку (было наоборот)
-        two(sh, 'Device:Polyfuse', 'F', '0.75A удерж.', 299.72, yy, 'EXT_D%d' % (i + 1), OUT[i], fp='Fuse:Fuse_1206_3216Metric')
+        two(sh, 'Device:Polyfuse', 'F', '0.75A удерж.', 299.72, yy, 'EXT_D%d' % (i + 1), OUT[i], fp='Fuse:Fuse_2920_7451Metric')
 
-    two(sh, 'Device:Polyfuse', 'F', '1A удерж.', 299.72, 147.32, '+24V_P', 'EXT_24V', fp='Fuse:Fuse_1812_4532Metric')
+    two(sh, 'Device:Polyfuse', 'F', '1.1A удерж.', 299.72, 147.32, '+24V_P', 'EXT_24V', fp='Fuse:Fuse_2920_7451Metric')
 
     # клеммы
     j = sh.part('Connector_Generic:Conn_01x06', 'J', 'Входы: ВХ1–ВХ4 / GND / GND', (25.4, 165.1), fp=TERM[6],

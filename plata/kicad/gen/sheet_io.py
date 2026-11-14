@@ -80,7 +80,7 @@ def build(proj):
             (20.32, y - 17.78), 1.5)
     pulse_input(sh, x, y, 'COIN_IN', 'COIN_PULSE', 'CI')
     pulse_input(sh, x, y + 30.48, 'BILL_IN', 'BILL_PULSE', 'BI')
-    two(sh, 'Device:Polyfuse', 'F', '1A удерж.', x + 129.54, y - 12.7, '+12V', '+12V_F', fp='Fuse:Fuse_1812_4532Metric')
+    two(sh, 'Device:Polyfuse', 'F', '1.1A удерж.', x + 129.54, y - 12.7, '+12V', '+12V_F', fp='Fuse:Fuse_2920_7451Metric')
     # аудит 2, п. 6: +24 В на клемме +12 В не попадёт в шину 12 В и выход LMR51430 (падение ~0,4 В)
     d = sh.part('Device:D_Schottky', 'D', 'SS34', (x + 160.02, y - 12.7), fp='Diode_SMD:D_SMA', mpn='SS34')
     sh.connect(d, {'A': '+12V_F', 'K': '+12V_T'})
