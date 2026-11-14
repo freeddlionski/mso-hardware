@@ -25,14 +25,14 @@ jobs:
           mkdir -p snap/symbols
           for L in power Device RF_Module Interface_Ethernet Interface_UART Interface_USB Timer_RTC 74xx \
                    Regulator_Switching Regulator_Linear Isolator Connector Connector_Generic Power_Protection \
-                   Transistor_FET Transistor_BJT Diode Switch Mechanical 74xGxx Interface Battery Interface_Expansion Power_Management; do
+                   Transistor_FET Transistor_BJT Diode Switch Mechanical 74xGxx Interface Battery Interface_Expansion Power_Management Transformer; do
             cp "$SYM/$L.kicad_sym" snap/symbols/ || echo "нет библиотеки $L"
           done
           mkdir -p footprints
           # все библиотеки посадочных мест, которые использует схема (для сверки с чертежами производителей)
           for P in Battery Button_Switch_SMD Capacitor_SMD Connector_IDC Connector_Molex Connector_Phoenix_MC \
                    Connector_Phoenix_MSTB Connector_PinHeader_2.54mm Connector_RJ Connector_USB Crystal Diode_SMD Fuse \
-                   Inductor_SMD LED_SMD Package_DIP Package_QFP Package_SO Package_SON Package_TO_SOT_SMD RF_Module Resistor_SMD; do
+                   Inductor_SMD LED_SMD Package_DIP Package_QFP Package_SO Package_SON Package_DFN_QFN Transformer_SMD Package_TO_SOT_SMD RF_Module Resistor_SMD; do
             cp -r "$FP/$P.pretty" footprints/ || echo "нет $P"
           done
           mv footprints snap/
