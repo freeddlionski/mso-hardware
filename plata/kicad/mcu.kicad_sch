@@ -6699,8 +6699,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "b8650d1e-742f-5aa9-8c9d-db27811a4c8e")
-		(property "Reference" "Q2"
+		(uuid "e476d0a4-67eb-52e8-bc9c-0eba61c72036")
+		(property "Reference" "Q3"
 			(at 83.82 170.18 0)
 			(effects
 				(font
@@ -6757,18 +6757,18 @@
 			)
 		)
 		(pin "1"
-			(uuid "9ce13b10-acee-5ec1-a812-5745071efb06")
+			(uuid "077af1ff-fb47-5398-a97e-c47ac46a8a3d")
 		)
 		(pin "2"
-			(uuid "5b2243b4-5267-525a-a2f9-fb5cfe6bb14f")
+			(uuid "38e6dfeb-ef2b-52ae-abdf-d349a570c779")
 		)
 		(pin "3"
-			(uuid "da4d7205-4f9c-5756-95c6-5f17e9f3fd7d")
+			(uuid "558a1884-2b16-5aa9-947d-4209c768198d")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/e34276d9-a34a-5cb7-aa5c-8ad8315528ff"
-					(reference "Q2")
+					(reference "Q3")
 					(unit 1)
 				)
 			)
@@ -6783,7 +6783,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "e6780264-2e14-518b-87bf-8abd81f530f3")
+		(uuid "20fe7441-fc14-589e-a869-5b5655ab1b2e")
 	)
 	(label "Q_AR1_B"
 		(at 71.12 172.72 180)
@@ -6793,7 +6793,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "99e8df62-c829-5f2d-adc0-c31e4ef41ac3")
+		(uuid "7c4b54f1-96da-5781-b4f4-9bf77ab5a349")
 	)
 	(wire
 		(pts
@@ -6804,7 +6804,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "0cb26910-992e-50cc-8f57-2a186da80cc0")
+		(uuid "b7467930-82c4-54a9-8573-ee8597f7fdc7")
 	)
 	(global_label "ESP_EN"
 		(shape bidirectional)
@@ -6816,7 +6816,7 @@
 			)
 			(justify left)
 		)
-		(uuid "1070788f-a17d-5926-8553-b60674ef6290")
+		(uuid "4601eff0-3065-577c-bd79-9c71dfa49fe3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 81.28 165.1 0)
 			(effects
@@ -6836,7 +6836,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "aa0ebe51-8e77-588e-b38a-a8546f5be72a")
+		(uuid "fcb4ef37-7063-55f8-8bc7-1adc495e5a65")
 	)
 	(label "USB_RTS"
 		(at 81.28 180.34 270)
@@ -6846,7 +6846,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "3994799b-31c6-53d9-a091-4e64402480c3")
+		(uuid "36a045f1-fc14-5115-9bc4-c2d444c46be3")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -6965,8 +6965,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e476d0a4-67eb-52e8-bc9c-0eba61c72036")
-		(property "Reference" "Q3"
+		(uuid "371ba966-2d71-5de3-9c9e-aebffebe180a")
+		(property "Reference" "Q4"
 			(at 83.82 190.5 0)
 			(effects
 				(font
@@ -7023,18 +7023,18 @@
 			)
 		)
 		(pin "1"
-			(uuid "077af1ff-fb47-5398-a97e-c47ac46a8a3d")
+			(uuid "7babb03f-057b-580a-8f50-6afc0ba9c84f")
 		)
 		(pin "2"
-			(uuid "38e6dfeb-ef2b-52ae-abdf-d349a570c779")
+			(uuid "aafa7eb7-d4c6-5fb5-9182-a3e91179814e")
 		)
 		(pin "3"
-			(uuid "558a1884-2b16-5aa9-947d-4209c768198d")
+			(uuid "aad996e2-af6c-52e3-937d-b77dc69aa41d")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/e34276d9-a34a-5cb7-aa5c-8ad8315528ff"
-					(reference "Q3")
+					(reference "Q4")
 					(unit 1)
 				)
 			)
@@ -7049,7 +7049,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "20fe7441-fc14-589e-a869-5b5655ab1b2e")
+		(uuid "521ccca9-2c91-5566-bde6-f758dfd82377")
 	)
 	(label "Q_AR2_B"
 		(at 71.12 193.04 180)
@@ -7059,7 +7059,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "7c4b54f1-96da-5781-b4f4-9bf77ab5a349")
+		(uuid "1361fe0a-8128-568b-b29e-b746efebfbce")
 	)
 	(wire
 		(pts
@@ -7070,7 +7070,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "b7467930-82c4-54a9-8573-ee8597f7fdc7")
+		(uuid "a0ab034b-c575-5d5a-839d-d9955287f921")
 	)
 	(label "ESP_IO0"
 		(at 81.28 185.42 90)
@@ -7080,7 +7080,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "4601eff0-3065-577c-bd79-9c71dfa49fe3")
+		(uuid "260cd915-3cde-57e6-ac16-ffa53f0943b1")
 	)
 	(wire
 		(pts
@@ -7091,7 +7091,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "fcb4ef37-7063-55f8-8bc7-1adc495e5a65")
+		(uuid "a7de2d17-4447-516b-bb8e-a3a3935fbcb1")
 	)
 	(label "USB_DTR"
 		(at 81.28 200.66 270)
@@ -7101,7 +7101,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "36a045f1-fc14-5115-9bc4-c2d444c46be3")
+		(uuid "a2354ee3-2e6f-5651-9513-0639e67c3d8c")
 	)
 	(symbol
 		(lib_id "Interface_USB:CH340K")

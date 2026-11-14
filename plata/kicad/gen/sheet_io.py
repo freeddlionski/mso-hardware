@@ -4,16 +4,23 @@
 → резистор → микросхема/GPIO. При +24 В TVS открывается, ток через предохранитель резко растёт, он отключается.
 Распиновка MDB и токи — mso-firmware/docs/MDB.md; ряды Mini-Fit: 1-2-3 и 4-5-6 (площадки посадочного места KiCad).
 """
-from sheet_power import C, R, FP, two
+from sheet_power import C, R, FP, tvs, two
 
 TERM = {n: 'Connector_Phoenix_MC:PhoenixContact_MC_1,5_%d-G-3.81_1x%02d_P3.81mm_Horizontal' % (n, n) for n in (2, 3, 4, 5, 6)}
 PTC50 = dict(fp='Fuse:Fuse_1206_3216Metric')
 
 
-def guard(sh, x, y, outer, inner, tvs='SMAJ5.0A', ptc='50mA удерж.'):
-    """клемма(outer) → PTC → inner; TVS inner → GND."""
-    two(sh, 'Device:Polyfuse', 'F', ptc, x, y, outer, inner, **PTC50)
-    two(sh, 'Device:D_TVS', 'D', tvs, x, y + 10.16, inner, 'GND', fp='Diode_SMD:D_SMA', mpn=tvs)
+def blocked_input(sh, x, y, term, gpio, tag, pullup='10k'):
+    """Вход «на минус» (сухой контакт, открытый коллектор), переживает +24 В без тока в плату (аудит 2, пп. 5, 10 и доп.):
+    клемма — TVS 28 В на землю (только импульсы) — PTC 50 мА — диод Шоттки BAT46W (катод к клемме) — 330 Ом — вход.
+    +24 В на клемме запирает диод: ток не идёт ни в шину 3,3 В, ни в выключенную плату. «0»: 0,33 мА × 330 Ом + диод ≈ 0,5 В."""
+    tvs(sh, 'SMAJ28A', x + 76.2, y + 10.16, term)
+    two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', x + 76.2, y, term, tag + '_P', **PTC50)
+    d = sh.part('Device:D_Schottky', 'D', 'BAT46W', (x + 38.1, y), fp='Diode_SMD:D_SOD-123', mpn='BAT46W')
+    sh.connect(d, {'K': tag + '_P', 'A': tag + '_N'})
+    R(sh, '330', x, y, tag + '_N', gpio)
+    R(sh, pullup, x, y + 10.16, '+3V3', gpio)
+    clamp(sh, x - 25.4, y + 7.62, gpio)
 
 
 def clamp(sh, x, y, net):
@@ -27,9 +34,12 @@ def pulse_input(sh, x, y, term_net, gpio_net, tag):
     a, k_in, c = tag + '_LA', term_net, tag + '_C'
     R(sh, '1.5k', x, y, '+12V', a)            # ~7 мА: запас по CTR оптрона при просадке 12 В
     o = sh.part('Isolator:PC817', 'U', 'EL357N(C)', (x + 38.1, y + 2.54), fp='Package_SO:SOP-4_3.8x4.1mm_P2.54mm', mpn='EL357N(C)-G')
-    sh.connect(o, {'1': a, '2': k_in, '4': c, '3': 'GND'})
+    sh.connect(o, {'1': a, '2': tag + '_K', '4': c, '3': 'GND'})
+    # аудит 2, п. 5: диод последовательно (катод к клемме) — +24 В на клемме его запирает, тока в +12 В нет
     d = sh.part('Diode:1N4148W', 'D', '1N4148W', (x, y + 12.7), mpn='1N4148W')
-    sh.connect(d, {'A': k_in, 'K': a})          # обратное напряжение на светодиоде оптрона ≤ 0,7 В
+    sh.connect(d, {'A': tag + '_K', 'K': k_in})
+    tvs(sh, 'SMAJ28A', x, y + 22.86, k_in)
+    # ток светодиода (12 − 1,2 − 0,7) / 1,5 кОм ≈ 6,7 мА
     R(sh, '10k', x + 76.2, y - 7.62, '+3V3', c)
     R(sh, '1k', x + 76.2, y + 2.54, c, gpio_net)
     C(sh, '10n', x + 76.2, y + 12.7, gpio_net, 'GND')
@@ -47,13 +57,15 @@ def build(proj):
     sh.connect(b, {'1': 'GND', '2': 'MDB_TX', '4': 'MDB_TX_B', '5': '+5V', '3': 'GND'})
     C(sh, '100n', x - 10.16, y + 20.32, '+5V', 'GND')
     # 150 Ом (как в ТЗ): при +24 В на клемме TVS держит ~8 В, ток в выход буфера ≤ ~17 мА; рабочий ток ~10 мА (CashCode: 220 Ом внутри)
-    R(sh, '150', x + 50.8, y, 'MDB_TX_B', 'MDB_TX_P', 'R0805')
-    guard(sh, x + 88.9, y, 'MDB_TX_L', 'MDB_TX_P')
-    # приём
-    guard(sh, x + 88.9, y + 30.48, 'MDB_RX_L', 'MDB_RX_P')
-    R(sh, '1k', x + 50.8, y + 30.48, 'MDB_RX_P', 'MDB_RX')
-    R(sh, '4.7k', x + 50.8, y + 40.64, '+3V3', 'MDB_RX')
-    clamp(sh, x + 12.7, y + 45.72, 'MDB_RX')
+    # аудит 2, п. 10: диод Шоттки после буфера — +24 В на линии его запирает, в выход 74AHCT1G125 ток не идёт.
+    # Рабочий ток (5 − 0,4 − 1,2) / (150 + 220 внутри CashCode) ≈ 9 мА
+    d = sh.part('Device:D_Schottky', 'D', 'BAT46W', (x + 38.1, y), fp='Diode_SMD:D_SOD-123', mpn='BAT46W')
+    sh.connect(d, {'A': 'MDB_TX_B', 'K': 'MDB_TX_D'})
+    R(sh, '150', x + 63.5, y, 'MDB_TX_D', 'MDB_TX_P', 'R0805')
+    two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', x + 101.6, y, 'MDB_TX_P', 'MDB_TX_L', **PTC50)
+    tvs(sh, 'SMAJ28A', x + 101.6, y + 10.16, 'MDB_TX_L')
+    # приём: купюрник замыкает линию на общий; подтяжка 10 кОм (при 4,7 кОм падение на диоде и резисторе поднимает «0»)
+    blocked_input(sh, x + 25.4, y + 30.48, 'MDB_RX_L', 'MDB_RX', 'MDBRX')
     j = sh.part('Connector_Generic:Conn_02x03_Odd_Even', 'J', 'MDB Mini-Fit Jr 2×3', (x + 142.24, y + 15.24),
                 fp='Connector_Molex:Molex_Mini-Fit_Jr_5566-06A_2x03_P4.20mm_Vertical', mpn='Molex 5566-06A',
                 fields={'Шелкография': 'MDB; 1 +24V, 2 GND, 4 RX, 5 TX, 6 COM'})
@@ -65,7 +77,10 @@ def build(proj):
             (20.32, y - 17.78), 1.5)
     pulse_input(sh, x, y, 'COIN_IN', 'COIN_PULSE', 'CI')
     pulse_input(sh, x, y + 30.48, 'BILL_IN', 'BILL_PULSE', 'BI')
-    two(sh, 'Device:Polyfuse', 'F', '1A удерж.', x + 129.54, y - 12.7, '+12V', '+12V_T', fp='Fuse:Fuse_1812_4532Metric')
+    two(sh, 'Device:Polyfuse', 'F', '1A удерж.', x + 129.54, y - 12.7, '+12V', '+12V_F', fp='Fuse:Fuse_1812_4532Metric')
+    # аудит 2, п. 6: +24 В на клемме +12 В не попадёт в шину 12 В и выход LMR51430 (падение ~0,4 В)
+    d = sh.part('Device:D_Schottky', 'D', 'SS34', (x + 160.02, y - 12.7), fp='Diode_SMD:D_SMA', mpn='SS34')
+    sh.connect(d, {'A': '+12V_F', 'K': '+12V_T'})
     sh.text('+12V_T — питание монетника и купюрника на клеммы', (x + 111.76, y - 22.86))
 
     # блокировка монетника: ключ на минус, сток выдерживает 60 В
@@ -80,10 +95,7 @@ def build(proj):
     # сервисная кнопка
     x3, y3 = 40.64, 246.38
     sh.text('Сервисная кнопка (GPIO 20): кнопка на плате и клемма выносной кнопки.', (20.32, y3 - 12.7), 1.5)
-    guard(sh, x3 + 88.9, y3, 'SVC_T', 'SVC_P')
-    R(sh, '1k', x3 + 50.8, y3, 'SVC_P', 'SERVICE_BTN')
-    R(sh, '10k', x3 + 50.8, y3 + 10.16, '+3V3', 'SERVICE_BTN')
-    clamp(sh, x3 + 12.7, y3 + 7.62, 'SERVICE_BTN')
+    blocked_input(sh, x3 + 25.4, y3, 'SVC_T', 'SERVICE_BTN', 'SVC')
     two(sh, 'Switch:SW_Push', 'SW', 'СЕРВИС', x3 + 12.7, y3 + 22.86, 'SERVICE_BTN', 'GND', fp='Button_Switch_SMD:SW_SPST_TL3342')
 
     # клеммы

@@ -2203,7 +2203,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Transistor_FET:CSD18563Q5A"
+		(symbol "Transistor_FET:2N7002"
 			(pin_names
 				(offset 0)
 				(hide yes)
@@ -2211,7 +2211,324 @@
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
-			(symbol "CSD18563Q5A_0_1"
+			(symbol "2N7002_0_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905)
+						(xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0)
+						(xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286)
+						(xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508)
+						(xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27)
+						(xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778)
+						(xy 3.302 -1.778)
+						(xy 3.302 1.778)
+						(xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0)
+						(xy 2.032 0.381)
+						(xy 2.032 -0.381)
+						(xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54)
+						(xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54)
+						(xy 2.54 0)
+						(xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.921 0.381)
+						(xy 3.683 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381)
+						(xy 2.921 -0.254)
+						(xy 3.683 -0.254)
+						(xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "2N7002_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "D"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "S"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "2N7002"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF"
+				(at 5.08 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "N-Channel Switching MOSFET"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+		)
+		(symbol "Transistor_FET:CSD19534Q5A"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(symbol "CSD19534Q5A_0_1"
 				(polyline
 					(pts
 						(xy 0.254 1.905)
@@ -2398,7 +2715,7 @@
 					)
 				)
 			)
-			(symbol "CSD18563Q5A_1_1"
+			(symbol "CSD19534Q5A_1_1"
 				(pin input line
 					(at -5.08 0 0)
 					(length 5.08)
@@ -2502,7 +2819,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "CSD18563Q5A"
+			(property "Value" "CSD19534Q5A"
 				(at 5.08 0 0)
 				(effects
 					(font
@@ -2522,7 +2839,7 @@
 					(hide yes)
 				)
 			)
-			(property "Datasheet" "http://www.ti.com/lit/gpn/csd18563q5a"
+			(property "Datasheet" "http://www.ti.com/lit/gpn/csd19534q5a"
 				(at 5.08 -3.81 0)
 				(effects
 					(font
@@ -2532,7 +2849,7 @@
 					(hide yes)
 				)
 			)
-			(property "Description" "100A Id, 60V Vds, NexFET N-Channel Power MOSFET, 6.8mOhm Ron, 15nC Qg(typ), SON8 5x6mm"
+			(property "Description" "50A Id, 100V Vds, NexFET N-Channel Power MOSFET, 15.1mOhm Ron, 17nC Qg(typ), SON8 5x6mm"
 				(at 0 0 0)
 				(effects
 					(font
@@ -3528,7 +3845,7 @@
 				)
 			)
 		)
-		(property "Value" "SMCJ36CA"
+		(property "Value" "SMCJ33CA"
 			(at 60.96 60.96 0)
 			(effects
 				(font
@@ -3563,7 +3880,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "SMCJ36CA"
+		(property "MPN" "SMCJ33CA"
 			(at 60.96 58.42 0)
 			(effects
 				(font
@@ -3835,7 +4152,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Transistor_FET:CSD18563Q5A")
+		(lib_id "Transistor_FET:CSD19534Q5A")
 		(at 60.96 96.52 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -3852,7 +4169,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "CSD18563Q5A"
+		(property "Value" "CSD19534Q5A"
 			(at 66.04 96.52 0)
 			(effects
 				(font
@@ -3871,7 +4188,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://www.ti.com/lit/gpn/csd18563q5a"
+		(property "Datasheet" "http://www.ti.com/lit/gpn/csd19534q5a"
 			(at 66.04 100.33 0)
 			(effects
 				(font
@@ -3890,7 +4207,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CSD18563Q5A"
+		(property "MPN" "CSD19534Q5A"
 			(at 60.96 96.52 0)
 			(effects
 				(font
@@ -4245,9 +4562,26 @@
 		)
 		(uuid "d557ca8d-dc31-5bf6-a794-244068038eec")
 	)
-	(no_connect
-		(at 124.46 73.66)
-		(uuid "5d55bb95-eeef-55a3-ad07-79054811720e")
+	(wire
+		(pts
+			(xy 124.46 73.66)
+			(xy 121.92 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1ca41dbe-5df2-5c39-97fb-c7feb30338e4")
+	)
+	(label "EF_DRV"
+		(at 121.92 73.66 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0861b433-25aa-54c8-ae33-c1a99e0133bb")
 	)
 	(wire
 		(pts
@@ -4816,6 +5150,152 @@
 			(justify left bottom)
 		)
 		(uuid "9a7a2c42-2ac4-5bf2-9250-ad83b8ae722c")
+	)
+	(symbol
+		(lib_id "Transistor_FET:2N7002")
+		(at 93.98 111.76 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "be2c5202-1a17-5f55-acac-25e6e528744d")
+		(property "Reference" "Q2"
+			(at 99.06 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "2N7002"
+			(at 99.06 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 99.06 114.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pub/Collateral/NDS7002A-D.PDF"
+			(at 99.06 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 93.98 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2N7002"
+			(at 93.98 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "52883610-bd83-5d5a-913f-11f9b10951e4")
+		)
+		(pin "2"
+			(uuid "876e0d52-4297-51c1-b6b1-d677b45a5256")
+		)
+		(pin "3"
+			(uuid "43ed099c-b6c0-58f0-806c-0fff28d2ab33")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/775054db-c86e-5b0e-b0ac-67333e238fd2"
+					(reference "Q2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 88.9 111.76)
+			(xy 86.36 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab703917-454e-53f7-9663-f41718526c67")
+	)
+	(label "EF_DRV"
+		(at 86.36 111.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5d84a5c6-2b08-5278-ad2c-cdb5af50e982")
+	)
+	(wire
+		(pts
+			(xy 96.52 106.68)
+			(xy 96.52 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca92ec01-259c-59f9-8c9e-daca4a2794fc")
+	)
+	(label "EF_BGATE"
+		(at 96.52 104.14 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "21cb051a-26a9-546c-b6fc-1b65526444f8")
+	)
+	(wire
+		(pts
+			(xy 96.52 116.84)
+			(xy 96.52 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "98825b46-08c1-5235-8999-e59af8ad9c91")
+	)
+	(label "VIN_F"
+		(at 96.52 119.38 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "49d180f6-5a6d-5c5f-85f6-1c767f319d55")
 	)
 	(symbol
 		(lib_id "Device:R")
@@ -20523,7 +21003,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical"
 			(at 429.26 66.04 0)
 			(effects
 				(font
@@ -20550,7 +21030,16 @@
 				(hide yes)
 			)
 		)
-		(property "Примечание" "разъёмный 5,08, другой цвет, чем +24 В"
+		(property "MPN" "Molex 5566-02A"
+			(at 429.26 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Примечание" "Mini-Fit Jr 2 конт. — не стыкуется с клеммами 24 В"
 			(at 429.26 66.04 0)
 			(effects
 				(font
@@ -24925,7 +25414,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Phoenix_MSTB:PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal"
+		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical"
 			(at 429.26 193.04 0)
 			(effects
 				(font
@@ -24952,7 +25441,16 @@
 				(hide yes)
 			)
 		)
-		(property "Примечание" "разъёмный 5,08, другой цвет, чем +24 В"
+		(property "MPN" "Molex 5566-02A"
+			(at 429.26 193.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Примечание" "Mini-Fit Jr 2 конт. — не стыкуется с клеммами 24 В"
 			(at 429.26 193.04 0)
 			(effects
 				(font

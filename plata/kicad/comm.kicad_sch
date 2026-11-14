@@ -820,159 +820,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:Polyfuse"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "F"
-				(at -2.54 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Polyfuse"
-				(at 2.54 0 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 1.27 -5.08 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Resettable fuse, polymeric positive temperature coefficient"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "resettable fuse PTC PPTC polyfuse polyswitch"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "*polyfuse* *PTC*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Polyfuse_0_1"
-				(polyline
-					(pts
-						(xy -1.524 2.54)
-						(xy -1.524 1.524)
-						(xy 1.524 -1.524)
-						(xy 1.524 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -0.762 2.54)
-					(end 0.762 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0 2.54)
-						(xy 0 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Polyfuse_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -3987,15 +3834,15 @@
 		(uuid "187f219e-a999-533e-a041-a8994d450b36")
 	)
 	(symbol
-		(lib_id "Device:Polyfuse")
+		(lib_id "Device:C")
 		(at 215.9 101.6 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1452ebcd-16a7-59c4-b9d8-af1aae0ecf1a")
-		(property "Reference" "F6"
+		(uuid "6f3d71b3-503a-5fee-93f5-95ec29685be1")
+		(property "Reference" "C68"
 			(at 215.9 97.79 90)
 			(effects
 				(font
@@ -4003,7 +3850,7 @@
 				)
 			)
 		)
-		(property "Value" "50mA удерж."
+		(property "Value" "100n 100V"
 			(at 215.9 105.41 90)
 			(effects
 				(font
@@ -4011,13 +3858,12 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
-			(at 220.98 100.33 0)
+		(property "Footprint" "Capacitor_SMD:C_0805_2012Metric"
+			(at 219.71 100.33 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
 				(hide yes)
 			)
 		)
@@ -4040,15 +3886,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "67200c0f-52e2-5005-8516-a5e5505751ad")
+			(uuid "189fb686-983c-5650-87b0-740a4ad306cb")
 		)
 		(pin "2"
-			(uuid "8fc66568-94e8-5277-af56-fc1c55962696")
+			(uuid "fe6ba93a-a412-5c2b-bc06-74028cb8b4ae")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "F6")
+					(reference "C68")
 					(unit 1)
 				)
 			)
@@ -4063,7 +3909,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "53669fc0-2362-5529-87c4-c4f5df5f8396")
+		(uuid "8a0bf5f8-6ee1-5406-94ae-d2af89454468")
 	)
 	(label "R485_T1"
 		(at 209.55 101.6 180)
@@ -4073,7 +3919,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "3c796f13-e7a0-58bd-80eb-fa7e3703b265")
+		(uuid "4eaa10bd-2bc1-5cc2-b245-2ea150a8c815")
 	)
 	(wire
 		(pts
@@ -4084,7 +3930,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "35cd267c-6ca5-5bb1-a649-7e1c617efc10")
+		(uuid "59795207-d46f-57db-babf-479bb403b5ea")
 	)
 	(label "R485_T2"
 		(at 222.25 101.6 0)
@@ -4094,7 +3940,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "7e8002cc-154e-5251-bd92-063bf9ce7e37")
+		(uuid "58f93300-cd08-5b5b-814b-b95abdab59f3")
 	)
 	(symbol
 		(lib_id "Connector_Generic:Conn_01x02")
@@ -5525,8 +5371,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "6f3d71b3-503a-5fee-93f5-95ec29685be1")
-		(property "Reference" "C68"
+		(uuid "aaa83443-9d9c-5995-b46f-d3d710f7d83b")
+		(property "Reference" "C69"
 			(at 55.88 171.45 90)
 			(effects
 				(font
@@ -5570,15 +5416,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "189fb686-983c-5650-87b0-740a4ad306cb")
+			(uuid "b06af152-c192-5adb-bc18-22e9aeeba53a")
 		)
 		(pin "2"
-			(uuid "fe6ba93a-a412-5c2b-bc06-74028cb8b4ae")
+			(uuid "bef00ff9-cb55-5974-afde-84a31411a1cf")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "C68")
+					(reference "C69")
 					(unit 1)
 				)
 			)
@@ -5593,7 +5439,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8a0bf5f8-6ee1-5406-94ae-d2af89454468")
+		(uuid "8997bdff-b81d-51c7-853d-2e3e85ffd151")
 	)
 	(label "VTK_C1P"
 		(at 49.53 175.26 180)
@@ -5603,7 +5449,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "4eaa10bd-2bc1-5cc2-b245-2ea150a8c815")
+		(uuid "b64023c6-f5de-5f9a-b839-98ef7911db13")
 	)
 	(wire
 		(pts
@@ -5614,7 +5460,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "59795207-d46f-57db-babf-479bb403b5ea")
+		(uuid "c23e3b80-5e9a-550e-85d0-f28c05fc1616")
 	)
 	(label "VTK_C1N"
 		(at 62.23 175.26 0)
@@ -5624,7 +5470,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "58f93300-cd08-5b5b-814b-b95abdab59f3")
+		(uuid "12741382-5cea-54ea-8df9-86eef380fe87")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -5634,8 +5480,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "aaa83443-9d9c-5995-b46f-d3d710f7d83b")
-		(property "Reference" "C69"
+		(uuid "acde0354-a720-5f77-ae86-c3d9ad1ca2b4")
+		(property "Reference" "C70"
 			(at 55.88 181.61 90)
 			(effects
 				(font
@@ -5679,15 +5525,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "b06af152-c192-5adb-bc18-22e9aeeba53a")
+			(uuid "09c0056b-fea4-5fc7-bc05-8d63848a813a")
 		)
 		(pin "2"
-			(uuid "bef00ff9-cb55-5974-afde-84a31411a1cf")
+			(uuid "1f50449c-8cff-55bb-be03-78a48e687b3d")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "C69")
+					(reference "C70")
 					(unit 1)
 				)
 			)
@@ -5702,7 +5548,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "8997bdff-b81d-51c7-853d-2e3e85ffd151")
+		(uuid "d5f25718-5329-59c6-a204-cd3a8fc8d8ec")
 	)
 	(label "VTK_C2P"
 		(at 49.53 185.42 180)
@@ -5712,7 +5558,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "b64023c6-f5de-5f9a-b839-98ef7911db13")
+		(uuid "c15b8e31-489f-5927-b4ef-1f8ec4d10921")
 	)
 	(wire
 		(pts
@@ -5723,7 +5569,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "c23e3b80-5e9a-550e-85d0-f28c05fc1616")
+		(uuid "2a02d8b6-1738-5875-9c20-c255ed0143c6")
 	)
 	(label "VTK_C2N"
 		(at 62.23 185.42 0)
@@ -5733,7 +5579,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "12741382-5cea-54ea-8df9-86eef380fe87")
+		(uuid "3c2feff2-78be-588c-9229-aaea38cd48e5")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -5743,8 +5589,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "acde0354-a720-5f77-ae86-c3d9ad1ca2b4")
-		(property "Reference" "C70"
+		(uuid "42a1b7ef-d540-514b-ade0-15d410495c8c")
+		(property "Reference" "C71"
 			(at 55.88 191.77 90)
 			(effects
 				(font
@@ -5788,15 +5634,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "09c0056b-fea4-5fc7-bc05-8d63848a813a")
+			(uuid "9d9dade0-25d7-502e-98dd-506f3c561633")
 		)
 		(pin "2"
-			(uuid "1f50449c-8cff-55bb-be03-78a48e687b3d")
+			(uuid "cf6fa0e5-dc95-5f1b-ae5c-aa0bf3808f8f")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "C70")
+					(reference "C71")
 					(unit 1)
 				)
 			)
@@ -5811,7 +5657,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "d5f25718-5329-59c6-a204-cd3a8fc8d8ec")
+		(uuid "ed6cd747-b2e0-556d-9164-18f6667244ea")
 	)
 	(label "VTK_VSP"
 		(at 49.53 195.58 180)
@@ -5821,7 +5667,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "c15b8e31-489f-5927-b4ef-1f8ec4d10921")
+		(uuid "a2362d89-ac1a-5761-a92f-6e5e4f08d6bb")
 	)
 	(wire
 		(pts
@@ -5832,7 +5678,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "2a02d8b6-1738-5875-9c20-c255ed0143c6")
+		(uuid "1763df2b-ab2a-523d-b33d-cf0681215925")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -5842,7 +5688,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "3c2feff2-78be-588c-9229-aaea38cd48e5")
+		(uuid "1c5938ff-c971-5d31-ba64-5d3223fc0490")
 		(property "Reference" "#PWR0250"
 			(at 62.23 195.58 0)
 			(effects
@@ -5881,7 +5727,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "216c0b0a-2e53-5dff-aa7a-df264a47808f")
+			(uuid "35c52954-0457-5b2b-9daf-3f22e433203e")
 		)
 		(instances
 			(project "mso74-plata"
@@ -5900,8 +5746,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "42a1b7ef-d540-514b-ade0-15d410495c8c")
-		(property "Reference" "C71"
+		(uuid "c14b8491-75eb-523b-8599-8d725de5891d")
+		(property "Reference" "C72"
 			(at 55.88 201.93 90)
 			(effects
 				(font
@@ -5945,15 +5791,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "9d9dade0-25d7-502e-98dd-506f3c561633")
+			(uuid "dc90d3ff-aa26-50ec-badb-7ec0532bbd18")
 		)
 		(pin "2"
-			(uuid "cf6fa0e5-dc95-5f1b-ae5c-aa0bf3808f8f")
+			(uuid "3416f5fd-df77-5f68-af10-79c244c22c30")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "C71")
+					(reference "C72")
 					(unit 1)
 				)
 			)
@@ -5968,7 +5814,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "ed6cd747-b2e0-556d-9164-18f6667244ea")
+		(uuid "eeccbcae-3648-5af7-a689-83fe0f44c55c")
 	)
 	(label "VTK_VSN"
 		(at 49.53 205.74 180)
@@ -5978,7 +5824,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "a2362d89-ac1a-5761-a92f-6e5e4f08d6bb")
+		(uuid "84e1790d-8043-5ead-9b75-67d3d92804dc")
 	)
 	(wire
 		(pts
@@ -5989,7 +5835,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "1763df2b-ab2a-523d-b33d-cf0681215925")
+		(uuid "3274a5ed-471e-55c3-a122-176d3cb6ad4e")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -5999,7 +5845,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1c5938ff-c971-5d31-ba64-5d3223fc0490")
+		(uuid "73c35d12-f672-5a93-993c-e6660656a1e7")
 		(property "Reference" "#PWR0251"
 			(at 62.23 205.74 0)
 			(effects
@@ -6038,7 +5884,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "35c52954-0457-5b2b-9daf-3f22e433203e")
+			(uuid "6d162a48-bab6-5b19-8730-3814679a4c00")
 		)
 		(instances
 			(project "mso74-plata"
@@ -6057,8 +5903,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "c14b8491-75eb-523b-8599-8d725de5891d")
-		(property "Reference" "C72"
+		(uuid "5108c765-8e81-5187-9ac9-329e89f6ec01")
+		(property "Reference" "C73"
 			(at 55.88 212.09 90)
 			(effects
 				(font
@@ -6102,15 +5948,15 @@
 			)
 		)
 		(pin "1"
-			(uuid "dc90d3ff-aa26-50ec-badb-7ec0532bbd18")
+			(uuid "933605cb-2860-5ecc-acf5-74f205969d2c")
 		)
 		(pin "2"
-			(uuid "3416f5fd-df77-5f68-af10-79c244c22c30")
+			(uuid "183e9a74-7986-56d0-9a4b-1183fb84e15a")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/0cd083cd-2fe6-5246-a59a-c74af3469027"
-					(reference "C72")
+					(reference "C73")
 					(unit 1)
 				)
 			)
@@ -6125,7 +5971,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "eeccbcae-3648-5af7-a689-83fe0f44c55c")
+		(uuid "b01126cd-a744-511a-952a-4b6f674d2201")
 	)
 	(symbol
 		(lib_id "power:+5V")
@@ -6135,7 +5981,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "84e1790d-8043-5ead-9b75-67d3d92804dc")
+		(uuid "4c8b097d-0cd4-5f23-a084-08d9a5a8188b")
 		(property "Reference" "#PWR0252"
 			(at 49.53 215.9 0)
 			(effects
@@ -6173,7 +6019,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "91267429-a90f-5a47-b61b-772f7f2be138")
+			(uuid "c5e662ac-ced8-5118-82e2-c0918ddefd8a")
 		)
 		(instances
 			(project "mso74-plata"
@@ -6193,7 +6039,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "3274a5ed-471e-55c3-a122-176d3cb6ad4e")
+		(uuid "252fd13a-7f5f-5a86-91f0-60ef1db5a08f")
 	)
 	(symbol
 		(lib_id "power:GND")
@@ -6203,7 +6049,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "73c35d12-f672-5a93-993c-e6660656a1e7")
+		(uuid "c103e136-fd42-578a-97aa-ea0713561bdb")
 		(property "Reference" "#PWR0253"
 			(at 62.23 215.9 0)
 			(effects
@@ -6242,7 +6088,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "6d162a48-bab6-5b19-8730-3814679a4c00")
+			(uuid "acb98cb5-e63a-50eb-9d58-26ed010479c4")
 		)
 		(instances
 			(project "mso74-plata"

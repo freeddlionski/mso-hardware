@@ -32,9 +32,10 @@ def build(proj):
     xa = 215.9
     two(sh, 'Device:D_TVS', 'D', 'SMAJ36CA', xa, y - 10.16, 'RS485_A', 'GND', fp='Diode_SMD:D_SMA', mpn='SMAJ36CA')
     two(sh, 'Device:D_TVS', 'D', 'SMAJ36CA', xa, y, 'RS485_B', 'GND', fp='Diode_SMD:D_SMA', mpn='SMAJ36CA')
-    # терминатор 120 Ом через перемычку и предохранитель 50 мА (при +24 В на A/B резистор не сгорит)
+    # аудит 2, п. 9: терминатор 120 Ом последовательно с 100 нФ (AC-терминатор): постоянного тока нет, +24 В на A/B резистор не греет.
+    # τ = 12 мкс при длительности бита 104 мкс (9600) — допустимо
     R(sh, '120', xa, y + 15.24, 'RS485_A', 'R485_T1', 'R0805')
-    two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', xa, y + 25.4, 'R485_T1', 'R485_T2', fp='Fuse:Fuse_1206_3216Metric')
+    C(sh, '100n 100V', xa, y + 25.4, 'R485_T1', 'R485_T2', 'C0805')
     jp = sh.part('Connector_Generic:Conn_01x02', 'JP', 'Терминатор 120 Ом', (xa + 40.64, y + 30.48),
                  fp='Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical', fields={'Примечание': 'перемычка-джампер'})
     sh.connect(jp, {'1': 'R485_T2', '2': 'RS485_B'})
