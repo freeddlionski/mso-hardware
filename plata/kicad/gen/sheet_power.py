@@ -99,7 +99,8 @@ def lm61460(sh, x, y, tag, out, term_ref_note):
     flag(sh, x + 139.7, y + 33.02, raw)    # BIAS питается от выхода до предохранителя
     led(sh, x + 78.74, y + 45.72, out, r='1k')
     j = sh.part('Connector_Generic:Conn_01x02', 'J', 'Табло ' + tag[-1] + ': +5V / GND', (x + 124.46, y + 2.54),
-                fp=FP['TERM2_508'], fields={'Примечание': 'разъёмный 5,08, другой цвет, чем +24 В'})
+                fp=FP['TERM2_508'], fields={'Примечание': 'разъёмный 5,08, другой цвет, чем +24 В',
+                                            'Шелкография': '+5V LED%s, GND' % tag[-1]})
     sh.connect(j, {'1': out, '2': 'GND'})
 
 
@@ -107,30 +108,50 @@ def build(proj):
     from kisch import Sheet
     sh = Sheet(proj, 'power', 'Питание', paper='A2')
 
-    # ---- вход 24 В ----
-    x, y = 30.48, 38.1
-    sh.text('ВХОД 18–32 В (номинал 24 В). Переполюсовка: Q1 закрыт, плата не включается, предохранитель цел.', (x - 10.16, y - 17.78), 1.5)
+    # ---- вход 24 В: TVS → eFuse TPS26631 (отсечка ~34 В, ограничение тока, переполюсовка через внешний N-MOSFET) ----
+    # аудит 1, п. 4: напряжение ограничения TVS выше предела LMR51430 (38 В) — eFuse отсекает перенапряжение раньше
+    x, y = 30.48, 45.72
+    sh.text('ВХОД 18–32 В. TVS 36 В → блокирующий N-MOSFET (переполюсовка) → eFuse TPS26631: UVLO ~15 В, отсечка ~34 В, '
+            'ток до 6 А, автоповтор.', (x - 10.16, y - 25.4), 1.5)
     j = sh.part('Connector_Generic:Conn_01x02', 'J', 'Питание +24V / GND', (x, y), fp=FP['TERM2_508'],
-                fields={'Примечание': 'отдельно от сигнальных клемм'})
+                fields={'Примечание': 'отдельно от сигнальных клемм', 'Шелкография': '+24V, GND'})
     sh.connect(j, {'1': 'VIN_RAW', '2': 'GND'})
     two(sh, 'Device:Fuse', 'F', '7.5A', x + 30.48, y, 'VIN_RAW', 'VIN_F',
         fp='Fuse:Fuseholder_Blade_Mini_Keystone_3568', fields={'Примечание': 'держатель mini-blade, вставка 7,5 А'})
-    two(sh, 'Device:D_TVS', 'D', 'SMCJ33CA', x + 30.48, y + 12.7, 'VIN_F', 'GND', fp='Diode_SMD:D_SMC', mpn='SMCJ33CA')
-    q = sh.part('Transistor_FET:SUD50P06-15', 'Q', 'SUD50P06-15', (x + 76.2, y + 2.54), mpn='SUD50P06-15')
-    sh.connect(q, {'D': 'VIN_F', 'S': '+24V_P', 'G': 'Q_IN_G'})
-    two(sh, 'Device:D_Zener', 'D', '15V', x + 109.22, y + 15.24, '+24V_P', 'Q_IN_G', fp='Diode_SMD:D_SOD-123', mpn='MMSZ5245B')
-    R(sh, '47k', x + 109.22, y + 27.94, 'Q_IN_G', 'GND')
-    flag(sh, x + 139.7, y - 5.08, '+24V_P')
+    two(sh, 'Device:D_TVS', 'D', 'SMCJ36CA', x + 30.48, y + 12.7, 'VIN_F', 'GND', fp='Diode_SMD:D_SMC', mpn='SMCJ36CA')
+    C(sh, '100n 100V', x + 30.48, y + 25.4, 'VIN_F', 'GND')
+    q = sh.part('Transistor_FET:CSD18563Q5A', 'Q', 'CSD18563Q5A', (x + 30.48, y + 50.8), mpn='CSD18563Q5A')
+    sh.connect(q, {'S': 'VIN_F', 'D': 'VIN_B', 'G': 'EF_BGATE'})   # диод корпуса: исток→сток, при переполюсовке заперт
+    u = sh.part('Power_Management:TPS26631PWP', 'U', 'TPS26631PWPR', (x + 106.68, y + 30.48), mpn='TPS26631PWPR')
+    sh.connect(u, {'IN': 'VIN_B', 'IN_SYS': 'VIN_F', 'B_GATE': 'EF_BGATE', 'UVLO': 'EF_UVLO', 'OVP': 'EF_OVP',
+                   'GND': 'GND', 'dVdT': 'EF_DVDT', 'ILIM': 'EF_ILIM', 'MODE': 'GND', '~{SHDN}': 'EF_SHDN',
+                   'PGTH': 'EF_PGTH', 'OUT': '+24V_P'}, nc=['DRV', 'IMON', '~{FLT}', 'PGOOD'])
+    # делитель UVLO/OVP от IN_SYS, пороги 1,2 В: UVLO = 1,2·424,1/34,1 ≈ 14,9 В; OVP = 1,2·424,1/15 ≈ 33,9 В
+    xr = x + 160.02
+    R(sh, '390k 1%', xr, y - 5.08, 'VIN_F', 'EF_UVLO')
+    R(sh, '19.1k 1%', xr, y + 5.08, 'EF_UVLO', 'EF_OVP')
+    R(sh, '15k 1%', xr, y + 15.24, 'EF_OVP', 'GND')
+    R(sh, '3k 1%', xr, y + 25.4, 'EF_ILIM', 'GND')            # I(OL) = 18 / 3 кОм = 6 А
+    C(sh, '22n', xr, y + 35.56, 'EF_DVDT', 'GND')             # нарастание ~2,3 В/мс, 24 В за ~10 мс
+    R(sh, '100k', xr, y + 45.72, 'VIN_F', 'EF_SHDN')          # SHDN ≥ 2 В — включено; стабилитрон держит ≤ 4,7 В
+    two(sh, 'Device:D_Zener', 'D', '4.7V', xr, y + 55.88, 'EF_SHDN', 'GND', fp='Diode_SMD:D_SOD-123', mpn='MMSZ4688')
+    R(sh, '150k', xr, y + 66.04, '+24V_P', 'EF_PGTH')
+    R(sh, '10k', xr, y + 76.2, 'EF_PGTH', 'GND')
+    C(sh, '100n 100V', xr + 40.64, y - 5.08, 'VIN_B', 'GND')
+    C(sh, '1u 50V', xr + 40.64, y + 5.08, '+24V_P', 'GND', 'C1206')
+    p = sh.part('Device:C_Polarized', 'C', '100u 50V', (xr + 45.72, y + 22.86), fp='Capacitor_SMD:CP_Elec_10x10.5')
+    sh.connect(p, {'1': '+24V_P', '2': 'GND'})
+    flag(sh, xr + 76.2, y - 7.62, '+24V_P')
     flag(sh, x - 15.24, y + 25.4, 'GND')
-    led(sh, x + 139.7, y + 5.08, '+24V_P', r='22k')
+    led(sh, xr + 76.2, y + 2.54, '+24V_P', r='22k')
 
     # ---- выходы 24 В: Vendotek и MDB ----
-    x, y = 30.48, 99.06
+    x, y = 30.48, 137.16
     sh.text('ПИТАНИЕ ТЕРМИНАЛА VENDOTEK (12–48 В, переполюсовка его убивает): после Q1, разъём с ключом, подписи «+24 V» / «GND».',
             (x - 10.16, y - 12.7), 1.5)
     two(sh, 'Device:Polyfuse', 'F', '1.1A удерж.', x + 30.48, y, '+24V_P', 'VTK_24V', fp=FP['PTC1812'])
     j = sh.part('Connector_Generic:Conn_01x02', 'J', 'Vendotek: +24V / GND', (x + 76.2, y + 2.54), fp=FP['TERM2_508'],
-                fields={'Примечание': 'разъёмный с ключом, крупные подписи + и GND'})
+                fields={'Примечание': 'разъёмный с ключом, крупные подписи + и GND', 'Шелкография': '+24V VTK, GND'})
     sh.connect(j, {'1': 'VTK_24V', '2': 'GND'})
     led(sh, x + 101.6, y, 'VTK_24V', r='22k')
     two(sh, 'Device:Polyfuse', 'F', '1.5A удерж.', x + 30.48, y + 22.86, '+24V_P', 'MDB_24V', fp=FP['PTC1812'])
@@ -138,9 +159,9 @@ def build(proj):
     led(sh, x + 101.6, y + 22.86, 'MDB_24V', r='22k')
 
     # ---- преобразователи 12 / 5 / 3,3 В ----
-    lmr51430(sh, 71.12, 165.1, 'P12', '+12V', '5.23k 1%', '12u', 'C1210', '+12V')
-    lmr51430(sh, 71.12, 223.52, 'P5', '+5V', '13.7k 1%', '6.8u', 'C1206', '+5V')
-    lmr51430(sh, 71.12, 281.94, 'P3', '+3V3', '22.1k 1%', '5.6u', 'C1206', '+3V3')
+    lmr51430(sh, 71.12, 203.2, 'P12', '+12V', '5.23k 1%', '12u', 'C1210', '+12V')
+    lmr51430(sh, 71.12, 261.62, 'P5', '+5V', '13.7k 1%', '6.8u', 'C1206', '+5V')
+    lmr51430(sh, 71.12, 320.04, 'P3', '+3V3', '22.1k 1%', '5.6u', 'C1206', '+3V3')
 
     # ---- два канала табло ----
     lm61460(sh, 304.8, 63.5, 'LCD1', '+5V_LCD1', 'табло 1')

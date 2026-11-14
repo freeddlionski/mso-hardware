@@ -42,28 +42,28 @@ def build(proj):
     R(sh, '680 DNP', xa, y + 45.72, '+3V3', 'RS485_A').dnp = True
     R(sh, '680 DNP', xa, y + 55.88, 'RS485_B', 'GND').dnp = True
     j = sh.part('Connector_Generic:Conn_01x03', 'J', 'RS-485: A / B / GND', (xa + 81.28, y), fp=TERM3,
-                fields={'Примечание': 'не рядом с клеммой питания 24 В'})
+                fields={'Примечание': 'не рядом с клеммой питания 24 В', 'Шелкография': 'A, B, GND'})
     sh.connect(j, {'1': 'RS485_A', '2': 'RS485_B', '3': 'GND'})
 
     # ---------- RS-232 Vendotek ----------
+    # аудит 1, п. 13: TVS не удерживал линии ниже ±13,2 В предела MAX3232 → MAX13223E, линии выдерживают ±70 В
     x, y = 127.0, 195.58
-    sh.text('RS-232 терминал Vendotek (115200): MAX3232 от 3,3 В. Линии к клемме — предохранитель 50 мА + TVS 15 В.', (20.32, y - 33.02), 1.5)
-    u = sh.part('Interface_UART:MAX3232', 'U', 'MAX3232', (x, y), fp='Package_SO:SOIC-16_3.9x9.9mm_P1.27mm', mpn='MAX3232ESE')
-    sh.connect(u, {'C1+': 'VTK_C1P', 'C1-': 'VTK_C1N', 'C2+': 'VTK_C2P', 'C2-': 'VTK_C2N', 'VS+': 'VTK_VSP', 'VS-': 'VTK_VSN',
-                   'T1IN': 'VTK_TX', 'T1OUT': 'VTK_TXO', 'R1IN': 'VTK_RXI', 'R1OUT': 'VTK_RX',
-                   'T2IN': 'GND', 'GND': 'GND', 'VCC': '+3V3'}, nc=['T2OUT', 'R2IN', 'R2OUT'])
-    xc = x - 66.04
-    C(sh, '100n', xc, y - 20.32, 'VTK_C1P', 'VTK_C1N')
+    sh.text('RS-232 терминал Vendotek (115200): MAX13223E от 3,3 В, линии T1OUT/R1IN выдерживают ±70 В — внешняя защита не нужна.',
+            (20.32, y - 33.02), 1.5)
+    u = sh.part('mso74:MAX13223E', 'U', 'MAX13223EEUP+', (x, y), mpn='MAX13223EEUP+')
+    sh.connect(u, {'VCC': '+3V3', 'GND': 'GND', 'C1+': 'VTK_C1P', 'C1-': 'VTK_C1N', 'C2+': 'VTK_C2P', 'C2-': 'VTK_C2N',
+                   'V+': 'VTK_VSP', 'V-': 'VTK_VSN', 'T1IN': 'VTK_TX', 'R1OUT': 'VTK_RX', 'T1OUT': 'VTK_TX_T', 'R1IN': 'VTK_RX_T',
+                   'T2IN': 'GND', 'EN': 'GND', 'FORCEON': '+3V3', 'FORCEOFF': '+3V3'},
+               nc=['T2OUT', 'R2IN', 'R2OUT', 'INVALID'])
+    sh.text('EN = 0 — приёмники включены; FORCEON = FORCEOFF = VCC — автоотключение выключено.', (x - 30.48, y + 25.4))
+    xc = x - 71.12
+    C(sh, '100n', xc, y - 20.32, 'VTK_C1P', 'VTK_C1N')       # при VCC 3,0–3,6 В: C1 = C2 = C3 = 0,1 мкФ, C4 = 1 мкФ
     C(sh, '100n', xc, y - 10.16, 'VTK_C2P', 'VTK_C2N')
     C(sh, '100n', xc, y, 'VTK_VSP', 'GND')
-    C(sh, '100n', xc, y + 10.16, 'VTK_VSN', 'GND')
+    C(sh, '1u', xc, y + 10.16, 'VTK_VSN', 'GND')
     C(sh, '100n', xc, y + 20.32, '+3V3', 'GND')
     xa = 215.9
-    two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', xa, y - 10.16, 'VTK_TXO', 'VTK_TX_T', fp='Fuse:Fuse_1206_3216Metric')
-    two(sh, 'Device:D_TVS', 'D', 'SMAJ15CA', xa, y, 'VTK_TX_T', 'GND', fp='Diode_SMD:D_SMA', mpn='SMAJ15CA')
-    two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', xa, y + 12.7, 'VTK_RX_T', 'VTK_RXI', fp='Fuse:Fuse_1206_3216Metric')
-    two(sh, 'Device:D_TVS', 'D', 'SMAJ15CA', xa, y + 22.86, 'VTK_RX_T', 'GND', fp='Diode_SMD:D_SMA', mpn='SMAJ15CA')
-    j = sh.part('Connector_Generic:Conn_01x03', 'J', 'Vendotek RS-232: TXD / RXD / GND', (xa + 81.28, y), fp=TERM3,
-                fields={'Примечание': 'TXD — выход платы (к RXD терминала), RXD — вход платы'})
+    j = sh.part('Connector_Generic:Conn_01x03', 'J', 'Vendotek RS-232: TXD / RXD / GND', (xa + 40.64, y), fp=TERM3,
+                fields={'Примечание': 'TXD — выход платы (к RXD терминала), RXD — вход платы', 'Шелкография': 'TXD, RXD, GND'})
     sh.connect(j, {'1': 'VTK_TX_T', '2': 'VTK_RX_T', '3': 'GND'})
     return sh
