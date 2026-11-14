@@ -1,0 +1,33 @@
+{
+  "query": "EL357N(C)(TA)-G",
+  "endpoint": "https://jlcpcb.com/api/overseas-pcb-order/v1/shoppingCart/smtGood/selectSmtComponentList/v2",
+  "date_utc": "2026-11-14",
+  "original_code": 200,
+  "total": 3,
+  "list": [
+    {
+      "componentCode": "C42379244",
+      "componentModelEn": "EL357N(C)(TA)-G",
+      "componentBrandEn": "Everlight Elec",
+      "componentSpecificationEn": "SOP-4-2.54mm",
+      "stockCount": 569818,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C29981",
+      "componentModelEn": "EL357N(C)(TA)-G",
+      "componentBrandEn": "Everlight Elec",
+      "componentSpecificationEn": "SOP-4-2.54mm",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    },
+    {
+      "componentCode": "C9900040416",
+      "componentModelEn": "EL357N(C)(TA)-G-YJLTY",
+      "componentBrandEn": "JLCPCB Assembly",
+      "componentSpecificationEn": "SOP-4-2.54",
+      "stockCount": 0,
+      "componentLibraryType": "expand"
+    }
+  ]
+}

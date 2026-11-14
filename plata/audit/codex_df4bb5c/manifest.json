@@ -1,0 +1,81 @@
+{
+  "source_commit": "df4bb5c6bacbcd0dbf7551ffdceaf344ac49f8a5",
+  "ci_commit": "67ae2f5fe18555bae7ee749132ea051d6d0ad984",
+  "previous_commit": "929198e",
+  "generated_utc": "2026-11-14T18:11:32.271049+00:00",
+  "inputs": {
+    "new_net": {
+      "name": "mso74-plata.net",
+      "sha256": "6a50cf417066bbe62df32df7112ef76fca64a8ef60d5080534ccd603a4be1814"
+    },
+    "new_xml": {
+      "name": "mso74-plata.xml",
+      "sha256": "3902284dadd1194f4f853594ffaf64d80a3b2867997229313f10219f5e534ba6"
+    },
+    "pcb": {
+      "name": "mso74-plata.kicad_pcb",
+      "sha256": "139cee085728b9fbc44bc41c663d65d06a5965f538d649b50e09c5f844586f43"
+    },
+    "bom": {
+      "name": "bom.csv",
+      "sha256": "0fe2ad17a8aaff2d41cc299c1f20cd96239928c19bf9eda3720cb42543b91a65"
+    },
+    "placement": {
+      "name": "placement.json",
+      "sha256": "210540ce3ad3eab119393e77bb98babf9118309a790f99b925f8eb4c9c9f0d2e"
+    },
+    "old_net": {
+      "name": "mso74-plata.net",
+      "sha256": "b4807160c1668e513eb5d12d25d5943d5c1b8a09bd789dae8bef0a2f2a282133"
+    }
+  },
+  "manufacturer_pdf_sha256": {
+    "C840529.pdf": "4f96c2542ebad327d69056d2b1211627cdb0b1aa9c60e99ab9c0461c0654c385",
+    "C2886897.pdf": "417970875850c881b84247e4ccab4d3004be718894711c651565e97bddd15a44",
+    "srp7028a.pdf": "3088c44b1a0d1c9d701482bb41cf3b073ee8a6a63e36c3417106ebb98560bf3b",
+    "keystone43.pdf": "4fbae44ed48fbec7ace6f69b291f86cafddc8bdeebd03eedf8ef427511e8ee91",
+    "C185338.pdf": "e7dbabb0611925227ccfc429c14c8833a7b1f2c755684444124446f20b22a229",
+    "srp1265a.pdf": "30b470999b737a6350ce5b09a917a5f12090c2e0895a78ddc15285e3d44ec649",
+    "lm61460_q1.pdf": "019278702073b81c7117930a8d8bbbbc3ecf0f2f8c1d213251cdfff3c749acfa",
+    "C2041326.pdf": "af2878ecd3567e117879acd3b96e69be170badccb8ef297967fa26133c0fb552",
+    "C3205378.pdf": "2bd99fd8f43e6be9d623e6a8214caab2aadcd207b8405f9b2424e0574444beef",
+    "C840531.pdf": "af2878ecd3567e117879acd3b96e69be170badccb8ef297967fa26133c0fb552",
+    "C114056.pdf": "831efae0c75b54cd9925c13833c4910b8c417c02311ffb034b448cf68c673dac",
+    "keystone42.pdf": "caa141ea51ac68cf80ab6e14ad2075fcfc76206451f4bfe45330005c0deaf395",
+    "C148237.pdf": "3f987f8fc0988aae0f14259b9d1953f26bdfe2525bbc4fc636477f6b221fc38a",
+    "C1855832.pdf": "58f3c164494b9edf22cc90e05339f01e6360a95f685845cb75f182904635bd87",
+    "keystone3568.pdf": "8d7c314e1d9160e3fb00bb6ecdcfb29337d884cd4564d2482cfc8c2d696ea97b"
+  },
+  "additional_verified_distances_mm": {
+    "U23_C113_centers": 10.570396823203936,
+    "U23_pin5_C113_pad1_centers": 8.435100488435213,
+    "U23_C75_centers": 6.77
+  },
+  "report_sha256": "9e49717c8e9cde8c956670a36e965cf4a4db526618afce53b5326bb853d0c4d4",
+  "artifact_sha256": {
+    "C114056_page2.png": "d41807603acd25f4aecae4def4e94b7c72694ccc4bfc6640ce7fe587de20734f",
+    "C3205378_page1.png": "4fa38cefb2f24c5cd6e7cabd9dc105997a6eea2cc1d8783d85c4f30c59f15aa8",
+    "api_EL357N(C)(TA)-G.json": "fc0ff949c49eb3b878e4e045959aafe3ec7c9c3786b13c7009e66d6d9174dc5b",
+    "api_H1102N.json": "b5f02b2b771c7e286c62bed3c6af66e4cc4aeac8666f4b182b22a27f7d473142",
+    "api_PCA9555PW,118.json": "30e52f5727dc4c680cd59643c28aa341c3057bdf34d2162dc48d08887dcf3b05",
+    "api_PCF8563T_5,518.json": "00d7d0566038946ef38bb0f57bc0f98f9faa8d14d7191a0f6103f9598b36e8b2",
+    "audit_checks.py": "f68323007e0a04cae5ec46af8b34be8c6f3dfcee52de580698532f83bf35fa53",
+    "calculations.json": "8ad7774f2a5d22b5f537cb851c6aeb66521b4375fce6553e216dd119262e9e4a",
+    "calculations.py": "617001e7efc76275bbec7feb26e951b8bd39128ebb3e841b1ba402d60e6da47d",
+    "changed_components.csv": "5a8207a79d89dcfa658763f558efc6a3a21450f8a4af689d1cb3eb74bd5d289b",
+    "changed_pin_nets.csv": "14bcfc59870509d6c73cfd336e94289ad5a4e50021dcf33902c842c45491f43c",
+    "check_stock.py": "60d19eb7a271339e46e1cb8021243ee3da71bcbe659ece9042cc9efcc6aecce7",
+    "inventory.json": "9e9266f0dcbd9788fbefcf941e0d1598944c8986cfb2e3ef2ff5186cb0d0c3d2",
+    "jlc_cap.txt": "87db7f7768df357591c89ee7c93a8a18905ec717527da10c84ee65a012cc7943",
+    "jlc_snapshot.json": "75052d042101081b3ad4c4fa13e251a81b402e7534b43ed35a51d99b9f1eb87f",
+    "jlc_stack.txt": "29978876d100c2159368c3b8a01fef82a29750fcc9896b2374130da6b3929cca",
+    "lcsc_snapshot.json": "79f41073932545bb64041c30ee3b3eb168c6faf9c8d3aed63614deb5cd3f70e9",
+    "normalized_diff.py": "ad8be9fa103a8afa17ef3e8cdea4d99307041da2fb3e75316ce2f90ff6844df7",
+    "normalized_net_diff.json": "bca8b28afb2f874623df1ad2fcfb0c9b1f4655614d832514126501ed8ec79355",
+    "power_pad_placement.svg": "ee68bc9242315dcb99e7264084f59f046e03b20e6971cc1ce23e9350c457ccf5",
+    "replacements_snapshot.json": "6eb0653990ac040541b11d043a4dd71f904a15a0c2b6fc79916e2d527b2c4c5c",
+    "srp1265a_page1.png": "77be4e81b1e79e61cbba8ad6f9711da085830d204fe4066ccc8947435cd037d5",
+    "stock_by_position.csv": "b3dff907247fb3b4d0e67ce5fa946c89c9065a99b37be0f00a789d199099a82a",
+    "verification.json": "0e4342029c4902ce974ddf214bdb55b0e543e60b74baaf26f5f25cd80e2c176d"
+  }
+}

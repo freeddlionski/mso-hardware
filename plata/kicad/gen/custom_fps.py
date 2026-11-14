@@ -172,6 +172,21 @@ def check():
     assert (p10[3], p10[4]) == (2.4, 0.4)
 
 
+# BSP75N (Infineon HITFET, Data Sheet Rev.1.4, с. 2, рис. 2): 1 IN, 2 DRAIN, «3 + TAB SOURCE» — корпус на истоке.
+# В KiCad есть только SOT-223-3_TabPin2 (корпус на выводе 2); берём его и переносим корпусную площадку на вывод 3.
+# Аудит Codex C2-001: с TabPin2 корпус замкнул бы сток (клемму выхода) на GND в обход защиты.
+TAB3 = {'SOT-223-3_TabPin3_BSP75N': 'Package_TO_SOT_SMD.pretty/SOT-223-3_TabPin2'}
+
+
+def derive_tab3(fpdir, name, src):
+    text = open(os.path.join(fpdir, src + '.kicad_mod'), encoding='utf-8').read()
+    tab = '(pad "2" smd roundrect\n\t\t(at 3.15 0)\n\t\t(size 2 3.8)'
+    assert text.count(tab) == 1, 'корпусная площадка SOT-223 не найдена'
+    text = text.replace(tab, tab.replace('"2"', '"3"')).replace('SOT-223-3_TabPin2', name)
+    text = text.replace('(descr "', '(descr "BSP75N: TAB = pin 3 (SOURCE) per Infineon BSP75N Rev.1.4 p.2; based on KiCad ', 1)
+    return text
+
+
 def write(libdir, fpdir):
     """fpdir — каталог footprints из ветки kicad-libs (официальные посадочные места KiCad 9)."""
     check()
@@ -183,4 +198,7 @@ def write(libdir, fpdir):
     for name, (src, old, new) in DERIVED.items():
         with open(os.path.join(pretty, name + '.kicad_mod'), 'w', encoding='utf-8') as f:
             f.write(derive(fpdir, name, src, old, new))
-    return set(FOOTPRINTS) | set(DERIVED)
+    for name, src in TAB3.items():
+        with open(os.path.join(pretty, name + '.kicad_mod'), 'w', encoding='utf-8') as f:
+            f.write(derive_tab3(fpdir, name, src))
+    return set(FOOTPRINTS) | set(DERIVED) | set(TAB3)

@@ -1,0 +1,324 @@
+{
+  "pad_center_distances": {
+    "U2": {
+      "VIN_to_cap_pad1_mm": {
+        "C6": {
+          "3": 4.8908
+        },
+        "C7": {
+          "3": 3.032
+        }
+      },
+      "SW_to_L_pad1_mm": 13.3462,
+      "L_pad2_to_COUT_pad1_mm": {
+        "C9": 8.8982,
+        "C10": 11.3876
+      },
+      "FB_to_low_resistor_pad1_mm": 5.0501
+    },
+    "U3": {
+      "VIN_to_cap_pad1_mm": {
+        "C12": {
+          "3": 4.8908
+        },
+        "C13": {
+          "3": 3.032
+        }
+      },
+      "SW_to_L_pad1_mm": 6.5875,
+      "L_pad2_to_COUT_pad1_mm": {
+        "C15": 4.225,
+        "C16": 3.5848
+      },
+      "FB_to_low_resistor_pad1_mm": 5.8039
+    },
+    "U4": {
+      "VIN_to_cap_pad1_mm": {
+        "C18": {
+          "3": 4.8908
+        },
+        "C19": {
+          "3": 3.032
+        }
+      },
+      "SW_to_L_pad1_mm": 9.5352,
+      "L_pad2_to_COUT_pad1_mm": {
+        "C21": 5.5724,
+        "C22": 7.2699
+      },
+      "FB_to_low_resistor_pad1_mm": 5.0501
+    },
+    "U5": {
+      "VIN_to_cap_pad1_mm": {
+        "C26": {
+          "12": 4.6961,
+          "8": 6.5079
+        },
+        "C27": {
+          "12": 6.5079,
+          "8": 4.6961
+        }
+      },
+      "SW_to_L_pad1_mm": 13.6767,
+      "L_pad2_to_COUT_pad1_mm": {
+        "C30": 9.0362,
+        "C31": 9.6981,
+        "C32": 11.7666,
+        "C33": 14.6579
+      },
+      "FB_to_low_resistor_pad1_mm": 9.5643
+    },
+    "U6": {
+      "VIN_to_cap_pad1_mm": {
+        "C37": {
+          "12": 4.6961,
+          "8": 6.5079
+        },
+        "C38": {
+          "12": 6.5079,
+          "8": 4.6961
+        }
+      },
+      "SW_to_L_pad1_mm": 13.6767,
+      "L_pad2_to_COUT_pad1_mm": {
+        "C41": 9.0362,
+        "C42": 9.6981,
+        "C43": 11.7666,
+        "C44": 14.6579
+      },
+      "FB_to_low_resistor_pad1_mm": 9.5643
+    }
+  },
+  "converters": {
+    "U2": {
+      "Vout": 12,
+      "Iout": 1,
+      "L_H": 1e-05,
+      "fsw_Hz": 500000.0,
+      "ripple_A_at32V_nominal": 1.5,
+      "ripple_A_Lminus20_fminus10": 2.083333333333333,
+      "peak_A_nominal": 1.75,
+      "peak_A_worst_L_f": 2.0416666666666665,
+      "Irms_A_nominal": 1.0897247358851685,
+      "P_DCR_max25C_W": 0.019593750000000004,
+      "P_DCR_max100C_W": 0.025369007812500007
+    },
+    "U3": {
+      "Vout": 5,
+      "Iout": 1,
+      "L_H": 6.8e-06,
+      "fsw_Hz": 500000.0,
+      "ripple_A_at32V_nominal": 1.2408088235294117,
+      "ripple_A_Lminus20_fminus10": 1.7233455882352937,
+      "peak_A_nominal": 1.6204044117647058,
+      "peak_A_worst_L_f": 1.8616727941176467,
+      "Irms_A_nominal": 1.062214923973661,
+      "P_DCR_max25C_W": 0.012975456264192256,
+      "P_DCR_max100C_W": 0.016799971998062924
+    },
+    "U4": {
+      "Vout": 3.3,
+      "Iout": 1.2,
+      "L_H": 4.7e-06,
+      "fsw_Hz": 500000.0,
+      "ripple_A_at32V_nominal": 1.259441489361702,
+      "ripple_A_Lminus20_fminus10": 1.7492242907801416,
+      "peak_A_nominal": 1.829720744680851,
+      "peak_A_worst_L_f": 2.0746121453900708,
+      "Irms_A_nominal": 1.2538671136769113,
+      "P_DCR_max25C_W": 0.06288730955041874,
+      "P_DCR_max100C_W": 0.08142334404040467
+    },
+    "U5": {
+      "Vout": 5,
+      "Iout": 5,
+      "L_H": 6.8e-06,
+      "fsw_Hz": 400000.0,
+      "ripple_A_at32V_nominal": 1.5510110294117645,
+      "ripple_A_Lminus20_fminus10": 2.1541819852941173,
+      "peak_A_nominal": 5.775505514705882,
+      "peak_A_worst_L_f": 6.077090992647059,
+      "Irms_A_nominal": 5.020006932376994,
+      "P_DCR_max25C_W": 0.28980540041280034,
+      "P_DCR_max100C_W": 0.37522554218447324
+    },
+    "U6": {
+      "Vout": 5,
+      "Iout": 5,
+      "L_H": 6.8e-06,
+      "fsw_Hz": 400000.0,
+      "ripple_A_at32V_nominal": 1.5510110294117645,
+      "ripple_A_Lminus20_fminus10": 2.1541819852941173,
+      "peak_A_nominal": 5.775505514705882,
+      "peak_A_worst_L_f": 6.077090992647059,
+      "Irms_A_nominal": 5.020006932376994,
+      "P_DCR_max25C_W": 0.28980540041280034,
+      "P_DCR_max100C_W": 0.37522554218447324
+    }
+  },
+  "thermal_assumptions": {
+    "LM61460": {
+      "note": "Efficiencies assumed. Subtracting DCR alone still leaves other external losses; IC heat not measured. Theta not a PCB guarantee.",
+      "scenarios": [
+        {
+          "assumed_efficiency": 0.9,
+          "P_converter_total_W": 2.777777777777779,
+          "P_inductor_copper_W": 0.37522554218447324,
+          "P_IC_plus_other_external_loss_W": 2.4025522355933058,
+          "assumed_theta_C_W": 25,
+          "Tj_C_if_remaining_loss_all_at_IC_Ta70": 130.06380588983265,
+          "required_theta_for_Tj125": 22.892322250141568
+        },
+        {
+          "assumed_efficiency": 0.92,
+          "P_converter_total_W": 2.1739130434782594,
+          "P_inductor_copper_W": 0.37522554218447324,
+          "P_IC_plus_other_external_loss_W": 1.7986875012937862,
+          "assumed_theta_C_W": 25,
+          "Tj_C_if_remaining_loss_all_at_IC_Ta70": 114.96718753234465,
+          "required_theta_for_Tj125": 30.577851883909126
+        }
+      ]
+    },
+    "LMR12": {
+      "note": "Efficiencies assumed. Subtracting DCR alone still leaves other external losses; IC heat not measured. Theta not a PCB guarantee.",
+      "scenarios": [
+        {
+          "assumed_efficiency": 0.9,
+          "P_converter_total_W": 1.333333333333334,
+          "P_inductor_copper_W": 0.025369007812500007,
+          "P_IC_plus_other_external_loss_W": 1.307964325520834,
+          "assumed_theta_C_W": 80,
+          "Tj_C_if_remaining_loss_all_at_IC_Ta70": 174.6371460416667,
+          "required_theta_for_Tj125": 42.05007654019837
+        },
+        {
+          "assumed_efficiency": 0.94,
+          "P_converter_total_W": 0.7659574468085104,
+          "P_inductor_copper_W": 0.025369007812500007,
+          "P_IC_plus_other_external_loss_W": 0.7405884389960105,
+          "assumed_theta_C_W": 80,
+          "Tj_C_if_remaining_loss_all_at_IC_Ta70": 129.24707511968083,
+          "required_theta_for_Tj125": 74.26526948565596
+        }
+      ]
+    },
+    "LMR5": {
+      "note": "Efficiencies assumed. Subtracting DCR alone still leaves other external losses; IC heat not measured. Theta not a PCB guarantee.",
+      "scenarios": [
+        {
+          "assumed_efficiency": 0.88,
+          "P_converter_total_W": 0.6818181818181823,
+          "P_inductor_copper_W": 0.016799971998062924,
+          "P_IC_plus_other_external_loss_W": 0.6650182098201194,
+          "assumed_theta_C_W": 80,
+          "Tj_C_if_remaining_loss_all_at_IC_Ta70": 123.20145678560955,
+          "required_theta_for_Tj125": 82.70450220434856
+        },
+        {
+          "assumed_efficiency": 0.9,
+          "P_converter_total_W": 0.5555555555555558,
+          "P_inductor_copper_W": 0.016799971998062924,
+          "P_IC_plus_other_external_loss_W": 0.5387555835574929,
+          "assumed_theta_C_W": 80,
+          "Tj_C_if_remaining_loss_all_at_IC_Ta70": 113.10044668459943,
+          "required_theta_for_Tj125": 102.08710903156833
+        }
+      ]
+    },
+    "LMR3v3": {
+      "note": "Efficiencies assumed. Subtracting DCR alone still leaves other external losses; IC heat not measured. Theta not a PCB guarantee.",
+      "scenarios": [
+        {
+          "assumed_efficiency": 0.85,
+          "P_converter_total_W": 0.6988235294117648,
+          "P_inductor_copper_W": 0.08142334404040467,
+          "P_IC_plus_other_external_loss_W": 0.6174001853713602,
+          "assumed_theta_C_W": 80,
+          "Tj_C_if_remaining_loss_all_at_IC_Ta70": 119.39201482970881,
+          "required_theta_for_Tj125": 89.08322560175138
+        },
+        {
+          "assumed_efficiency": 0.88,
+          "P_converter_total_W": 0.5400000000000004,
+          "P_inductor_copper_W": 0.08142334404040467,
+          "P_IC_plus_other_external_loss_W": 0.4585766559595957,
+          "assumed_theta_C_W": 80,
+          "Tj_C_if_remaining_loss_all_at_IC_Ta70": 106.68613247676765,
+          "required_theta_for_Tj125": 119.93632751521034
+        }
+      ]
+    },
+    "TPS26631": {
+      "at_6A": {
+        "P_R31mOhm_W": 1.116,
+        "P_R53mOhm_W": 1.908,
+        "Tj_at_70_theta32_2_Rmax": 131.4376,
+        "theta_required_Tj125": 28.825995807127885
+      },
+      "at_6_42A": {
+        "P_R53mOhm_W": 2.1844692,
+        "theta_required_Tj125": 25.177741118986706
+      }
+    },
+    "RTL8305NB": {
+      "P_all_ports_including_internal_LDO_W": 0.5972999999999999,
+      "Tj_C_at70_theta51_6": 100.82068,
+      "note": "Typical room-temperature datasheet currents, not maximum hot currents."
+    }
+  },
+  "trace_width_mm_IPC2221_external_35um_deltaT10C": {
+    "6": 3.5562518550459123,
+    "5": 2.7655212410535026,
+    "3": 1.3670321332791497,
+    "1.2": 0.3862744230947534,
+    "1": 0.3003865208333049,
+    "0.5": 0.1154693320723071
+  },
+  "impedance_approximation": {
+    "100": {
+      "stack": "JLC04161H-7628",
+      "h_mm": 0.2104,
+      "er": 4.4,
+      "copper_mm": 0.035,
+      "gap_mm": 0.2,
+      "width_mm": 0.2390061927440934,
+      "limitations": "Homogeneous substrate model; no solder mask, etch taper or field solver."
+    },
+    "90": {
+      "stack": "JLC04161H-7628",
+      "h_mm": 0.2104,
+      "er": 4.4,
+      "copper_mm": 0.035,
+      "gap_mm": 0.2,
+      "width_mm": 0.29193861021485684,
+      "limitations": "Homogeneous substrate model; no solder mask, etch taper or field solver."
+    }
+  },
+  "efuse_thresholds_V": {
+    "UVLO_nominal": 14.924340175953079,
+    "OVP_nominal": 33.928000000000004,
+    "UVLO_corner_minmax": [
+      14.276128835835195,
+      15.590707034124234
+    ],
+    "OVP_corner_minmax": [
+      32.495656026237626,
+      35.402018801515155
+    ],
+    "assumptions": "1% resistor tolerance, +/-2% threshold, +/-150nA independent input leakage."
+  },
+  "via_R_ohm_25C_0_30mm_18um_1_6mm": 0.0016259740556469786,
+  "output_setpoints_V": {
+    "U2": 12.072275334608028,
+    "U3": 4.979562043795621,
+    "U4": 3.3149321266968323,
+    "U5_U6": 5.016064257028113
+  },
+  "pca_default_typical": {
+    "V_default": 0.3,
+    "pull_current_A": 2.9999999999999997e-05,
+    "Rpu_min_to_meet_0_8V_ohm": 31249.999999999993,
+    "note": "Internal 100k model lacks guaranteed tolerance."
+  }
+}

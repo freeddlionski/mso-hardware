@@ -136,7 +136,7 @@ class Sheet:
         late = self.late and not ref
         p = Part(self, lib_id, ref or ('?' if late else self.proj.next_ref(prefix)), value, at, **kw)
         if late:
-            self.proj.deferred.append((p, prefix))
+            self.proj.deferred.append((p, prefix, int(self.late)))
         self.parts.append(p)
         return p
 
@@ -164,7 +164,8 @@ class Project:
 
     def assign_late(self):
         """Номера позициям, добавленным после выпуска нумерации (Sheet.late): в конец, по порядку добавления."""
-        for p, prefix in getattr(self, 'deferred', []):
+        # волна 1 — исправления проходов 10–11, волна 2 — прохода 12 и т. д.; внутри волны — порядок добавления
+        for p, prefix, _ in sorted(self.deferred, key=lambda t: t[2]):
             p.ref = self.next_ref(prefix)
         self.deferred = []
 

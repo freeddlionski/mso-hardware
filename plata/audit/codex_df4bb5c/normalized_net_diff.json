@@ -1,0 +1,48 @@
+{
+  "excluded_refs": [
+    "F4",
+    "F5",
+    "Q5",
+    "Q6",
+    "Q7",
+    "Q8",
+    "Q9",
+    "R72",
+    "R73"
+  ],
+  "excluded_pins": [
+    [
+      "J18",
+      "8"
+    ],
+    [
+      "J18",
+      "SH"
+    ],
+    [
+      "J7",
+      "8"
+    ],
+    [
+      "J7",
+      "SH"
+    ]
+  ],
+  "removed_fuses_contracted": [
+    "F4",
+    "F5"
+  ],
+  "common_electrical_nodes_checked": 1051,
+  "unexpected_topology_differences": [],
+  "renamed_nets": {
+    "/RS-485 и RS-232/RS485_A": "RS485_A",
+    "/Коммутатор Ethernet/SW_VCORE": "SW_VCORE",
+    "/RS-485 и RS-232/RS485_B": "RS485_B",
+    "/ESP32-S3 и USB/U0_TX": "U0_TX",
+    "/Питание/VIN_F": "VIN_F",
+    "/ESP32-S3 и USB/U0_RX": "U0_RX",
+    "/Питание/LCD2_RAW": "+5V_LCD2",
+    "/Питание/LCD1_RAW": "+5V_LCD1",
+    "/ESP32-S3 и USB/ESP_IO0": "ESP_IO0"
+  }
+}

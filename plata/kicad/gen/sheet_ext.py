@@ -52,7 +52,7 @@ def build(proj):
         # C-004: защищённый ключ BSP75N (60 В, ограничение тока ~1 А, тепловое отключение) — переживает +32 В на включённом выходе.
         # Символ BSP89 — та же распиновка SOT-223: 1 вход, 2 и корпус — сток, 3 исток
         q = sh.part('Transistor_FET:BSP89', 'Q', 'BSP75N', (264.16, yy + 2.54), mpn='BSP75N',
-                    fp='Package_TO_SOT_SMD:SOT-223-3_TabPin2')
+                    fp='mso74:SOT-223-3_TabPin3_BSP75N')   # C2-001: корпус — исток
         sh.connect(q, {'G': 'EXT_GG%d' % (i + 1), 'S': 'GND', 'D': 'EXT_D%d' % (i + 1)})
         tvs(sh, 'SMAJ33A', 299.72, yy + 10.16, 'EXT_D%d' % (i + 1))     # аудит 2, п. 4: катод к стоку (было наоборот)
         two(sh, 'Device:Polyfuse', 'F', '1.1A удерж.', 299.72, yy, 'EXT_D%d' % (i + 1), OUT[i], fp='Fuse:Fuse_2920_7451Metric')

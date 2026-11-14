@@ -70,17 +70,21 @@ def lmr51430(sh, x, y, tag, vout, rfbb, l, lfp, cout_fp, out):
     R(sh, rfbb, x + 35.56, y + 17.78, fb, 'GND')
     C(sh, '22u', x + 76.2, y - 2.54, out, 'GND', cout_fp)
     C(sh, '22u', x + 76.2, y + 7.62, out, 'GND', cout_fp)
+    if tag == 'P12':      # аудит Codex C2-003: типовой набор TI для 12 В / 500 кГц — 3 × 22 мкФ (SLUSEF4A, табл. 9-1)
+        sh.late = 2       # вторая волна номеров (после исправлений проходов 10–11)
+        C(sh, '22u', x + 86.36, y + 2.54, out, 'GND', cout_fp)
+        sh.late = False
     C(sh, '100n', x + 76.2, y + 17.78, out, 'GND')
     flag(sh, x + 106.68, y - 2.54, out)
     led(sh, x + 106.68, y + 10.16, out)
 
 
 def lm61460(sh, x, y, tag, out, term_ref_note):
-    """24 В → 5 В / 5 А на табло. LM61460AANRJRR, 400 кГц (RT 33,2 кОм). VOUT = 1,0 × (1 + 100k / 24,9k) = 5,02 В."""
+    """24 В → 5 В / 5 А на табло. LM61460AASQRJRRQ1, 400 кГц (RT 33,2 кОм). VOUT = 1,0 × (1 + 100k / 24,9k) = 5,02 В."""
     sw, fb, cb, rb, en, vcc, rt = (tag + s for s in ('_SW', '_FB', '_CB', '_RB', '_EN', '_VCC', '_RT'))
     raw = out                       # PTC табло убран (C-005) — выход один
-    u = sh.part('mso74:LM61460', 'U', 'LM61460AANRJRR', (x, y), fp='mso74:Texas_RJR_VQFN-HR-14_3.5x4mm',
-                lcsc='C2864505', mpn='LM61460AANRJRR')
+    u = sh.part('mso74:LM61460', 'U', 'LM61460AASQRJRRQ1', (x, y), fp='mso74:Texas_RJR_VQFN-HR-14_3.5x4mm',
+                lcsc='C1855832', mpn='LM61460AASQRJRRQ1')
     sh.connect(u, {'VIN1': '+24V_P', 'VIN2': '+24V_P', 'EN/SYNC': en, 'RT': rt, 'BIAS': raw, 'VCC': vcc,
                    'CBOOT': cb, 'RBOOT': rb, 'SW': sw, 'FB': fb, 'AGND': 'GND', 'PGND1': 'GND', 'PGND2': 'GND'},
                nc=['PGOOD'])

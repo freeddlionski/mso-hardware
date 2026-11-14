@@ -16,7 +16,9 @@ PARTS = {
     # --- микросхемы ---
     ('TPS26631PWPR', 'HTSSOP-20-1EP_4.4x6.5mm_P0.65mm_EP3.4x6.5mm_Mask2.96x2.96mm_ThermalVias'):
         ('C2866319', 'TPS26631PWPR', 'TI'),
-    ('LM61460AANRJRR', 'Texas_RJR_VQFN-HR-14_3.5x4mm'): ('C2864505', 'LM61460AANRJRR', 'TI'),
+    # аудит Codex C2 §4: LM61460AANRJRR — 0 на JLCPCB; LM61460AASQRJRRQ1 — та же RJR-14 и нумерация, 400 кГц от RT 33,2 кОм
+    # (SNVSB70F, с. 3/4/7), отличие — включён spread spectrum (режим Auto сохранён)
+    ('LM61460AASQRJRRQ1', 'Texas_RJR_VQFN-HR-14_3.5x4mm'): ('C1855832', 'LM61460AASQRJRRQ1', 'TI, автомобильный вариант со spread spectrum'),
     ('LMR51430XDDCR', 'SOT-23-6'): ('C5185863', 'LMR51430XDDCR', 'TI'),
     ('ESP32-S3-WROOM-1U-N16R2', 'ESP32-S3-WROOM-1U'): ('C3013945', 'ESP32-S3-WROOM-1U-N16R2', 'Espressif'),
     ('CH340K', 'SSOP-10-1EP_3.9x4.9mm_P1mm_EP2.1x3.3mm'): ('C968586', 'CH340K', 'WCH'),
@@ -35,7 +37,7 @@ PARTS = {
     ('CSD19534Q5A', 'Texas_DQJ_VSONP-8_5x6mm_CSD19534Q5A'): ('C114200', 'CSD19534Q5A', 'TI'),
     ('2N7002', 'SOT-23'): ('C85049', '2N7002-7-F', 'Diodes Inc.'),
     ('MMBT3904', 'SOT-23'): ('C20526', 'MMBT3904', 'JSCJ, осн.'),
-    ('BSP75N', 'SOT-223-3_TabPin2'): ('C114056', 'BSP75N', 'Infineon HITFET 60 В: ограничение тока ~1 А, тепловая защита (C-004)'),
+    ('BSP75N', 'SOT-223-3_TabPin3_BSP75N'): ('C114056', 'BSP75N', 'Infineon HITFET 60 В: ограничение тока ~1 А, тепловая защита (C-004)'),
     ('BAT46W', 'D_SOD-123'): ('C7420332', 'BAT46W', 'R+O, 100 В'),
     ('BAT54S', 'SOT-23'): ('C47546', 'BAT54S,215', 'Nexperia'),
     ('BAT54C', 'SOT-23'): ('C2135', 'BAT54C', 'JSCJ'),
@@ -44,7 +46,7 @@ PARTS = {
     ('4.7V', 'D_SOD-123'): ('C22395547', 'MMSZ4688', 'R+O, стабилитрон 4,7 В 500 мВт'),
     ('SMAJ33A', 'D_SMA'): ('C223988', 'SMAJ33A', 'Littelfuse'),
     ('SMAJ36CA', 'D_SMA'): ('C5249597', 'SMAJ36CA', 'ElecSuper'),
-    ('SMAJ8.0CA', 'D_SMA'): ('C173500', 'SMAJ8.0CA', 'MDD; пробой 8,89–9,83 В, утечка ≤ 50 мкА при 8 В'),
+    ('SMAJ8.0CA', 'D_SMA'): ('C148237', 'SMAJ8.0CA', 'Littelfuse; пробой 8,89–9,83 В, VC 13,6 В (MDD C173500 — 1 шт. на складе, C2 §4)'),
     ('SMCJ33CA', 'D_SMC'): ('C224050', 'SMCJ33CA', 'Littelfuse'),
     ('600R@100MHz', 'L_0805_2012Metric'): ('C1017', '', 'ферритовая бусина 600 Ом 0805, осн.'),
 
@@ -127,11 +129,11 @@ PARTS = {
 
     ('USB-C', 'USB_C_Receptacle_HCTL_HC-TYPE-C-16P-01A'): ('C2894897', 'HC-TYPE-C-16P-01A', 'HCTL'),
     ('CR2032', 'BatteryHolder_MYOUNG_BS-07-A1BJ001_CR2032'): ('C2979167', 'BS-07-A1BJ001', 'MYOUNG, −25…+85 °C'),
-    ('7.5A', 'Fuseholder_Blade_Mini_Keystone_3568'): ('C5249699', '3568', 'Keystone; вставка mini-blade 7,5 А — к жгуту/в ЗИП'),
+    ('7.5A', 'Fuseholder_Blade_Mini_Keystone_3568'): ('C3205378', '3568-10', 'Keystone, тот же держатель (чертёж 3568-10 Rev.B: отверстия и центры 9,92 × 3,40 как у 3568), основание красное; «-10» — не номинал. Вставка mini-blade 7,5 А — к жгуту/в ЗИП'),
 
-    ('RESET', 'SW_SPST_TL3342'): ('C2886898', 'TL3342F160QG', 'E-Switch, −20…+70 °C; наличие на LCSC проверить перед заказом'),
-    ('BOOT', 'SW_SPST_TL3342'): ('C2886898', 'TL3342F160QG', 'E-Switch, −20…+70 °C; наличие на LCSC проверить перед заказом'),
-    ('СЕРВИС', 'SW_SPST_TL3342'): ('C2886898', 'TL3342F160QG', 'E-Switch, −20…+70 °C; наличие на LCSC проверить перед заказом'),
+    ('RESET', 'SW_SPST_TL3342'): ('C2886897', 'TL3342F450QG', 'E-Switch, усилие 4,5 Н (F160 — 0 на складе, C2 §4); вариант F450 сверить по образцу'),
+    ('BOOT', 'SW_SPST_TL3342'): ('C2886897', 'TL3342F450QG', 'E-Switch, усилие 4,5 Н (F160 — 0 на складе, C2 §4); вариант F450 сверить по образцу'),
+    ('СЕРВИС', 'SW_SPST_TL3342'): ('C2886897', 'TL3342F450QG', 'E-Switch, усилие 4,5 Н (F160 — 0 на складе, C2 §4); вариант F450 сверить по образцу'),
 
     # --- резисторы 0603 (UNI-ROYAL 0603WAF, ±1 %, 75 В) ---
     ('0', 'R_0603_1608Metric'): ('C21189', '0603WAF0000T5E', 'осн.'),

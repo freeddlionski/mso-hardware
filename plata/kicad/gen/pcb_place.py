@@ -57,29 +57,35 @@ ANCHORS = {
 # Каждый преобразователь — компактная ячейка: керамика VIN/PGND вплотную к выводам, дроссель у SW, выходная керамика у
 # дросселя, делитель FB у FB. Раньше входные конденсаторы «тянулись» к eFuse по общей цепи +24V_P (до 75 мм от U5).
 # Смещения (dx, dy) — от центра микросхемы; деталь ставится в ближайшее свободное место к этой точке, по порядку списка.
+# Проход 12 (Codex C2, §5.1): смещения подобраны по площадкам. LM61460 (поворот 0): VIN/PGND справа сверху и снизу
+# (8/9, 12/11), SW — справа по центру, FB/AGND/VCC — слева; 100 нФ — у пар VIN/PGND, дроссель повёрнут выводом SW к ИС.
+# LMR51430 (SOT-23-6, поворот 90): снизу GND–SW–VIN, сверху CB–EN–FB; дроссель под ИС выводом SW вверх.
+# Запись: (позиция, dx, dy) или (позиция, dx, dy, поворот).
+def _lm(c100, c10, cvcc, ccb, rb, rt, en, fb, l, cout, cbulk, led):
+    return [(c100[0], 1.0, -2.9), (c100[1], 1.0, 2.9), (c10[0], 1.2, -5.6), (c10[1], 1.2, 5.6), (c10[2], -2.4, -6.0),
+            (ccb, -1.8, -3.3), (rb, 0.6, -4.6), (cvcc, -3.7, -0.9), (fb[1], -3.7, 1.0), (fb[0], -3.7, 2.7),
+            (rt, -1.4, 3.6), (en[0], -3.6, 4.6), (en[1], -3.6, 6.2), (l, 10.0, 0, 0),
+            (cout[0], 19.6, -4.8), (cout[1], 19.6, -1.6), (cout[2], 19.6, 1.6), (cout[3], 19.6, 4.8), (cbulk, 27.5, 0),
+            (led[0], 24.5, 8.5), (led[1], 28.5, 8.5)]
+
+
+def _lmr(cin, cvin, ccb, en, fb, l, ly, cout, cy, cout100, led):
+    return [(cvin, 2.6, 0.6), (cin, 5.3, 0.6), (ccb, -2.4, -2.3), (en[0], 0.0, -3.6), (en[1], 0.0, -5.2),
+            (fb[0], 2.6, -2.7), (fb[1], 2.6, -4.3), (l, 0.0, ly, 270)] + \
+           [(c, -4.0 + 4.0 * i, cy) for i, c in enumerate(cout)] + [(cout100, 7.0, cy - 2.0), (led[0], -8.0, 0.5), (led[1], -8.0, 2.5)]
+
+
 CELLS = {
-    # LM61460 (VQFN 3,5 × 4): 100 нФ у VIN1/VIN2, 3 × 10 мкФ, SRP1265A справа, 4 × 47 мкФ и 470 мкФ за ним
-    'U5': ((12, 26), [('C26', -3, -3.5), ('C27', -3, 3.5), ('C24', -7, -5), ('C25', -7, 0), ('C110', -7, 5),
-                      ('C29', 3, -4), ('R29', 3, -6.5), ('C28', -1, 6), ('R28', 2, 7), ('R27', 5, 7), ('R26', 5, 9),
-                      ('L4', 13, 0), ('R31', 3, 9), ('R30', 3, 11),
-                      ('C30', 24, -6), ('C31', 24, -2), ('C32', 24, 2), ('C33', 24, 6), ('C34', 34, 0),
-                      ('R32', 29, 9), ('D9', 33, 9)]),
-    'U6': ((12, 56), [('C37', -3, -3.5), ('C38', -3, 3.5), ('C35', -7, -5), ('C36', -7, 0), ('C111', -7, 5),
-                      ('C40', 3, -4), ('R36', 3, -6.5), ('C39', -1, 6), ('R35', 2, 7), ('R34', 5, 7), ('R33', 5, 9),
-                      ('L5', 13, 0), ('R38', 3, 9), ('R37', 3, 11),
-                      ('C41', 24, -6), ('C42', 24, -2), ('C43', 24, 2), ('C44', 24, 6), ('C45', 34, 0),
-                      ('R39', 29, 9), ('D10', 33, 9)]),
-    # LMR51430 (SOT-23-6): 100 нФ и 10 мкФ у VIN/GND, CB, дроссель у SW, 2 × 22 мкФ за дросселем, делитель FB и EN
-    'U2': ((68, 30), [('C7', -3, -2), ('C6', -6, 0), ('C8', 2, -3), ('R11', -3, 4), ('R12', -3, 6),
-                      ('L1', 11, 0), ('R13', 2, 4), ('R14', 2, 6), ('C9', 21, -3), ('C10', 21, 2), ('C11', 21, 6),
-                      ('R15', 16, 9), ('D6', 20, 9)]),
-    'U3': ((68, 52), [('C13', -3, -2), ('C12', -6, 0), ('R16', -3, 4), ('R17', -3, 6),
-                      ('L2', 11, 0), ('R18', 2, 4), ('R19', 2, 6), ('C15', 21, -3), ('C16', 21, 2), ('C17', 21, 6),
-                      ('R20', 16, 9), ('D7', 20, 9)]),
-    'U4': ((68, 74), [('C19', -3, -2), ('C18', -6, 0), ('C20', 2, -3), ('R21', -3, 4), ('R22', -3, 6),
-                      ('L3', 8, 0), ('R23', 2, 4), ('R24', 2, 6), ('C21', 15, -2), ('C22', 15, 2), ('C23', 15, 6),
-                      ('R25', 12, 8), ('D8', 16, 8)]),
+    'U5': ((12, 26, 0), _lm(('C26', 'C27'), ('C24', 'C25', 'C110'), 'C28', 'C29', 'R29', 'R28', ('R26', 'R27'),
+                            ('R30', 'R31'), 'L4', ('C30', 'C31', 'C32', 'C33'), 'C34', ('R32', 'D9'))),
+    'U6': ((12, 56, 0), _lm(('C37', 'C38'), ('C35', 'C36', 'C111'), 'C39', 'C40', 'R36', 'R35', ('R33', 'R34'),
+                            ('R37', 'R38'), 'L5', ('C41', 'C42', 'C43', 'C44'), 'C45', ('R39', 'D10'))),
+    'U2': ((68, 12, 90), _lmr('C6', 'C7', 'C8', ('R11', 'R12'), ('R13', 'R14'), 'L1', 9.0, ('C9', 'C10', 'C115'), 17.4, 'C11', ('R15', 'D6'))),
+    'U3': ((68, 40, 90), _lmr('C12', 'C13', 'C14', ('R16', 'R17'), ('R18', 'R19'), 'L2', 9.0, ('C15', 'C16'), 17.4, 'C17', ('R20', 'D7'))),
+    'U4': ((68, 68, 90), _lmr('C18', 'C19', 'C20', ('R21', 'R22'), ('R23', 'R24'), 'L3', 5.8, ('C21', 'C22'), 10.6, 'C23', ('R25', 'D8'))),
 }
+# Развязка рядом с выводом питания своей микросхемы (позиция → (микросхема, вывод)): ставится после раскладки остального
+POST = {'C113': ('U23', '5')}
 
 
 # ---------------------------------------------------------------- посадочные места
@@ -150,6 +156,18 @@ def courtyard(path):
     return min(xs), min(ys), max(xs), max(ys)
 
 
+def pads(path):
+    """Номер площадки → центр (первая площадка с этим номером), в координатах посадочного места."""
+    t = parse(open(path, encoding='utf-8').read())
+    t = t[0] if t and isinstance(t[0], list) else t
+    out = {}
+    for x in t:
+        if isinstance(x, list) and x and x[0] == 'pad':
+            at = [y for y in x if isinstance(y, list) and y[0] == 'at'][0]
+            out.setdefault(str(x[1]), (float(at[1]), float(at[2])))
+    return out
+
+
 def rot_box(box, rot):
     """Повернуть прямоугольник посадочного места (KiCad: угол против часовой при Y вниз)."""
     x0, y0, x1, y1 = box
@@ -165,6 +183,7 @@ class Placer:
     def __init__(self, comps, fpdir, ownlib):
         self.comps = comps
         self.box = {r: courtyard(fp_path(c.fp, fpdir, ownlib)) for r, c in comps.items()}
+        self.pads = {r: pads(fp_path(c.fp, fpdir, ownlib)) for r, c in comps.items() if r in {u for u, _ in POST.values()}}
         self.pos = {}           # ref → (x, y, rot)
         self.rects = []         # (x0, y0, x1, y1, ref)
         for hx, hy in ((HOLE, HOLE), (W - HOLE, HOLE), (HOLE, H - HOLE), (W - HOLE, H - HOLE)):
@@ -225,12 +244,25 @@ class Placer:
                 self.near(ref, (r[0] + r[2]) / 2, (r[1] + r[3]) / 2, rot=rot)
 
     def cells(self):
-        for u, ((ux, uy), parts) in CELLS.items():
-            self.put(u, ux, uy, 0)
-            for ref, dx, dy in parts:
+        for u, ((ux, uy, urot), parts) in CELLS.items():
+            self.put(u, ux, uy, urot)
+            for item in parts:
+                ref, dx, dy = item[:3]
                 if ref not in self.comps:
-                    raise SystemExit('ячейка %s: нет позиции %s в нетлисте' % (u, ref))
-                self.near(ref, ux + dx, uy + dy, step=0.25, rmax=12)
+                    print('ячейка %s: нет позиции %s в нетлисте — пропуск' % (u, ref))
+                    continue
+                self.near(ref, ux + dx, uy + dy, step=0.25, rmax=12, rot=item[3] if len(item) > 3 else None)
+
+    def pad_xy(self, ref, num):
+        x, y, rot = self.pos[ref]
+        px, py = self.pads[ref][num]
+        a = math.radians(rot)
+        c, s = round(math.cos(a)), round(math.sin(a))
+        return x + px * c + py * s, y - px * s + py * c
+
+    def post(self):
+        for ref, (u, pad) in POST.items():
+            self.near(ref, *self.pad_xy(u, pad), step=0.25, rmax=10)
 
     def owner(self, ref):
         """Якорь, к которому тянется деталь: больше всего общих цепей (сигнальные ×4, питание ×1, без GND)."""
@@ -250,7 +282,7 @@ class Placer:
         return best, score
 
     def place_rest(self):
-        todo = [r for r in self.comps if r not in self.pos]
+        todo = [r for r in self.comps if r not in self.pos and r not in POST]
         # сначала те, у кого связь с якорем сильнее; связанные по цепочке (R→C→…) подтянутся следом
         for _ in range(len(todo)):
             if not todo:
@@ -325,6 +357,7 @@ def main(netpath, fpdir, png=None):
     pl.cells()
     pl.anchors()
     pl.place_rest()
+    pl.post()
     out = {'board': {'w': W, 'h': H, 'holes': [[HOLE, HOLE], [W - HOLE, HOLE], [HOLE, H - HOLE], [W - HOLE, H - HOLE]]},
            'parts': {r: list(pl.pos[r]) for r in sorted(pl.pos)}}
     with open(os.path.join(os.path.dirname(HERE), 'placement.json'), 'w') as f:
