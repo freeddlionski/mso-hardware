@@ -1,0 +1,136 @@
+{
+  "components": 354,
+  "nets": 315,
+  "net_and_xml_equal_after_escaping_normalization": true,
+  "unexpected_singletons": [],
+  "pcb_footprints": 358,
+  "pcb_tracks": 0,
+  "pcb_vias": 0,
+  "pcb_zones": 0,
+  "pcb_pad_mismatches": [],
+  "cin_distances_mm_center_to_center": {
+    "U2": {
+      "C6": 40.311,
+      "C7": 25.71
+    },
+    "U3": {
+      "C12": 45.235,
+      "C13": 50.695
+    },
+    "U4": {
+      "C18": 36.431,
+      "C19": 45.804
+    },
+    "U5": {
+      "C24": 59.927,
+      "C25": 57.723,
+      "C26": 74.673,
+      "C27": 73.498
+    },
+    "U6": {
+      "C35": 41.164,
+      "C36": 27.409,
+      "C37": 47.413,
+      "C38": 33.838
+    }
+  },
+  "drc_types_from_existing_report": {
+    "hole_clearance": 4,
+    "drill_out_of_range": 12,
+    "silk_edge_clearance": 26,
+    "silk_over_copper": 172,
+    "silk_overlap": 191,
+    "unconnected_items": 499
+  },
+  "input_sha256": {
+    "mso74-plata.net": "b4807160c1668e513eb5d12d25d5943d5c1b8a09bd789dae8bef0a2f2a282133",
+    "mso74-plata.xml": "e500ef83e45117b9af1b9fbb74246d0b84fe222959a0389b54535485efa25bb0",
+    "drc.rpt": "3da17d038f685a811be0ddb11c92aca351fd9175b0e08e2c620b564925fc3e84",
+    "mso74-plata.kicad_pcb": "1e10204ac610abf3df8b1251c10772d0e3d5f29d50d5206af3f0a5f107760482"
+  },
+  "audited_commit": "929198e4bce0ac9849e29535c30b98ebcf460e57",
+  "calculations": {
+    "buck_CCM": [
+      {
+        "tag": "U2/L1",
+        "vout_V": 12.072275334608028,
+        "L_H": 1e-05,
+        "L_initial_tolerance": 0.2,
+        "f_Hz": 500000.0,
+        "load_A": 1.0,
+        "ripple24_A": 1.1999564689667275,
+        "ripple32_A": 1.5035811184554468,
+        "peak32_Lmin_fmin_A": 2.044153554482949,
+        "irms24_A": 1.058296411196437
+      },
+      {
+        "tag": "U3/L2",
+        "vout_V": 4.979562043795621,
+        "L_H": 6.8e-06,
+        "L_initial_tolerance": 0.2,
+        "f_Hz": 500000.0,
+        "load_A": 1.0,
+        "ripple24_A": 1.1607040551848637,
+        "ripple32_A": 1.2366723093147964,
+        "peak32_Lmin_fmin_A": 1.858800214801942,
+        "irms24_A": 1.0546418785430827
+      },
+      {
+        "tag": "U4/L3",
+        "vout_V": 3.3149321266968323,
+        "L_H": 4.7e-06,
+        "L_initial_tolerance": 0.3,
+        "f_Hz": 500000.0,
+        "load_A": 1.2,
+        "ripple24_A": 1.21577297936378,
+        "ripple32_A": 1.2644820884267534,
+        "peak32_Lmin_fmin_A": 2.2035572130371057,
+        "irms24_A": 1.2502701020629863
+      },
+      {
+        "tag": "U5,U6/L4,L5",
+        "vout_V": 5.016064257028113,
+        "L_H": 6.8e-06,
+        "L_initial_tolerance": 0.3,
+        "f_Hz": 400000.0,
+        "load_A": 5.0,
+        "ripple24_A": 1.4587108078743827,
+        "ripple32_A": 1.5550684236473415,
+        "peak32_Lmin_fmin_A": 6.234181288609001,
+        "irms24_A": 5.017700645556435
+      }
+    ],
+    "eFuse_thresholds": {
+      "UVLO": {
+        "min_V": 14.359519642286807,
+        "max_V": 15.505631564916023,
+        "note": "±1% резисторы, ±2% порог; без утечек входов"
+      },
+      "OVP": {
+        "min_V": 32.614322376237624,
+        "max_V": 35.28095515151515,
+        "note": "±1% резисторы, ±2% порог; без утечек входов"
+      }
+    },
+    "pca9555_default_buffer_input_typical_V": 1.65,
+    "pca9555_with_10k_pulldown_typical_V": 0.3,
+    "rs232_5V_3k_load_after_2k2_V": 2.8846153846153846,
+    "rs485_ac_termination": {
+      "tau_s": 1.2e-05,
+      "initial_current_at_32V_A": 0.26666666666666666,
+      "capacitor_energy_J": 5.12e-05
+    },
+    "dnp_fault_if_680ohm_fitted": {
+      "B_resistor_W": 1.5058823529411764,
+      "A_resistor_W": 1.2113088235294116,
+      "A_into_3V3_A": 0.042205882352941176
+    },
+    "ptc_hold_A_at_70C_reference": {
+      "2920L500/16": 2.9,
+      "2920L110/60": 0.64,
+      "2920L075/60": 0.44
+    },
+    "tdk_47u_typical_effective_4pcs_at_5V_F": 0.0001222,
+    "i2c_Cmax_F_for_300ns_4k7": 7.533316090409837e-11
+  }
+}
