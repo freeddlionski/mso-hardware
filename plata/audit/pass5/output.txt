@@ -1,0 +1,29 @@
+Input: mso74-plata.xml (KiCad Eeschema 9.0.9), mso-hardware_main.zip.
+Local full audit script results (original sandbox implementation):
+components 316
+nets 266
+IC pins 305
+connector pins 101
+single nets 35
+unexpected single nets 0
+diodes 45
+direct connector-to-IC pin matches 58
+GPIO mismatches 0
+ERC report: Errors 0, Warnings 5 (2 footprint_link_issues U5/U6, 3 pin_to_pin U18)
+DIRECT J17.1 EXT_P0 U20.13 IO1_0
+DIRECT J17.2 EXT_P1 U20.14 IO1_1
+DIRECT J17.3 EXT_P2 U20.15 IO1_2
+DIRECT J17.4 EXT_P3 U20.16 IO1_3
+DIRECT J17.5 EXT_P4 U20.17 IO1_4
+DIRECT J17.6 EXT_P5 U20.18 IO1_5
+DIRECT J17.7 EXT_P6 U20.19 IO1_6
+DIRECT J17.8 EXT_P7 U20.20 IO1_7
+DIRECT J17.9 +3V3 U20.24 VDD and U7.2 3V3
+DIRECT J6.1 U0_TX U7.37 TXD0 and U8.9 RXD
+DIRECT J6.2 U0_RX U7.36 RXD0 and U8.8 TXD
+TPS26631 UVLO nominal 14.924 min 14.360 max 15.506 V
+TPS26631 OVP nominal 33.928 min 32.614 max 35.281 V
+blocked_input GPIO V at Schottky Vf=0.2/0.35/0.5 V: 0.299/0.4442/0.5894 V
+MDB TX VCC=4.5 V: I_total 7.838 mA, pin5 2.924 V
+MDB TX VCC=5.5 V: I_total 10.541 mA, pin5 3.519 V
+NOTE: This compact output was produced from the uploaded archive locally. Run included scripts to regenerate detailed CSV; physical datasheet limits not validated.
