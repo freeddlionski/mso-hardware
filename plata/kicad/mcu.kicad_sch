@@ -8159,7 +8159,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2894897"
+			(at 330.2 157.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "HC-TYPE-C-16P-01A"
 			(at 330.2 157.48 0)
 			(effects
 				(font
