@@ -56,6 +56,30 @@ SYMBOLS = [
        right=[('14', 'CBOOT', 'passive'), ('13', 'RBOOT', 'passive'), ('10', 'SW', 'power_out'),
               ('4', 'FB', 'input'), ('5', 'PGOOD', 'open_collector')],
        bottom=[('3', 'AGND', 'power_in'), ('9', 'PGND1', 'power_in'), ('11', 'PGND2', 'power_in')], w=17.78),
+    # Распиновка: Realtek RTL8305NB-VB-CG (Track ID JATR-8275-15) и -VC (JATR-8276-15), Table 1 «Pin Assignments» —
+    # совпадают; сверено 2026-11-14 с открытой схемой свитча на RTL8305NB-VB-CG (EasyEDA, 2022-08-13, прислал Павел).
+    ic('RTL8305NB', 'U', '5-портовый коммутатор 10/100, встроенные PHY, QFN-48 6×6 P0,4',
+       'Package_DFN_QFN:QFN-48-1EP_6x6mm_P0.4mm_EP4.4x4.4mm', 'https://www.lcsc.com/product-detail/C3010343.html',
+       left=[('44', 'RXIP0', 'bidirectional'), ('45', 'RXIN0', 'bidirectional'), ('46', 'TXON0', 'bidirectional'),
+             ('47', 'TXOP0', 'bidirectional'),
+             ('2', 'RXIP1', 'bidirectional'), ('3', 'RXIN1', 'bidirectional'), ('4', 'TXON1', 'bidirectional'),
+             ('5', 'TXOP1', 'bidirectional'),
+             ('12', 'RXIP2', 'bidirectional'), ('11', 'RXIN2', 'bidirectional'), ('10', 'TXON2', 'bidirectional'),
+             ('9', 'TXOP2', 'bidirectional'),
+             ('14', 'RXIP3', 'bidirectional'), ('15', 'RXIN3', 'bidirectional'), ('16', 'TXON3', 'bidirectional'),
+             ('17', 'TXOP3', 'bidirectional'),
+             ('22', 'RXIP4', 'bidirectional'), ('21', 'RXIN4', 'bidirectional'), ('20', 'TXON4', 'bidirectional'),
+             ('19', 'TXOP4', 'bidirectional'),
+             ('40', 'XI', 'input'), ('39', 'XO', 'output'), ('42', 'IBREF', 'passive'), ('27', 'RESETB', 'input')],
+       right=[('37', 'V33IN', 'power_in'), ('36', 'V12OUT', 'power_out'),
+              ('6', 'AVDDH', 'power_in'), ('8', 'AVDDH', 'power_in'), ('18', 'AVDDH', 'power_in'), ('48', 'AVDDH', 'power_in'),
+              ('38', 'AVDDHPLL', 'power_in'), ('31', 'DVDDH', 'power_in'),
+              ('1', 'AVDDL', 'power_in'), ('13', 'AVDDL', 'power_in'), ('23', 'AVDDL', 'power_in'), ('43', 'AVDDL', 'power_in'),
+              ('41', 'AVDDLPLL', 'power_in'), ('7', 'DVDDL', 'power_in'), ('24', 'DVDDL', 'power_in'), ('35', 'DVDDL', 'power_in'),
+              ('29', 'P0LED/DIS_EEE', 'bidirectional'), ('30', 'P1LED', 'bidirectional'),
+              ('32', 'P2LED/DIS_RST_BLNK', 'bidirectional'), ('33', 'P3LED', 'output'), ('34', 'P4LED', 'output'),
+              ('28', 'LDIND/DIS_LD', 'bidirectional'), ('25', 'SCL/MDC', 'bidirectional'), ('26', 'SDA/MDIO', 'bidirectional')],
+       bottom=[('49', 'EP', 'power_in')], w=25.4),
 ]
 
 
