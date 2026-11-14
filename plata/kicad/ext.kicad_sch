@@ -4510,7 +4510,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C315892"
+			(at 127 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1206L005/60WR"
 			(at 127 45.72 0)
 			(effects
 				(font
@@ -5427,7 +5436,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C315892"
+			(at 127 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1206L005/60WR"
 			(at 127 71.12 0)
 			(effects
 				(font
@@ -6344,7 +6362,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C315892"
+			(at 127 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1206L005/60WR"
 			(at 127 96.52 0)
 			(effects
 				(font
@@ -7261,7 +7288,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C315892"
+			(at 127 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "1206L005/60WR"
 			(at 127 121.92 0)
 			(effects
 				(font
@@ -10480,7 +10516,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+		(property "Footprint" "Fuse:Fuse_2920_7451Metric"
 			(at 304.8 163.83 0)
 			(effects
 				(font
@@ -10499,7 +10535,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C207083"
+			(at 299.72 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2920L075/60MR"
 			(at 299.72 165.1 0)
 			(effects
 				(font
@@ -11233,7 +11278,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+		(property "Footprint" "Fuse:Fuse_2920_7451Metric"
 			(at 304.8 189.23 0)
 			(effects
 				(font
@@ -11252,7 +11297,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C207083"
+			(at 299.72 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2920L075/60MR"
 			(at 299.72 190.5 0)
 			(effects
 				(font
@@ -11986,7 +12040,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+		(property "Footprint" "Fuse:Fuse_2920_7451Metric"
 			(at 304.8 214.63 0)
 			(effects
 				(font
@@ -12005,7 +12059,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C207083"
+			(at 299.72 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2920L075/60MR"
 			(at 299.72 215.9 0)
 			(effects
 				(font
@@ -12739,7 +12802,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1206_3216Metric"
+		(property "Footprint" "Fuse:Fuse_2920_7451Metric"
 			(at 304.8 240.03 0)
 			(effects
 				(font
@@ -12758,7 +12821,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C207083"
+			(at 299.72 241.3 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2920L075/60MR"
 			(at 299.72 241.3 0)
 			(effects
 				(font
@@ -12841,7 +12913,7 @@
 				)
 			)
 		)
-		(property "Value" "1A удерж."
+		(property "Value" "1.1A удерж."
 			(at 299.72 151.13 90)
 			(effects
 				(font
@@ -12849,7 +12921,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1812_4532Metric"
+		(property "Footprint" "Fuse:Fuse_2920_7451Metric"
 			(at 304.8 146.05 0)
 			(effects
 				(font
@@ -12868,7 +12940,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C315903"
+			(at 299.72 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2920L110/60MR"
 			(at 299.72 147.32 0)
 			(effects
 				(font

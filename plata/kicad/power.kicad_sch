@@ -7869,7 +7869,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1812_4532Metric"
+		(property "Footprint" "Fuse:Fuse_2920_7451Metric"
 			(at 66.04 135.89 0)
 			(effects
 				(font
@@ -7888,7 +7888,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C315903"
+			(at 60.96 137.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2920L110/60MR"
 			(at 60.96 137.16 0)
 			(effects
 				(font
@@ -8485,7 +8494,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Fuse:Fuse_1812_4532Metric"
+		(property "Footprint" "Fuse:Fuse_2920_7451Metric"
 			(at 66.04 158.75 0)
 			(effects
 				(font
@@ -8504,7 +8513,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C6165178"
+			(at 60.96 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SMD2920-150/60N"
 			(at 60.96 160.02 0)
 			(effects
 				(font
@@ -10127,7 +10145,7 @@
 				)
 			)
 		)
-		(property "Value" "12u"
+		(property "Value" "10u"
 			(at 106.68 204.47 90)
 			(effects
 				(font
@@ -10153,7 +10171,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C222949"
+			(at 106.68 200.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "NRS5040T100MMGJ"
 			(at 106.68 200.66 0)
 			(effects
 				(font
@@ -12919,7 +12946,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C222948"
+			(at 106.68 259.08 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "NRS5040T6R8MMGJ"
 			(at 106.68 259.08 0)
 			(effects
 				(font
@@ -15659,7 +15695,7 @@
 				)
 			)
 		)
-		(property "Value" "5.6u"
+		(property "Value" "4.7u"
 			(at 106.68 321.31 90)
 			(effects
 				(font
@@ -15685,7 +15721,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C223064"
+			(at 106.68 317.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "NR5040T4R7N"
 			(at 106.68 317.5 0)
 			(effects
 				(font
@@ -19623,7 +19668,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_12x12mm_H6mm"
+		(property "Footprint" "Inductor_SMD:L_Bourns_SRR1260"
 			(at 342.9 68.58 0)
 			(effects
 				(font
@@ -19641,7 +19686,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2051060"
+			(at 342.9 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SRR1280A-6R8Y"
 			(at 342.9 68.58 0)
 			(effects
 				(font
@@ -20699,7 +20753,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C207091"
+			(at 383.54 96.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2920L500/16MR"
 			(at 383.54 96.52 0)
 			(effects
 				(font
@@ -24196,7 +24259,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Inductor_SMD:L_12x12mm_H6mm"
+		(property "Footprint" "Inductor_SMD:L_Bourns_SRR1260"
 			(at 342.9 195.58 0)
 			(effects
 				(font
@@ -24214,7 +24277,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2051060"
+			(at 342.9 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "SRR1280A-6R8Y"
 			(at 342.9 195.58 0)
 			(effects
 				(font
@@ -25272,7 +25344,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C207091"
+			(at 383.54 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2920L500/16MR"
 			(at 383.54 223.52 0)
 			(effects
 				(font
