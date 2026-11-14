@@ -10250,7 +10250,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2886898"
+			(at 53.34 269.24 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TL3342F160QG"
 			(at 53.34 269.24 0)
 			(effects
 				(font
