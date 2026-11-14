@@ -140,6 +140,8 @@ def rj45(sh, port, name, xr, yy):
     sh.connect(j, pins, nc=nc)
     C(sh, '100n', xr - 50.8, yy + 15.24, 'SW_CT%d' % port, 'GND')
     # Kimi K-002: экран и общая точка цепи Боба-Смита разъёма (конт. 8) — на землю через 1 нФ 2 кВ ∥ 1 МОм, как CGND в образце
+    sh.late = True
     two(sh, 'Device:C', 'C', '1n 2kV', xr - 76.2, yy + 15.24, 'ETH_SH%d' % port, 'GND', fp='Capacitor_SMD:C_1206_3216Metric')
     R(sh, '1M', xr - 76.2, yy + 25.4, 'ETH_SH%d' % port, 'GND')
+    sh.late = False
     R(sh, '330', xr - 50.8, yy + 25.4, 'SW_LED%d' % port, 'SW_LEDA%d' % port)

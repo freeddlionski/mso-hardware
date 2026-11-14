@@ -98,10 +98,11 @@ LABEL_ANGLE = {(-1, 0): 180, (1, 0): 0, (0, -1): 90, (0, 1): 270}
 
 
 class Part:
-    def __init__(self, sheet, lib_id, ref, value, at, unit=1, rot=0, fp='', lcsc='', mpn='', fields=None, dnp=False):
+    def __init__(self, sheet, lib_id, ref, value, at, unit=1, rot=0, fp='', lcsc='', mpn='', fields=None, dnp=False, in_bom=True):
         self.sheet, self.lib_id, self.ref, self.value = sheet, lib_id, ref, value
         self.at, self.unit, self.rot = (_snap(at[0]), _snap(at[1])), unit, rot
         self.fp, self.lcsc, self.mpn, self.fields, self.dnp = fp, lcsc, mpn, fields or {}, dnp
+        self.in_bom = in_bom
         self.sym = sheet.proj.lib.symbol(lib_id)
         self.pins = pins_of(self.sym, unit)
         self.nets = {}
@@ -127,11 +128,15 @@ class Sheet:
         self.proj, self.name, self.title, self.paper = proj, name, title, paper
         self.parts, self.items, self.texts = [], [], []
         self.uuid = _uid('sheet', name)
+        self.late = False      # True — новые позиции нумеруются в конце (номера прежних не сдвигаются)
         proj.sheets.append(self)
 
     def part(self, lib_id, prefix, value, at, **kw):
-        ref = kw.pop('ref', None) or self.proj.next_ref(prefix)
-        p = Part(self, lib_id, ref, value, at, **kw)
+        ref = kw.pop('ref', None)
+        late = self.late and not ref
+        p = Part(self, lib_id, ref or ('?' if late else self.proj.next_ref(prefix)), value, at, **kw)
+        if late:
+            self.proj.deferred.append((p, prefix))
         self.parts.append(p)
         return p
 
@@ -154,7 +159,14 @@ class Project:
         self.power = set(power_nets)
         self.pending = set()    # цепи, вторая сторона которых на листе, который ещё не нарисован
         self._refs = {}
+        self.deferred = []
         self.root_uuid = _uid('root')
+
+    def assign_late(self):
+        """Номера позициям, добавленным после выпуска нумерации (Sheet.late): в конец, по порядку добавления."""
+        for p, prefix in getattr(self, 'deferred', []):
+            p.ref = self.next_ref(prefix)
+        self.deferred = []
 
     def next_ref(self, prefix):
         n = self._refs.get(prefix, 0) + 1
@@ -240,7 +252,7 @@ class Project:
         for part in sh.parts:
             uid = _uid(sh.name, part.ref, part.unit)
             sym = ['symbol', ['lib_id', Q(part.lib_id)], ['at', part.at[0], part.at[1], part.rot], ['unit', part.unit],
-                   ['exclude_from_sim', 'no'], ['in_bom', 'yes'], ['on_board', 'yes'], ['dnp', 'yes' if part.dnp else 'no'],
+                   ['exclude_from_sim', 'no'], ['in_bom', 'yes' if part.in_bom else 'no'], ['on_board', 'yes'], ['dnp', 'yes' if part.dnp else 'no'],
                    ['uuid', Q(uid)]]
             sym += self._props(part, uid)
             for num in sorted({p['number'] for p in part.pins}, key=lambda s: (len(s), s)):

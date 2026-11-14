@@ -177,7 +177,7 @@ def apply(proj):
     missing = {}
     for sh in proj.sheets:
         for p in sh.parts:
-            if p.ref.startswith('#') or p.lcsc:
+            if p.ref.startswith('#') or p.lcsc or not p.in_bom:
                 continue
             fp = p.fp
             if not fp:

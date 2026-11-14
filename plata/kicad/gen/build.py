@@ -15,6 +15,7 @@ import kisch  # noqa: E402
 import lcsc  # noqa: E402
 import sheet_comm  # noqa: E402
 import sheet_eth  # noqa: E402
+import sheet_tp  # noqa: E402
 import sheet_ext  # noqa: E402
 import sheet_hub  # noqa: E402
 import sheet_io  # noqa: E402
@@ -68,6 +69,9 @@ def main(official):
     sheet_hub.build(proj)
     sheet_ext.build(proj)
     sheet_eth.switch(proj)        # последним: новые позиции получают новые номера, старые не сдвигаются
+    proj.assign_late()            # исправления аудитов Codex/Kimi: новые позиции — в конец нумерации
+    known = {n for sh in proj.sheets for p in sh.parts for n in p.nets.values() if n}
+    sheet_tp.build(proj, known)
     check_footprints(proj, official, own_fps)
     missing = lcsc.apply(proj)
     if missing:
