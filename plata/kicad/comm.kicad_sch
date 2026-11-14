@@ -2688,7 +2688,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C14663"
+			(at 63.5 66.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
 			(at 63.5 66.04 0)
 			(effects
 				(font
@@ -3208,7 +3217,7 @@
 				)
 			)
 		)
-		(property "Value" "жёлтый TX"
+		(property "Value" "красный TX"
 			(at 104.14 91.44 0)
 			(effects
 				(font
@@ -3234,7 +3243,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2286"
 			(at 104.14 93.98 0)
 			(effects
 				(font
@@ -3519,7 +3528,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C2289"
+			(at 104.14 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "KT-0603YG"
 			(at 104.14 104.14 0)
 			(effects
 				(font
@@ -4080,7 +4098,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C344180"
+			(at 215.9 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TCC0805X7R104K101DT"
 			(at 215.9 101.6 0)
 			(effects
 				(font
@@ -5388,7 +5415,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C14663"
+			(at 55.88 175.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
 			(at 55.88 175.26 0)
 			(effects
 				(font
@@ -5497,7 +5533,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C14663"
+			(at 55.88 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
 			(at 55.88 185.42 0)
 			(effects
 				(font
@@ -5606,7 +5651,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C14663"
+			(at 55.88 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
 			(at 55.88 195.58 0)
 			(effects
 				(font
@@ -5763,7 +5817,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C14663"
+			(at 55.88 205.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
 			(at 55.88 205.74 0)
 			(effects
 				(font
@@ -5920,7 +5983,16 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C14663"
+			(at 55.88 215.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CC0603KRX7R9BB104"
 			(at 55.88 215.9 0)
 			(effects
 				(font
