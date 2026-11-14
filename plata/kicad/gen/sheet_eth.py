@@ -5,7 +5,7 @@ W5500 — по схеме платы той же серии (a147/Motherboard_Sc
 прислал Павел) и даташиту Realtek. Порт 0 — к W5500 через трансформатор H1102 (как кабель нулевой длины),
 порт 1 — RJ45 «Сеть», порт 2 — RJ45 «Vendotek», порты 3–4 не используются. Прошивка не меняется.
 """
-from sheet_power import C, R, two
+from sheet_power import C, R, flag, two
 
 
 def build(proj):
@@ -144,4 +144,5 @@ def rj45(sh, port, name, xr, yy):
     two(sh, 'Device:C', 'C', '1n 2kV', xr - 76.2, yy + 15.24, 'ETH_SH%d' % port, 'GND', fp='Capacitor_SMD:C_1206_3216Metric')
     R(sh, '1M', xr - 76.2, yy + 25.4, 'ETH_SH%d' % port, 'GND')
     sh.late = False
+    flag(sh, xr - 101.6, yy + 15.24, 'ETH_SH%d' % port)     # конт. 8 — «вход питания» в символе; цепь задают C и R
     R(sh, '330', xr - 50.8, yy + 25.4, 'SW_LED%d' % port, 'SW_LEDA%d' % port)

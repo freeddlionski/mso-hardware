@@ -9795,7 +9795,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 63.5 205.74 90)
+		(at 78.74 205.74 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9803,7 +9803,7 @@
 		(dnp no)
 		(uuid "5100011c-f61d-590a-a46b-4ce7633e27b4")
 		(property "Reference" "R73"
-			(at 63.5 201.93 90)
+			(at 78.74 201.93 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9811,7 +9811,7 @@
 			)
 		)
 		(property "Value" "100"
-			(at 63.5 209.55 90)
+			(at 78.74 209.55 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9819,7 +9819,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 63.5 207.01 0)
+			(at 78.74 207.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9828,7 +9828,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 63.5 205.74 0)
+			(at 78.74 205.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9837,7 +9837,7 @@
 			)
 		)
 		(property "LCSC" "C22775"
-			(at 63.5 205.74 0)
+			(at 78.74 205.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9846,7 +9846,7 @@
 			)
 		)
 		(property "MPN" "0603WAF1000T5E"
-			(at 63.5 205.74 0)
+			(at 78.74 205.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9871,8 +9871,8 @@
 	)
 	(wire
 		(pts
-			(xy 59.69 205.74)
-			(xy 57.15 205.74)
+			(xy 74.93 205.74)
+			(xy 72.39 205.74)
 		)
 		(stroke
 			(width 0)
@@ -9881,7 +9881,7 @@
 		(uuid "1ca93d9f-64bb-55d3-9d92-7e7affb77a71")
 	)
 	(label "Q_INH_B"
-		(at 57.15 205.74 180)
+		(at 72.39 205.74 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9892,8 +9892,8 @@
 	)
 	(wire
 		(pts
-			(xy 67.31 205.74)
-			(xy 69.85 205.74)
+			(xy 82.55 205.74)
+			(xy 85.09 205.74)
 		)
 		(stroke
 			(width 0)
@@ -9902,7 +9902,7 @@
 		(uuid "6ff447ca-69b7-5ee8-85c4-012b7aba61c9")
 	)
 	(label "Q_INH_G"
-		(at 69.85 205.74 0)
+		(at 85.09 205.74 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9913,7 +9913,7 @@
 	)
 	(symbol
 		(lib_id "Transistor_FET:BSP89")
-		(at 73.66 208.28 0)
+		(at 96.52 208.28 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -9921,7 +9921,7 @@
 		(dnp no)
 		(uuid "09781ba6-be46-591c-a22b-28deaa6a8fbb")
 		(property "Reference" "Q5"
-			(at 78.74 205.74 0)
+			(at 101.6 205.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9930,7 +9930,7 @@
 			)
 		)
 		(property "Value" "BSP75N"
-			(at 78.74 208.28 0)
+			(at 101.6 208.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9939,7 +9939,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-223-3_TabPin2"
-			(at 78.74 210.82 0)
+			(at 101.6 210.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9949,7 +9949,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.infineon.com/dgdl/Infineon-BSP89-DS-v02_02-en.pdf?fileId=db3a30433b47825b013b4b8a07f90d55"
-			(at 78.74 212.09 0)
+			(at 101.6 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9959,7 +9959,7 @@
 			)
 		)
 		(property "LCSC" "C114056"
-			(at 73.66 208.28 0)
+			(at 96.52 208.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9968,7 +9968,7 @@
 			)
 		)
 		(property "MPN" "BSP75N"
-			(at 73.66 208.28 0)
+			(at 96.52 208.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9996,8 +9996,8 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 208.28)
-			(xy 66.04 208.28)
+			(xy 91.44 208.28)
+			(xy 88.9 208.28)
 		)
 		(stroke
 			(width 0)
@@ -10006,7 +10006,7 @@
 		(uuid "ac4fd5f0-46f4-587d-8488-7edfe072e20c")
 	)
 	(label "Q_INH_G"
-		(at 66.04 208.28 180)
+		(at 88.9 208.28 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10017,8 +10017,8 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 203.2)
-			(xy 76.2 200.66)
+			(xy 99.06 203.2)
+			(xy 99.06 200.66)
 		)
 		(stroke
 			(width 0)
@@ -10027,7 +10027,7 @@
 		(uuid "8bc6b96c-497b-5d89-8f4f-75eb6bc0b3c4")
 	)
 	(label "COIN_INH_D"
-		(at 76.2 200.66 90)
+		(at 99.06 200.66 90)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -10038,8 +10038,8 @@
 	)
 	(wire
 		(pts
-			(xy 76.2 213.36)
-			(xy 76.2 215.9)
+			(xy 99.06 213.36)
+			(xy 99.06 215.9)
 		)
 		(stroke
 			(width 0)
@@ -10049,7 +10049,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 76.2 215.9 0)
+		(at 99.06 215.9 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -10057,7 +10057,7 @@
 		(dnp no)
 		(uuid "d397e23d-38a1-5f5c-852e-18740ecc1aa3")
 		(property "Reference" "#PWR0306"
-			(at 76.2 215.9 0)
+			(at 99.06 215.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10066,7 +10066,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 76.2 220.98 0)
+			(at 99.06 220.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10075,7 +10075,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 76.2 215.9 0)
+			(at 99.06 215.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10084,7 +10084,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 76.2 215.9 0)
+			(at 99.06 215.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)

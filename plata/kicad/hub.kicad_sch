@@ -8359,8 +8359,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "4c764b2a-b98c-5ea2-9d5f-6e7e3a982917")
-		(property "Reference" "#FLG010"
+		(uuid "ed512ff8-03c2-51fe-b2f4-56a7d15e5f35")
+		(property "Reference" "#FLG011"
 			(at 254 177.8 0)
 			(effects
 				(font
@@ -8404,12 +8404,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "e7344494-f394-5645-9997-508a140d76bc")
+			(uuid "f1162d12-f2c2-5ac4-b1a9-5f5c101e15ae")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/3fc7ac76-e6eb-5506-b32f-6702a8f2d6cc"
-					(reference "#FLG010")
+					(reference "#FLG011")
 					(unit 1)
 				)
 			)
@@ -8424,7 +8424,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "012e6d6a-a214-529c-89f7-18055f414bd2")
+		(uuid "6e12179d-38bd-5756-b118-3548b4c14ed5")
 	)
 	(label "VRTC"
 		(at 254 182.88 270)
@@ -8434,7 +8434,7 @@
 			)
 			(justify right bottom)
 		)
-		(uuid "a1d00697-290e-55a3-91c7-612e4ba2d991")
+		(uuid "d87855f9-4daf-561a-80f0-e258ee8ffde8")
 	)
 	(symbol
 		(lib_id "Device:R")
