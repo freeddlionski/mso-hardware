@@ -12,9 +12,9 @@ PTC50 = dict(fp='Fuse:Fuse_1206_3216Metric')
 
 def blocked_input(sh, x, y, term, gpio, tag, pullup='10k'):
     """Вход «на минус» (сухой контакт, открытый коллектор), переживает +24 В без тока в плату (аудит 2, пп. 5, 10 и доп.):
-    клемма — TVS 28 В на землю (только импульсы) — PTC 50 мА — диод Шоттки BAT46W (катод к клемме) — 330 Ом — вход.
+    клемма — TVS 33 В на землю (только импульсы) — PTC 50 мА — диод Шоттки BAT46W (катод к клемме) — 330 Ом — вход.
     +24 В на клемме запирает диод: ток не идёт ни в шину 3,3 В, ни в выключенную плату. «0»: 0,33 мА × 330 Ом + диод ≈ 0,5 В."""
-    tvs(sh, 'SMAJ28A', x + 76.2, y + 10.16, term)
+    tvs(sh, 'SMAJ33A', x + 76.2, y + 10.16, term)   # аудит 3: SMAJ28A при 32 В уже в пробое; 33 В — пробой ≥ 36,7 В
     two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', x + 76.2, y, term, tag + '_P', **PTC50)
     d = sh.part('Device:D_Schottky', 'D', 'BAT46W', (x + 38.1, y), fp='Diode_SMD:D_SOD-123', mpn='BAT46W')
     sh.connect(d, {'K': tag + '_P', 'A': tag + '_N'})
@@ -38,7 +38,7 @@ def pulse_input(sh, x, y, term_net, gpio_net, tag):
     # аудит 2, п. 5: диод последовательно (катод к клемме) — +24 В на клемме его запирает, тока в +12 В нет
     d = sh.part('Diode:1N4148W', 'D', '1N4148W', (x, y + 12.7), mpn='1N4148W')
     sh.connect(d, {'A': tag + '_K', 'K': k_in})
-    tvs(sh, 'SMAJ28A', x, y + 22.86, k_in)
+    tvs(sh, 'SMAJ33A', x, y + 22.86, k_in)
     # ток светодиода (12 − 1,2 − 0,7) / 1,5 кОм ≈ 6,7 мА
     R(sh, '10k', x + 76.2, y - 7.62, '+3V3', c)
     R(sh, '1k', x + 76.2, y + 2.54, c, gpio_net)
@@ -53,17 +53,20 @@ def build(proj):
     x, y = 40.64, 50.8
     sh.text('MDB (CashCode): 1 +24 В, 2 минус, 4 Master Receive, 5 Master Transmit, 6 общий сигналов. Передача ~10–13 мА от 5 В.',
             (20.32, 25.4), 1.5)
-    b = sh.part('74xGxx:74AHCT1G125', 'U', '74AHCT1G125', (x + 12.7, y), fp='Package_TO_SOT_SMD:SOT-23-5', mpn='SN74AHCT1G125DBVR')
-    sh.connect(b, {'1': 'GND', '2': 'MDB_TX', '4': 'MDB_TX_B', '5': '+5V', '3': 'GND'})
+    # Аудит 3: один 74AHCT1G125 нормирован до 8 мА, а нужно ~9–10 мА → два буфера параллельно, каждый через свой BAT46W
+    # (≈ 4,5–5 мА на буфер — в пределах таблицы TI, VOH ≥ 3,94 В при 8 мА и VCC 4,5 В).
+    # Ток петли: (VOH − 0,4 В диод − 1,2 В светодиод оптрона CashCode) / (150 Ом + ~220 Ом внутри CashCode) ≈ 9 мА;
+    # 1,2 В и 220 Ом — данные стенда (mso-firmware/docs/MDB.md), гарантии нет — замерить ток и напряжение на конт. 5 на прототипе.
+    for k, yy in enumerate((y, y - 15.24)):
+        b = sh.part('74xGxx:74AHCT1G125', 'U', '74AHCT1G125', (x + 12.7, yy), fp='Package_TO_SOT_SMD:SOT-23-5', mpn='SN74AHCT1G125DBVR')
+        sh.connect(b, {'1': 'GND', '2': 'MDB_TX', '4': 'MDB_TX_B%d' % k, '5': '+5V', '3': 'GND'})
+        d = sh.part('Device:D_Schottky', 'D', 'BAT46W', (x + 38.1, yy), fp='Diode_SMD:D_SOD-123', mpn='BAT46W')
+        sh.connect(d, {'A': 'MDB_TX_B%d' % k, 'K': 'MDB_TX_D'})   # +24 В на линии запирает диоды — в выходы буферов ток не идёт
     C(sh, '100n', x - 10.16, y + 20.32, '+5V', 'GND')
-    # 150 Ом (как в ТЗ): при +24 В на клемме TVS держит ~8 В, ток в выход буфера ≤ ~17 мА; рабочий ток ~10 мА (CashCode: 220 Ом внутри)
-    # аудит 2, п. 10: диод Шоттки после буфера — +24 В на линии его запирает, в выход 74AHCT1G125 ток не идёт.
-    # Рабочий ток (5 − 0,4 − 1,2) / (150 + 220 внутри CashCode) ≈ 9 мА
-    d = sh.part('Device:D_Schottky', 'D', 'BAT46W', (x + 38.1, y), fp='Diode_SMD:D_SOD-123', mpn='BAT46W')
-    sh.connect(d, {'A': 'MDB_TX_B', 'K': 'MDB_TX_D'})
+    C(sh, '100n', x - 10.16, y + 10.16, '+5V', 'GND')
     R(sh, '150', x + 63.5, y, 'MDB_TX_D', 'MDB_TX_P', 'R0805')
     two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', x + 101.6, y, 'MDB_TX_P', 'MDB_TX_L', **PTC50)
-    tvs(sh, 'SMAJ28A', x + 101.6, y + 10.16, 'MDB_TX_L')
+    tvs(sh, 'SMAJ33A', x + 101.6, y + 10.16, 'MDB_TX_L')
     # приём: купюрник замыкает линию на общий; подтяжка 10 кОм (при 4,7 кОм падение на диоде и резисторе поднимает «0»)
     blocked_input(sh, x + 25.4, y + 30.48, 'MDB_RX_L', 'MDB_RX', 'MDBRX')
     j = sh.part('Connector_Generic:Conn_02x03_Odd_Even', 'J', 'MDB Mini-Fit Jr 2×3', (x + 142.24, y + 15.24),
@@ -88,7 +91,7 @@ def build(proj):
     sh.text('Блокировка монетника: 2N7002 на минус (до 24 В / 100 мА), при сбросе выключена.', (20.32, y2 - 12.7), 1.5)
     R(sh, '100', x2, y2, 'COIN_INH', 'Q_INH_G')
     R(sh, '100k', x2, y2 + 10.16, 'Q_INH_G', 'GND')
-    q = sh.part('Transistor_FET:2N7002', 'Q', '2N7002', (x2 + 33.02, y2 + 2.54), mpn='2N7002')
+    q = sh.part('Transistor_FET:2N7002', 'Q', '2N7002', (x2 + 33.02, y2 + 2.54), mpn='2N7002-7-F (Diodes Inc.)')
     sh.connect(q, {'G': 'Q_INH_G', 'S': 'GND', 'D': 'COIN_INH_D'})
     two(sh, 'Device:Polyfuse', 'F', '100mA удерж.', x2 + 71.12, y2, 'COIN_INH_D', 'COIN_INH_T', **PTC50)
 

@@ -5207,7 +5207,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "2N7002"
+		(property "MPN" "2N7002-7-F (Diodes Inc.)"
 			(at 93.98 111.76 0)
 			(effects
 				(font
