@@ -11,6 +11,7 @@ sys.path.insert(0, HERE)
 
 import custom_syms  # noqa: E402
 import kisch  # noqa: E402
+import lcsc  # noqa: E402
 import sheet_comm  # noqa: E402
 import sheet_eth  # noqa: E402
 import sheet_ext  # noqa: E402
@@ -64,6 +65,11 @@ def main(official):
     sheet_hub.build(proj)
     sheet_ext.build(proj)
     check_footprints(proj, official)
+    missing = lcsc.apply(proj)
+    if missing:
+        print('ВНИМАНИЕ: нет номера LCSC у %d позиций:' % len(missing))
+        for (v, fp), refs in sorted(missing.items()):
+            print('  %-28s %-50s %s' % (v, fp, ' '.join(sorted(refs))))
     proj.write(OUT)
     with open(os.path.join(OUT, 'sym-lib-table'), 'w') as f:
         f.write('(sym_lib_table\n  (version 7)\n  (lib (name "mso74")(type "KiCad")(uri "${KIPRJMOD}/lib/mso74.kicad_sym")(options "")(descr "Свои символы МСО74"))\n)\n')
