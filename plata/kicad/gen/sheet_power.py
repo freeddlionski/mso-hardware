@@ -5,6 +5,7 @@
 FP = {
     'R0603': 'Resistor_SMD:R_0603_1608Metric',
     'R0805': 'Resistor_SMD:R_0805_2012Metric',
+    'R2512': 'Resistor_SMD:R_2512_6332Metric',
     'C0603': 'Capacitor_SMD:C_0603_1608Metric',
     'C0805': 'Capacitor_SMD:C_0805_2012Metric',
     'C1206': 'Capacitor_SMD:C_1206_3216Metric',
