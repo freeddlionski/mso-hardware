@@ -1,0 +1,58 @@
+name: KiCad — проверка схемы и выгрузка
+
+on:
+  push:
+    branches: [main]
+    paths: ['plata/kicad/**', '.github/workflows/kicad.yml']
+  pull_request:
+    paths: ['plata/kicad/**', '.github/workflows/kicad.yml']
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    container:
+      image: kicad/kicad:9.0
+      options: --user root
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Версия KiCad
+        run: kicad-cli version
+
+      - name: ERC схемы
+        run: |
+          set -e
+          SCH=$(ls plata/kicad/*.kicad_sch 2>/dev/null | head -1 || true)
+          if [ -z "$SCH" ]; then echo "Схемы пока нет — пропуск"; exit 0; fi
+          mkdir -p out
+          ROOT=plata/kicad/mso74-plata.kicad_sch
+          kicad-cli sch erc --format report --severity-all --output out/erc.rpt "$ROOT" || true
+          echo "===== ERC ====="; cat out/erc.rpt
+          # Ошибки ERC валят проверку, предупреждения — нет
+          kicad-cli sch erc --severity-error --exit-code-violations --output out/erc_err.rpt "$ROOT"
+
+      - name: PDF и BOM
+        if: always()
+        run: |
+          [ -f plata/kicad/mso74-plata.kicad_sch ] || exit 0
+          mkdir -p out
+          kicad-cli sch export pdf --output out/mso74-plata-schematic.pdf plata/kicad/mso74-plata.kicad_sch
+          kicad-cli sch export bom --output out/bom.csv \
+            --fields 'Reference,Value,Footprint,LCSC,${QUANTITY}' --group-by 'Value,Footprint,LCSC' \
+            plata/kicad/mso74-plata.kicad_sch
+          echo "===== BOM ====="; cat out/bom.csv
+
+      - name: DRC платы
+        if: always()
+        run: |
+          [ -f plata/kicad/mso74-plata.kicad_pcb ] || { echo "Платы пока нет — пропуск"; exit 0; }
+          kicad-cli pcb drc --format report --severity-all --output out/drc.rpt plata/kicad/mso74-plata.kicad_pcb || true
+          echo "===== DRC ====="; cat out/drc.rpt
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: kicad-out
+          path: out/
+          if-no-files-found: ignore

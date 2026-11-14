@@ -1,0 +1,48 @@
+name: KiCad — снимок официальных библиотек
+
+# Запускается вручную. Кладёт в ветку kicad-libs официальные символы KiCad 9 по нужным разделам
+# и список посадочных мест — помощник собирает схему из настоящих символов, а не рисует выводы сам.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    container:
+      image: kicad/kicad:9.0
+      options: --user root
+    steps:
+      - uses: actions/checkout@v4
+      - name: Снимок
+        run: |
+          set -e
+          SYM=/usr/share/kicad/symbols
+          FP=/usr/share/kicad/footprints
+          ls -d $SYM $FP
+          mkdir -p snap/symbols
+          for L in power Device RF_Module Interface_Ethernet Interface_UART Interface_USB Timer_RTC 74xx \
+                   Regulator_Switching Regulator_Linear Isolator Connector Connector_Generic Power_Protection \
+                   Transistor_FET Transistor_BJT Diode Switch Mechanical; do
+            cp "$SYM/$L.kicad_sym" snap/symbols/ || echo "нет библиотеки $L"
+          done
+          for d in $FP/*.pretty; do
+            n=$(basename "$d" .pretty)
+            ls "$d" | sed "s/\.kicad_mod$//; s/^/$n:/"
+          done > snap/footprints.txt
+          kicad-cli version > snap/VERSION
+          wc -l snap/footprints.txt; du -sh snap
+      - name: В ветку kicad-libs
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout --orphan kicad-libs
+          git rm -rf --cached . >/dev/null
+          find . -mindepth 1 -maxdepth 1 ! -name .git ! -name snap -exec rm -rf {} +
+          mv snap/* . && rmdir snap
+          git add -A
+          git commit -m "Снимок библиотек KiCad $(cat VERSION)"
+          git push -f origin kicad-libs
