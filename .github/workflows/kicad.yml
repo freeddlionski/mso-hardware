@@ -52,6 +52,14 @@ jobs:
             plata/kicad/mso74-plata.kicad_sch
           echo "===== BOM ====="; cat out/bom.csv
 
+      - name: Свои посадочные места (KiCad должен их прочитать)
+        if: always()
+        run: |
+          [ -d plata/kicad/lib/mso74.pretty ] || exit 0
+          mkdir -p out/fp
+          kicad-cli fp export svg --output out/fp plata/kicad/lib/mso74.pretty
+          ls -l out/fp
+
       - name: DRC платы
         if: always()
         run: |
