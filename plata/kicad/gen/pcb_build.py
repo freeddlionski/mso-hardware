@@ -70,6 +70,9 @@ def main(netpath, placement, out):
             if c.props.get(key):
                 try:
                     f.SetField(key, c.props[key])
+                    fld = f.GetFieldByName(key)
+                    if fld:
+                        fld.SetVisible(False)       # LCSC/MPN — в BOM, не на шелкографии
                 except Exception:
                     pass
         if c.dnp:
@@ -82,6 +85,7 @@ def main(netpath, placement, out):
             if n in netitems:
                 pad.SetNet(netitems[n])
         f.Reference().SetVisible(True)
+        f.Value().SetVisible(False)
         board.Add(f)
 
     # контур
