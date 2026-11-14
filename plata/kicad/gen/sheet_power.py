@@ -35,7 +35,7 @@ def led(sh, x, y, net, color='зелёный', r='2.2k'):
     """Индикатор линии: net → R → LED → GND."""
     mid = 'LED_' + net.strip('+')
     R(sh, r, x, y, net, mid)
-    p = sh.part('Device:LED', 'D', color, (x + 30.48, y), rot=180, fp=FP['LED0603'])
+    p = sh.part('Device:LED', 'D', color, (x + 43.18, y), rot=180, fp=FP['LED0603'])
     sh.connect(p, {'A': mid, 'K': 'GND'})
 
 

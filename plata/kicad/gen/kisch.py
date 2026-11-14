@@ -206,6 +206,10 @@ class Project:
 
         def prop(name, val, hide, dx=None, dy=None):
             src = base.get(name)
+            if part.rot in (90, 270) and name in ('Reference', 'Value') and len(part.pins) == 2:
+                # горизонтальная двухвыводная деталь: обозначение над корпусом, номинал под ним
+                yy = part.at[1] + (-3.81 if name == 'Reference' else 3.81)
+                return ['property', Q(name), Q(val), ['at', part.at[0], _snap(yy), 0], ['effects', ['font', ['size', 1.27, 1.27]]]]
             if src is not None and find(src, 'at'):
                 at = find(src, 'at')
                 x, y = _rot(float(at[1]), float(at[2]), part.rot)
@@ -272,11 +276,13 @@ class Project:
             sym = self.lib.symbol(lib_id)
             self._power_syms[lib_id] = sym
             ref = '#PWR%04d' % self._pwr_next()
-            vx, vy = _rot(0, 3.81 if net != 'GND' else -3.81, rot)
+            # подпись за корпусом символа, по направлению наружу
+            vx, vy = d[0] * 3.81, -d[1] * 5.08
+            vjust = [['justify', 'left']] if d == (1, 0) else [['justify', 'right']] if d == (-1, 0) else []
             return ['symbol', ['lib_id', Q(lib_id)], ['at', x, y, rot], ['unit', 1], ['exclude_from_sim', 'no'],
                     ['in_bom', 'yes'], ['on_board', 'yes'], ['dnp', 'no'], ['uuid', uid],
                     ['property', Q('Reference'), Q(ref), ['at', x, y, 0], ['effects', ['font', ['size', 1.27, 1.27]], ['hide', 'yes']]],
-                    ['property', Q('Value'), Q(net), ['at', _snap(x + vx), _snap(y - vy), 0], ['effects', ['font', ['size', 1.27, 1.27]]]],
+                    ['property', Q('Value'), Q(net), ['at', _snap(x + vx), _snap(y - vy), 0], ['effects', ['font', ['size', 1.27, 1.27]]] + vjust],
                     ['property', Q('Footprint'), Q(''), ['at', x, y, 0], ['effects', ['font', ['size', 1.27, 1.27]], ['hide', 'yes']]],
                     ['property', Q('Datasheet'), Q(''), ['at', x, y, 0], ['effects', ['font', ['size', 1.27, 1.27]], ['hide', 'yes']]],
                     ['pin', Q('1'), ['uuid', Q(_uid(uid, 'p1'))]],
