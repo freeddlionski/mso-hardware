@@ -53,7 +53,7 @@ def flag(sh, x, y, net):
     sh.connect(p, {'1': net})
 
 
-def lmr51430(sh, x, y, tag, vout, rfbb, l, cout_fp, out):
+def lmr51430(sh, x, y, tag, vout, rfbb, l, lfp, cout_fp, out):
     """24 В → vout. LMR51430XDDCR, 500 кГц. VOUT = 0,6 × (1 + 100k / RFBB)."""
     sw, fb, cb, en = tag + '_SW', tag + '_FB', tag + '_CB', tag + '_EN'
     u = sh.part('Regulator_Switching:LMR51430', 'U', 'LMR51430XDDCR', (x, y),
@@ -65,7 +65,7 @@ def lmr51430(sh, x, y, tag, vout, rfbb, l, cout_fp, out):
     R(sh, '100k', x - 40.64, y + 12.7, '+24V_P', en)          # EN: порог ~1,2 В → включение от ~15 В
     R(sh, '8.66k', x - 40.64, y + 22.86, en, 'GND')
     C(sh, '100n', x + 35.56, y - 12.7, cb, sw)
-    two(sh, 'Device:L', 'L', l, x + 35.56, y - 2.54, sw, out, fp='Inductor_SMD:L_Taiyo-Yuden_NR-50xx')
+    two(sh, 'Device:L', 'L', l, x + 35.56, y - 2.54, sw, out, fp='Inductor_SMD:' + lfp)   # аудит Codex C-002: Isat > 6,68 А
     R(sh, '100k', x + 35.56, y + 7.62, out, fb)
     R(sh, rfbb, x + 35.56, y + 17.78, fb, 'GND')
     C(sh, '22u', x + 76.2, y - 2.54, out, 'GND', cout_fp)
@@ -77,7 +77,8 @@ def lmr51430(sh, x, y, tag, vout, rfbb, l, cout_fp, out):
 
 def lm61460(sh, x, y, tag, out, term_ref_note):
     """24 В → 5 В / 5 А на табло. LM61460AANRJRR, 400 кГц (RT 33,2 кОм). VOUT = 1,0 × (1 + 100k / 24,9k) = 5,02 В."""
-    sw, fb, cb, rb, en, vcc, rt, raw = (tag + s for s in ('_SW', '_FB', '_CB', '_RB', '_EN', '_VCC', '_RT', '_RAW'))
+    sw, fb, cb, rb, en, vcc, rt = (tag + s for s in ('_SW', '_FB', '_CB', '_RB', '_EN', '_VCC', '_RT'))
+    raw = out                       # PTC табло убран (C-005) — выход один
     u = sh.part('mso74:LM61460', 'U', 'LM61460AANRJRR', (x, y), fp='mso74:Texas_RJR_VQFN-HR-14_3.5x4mm',
                 lcsc='C2864505', mpn='LM61460AANRJRR')
     sh.connect(u, {'VIN1': '+24V_P', 'VIN2': '+24V_P', 'EN/SYNC': en, 'RT': rt, 'BIAS': raw, 'VCC': vcc,
@@ -86,6 +87,7 @@ def lm61460(sh, x, y, tag, out, term_ref_note):
     sh.text('%s: 24 В → 5 В / 5 А, LM61460 400 кГц — %s' % (tag, term_ref_note), (x - 43.18, y - 20.32))
     C(sh, '10u 50V', x - 43.18, y - 10.16, '+24V_P', 'GND', 'C1210')
     C(sh, '10u 50V', x - 43.18, y, '+24V_P', 'GND', 'C1210')
+    C(sh, '10u 50V', x - 68.58, y, '+24V_P', 'GND', 'C1210')       # Kimi K-003: при 24 В у 10 мкФ 1210 остаётся ~40–50 % (DC-bias)
     C(sh, '100n 50V', x - 43.18, y + 10.16, '+24V_P', 'GND')     # у VIN1
     C(sh, '100n 50V', x - 43.18, y + 20.32, '+24V_P', 'GND')     # у VIN2
     R(sh, '100k', x - 43.18, y + 30.48, '+24V_P', en)           # EN ~1,26 В → включение от ~14 В
@@ -94,16 +96,17 @@ def lm61460(sh, x, y, tag, out, term_ref_note):
     C(sh, '1u', x - 43.18, y + 60.96, vcc, 'GND')
     C(sh, '100n', x + 38.1, y - 15.24, cb, sw)
     R(sh, '0', x + 38.1, y - 5.08, rb, cb)                      # RBOOT: 0 Ом — КПД; 100 Ом — мягче фронт SW (ЭМС). Выбрать по замерам прототипа
-    two(sh, 'Device:L', 'L', '6.8u 8A', x + 38.1, y + 5.08, sw, raw, fp='Inductor_SMD:L_Bourns_SRR1260')
+    two(sh, 'Device:L', 'L', '6.8u 18A', x + 38.1, y + 5.08, sw, raw, fp='Inductor_SMD:L_Bourns_SRP1245A')   # C-002: Isat 18 А > 11,5 А
     R(sh, '100k 1%', x + 38.1, y + 15.24, raw, fb)
     R(sh, '24.9k 1%', x + 38.1, y + 25.4, fb, 'GND')
     for i in range(4):
         C(sh, '47u 10V', x + 78.74, y - 10.16 + 10.16 * i, raw, 'GND', 'C1210')
-    two(sh, 'Device:Polyfuse', 'F', '5A удерж.', x + 78.74, y + 33.02, raw, out, fp=FP['PTC2920'])
+    # аудит Codex C-005: PTC 5 А при +70 °C держит лишь 2,9 А — убран; ток табло ограничивает сам LM61460
+    # (предел 7–10 А, затем «икание» — отдельный преобразователь на каждое табло), провод Mini-Fit рассчитан на 9 А
+    # (BIAS, дроссель, керамика и электролит — на одной цепи выхода)
     p = sh.part('Device:C_Polarized', 'C', '470u 16V', (x + 109.22, y + 22.86), fp='Capacitor_SMD:CP_Elec_10x10.5')
     sh.connect(p, {'1': out, '2': 'GND'})
     flag(sh, x + 139.7, y + 20.32, out)
-    flag(sh, x + 139.7, y + 33.02, raw)    # BIAS питается от выхода до предохранителя
     led(sh, x + 78.74, y + 45.72, out, r='1k')
     # аудит 2, п. 7: защиту выхода 5 В / 5 А от +24 В делаем механически — разъём другой системы (Mini-Fit), клемма 24 В в него не войдёт
     j = sh.part('Connector_Generic:Conn_01x02', 'J', 'Табло ' + tag[-1] + ': +5V / GND', (x + 124.46, y + 2.54),
@@ -175,9 +178,9 @@ def build(proj):
     led(sh, x + 101.6, y + 22.86, 'MDB_24V', r='22k')
 
     # ---- преобразователи 12 / 5 / 3,3 В ----
-    lmr51430(sh, 71.12, 203.2, 'P12', '+12V', '5.23k 1%', '10u', 'C1210', '+12V')
-    lmr51430(sh, 71.12, 261.62, 'P5', '+5V', '13.7k 1%', '6.8u', 'C1206', '+5V')
-    lmr51430(sh, 71.12, 320.04, 'P3', '+3V3', '22.1k 1%', '4.7u', 'C1206', '+3V3')
+    lmr51430(sh, 71.12, 203.2, 'P12', '+12V', '5.23k 1%', '10u 15A', 'L_Bourns_SRP1245A', 'C1210', '+12V')
+    lmr51430(sh, 71.12, 261.62, 'P5', '+5V', '13.7k 1%', '6.8u 18A', 'L_Bourns_SRP1245A', 'C1206', '+5V')
+    lmr51430(sh, 71.12, 320.04, 'P3', '+3V3', '22.1k 1%', '4.7u 10A', 'L_Bourns_SRP7028A_7.3x6.6mm', 'C1206', '+3V3')
 
     # ---- два канала табло ----
     lm61460(sh, 304.8, 63.5, 'LCD1', '+5V_LCD1', 'табло 1')
