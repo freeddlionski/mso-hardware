@@ -60,12 +60,34 @@ jobs:
           kicad-cli fp export svg --output out/fp plata/kicad/lib/mso74.pretty
           ls -l out/fp
 
+      - name: Плата из раскладки (pcbnew)
+        run: |
+          set -e
+          [ -f plata/kicad/placement.json ] || { echo "Раскладки нет — пропуск"; exit 0; }
+          python3 plata/kicad/gen/pcb_build.py out/mso74-plata.net plata/kicad/placement.json plata/kicad/mso74-plata.kicad_pcb
+          cp plata/kicad/mso74-plata.kicad_pcb out/
+
       - name: DRC платы
         if: always()
         run: |
           [ -f plata/kicad/mso74-plata.kicad_pcb ] || { echo "Платы пока нет — пропуск"; exit 0; }
+          kicad-cli pcb drc --format json --severity-all --output out/drc.json plata/kicad/mso74-plata.kicad_pcb || true
           kicad-cli pcb drc --format report --severity-all --output out/drc.rpt plata/kicad/mso74-plata.kicad_pcb || true
-          echo "===== DRC ====="; cat out/drc.rpt
+          python3 - <<'PY'
+          import json, collections
+          d = json.load(open('out/drc.json'))
+          c = collections.Counter(v['type'] for v in d.get('violations', []))
+          print('===== DRC: нарушения по типам (без дорожек «unconnected» — норма) =====')
+          for k, n in c.most_common(): print('%5d  %s' % (n, k))
+          print('не разведено связей:', len(d.get('unconnected_items', [])))
+          for v in d.get('violations', []):
+              if v['type'] not in ('unconnected_items',):
+                  print('  -', v['type'], '|', v['description'], '|', ' / '.join(i['description'] for i in v.get('items', [])))
+          PY
+          kicad-cli pcb export svg --layers F.Cu,F.SilkS,F.Fab,F.CrtYd,Edge.Cuts --mode-single --page-size-mode 2 \
+            --exclude-drawing-sheet --output out/plata-front.svg plata/kicad/mso74-plata.kicad_pcb || true
+          kicad-cli pcb render --side top --width 2400 --height 1300 --output out/plata-3d.png \
+            plata/kicad/mso74-plata.kicad_pcb || true
 
       - uses: actions/upload-artifact@v4
         if: always()
@@ -74,11 +96,12 @@ jobs:
           path: out/
           if-no-files-found: ignore
 
-      - name: PDF схемы в ветку kicad-out (для просмотра без скачивания артефакта)
-        if: always() && github.event_name != 'pull_request'
+      - name: Выгрузка в ветку kicad-out (main) или kicad-out-pr (PR) — смотреть без скачивания артефакта
+        if: always()
         run: |
           [ -f out/mso74-plata-schematic.pdf ] || exit 0
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-          cd out && git init -q -b kicad-out && git add -A
+          BR=kicad-out; [ "${{ github.event_name }}" = "pull_request" ] && BR=kicad-out-pr
+          cd out && git init -q -b "$BR" && git add -A
           git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com commit -qm "Выгрузка ${GITHUB_REF_NAME} ${GITHUB_SHA}"
-          git push -qf "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" kicad-out
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" "$BR"
