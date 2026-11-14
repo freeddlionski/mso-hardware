@@ -106,7 +106,7 @@ def build(proj):
     sh.late = False
     R(sh, '100', x2 + 38.1, y2, 'Q_INH_B', 'Q_INH_G')
     q = sh.part('Transistor_FET:BSP89', 'Q', 'BSP75N', (x2 + 55.88, y2 + 2.54), mpn='BSP75N',
-                fp='Package_TO_SOT_SMD:SOT-223-3_TabPin2')
+                fp='mso74:SOT-223-3_TabPin3_BSP75N')   # C2-001: корпус — исток
     sh.connect(q, {'G': 'Q_INH_G', 'S': 'GND', 'D': 'COIN_INH_D'})
     two(sh, 'Device:Polyfuse', 'F', '100mA удерж.', x2 + 71.12, y2, 'COIN_INH_D', 'COIN_INH_T', **PTC50)
 
