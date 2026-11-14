@@ -16970,6 +16970,91 @@
 		)
 	)
 	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 414.02 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1ce95686-9114-5214-9bcd-ac51febcccbd")
+		(property "Reference" "#FLG07"
+			(at 414.02 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 414.02 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 414.02 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 414.02 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 414.02 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5040239f-2611-5684-ad04-0e829c90e314")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/775054db-c86e-5b0e-b0ac-67333e238fd2"
+					(reference "#FLG07")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 414.02 109.22)
+			(xy 414.02 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73d567ec-0c42-5096-8cdf-94ef5900b561")
+	)
+	(label "LCD1_RAW"
+		(at 414.02 111.76 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "25c5ceb7-d5f2-58c6-bd0a-7039fae96a30")
+	)
+	(symbol
 		(lib_id "Device:R")
 		(at 383.54 104.14 90)
 		(unit 1)
@@ -21132,8 +21217,8 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "1ce95686-9114-5214-9bcd-ac51febcccbd")
-		(property "Reference" "#FLG07"
+		(uuid "0c1c18df-a53d-5bce-8fd0-acb47d1e1cec")
+		(property "Reference" "#FLG08"
 			(at 414.02 213.36 0)
 			(effects
 				(font
@@ -21177,12 +21262,12 @@
 			)
 		)
 		(pin "1"
-			(uuid "5040239f-2611-5684-ad04-0e829c90e314")
+			(uuid "549b0236-64a0-5c77-a33b-72c4f9acf49a")
 		)
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/775054db-c86e-5b0e-b0ac-67333e238fd2"
-					(reference "#FLG07")
+					(reference "#FLG08")
 					(unit 1)
 				)
 			)
@@ -21197,7 +21282,7 @@
 			(width 0)
 			(type default)
 		)
-		(uuid "73d567ec-0c42-5096-8cdf-94ef5900b561")
+		(uuid "97c37b64-d91a-5c83-8fa9-2711f4d78ce6")
 	)
 	(symbol
 		(lib_id "power:+5V")
@@ -21207,7 +21292,7 @@
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "25c5ceb7-d5f2-58c6-bd0a-7039fae96a30")
+		(uuid "8b63d4fd-4590-502a-8f08-62c3340539b6")
 		(property "Reference" "#PWR0130"
 			(at 414.02 218.44 0)
 			(effects
@@ -21244,7 +21329,7 @@
 			)
 		)
 		(pin "1"
-			(uuid "6860a090-5f9f-53cc-8a00-5ab98ad0bade")
+			(uuid "6a498c85-11f9-57d0-98fc-6ca3253e238a")
 		)
 		(instances
 			(project "mso74-plata"
@@ -21254,6 +21339,91 @@
 				)
 			)
 		)
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 414.02 226.06 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "1c5faeed-3ff3-5f46-ab91-f9476e020a2a")
+		(property "Reference" "#FLG09"
+			(at 414.02 223.52 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 414.02 222.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 414.02 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 414.02 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" ""
+			(at 414.02 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ca413b68-d71e-58a5-9daa-7db5d7250056")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/775054db-c86e-5b0e-b0ac-67333e238fd2"
+					(reference "#FLG09")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 414.02 226.06)
+			(xy 414.02 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4313bbae-ae92-5492-bdce-3fa5f7e4df18")
+	)
+	(label "LCD2_RAW"
+		(at 414.02 228.6 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "e257e6f2-2fad-51e7-88c6-9286ba517cd1")
 	)
 	(symbol
 		(lib_id "Device:R")

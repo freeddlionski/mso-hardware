@@ -1,5 +1,8 @@
 name: KiCad — проверка схемы и выгрузка
 
+permissions:
+  contents: write
+
 on:
   push:
     branches: [main]
@@ -17,8 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Версия KiCad
-        run: kicad-cli version
+      - name: Версия KiCad и таблицы библиотек
+        run: |
+          kicad-cli version
+          mkdir -p ~/.config/kicad/9.0
+          cp /usr/share/kicad/template/sym-lib-table ~/.config/kicad/9.0/ || true
+          cp /usr/share/kicad/template/fp-lib-table ~/.config/kicad/9.0/ || true
 
       - name: ERC схемы
         run: |
@@ -56,3 +63,12 @@ jobs:
           name: kicad-out
           path: out/
           if-no-files-found: ignore
+
+      - name: PDF схемы в ветку kicad-out (для просмотра без скачивания артефакта)
+        if: always() && github.event_name != 'pull_request'
+        run: |
+          [ -f out/mso74-plata-schematic.pdf ] || exit 0
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          cd out && git init -q -b kicad-out && git add -A
+          git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com commit -qm "Выгрузка ${GITHUB_REF_NAME} ${GITHUB_SHA::7}"
+          git push -qf "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" kicad-out
