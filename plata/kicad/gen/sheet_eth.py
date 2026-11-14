@@ -16,7 +16,7 @@ def build(proj):
         'RSVD': 'GND',                      # 23, 38–42: по даташиту на землю
         'PMODE0': '+3V3', 'PMODE1': '+3V3', 'PMODE2': '+3V3',   # 111 — все режимы, автосогласование
         'XI/CLKIN': 'ETH_XI', 'XO': 'ETH_XO',
-        '~{SCS}': 'ETH_CS', 'SCLK': 'ETH_SCLK', 'MISO': 'ETH_MISO', 'MOSI': 'ETH_MOSI', '~{INT}': 'ETH_INT', '~{RST}': 'ETH_RST',
+        '~{SCS}': 'ETH_CS', 'SCLK': 'ETH_SCLK', 'MISO': 'ETH_MISO', 'MOSI': 'ETH_MOSI', '~{INT}': 'ETH_INT', '~{RST}': 'ESP_EN',
         'TXP': 'ETH_TXP', 'TXN': 'ETH_TXN', 'RXP': 'ETH_RXP', 'RXN': 'ETH_RXN',
         'LINKLED': 'ETH_LINKLED', 'ACTLED': 'ETH_ACTLED',
     }, nc=['DNC', 'NC', 'VBG', 'SPDLED', 'DUPLED'])
@@ -25,6 +25,8 @@ def build(proj):
     # питание
     xl = 40.64
     two(sh, 'Device:FerriteBead', 'FB', '600R@100MHz', xl, 38.1, '+3V3', '+3V3A', fp='Inductor_SMD:L_0805_2012Metric')
+    from sheet_power import flag
+    flag(sh, xl + 40.64, 38.1, '+3V3A')
     C(sh, '10u', xl, 48.26, '+3V3A', 'GND', 'C0805')
     for i in range(3):
         C(sh, '100n', xl, 58.42 + 10.16 * i, '+3V3A', 'GND')
@@ -33,8 +35,7 @@ def build(proj):
     R(sh, '12.4k 1%', xl, 116.84, 'ETH_EXRES', 'GND')
     C(sh, '4.7u', xl, 127.0, 'ETH_TOCAP', 'GND', 'C0805')
     C(sh, '10n', xl, 137.16, 'ETH_1V2', 'GND')
-    R(sh, '10k', xl, 152.4, '+3V3', 'ETH_RST')
-    sh.text('ETH_RST: подтяжка 10 кОм; управляет ESP32 (лист MCU)', (xl - 10.16, 162.56))
+    sh.text('Сброс W5500 — от EN модуля ESP32 (общий сброс, RC 10 кОм / 1 мкФ на листе MCU)', (xl - 10.16, 157.48))
 
     # кварц 25 МГц
     q = sh.part('Device:Crystal_GND24', 'Y', '25MHz 20ppm', (xl + 5.08, 190.5), fp='Crystal:Crystal_SMD_3225-4Pin_3.2x2.5mm')

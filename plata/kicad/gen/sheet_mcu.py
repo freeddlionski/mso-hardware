@@ -6,15 +6,14 @@ from sheet_power import C, R, FP, two
 # GPIO → цепь (plata/PINOUT.md). IO19/IO20 в символе называются USB_D-/USB_D+.
 GPIO = {
     'IO1': 'HUB_LAT', 'IO2': 'HUB_OE', 'IO3': 'HUB_CLK', 'IO4': 'HUB_C', 'IO5': 'HUB_A', 'IO6': 'HUB_B2',
-    'IO7': 'GPIO7_RES', 'IO8': 'BILL_PULSE', 'IO9': 'COIN_PULSE',
-    'IO10': 'ETH_CS', 'IO11': 'ETH_MOSI', 'IO12': 'ETH_SCLK', 'IO13': 'ETH_MISO', 'IO14': 'ETH_INT', 'IO15': 'ETH_RST',
+    'IO7': 'VTK_TX', 'IO8': 'BILL_PULSE', 'IO9': 'COIN_PULSE',
+    'IO10': 'ETH_CS', 'IO11': 'ETH_MOSI', 'IO12': 'ETH_SCLK', 'IO13': 'ETH_MISO', 'IO14': 'ETH_INT', 'IO15': 'VTK_RX',
     'IO16': 'HUB_R2', 'IO17': 'HUB_B1', 'IO18': 'HUB_R1', 'USB_D-': 'HUB_D', 'USB_D+': 'SERVICE_BTN', 'IO21': 'HUB_B',
     'IO35': 'MDB_RX', 'IO36': 'COIN_INH', 'IO37': 'MDB_TX', 'IO38': 'RS485_DE', 'IO39': 'RS485_TX', 'IO40': 'RS485_RX',
     'IO41': 'HUB_G2', 'IO42': 'HUB_G1', 'TXD0': 'U0_TX', 'RXD0': 'U0_RX', 'IO47': 'RTC_SCL', 'IO48': 'RTC_SDA',
 }
-# Vendotek UART2 — GPIO 33/34: в модуле WROOM-1U-N16R2 (PSRAM Quad) они есть, но в символе KiCad WROOM-1 их нет,
-# см. проверку в build(): если выводов нет — останавливаемся.
-VTK = {'IO33': 'VTK_TX', 'IO34': 'VTK_RX'}
+# У модуля WROOM-1U нет выводов GPIO 33/34 (Vendotek на A147) — решение Павла 14.11 «своя плата — своя прошивка»:
+# Vendotek на GPIO 7 (TX) и 15 (RX), сброс W5500 — от EN модуля (общий сброс).
 
 
 def build(proj):
@@ -23,12 +22,7 @@ def build(proj):
 
     u = sh.part('RF_Module:ESP32-S3-WROOM-1', 'U', 'ESP32-S3-WROOM-1U-N16R2', (165.1, 121.92),
                 fp='RF_Module:ESP32-S3-WROOM-1U', lcsc='C3013945', mpn='ESP32-S3-WROOM-1U-N16R2')
-    names = {p['name'] for p in u.pins}
-    missing = [k for k in VTK if k not in names]
-    if missing:
-        raise SystemExit('В символе ESP32-S3-WROOM-1 нет %s — нужен другой символ (см. PINOUT.md)' % missing)
     m = dict(GPIO)
-    m.update(VTK)
     m.update({'3V3': '+3V3', 'GND': 'GND', 'EN': 'ESP_EN', 'IO0': 'ESP_IO0'})
     sh.connect(u, m, nc=['IO45', 'IO46'])
     sh.text('IO45, IO46 — выводы настройки загрузки, не подключать. Антенна — U.FL модуля → кабель на SMA в стенке корпуса.',
