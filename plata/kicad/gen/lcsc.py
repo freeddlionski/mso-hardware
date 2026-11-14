@@ -107,6 +107,10 @@ PARTS = {
     ('Питание +24V / GND', 'PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal'): ('C3697', 'WJ2EDGRC-5.08-02P-14-00A', 'KANGNEX 10 А, вилка 2EDGK-5.08'),
     ('Vendotek: +24V / GND', 'PhoenixContact_MSTBA_2,5_2-G-5,08_1x02_P5.08mm_Horizontal'): ('C3697', 'WJ2EDGRC-5.08-02P-14-00A', 'KANGNEX 10 А, вилка 2EDGK-5.08'),
 
+    ('USB-C', 'USB_C_Receptacle_HCTL_HC-TYPE-C-16P-01A'): ('C2894897', 'HC-TYPE-C-16P-01A', 'HCTL'),
+    ('CR2032', 'BatteryHolder_MYOUNG_BS-07-A1BJ001_CR2032'): ('C2979167', 'BS-07-A1BJ001', 'MYOUNG, −25…+85 °C'),
+    ('7.5A', 'Fuseholder_Blade_Mini_Keystone_3568'): ('C5249699', '3568', 'Keystone; вставка mini-blade 7,5 А — к жгуту/в ЗИП'),
+
     # --- резисторы 0603 (UNI-ROYAL 0603WAF, ±1 %, 75 В) ---
     ('0', 'R_0603_1608Metric'): ('C21189', '0603WAF0000T5E', 'осн.'),
     ('10', 'R_0603_1608Metric'): ('C22859', '0603WAF100JT5E', 'осн.'),
