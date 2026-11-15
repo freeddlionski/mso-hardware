@@ -70,34 +70,7 @@ jobs:
           set -e
           [ -f plata/kicad/placement.json ] || { echo "Раскладки нет — пропуск"; exit 0; }
           python3 plata/kicad/gen/pcb_build.py out/mso74-plata.net plata/kicad/placement.json plata/kicad/mso74-plata.kicad_pcb
-          cp plata/kicad/mso74-plata.kicad_pcb out/mso74-plata-unrouted.kicad_pcb
-
-      - name: Трассировка (Freerouting)
-        timeout-minutes: 330
-        run: |
-          set -e
-          [ -f plata/kicad/mso74-plata.kicad_pcb ] || { echo "Платы нет — пропуск"; exit 0; }
-          python3 plata/kicad/gen/pcb_route.py prep plata/kicad/mso74-plata.kicad_pcb out/mso74-plata.dsn
-          mkdir -p /tmp/fr && cd /tmp/fr
-          python3 - <<'PY'
-          import json, urllib.request, tarfile, io
-          # версия закреплена — результат воспроизводим и без запроса к API GitHub (лимит запросов)
-          urllib.request.urlretrieve('https://github.com/freerouting/freerouting/releases/download/v2.5.0/freerouting-2.5.0.jar',
-                                     'freerouting.jar')
-          u = 'https://api.adoptium.net/v3/binary/latest/25/ga/linux/x64/jre/hotspot/normal/eclipse'
-          req = urllib.request.Request(u, headers={'User-Agent': 'curl/8.0'})
-          tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(req).read())).extractall('jre')
-          PY
-          JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
-          cd "$GITHUB_WORKSPACE"
-          # без оптимизатора (он и съедал время) и с ограничением по времени
-          # на 2 ядрах раннера проход ≈ 5–15 мин; 18 проходов укладываются в 5 ч
-          timeout 310m "$JAVA" -jar /tmp/fr/freerouting.jar -de out/mso74-plata.dsn -do out/mso74-plata.ses -mt 2 \
-            --gui.enabled=false --router.optimizer.enabled=false --router.autorouter.max_passes=18 2>&1 \
-            | grep -v -i "debug" | tail -80 || true
-          [ -s out/mso74-plata.ses ] || { echo "Freerouting не выдал SES"; exit 1; }
-          python3 plata/kicad/gen/pcb_route.py finish plata/kicad/mso74-plata.kicad_pcb out/mso74-plata.ses
-          cp plata/kicad/mso74-plata.kicad_pcb out/
+          cp plata/kicad/mso74-plata.kicad_pcb out/   # плата без дорожек; трассировка — отдельный поэтапный route.yml
 
       - name: DRC платы
         if: always()

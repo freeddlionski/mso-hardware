@@ -1,10 +1,13 @@
-"""Трассировка платы в CI (образ kicad/kicad:9.0, нужен pcbnew):
+"""Поэтапная трассировка (route.yml, образ kicad/kicad:9.0, нужен pcbnew). Этапы — route_stages.py.
 
-  python3 pcb_route.py prep   <плата.kicad_pcb> <выход.dsn>   — плоскости In1 (GND) и In2 (+24V_P / +3V3), экспорт Specctra
-  python3 pcb_route.py finish <плата.kicad_pcb> <вход.ses>    — импорт дорожек Freerouting, заливки GND на F/B, заливка зон
+  python3 pcb_route.py init   <плата>                 — плоскости In1 (GND) и In2 (+24V_P / +3V3), запреты у крепежа
+  python3 pcb_route.py export <плата> <этап> <dsn>    — Specctra для этапа: вся плата, разводятся цепи этапа и начатые
+  python3 pcb_route.py import <плата> <ses>           — дорожки Freerouting в плату (плата правится на месте)
+  python3 pcb_route.py view   <плата> <копия>         — копия с заливками GND на F/B — для DRC и картинок
 
-Плата редактируется на месте (тот же файл). Правила и классы цепей — в mso74-plata.kicad_pro (pcb_rules.py).
+Правила и классы цепей — mso74-plata.kicad_pro (pcb_rules.py).
 """
+import math
 import os
 import sys
 
@@ -13,10 +16,26 @@ import pcbnew
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import pcb_rules  # noqa: E402
+import route_stages  # noqa: E402
 from pcb_build import ORIGIN, mm  # noqa: E402
 
 W, H = 240.0, 120.0
 HOLES = [(4, 4), (236, 4), (4, 116), (236, 116)]
+FULL = (0.5, 0.5, W - 0.5, H - 0.5)
+
+
+def pro_of(path):
+    return os.path.splitext(path)[0] + '.kicad_pro'
+
+
+def save(board, path):
+    pcbnew.SaveBoard(path, board)
+    pcb_rules.apply_to_pro(pro_of(path))     # SaveBoard пишет .kicad_pro по умолчанию — вернуть наши правила
+
+
+def load(path):
+    pcb_rules.apply_to_pro(pro_of(path))
+    return pcbnew.LoadBoard(path)
 
 
 def zone(board, net, layer, rect, prio=0, clearance=0.3, thermal=True):
@@ -55,50 +74,65 @@ def keepout_holes(board):
         z.SetLayerSet(pcbnew.LSET.AllCuMask())
         ol = z.Outline()
         ol.NewOutline()
-        import math
         for i in range(24):
             a = 2 * math.pi * i / 24
             ol.Append(mm(ORIGIN[0] + hx + 3.6 * math.cos(a)), mm(ORIGIN[1] + hy + 3.6 * math.sin(a)))
         board.Add(z)
 
 
-def prep(path, dsn):
-    board = pcbnew.LoadBoard(path)
-    full = (0.5, 0.5, W - 0.5, H - 0.5)
-    zone(board, 'GND', pcbnew.In1_Cu, full)
+def init(path):
+    board = load(path)
+    zone(board, 'GND', pcbnew.In1_Cu, FULL)
     for net, rect in pcb_rules.IN2:
         zone(board, net, pcbnew.In2_Cu, rect)
     keepout_holes(board)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
-    pcbnew.SaveBoard(path, board)
-    pcb_rules.apply_to_pro(os.path.splitext(path)[0] + '.kicad_pro')
-    board = pcbnew.LoadBoard(path)           # перечитать с классами цепей из проекта
-    nc = board.GetDesignSettings().m_NetSettings
-    print('классы:', [str(k) for k in nc.GetNetclasses().keys()] if hasattr(nc, 'GetNetclasses') else '?')
-    ok = pcbnew.ExportSpecctraDSN(board, dsn)
-    print('DSN:', dsn, ok)
-    if not ok:
+    save(board, path)
+    print('init: плоскости и запреты добавлены')
+
+
+def export(path, stage, dsn):
+    board = load(path)
+    routed = {t.GetNetname() for t in board.GetTracks()}
+    hidden, kept = set(), set()
+    for f in board.GetFootprints():
+        for p in f.Pads():
+            n = p.GetNetname()
+            if not n:
+                continue
+            if route_stages.in_stage(n, stage) or n in routed:
+                kept.add(n)
+            else:
+                hidden.add(n)
+                p.SetNetCode(0)              # только в памяти: для трассировщика это препятствие без цепи
+    print('этап %s: разводятся %d цепей, отложено %d; дорожек на плате %d'
+          % (stage, len(kept), len(hidden), len(list(board.GetTracks()))))
+    if not pcbnew.ExportSpecctraDSN(board, dsn):
         raise SystemExit('экспорт DSN не удался')
 
 
-def finish(path, ses):
-    board = pcbnew.LoadBoard(path)
+def imp(path, ses):
+    board = load(path)
     try:
         ok = pcbnew.ImportSpecctraSES(board, ses)
     except TypeError:
         ok = pcbnew.ImportSpecctraSES(ses)
-    print('SES импортирован:', ok)
     if not ok:
         raise SystemExit('импорт SES не удался')
-    full = (0.5, 0.5, W - 0.5, H - 0.5)
-    zone(board, 'GND', pcbnew.F_Cu, full, clearance=0.3, thermal=False)
-    zone(board, 'GND', pcbnew.B_Cu, full, clearance=0.3, thermal=False)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
-    pcbnew.SaveBoard(path, board)
-    pcb_rules.apply_to_pro(os.path.splitext(path)[0] + '.kicad_pro')
-    n = sum(1 for t in board.GetTracks())
-    print('дорожек и переходов:', n)
+    save(board, path)
+    tracks = list(board.GetTracks())
+    print('импорт: дорожек и переходов %d, цепей с дорожками %d' % (len(tracks), len({t.GetNetname() for t in tracks})))
+
+
+def view(path, out):
+    board = load(path)
+    zone(board, 'GND', pcbnew.F_Cu, FULL, thermal=False)
+    zone(board, 'GND', pcbnew.B_Cu, FULL, thermal=False)
+    pcbnew.ZONE_FILLER(board).Fill(board.Zones())
+    save(board, out)
 
 
 if __name__ == '__main__':
-    {'prep': prep, 'finish': finish}[sys.argv[1]](*sys.argv[2:4])
+    cmd, args = sys.argv[1], sys.argv[2:]
+    {'init': init, 'export': export, 'import': imp, 'view': view}[cmd](*args)

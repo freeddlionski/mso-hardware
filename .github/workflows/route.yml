@@ -1,0 +1,142 @@
+name: Трассировка по этапам (Freerouting)
+
+# Один запуск — один этап (plata/kicad/gen/route_stages.py). Трассировщик видит всю плату, разводит цепи этапа и
+# уже начатые; прошлые дорожки не закреплены — их можно переложить. Состояние платы после каждого этапа — отдельный
+# коммит в ветке route-state (плата, отчёт, картинки слоёв). Следующий этап запускается сам.
+# Начать заново: Actions → этот workflow → Run, ветка с кодом, stage=init.
+
+permissions:
+  contents: write
+  actions: write
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage: {description: 'этап (init — заново с платы без дорожек)', default: 'init'}
+      run: {description: 'номер запуска этапа', default: '1'}
+      before: {description: 'неразведённых связей до этапа', default: ''}
+
+concurrency: {group: route, cancel-in-progress: false}
+
+jobs:
+  stage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    container:
+      image: kicad/kicad:9.0
+      options: --user root
+    env:
+      STAGE: ${{ inputs.stage }}
+      RUN: ${{ inputs.run }}
+      BEFORE: ${{ inputs.before }}
+      W: work
+      PCB: work/mso74-plata.kicad_pcb
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Таблицы библиотек
+        run: |
+          mkdir -p ~/.config/kicad/9.0
+          cp /usr/share/kicad/template/sym-lib-table ~/.config/kicad/9.0/ || true
+          cp /usr/share/kicad/template/fp-lib-table ~/.config/kicad/9.0/ || true
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+
+      - name: Исходная плата (init) или состояние прошлого этапа
+        run: |
+          set -e
+          mkdir -p $W
+          if [ "$STAGE" = init ]; then
+            kicad-cli sch export netlist --format kicadsexpr --output $W/mso74-plata.net plata/kicad/mso74-plata.kicad_sch
+            python3 plata/kicad/gen/pcb_build.py $W/mso74-plata.net plata/kicad/placement.json $PCB
+            python3 plata/kicad/gen/pcb_route.py init $PCB
+          else
+            git fetch -q --depth 1 origin route-state
+            git --work-tree=$W checkout FETCH_HEAD -- mso74-plata.kicad_pcb mso74-plata.kicad_pro report.md
+            git reset -q
+          fi
+          ls -l $W
+
+      - name: Freerouting — этап
+        if: inputs.stage != 'init'
+        timeout-minutes: 110
+        run: |
+          set -e
+          PASSES=$(python3 -c "import sys; sys.path.insert(0,'plata/kicad/gen'); import route_stages as r; print(r.get('$STAGE')[2])")
+          python3 plata/kicad/gen/pcb_route.py export $PCB $STAGE $W/stage.dsn
+          mkdir -p /tmp/fr
+          python3 - <<'PY'
+          import urllib.request, tarfile, io
+          urllib.request.urlretrieve('https://github.com/freerouting/freerouting/releases/download/v2.5.0/freerouting-2.5.0.jar',
+                                     '/tmp/fr/freerouting.jar')
+          u = 'https://api.adoptium.net/v3/binary/latest/25/ga/linux/x64/jre/hotspot/normal/eclipse'
+          req = urllib.request.Request(u, headers={'User-Agent': 'curl/8.0'})
+          tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(req).read())).extractall('/tmp/fr/jre')
+          PY
+          JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
+          timeout 100m "$JAVA" -jar /tmp/fr/freerouting.jar -de $W/stage.dsn -do $W/stage.ses -mt 2 \
+            --gui.enabled=false --router.optimizer.enabled=false --router.autorouter.max_passes=$PASSES 2>&1 \
+            | grep -E "INFO|WARN|ERROR" | grep -v -i "analytics\|deprecated" | cut -c1-260 | tail -40 || true
+          [ -s $W/stage.ses ] || { echo "Freerouting не выдал результат — состояние не меняем"; exit 1; }
+          python3 plata/kicad/gen/pcb_route.py import $PCB $W/stage.ses
+
+      - name: DRC, картинки, отчёт
+        run: |
+          set -e
+          python3 plata/kicad/gen/pcb_route.py view $PCB $W/view.kicad_pcb
+          kicad-cli pcb drc --format json --severity-all --output $W/drc.json $W/view.kicad_pcb || true
+          python3 - <<'PY'
+          import json, collections, os
+          d = json.load(open('work/drc.json'))
+          c = collections.Counter(v['type'] for v in d.get('violations', []))
+          un = len(d.get('unconnected_items', []))
+          st, run, before = os.environ['STAGE'], os.environ['RUN'], os.environ['BEFORE']
+          line = '| %s | %s | %s | %d | %s |' % (st, run, before or '—', un,
+                 ', '.join('%s %d' % (k, n) for k, n in c.most_common() if not k.startswith('silk')))
+          rep = 'work/report.md'
+          if st == 'init' or not os.path.exists(rep):
+              open(rep, 'w').write('# Трассировка по этапам\n\n| Этап | Запуск | Не разведено до | Не разведено после | DRC (без шелкографии) |\n|---|---|---|---|---|\n')
+          open(rep, 'a').write(line + '\n')
+          open('work/unrouted', 'w').write(str(un))
+          print(open(rep).read())
+          PY
+          mkdir -p $W/img
+          for L in F.Cu In1.Cu In2.Cu B.Cu; do
+            kicad-cli pcb export pdf --layers $L,Edge.Cuts --output $W/img/$L.pdf $W/view.kicad_pcb || true
+          done
+          kicad-cli pcb render --side top --width 2400 --height 1300 --output $W/img/3d-top.png $W/view.kicad_pcb || true
+
+      - name: Сохранить состояние в ветку route-state
+        run: |
+          set -e
+          UN=$(cat $W/unrouted)
+          URL="https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git"
+          rm -rf /tmp/st
+          if [ "$STAGE" = init ]; then mkdir /tmp/st && cd /tmp/st && git init -q -b route-state
+          else git clone -q --depth 1 -b route-state "$URL" /tmp/st && cd /tmp/st
+          fi
+          cp $GITHUB_WORKSPACE/$W/mso74-plata.kicad_pcb $GITHUB_WORKSPACE/$W/mso74-plata.kicad_pro $GITHUB_WORKSPACE/$W/report.md .
+          cp $GITHUB_WORKSPACE/$W/drc.json . ; rm -rf img && cp -r $GITHUB_WORKSPACE/$W/img img
+          git add -A
+          git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com \
+            commit -qm "Этап $STAGE, запуск $RUN: не разведено $UN (код $(echo $GITHUB_SHA | cut -c1-7))"
+          if [ "$STAGE" = init ]; then git push -qf "$URL" route-state; else git push -q "$URL" route-state; fi
+
+      - name: Следующий этап
+        run: |
+          python3 - <<'PY'
+          import json, os, sys, urllib.request
+          sys.path.insert(0, 'plata/kicad/gen')
+          import route_stages as r
+          st, run, before = os.environ['STAGE'], int(os.environ['RUN']), os.environ['BEFORE']
+          after = int(open('work/unrouted').read())
+          nxt = ('power', 1) if st == 'init' else r.next_stage(st, run, int(before) if before else None, after)
+          if not nxt:
+              print('Трассировка по этапам закончена, не разведено:', after); sys.exit(0)
+          body = json.dumps({'ref': os.environ['GITHUB_REF_NAME'],
+                             'inputs': {'stage': nxt[0], 'run': str(nxt[1]), 'before': str(after)}}).encode()
+          url = 'https://api.github.com/repos/%s/actions/workflows/route.yml/dispatches' % os.environ['GITHUB_REPOSITORY']
+          req = urllib.request.Request(url, data=body, method='POST', headers={
+              'Authorization': 'Bearer ${{ github.token }}', 'Accept': 'application/vnd.github+json'})
+          urllib.request.urlopen(req)
+          print('запущен следующий этап:', nxt)
+          PY
