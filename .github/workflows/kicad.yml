@@ -90,8 +90,10 @@ jobs:
           PY
           JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
           cd "$GITHUB_WORKSPACE"
-          "$JAVA" -jar /tmp/fr/freerouting.jar -de out/mso74-plata.dsn -do out/mso74-plata.ses -mp 30 -mt 4 \
-            --gui.enabled=false 2>&1 | tail -60
+          # без оптимизатора (он и съедал время) и с ограничением по времени
+          timeout 50m "$JAVA" -jar /tmp/fr/freerouting.jar -de out/mso74-plata.dsn -do out/mso74-plata.ses -mp 12 -mt 4 \
+            --gui.enabled=false --router.optimizer.enabled=false --router.max_passes=12 2>&1 \
+            | grep -v -i "debug" | tail -80 || true
           [ -s out/mso74-plata.ses ] || { echo "Freerouting не выдал SES"; exit 1; }
           python3 plata/kicad/gen/pcb_route.py finish plata/kicad/mso74-plata.kicad_pcb out/mso74-plata.ses
           cp plata/kicad/mso74-plata.kicad_pcb out/
