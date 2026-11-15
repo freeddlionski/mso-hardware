@@ -70,6 +70,29 @@ jobs:
           set -e
           [ -f plata/kicad/placement.json ] || { echo "Раскладки нет — пропуск"; exit 0; }
           python3 plata/kicad/gen/pcb_build.py out/mso74-plata.net plata/kicad/placement.json plata/kicad/mso74-plata.kicad_pcb
+          cp plata/kicad/mso74-plata.kicad_pcb out/mso74-plata-unrouted.kicad_pcb
+
+      - name: Трассировка (Freerouting)
+        timeout-minutes: 90
+        run: |
+          set -e
+          [ -f plata/kicad/mso74-plata.kicad_pcb ] || { echo "Платы нет — пропуск"; exit 0; }
+          python3 plata/kicad/gen/pcb_route.py prep plata/kicad/mso74-plata.kicad_pcb out/mso74-plata.dsn
+          mkdir -p /tmp/fr && cd /tmp/fr
+          python3 - <<'PY'
+          import json, urllib.request, tarfile, io
+          r = json.load(urllib.request.urlopen('https://api.github.com/repos/freerouting/freerouting/releases/latest'))
+          jar = [a for a in r['assets'] if a['name'].endswith('.jar')][0]
+          print('Freerouting', r['tag_name'], jar['name'])
+          urllib.request.urlretrieve(jar['browser_download_url'], 'freerouting.jar')
+          u = 'https://api.adoptium.net/v3/binary/latest/21/ga/linux/x64/jre/hotspot/normal/eclipse'
+          tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(u).read())).extractall('jre')
+          PY
+          JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
+          cd "$GITHUB_WORKSPACE"
+          "$JAVA" -jar /tmp/fr/freerouting.jar -de out/mso74-plata.dsn -do out/mso74-plata.ses -mp 30 -mt 4 \
+            --gui.enabled=false 2>&1 | tail -40
+          python3 plata/kicad/gen/pcb_route.py finish plata/kicad/mso74-plata.kicad_pcb out/mso74-plata.ses
           cp plata/kicad/mso74-plata.kicad_pcb out/
 
       - name: DRC платы
@@ -91,6 +114,10 @@ jobs:
           PY
           kicad-cli pcb export svg --layers F.Cu,F.SilkS,F.Fab,F.CrtYd,Edge.Cuts --mode-single --page-size-mode 2 \
             --exclude-drawing-sheet --output out/plata-front.svg plata/kicad/mso74-plata.kicad_pcb || true
+          for L in F.Cu In1.Cu In2.Cu B.Cu; do
+            kicad-cli pcb export svg --layers $L,Edge.Cuts --mode-single --page-size-mode 2 --exclude-drawing-sheet \
+              --output out/layer-$L.svg plata/kicad/mso74-plata.kicad_pcb || true
+          done
           kicad-cli pcb render --side top --width 2400 --height 1300 --output out/plata-3d.png \
             plata/kicad/mso74-plata.kicad_pcb || true
 
