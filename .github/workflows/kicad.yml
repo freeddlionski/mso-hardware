@@ -86,7 +86,8 @@ jobs:
           print('Freerouting', r['tag_name'], jar['name'])
           urllib.request.urlretrieve(jar['browser_download_url'], 'freerouting.jar')
           u = 'https://api.adoptium.net/v3/binary/latest/21/ga/linux/x64/jre/hotspot/normal/eclipse'
-          tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(u).read())).extractall('jre')
+          req = urllib.request.Request(u, headers={'User-Agent': 'curl/8.0'})
+          tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(req).read())).extractall('jre')
           PY
           JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
           cd "$GITHUB_WORKSPACE"
