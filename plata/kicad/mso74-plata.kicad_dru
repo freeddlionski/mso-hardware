@@ -1,0 +1,4 @@
+(version 1)
+(rule "площадки одного корпуса — по посадочному месту"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent")
+  (constraint clearance (min 0.15)))

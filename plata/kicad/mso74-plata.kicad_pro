@@ -32,7 +32,7 @@
       },
       {
         "name": "P24_MAIN",
-        "clearance": 0.5,
+        "clearance": 0.3,
         "track_width": 2.5,
         "via_diameter": 0.6,
         "via_drill": 0.3,
@@ -50,7 +50,7 @@
       },
       {
         "name": "P24",
-        "clearance": 0.5,
+        "clearance": 0.3,
         "track_width": 1.0,
         "via_diameter": 0.6,
         "via_drill": 0.3,
