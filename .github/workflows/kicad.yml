@@ -70,7 +70,7 @@ jobs:
           set -e
           [ -f plata/kicad/placement.json ] || { echo "Раскладки нет — пропуск"; exit 0; }
           python3 plata/kicad/gen/pcb_build.py out/mso74-plata.net plata/kicad/placement.json plata/kicad/mso74-plata.kicad_pcb
-          cp plata/kicad/mso74-plata.kicad_pcb out/
+          cp plata/kicad/mso74-plata.kicad_pcb out/   # плата без дорожек; трассировка — отдельный поэтапный route.yml
 
       - name: DRC платы
         if: always()
@@ -91,6 +91,10 @@ jobs:
           PY
           kicad-cli pcb export svg --layers F.Cu,F.SilkS,F.Fab,F.CrtYd,Edge.Cuts --mode-single --page-size-mode 2 \
             --exclude-drawing-sheet --output out/plata-front.svg plata/kicad/mso74-plata.kicad_pcb || true
+          for L in F.Cu In1.Cu In2.Cu B.Cu; do
+            kicad-cli pcb export svg --layers $L,Edge.Cuts --mode-single --page-size-mode 2 --exclude-drawing-sheet \
+              --output out/layer-$L.svg plata/kicad/mso74-plata.kicad_pcb || true
+          done
           kicad-cli pcb render --side top --width 2400 --height 1300 --output out/plata-3d.png \
             plata/kicad/mso74-plata.kicad_pcb || true
 

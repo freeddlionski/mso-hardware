@@ -89,6 +89,9 @@ def main(official):
             json.dump({'meta': {'filename': kisch.PROJECT + '.kicad_pro', 'version': 3},
                        'schematic': {'drawing': {}, 'legacy_lib_dir': '', 'legacy_lib_list': []},
                        'sheets': [], 'text_variables': {}}, f, indent=2)
+    # правила трассировки (pcb_rules.py) — всегда из генератора
+    import pcb_rules
+    pcb_rules.apply_to_pro(pro)
     print('ok:', [s.name for s in proj.sheets])
 
 
