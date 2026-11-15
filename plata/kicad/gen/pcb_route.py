@@ -3,7 +3,6 @@
   python3 pcb_route.py init   <плата>                 — плоскости In1 (GND) и In2 (+24V_P / +3V3), запреты у крепежа
   python3 pcb_route.py export <плата> <этап> <dsn>    — Specctra для этапа: вся плата, разводятся цепи этапа и начатые
   python3 pcb_route.py import <плата> <ses>           — дорожки Freerouting в плату (плата правится на месте)
-  python3 pcb_route.py view   <плата> <копия>         — копия с заливками GND на F/B — для DRC и картинок
 
 Правила и классы цепей — mso74-plata.kicad_pro (pcb_rules.py).
 """
@@ -85,17 +84,26 @@ def init(path):
     # In1 — сплошная земля: тип «питание» → в Specctra (type power), трассировщик по нему дорожки не ведёт.
     # (Первый прогон без этого проложил по In1 сигналы и даже 24 В — разрезал опорную землю.)
     board.SetLayerType(pcbnew.In1_Cu, pcbnew.LT_POWER)
+    # In2 — области питания: тоже power, иначе трассировщик режет их сигналами (Codex R-003)
+    board.SetLayerType(pcbnew.In2_Cu, pcbnew.LT_POWER)
     zone(board, 'GND', pcbnew.In1_Cu, FULL)
     for net, rect in pcb_rules.IN2:
         zone(board, net, pcbnew.In2_Cu, rect)
     keepout_holes(board)
+    # заливки GND на F/B — часть КАНОНИЧЕСКОЙ платы (Codex R-001): по ней считаются DRC и неразведённые;
+    # трассировщику они не передаются (export убирает их в памяти) — дорожки ведутся, заливка обтекает их при refill
+    zone(board, 'GND', pcbnew.F_Cu, FULL, thermal=False)
+    zone(board, 'GND', pcbnew.B_Cu, FULL, thermal=False)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     save(board, path)
-    print('init: плоскости и запреты добавлены')
+    print('init: плоскости, заливки GND и запреты добавлены')
 
 
 def export(path, stage, dsn):
     board = load(path)
+    for z in list(board.Zones()):
+        if not z.GetIsRuleArea() and z.GetLayer() in (pcbnew.F_Cu, pcbnew.B_Cu):
+            board.Remove(z)                  # только в памяти: наружные заливки трассировщику не нужны
     routed = {t.GetNetname() for t in board.GetTracks()}
     hidden, kept = set(), set()
     for f in board.GetFootprints():
@@ -128,14 +136,6 @@ def imp(path, ses):
     print('импорт: дорожек и переходов %d, цепей с дорожками %d' % (len(tracks), len({t.GetNetname() for t in tracks})))
 
 
-def view(path, out):
-    board = load(path)
-    zone(board, 'GND', pcbnew.F_Cu, FULL, thermal=False)
-    zone(board, 'GND', pcbnew.B_Cu, FULL, thermal=False)
-    pcbnew.ZONE_FILLER(board).Fill(board.Zones())
-    save(board, out)
-
-
 if __name__ == '__main__':
     cmd, args = sys.argv[1], sys.argv[2:]
-    {'init': init, 'export': export, 'import': imp, 'view': view}[cmd](*args)
+    {'init': init, 'export': export, 'import': imp}[cmd](*args)

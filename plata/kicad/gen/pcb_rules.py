@@ -12,26 +12,29 @@
 # Площадки одной микросхемы между собой — по её посадочному месту (mso74-plata.kicad_dru).
 CLASSES = {
     'Default': (0.20, 0.20, 0.60, 0.30),
-    'P24_MAIN': (2.50, 0.30, 0.60, 0.30),   # вход 6 А до eFuse: короткие широкие дорожки (полигон — при доводке)
+    'P24_MAIN': (4.00, 0.30, 0.60, 0.30),   # вход 6 А до eFuse: 4 мм (IPC-2221, ΔT 10 °C, 1 oz; Codex §5.2, R-008)
     'P24': (1.00, 0.30, 0.60, 0.30),        # +24V_P (основное — плоскость In2) и выходы 24 В на клеммы до 1,5 А
-    'LCD': (2.00, 0.25, 0.60, 0.30),        # табло 5 А: SW→L→COUT→J3/J4, широко
+    'LCD': (3.00, 0.25, 0.60, 0.30),        # табло 5 А: SW→L→COUT→J3/J4 — 3 мм (Codex §5.2, R-008)
     'SW': (1.00, 0.25, 0.60, 0.30),         # узлы SW LMR51430 (короткие)
     'PWR': (0.60, 0.15, 0.60, 0.30),        # +12V, +5V, +3V3 магистрали, выходы расширителя; зазор 0,15 — шаг 0,4 мм у U22/U10
     'ETH': (0.24, 0.20, 0.60, 0.30),        # пары Ethernet (100 Ом: W 0,24 / S 0,20 — по стеку JLC 7628)
     'USB': (0.29, 0.20, 0.60, 0.30),        # USB D+/D− (90 Ом: W 0,29 / S 0,20)
 }
 
-PATTERNS = [
-    ('P24_MAIN', '*/VIN_RAW'), ('P24_MAIN', '*/VIN_B'), ('P24_MAIN', 'VIN_F'),
-    ('P24', '+24V_P'), ('P24', '*VTK_24V'), ('P24', 'MDB_24V'), ('P24', '*/EXT_24V'),
-    ('LCD', '+5V_LCD1'), ('LCD', '+5V_LCD2'), ('LCD', '*/LCD1_SW'), ('LCD', '*/LCD2_SW'),
-    ('SW', '*/P12_SW'), ('SW', '*/P5_SW'), ('SW', '*/P3_SW'),
-    ('PWR', '+12V'), ('PWR', '*/+12V_F'), ('PWR', '*/+12V_T'), ('PWR', '+5V'), ('PWR', '+3V3'), ('PWR', '+3V3A'),
-    ('PWR', '*/EXT_D?'), ('PWR', '*/COIN_INH_D'), ('PWR', '*/SW_VCORE'),
-    ('ETH', '*/ETH_TX?'), ('ETH', '*/ETH_RD?'), ('ETH', '*/ETH_RX?'), ('ETH', '*/LNK_??'), ('ETH', '*/LNK_???'),
-    ('ETH', '*/SW_TX??'), ('ETH', '*/SW_RX??'),
-    ('USB', '*/USB_DP'), ('USB', '*/USB_DM'),
-]
+# Шаблоны: у локальных цепей имя с путём листа («/Лист/ИМЯ»), у глобальных — без; пишем оба варианта (Codex R-002)
+def _both(cls, *names):
+    return [(cls, n) for name in names for n in (name, '*/' + name)]
+
+
+PATTERNS = (
+    _both('P24_MAIN', 'VIN_RAW', 'VIN_B', 'VIN_F') +
+    _both('P24', '+24V_P', 'VTK_24V', 'MDB_24V', 'EXT_24V') +
+    _both('LCD', '+5V_LCD1', '+5V_LCD2', 'LCD1_SW', 'LCD2_SW') +
+    _both('SW', 'P12_SW', 'P5_SW', 'P3_SW') +
+    _both('PWR', '+12V', '+12V_F', '+12V_T', '+5V', '+3V3', '+3V3A', 'EXT_D?', 'COIN_INH_D', 'SW_VCORE') +
+    _both('ETH', 'ETH_TX?', 'ETH_RD?', 'ETH_RX?', 'LNK_?_?', 'SW_TX??', 'SW_RX??') +
+    _both('USB', 'USB_DP', 'USB_DM')
+)
 
 # ограничения платы (JLC, Codex §5.2): переход 0,3/0,6; 0,2-мм отверстия ESP32 допустимы; медь до кромки ≥ 0,3 мм
 RULES = {
@@ -79,5 +82,5 @@ def apply_to_pro(pro):
 DRU = """(version 1)
 (rule "площадки одного корпуса — по посадочному месту"
   (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent")
-  (constraint clearance (min 0.15)))
+  (constraint clearance (min 0.15mm)))
 """

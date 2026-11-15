@@ -73,17 +73,23 @@ jobs:
           tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(req).read())).extractall('/tmp/fr/jre')
           PY
           JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
+          # без автоматического сужения дорожек у площадок (Codex R-004); полный лог сохраняется в route-state (R-012)
+          set +e
           timeout 100m "$JAVA" -jar /tmp/fr/freerouting.jar -de $W/stage.dsn -do $W/stage.ses -mt 2 \
-            --gui.enabled=false --router.optimizer.enabled=false --router.autorouter.max_passes=$PASSES 2>&1 \
-            | grep -E "INFO|WARN|ERROR" | grep -v -i "analytics\|deprecated" | cut -c1-260 | tail -40 || true
+            --gui.enabled=false --router.optimizer.enabled=false --router.autorouter.max_passes=$PASSES \
+            --router.automatic_neckdown=false > $W/freerouting.log 2>&1
+          echo "код завершения Freerouting: $?" | tee -a $W/freerouting.log
+          set -e
+          grep -E "INFO|WARN|ERROR" $W/freerouting.log | grep -v -i "analytics\|deprecated" | cut -c1-260 | tail -40 || true
+          sha256sum /tmp/fr/freerouting.jar >> $W/freerouting.log
           [ -s $W/stage.ses ] || { echo "Freerouting не выдал результат — состояние не меняем"; exit 1; }
           python3 plata/kicad/gen/pcb_route.py import $PCB $W/stage.ses
 
       - name: DRC, картинки, отчёт
         run: |
           set -e
-          python3 plata/kicad/gen/pcb_route.py view $PCB $W/view.kicad_pcb
-          kicad-cli pcb drc --format json --severity-all --output $W/drc.json $W/view.kicad_pcb || true
+          # DRC и картинки — по той же плате, что идёт на следующий этап (Codex R-001)
+          kicad-cli pcb drc --format json --severity-all --output $W/drc.json $PCB || true
           python3 - <<'PY'
           import json, collections, os
           d = json.load(open('work/drc.json'))
@@ -101,9 +107,9 @@ jobs:
           PY
           mkdir -p $W/img
           for L in F.Cu In1.Cu In2.Cu B.Cu; do
-            kicad-cli pcb export pdf --layers $L,Edge.Cuts --output $W/img/$L.pdf $W/view.kicad_pcb || true
+            kicad-cli pcb export pdf --layers $L,Edge.Cuts --output $W/img/$L.pdf $PCB || true
           done
-          kicad-cli pcb render --side top --width 2400 --height 1300 --output $W/img/3d-top.png $W/view.kicad_pcb || true
+          kicad-cli pcb render --side top --width 2400 --height 1300 --output $W/img/3d-top.png $PCB || true
 
       - name: Сохранить состояние в ветку route-state
         run: |
@@ -115,7 +121,10 @@ jobs:
           else git clone -q --depth 1 -b route-state "$URL" /tmp/st && cd /tmp/st
           fi
           cp $GITHUB_WORKSPACE/$W/mso74-plata.kicad_pcb $GITHUB_WORKSPACE/$W/mso74-plata.kicad_pro $GITHUB_WORKSPACE/$W/report.md .
-          cp $GITHUB_WORKSPACE/$W/drc.json . ; rm -rf img && cp -r $GITHUB_WORKSPACE/$W/img img
+          cp $GITHUB_WORKSPACE/$W/mso74-plata.kicad_dru $GITHUB_WORKSPACE/$W/drc.json .
+          rm -rf img stage && cp -r $GITHUB_WORKSPACE/$W/img img && mkdir stage
+          for f in stage.dsn stage.ses freerouting.log; do [ -f $GITHUB_WORKSPACE/$W/$f ] && gzip -c $GITHUB_WORKSPACE/$W/$f > stage/$f.gz || true; done
+          sha256sum $GITHUB_WORKSPACE/plata/kicad/placement.json $GITHUB_WORKSPACE/$W/mso74-plata.kicad_pcb > stage/hashes.txt
           git add -A
           git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com \
             commit -qm "Этап $STAGE, запуск $RUN: не разведено $UN (код $(echo $GITHUB_SHA | cut -c1-7))"
