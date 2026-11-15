@@ -1,0 +1,8 @@
+(session "preroute-preservation"
+  (base_design "power.dsn")
+  (routes
+    (resolution um 10)
+    (library_out)
+    (network_out)
+  )
+)

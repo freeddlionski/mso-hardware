@@ -102,11 +102,47 @@ def init(path):
 def export(path, stage, dsn):
     board = load(path)
     tracks = list(board.Tracks())
-    routed = {t.GetNetname() for t in tracks}
+    # Закреплённая силовая зона — уже начатая цепь, даже без обычного track.
+    routed = {t.GetNetname() for t in tracks} | {
+        z.GetNetname() for z in board.Zones() if z.IsLocked() and not z.GetIsRuleArea()}
     ntracks = len(tracks)
-    outer = [z for z in board.Zones() if not z.GetIsRuleArea() and z.GetLayer() in (pcbnew.F_Cu, pcbnew.B_Cu)]
+    # KiCad DSN пишет outline зоны, а не её залитую медь. Для закреплённых
+    # силовых зон берём заполненные контуры/отверстия: исходный прямоугольник
+    # захватывает чужие площадки, которые filler уже вырезал. Все координаты
+    # копируем ДО Remove(): удаление зоны инвалидирует SWIG-обёртки.
+    fixed_areas = []
+    outer = []
+    for z in board.Zones():
+        if z.GetIsRuleArea() or z.GetLayer() not in (pcbnew.F_Cu, pcbnew.B_Cu):
+            continue
+        outer.append(z)
+        if not z.IsLocked():
+            continue
+        polys = z.GetFilledPolysList(z.GetLayer())
+        for i in range(polys.OutlineCount()):
+            chains = [polys.COutline(i)] + [polys.CHole(i, h) for h in range(polys.HoleCount(i))]
+            rings = [[(c.CPoint(j).x, c.CPoint(j).y) for j in range(c.PointCount())] for c in chains]
+            fixed_areas.append((z.GetNetname(), z.GetLayer(), rings))
     for z in outer:
-        board.Remove(z)                      # только в памяти: наружные заливки трассировщику не нужны
+        board.Remove(z)                      # только в памяти; каноническую плату не меняем
+    for net, layer, rings in fixed_areas:
+        z = pcbnew.ZONE(board)
+        z.SetLayer(layer)
+        z.SetNet(board.FindNet(net))
+        z.SetLocked(True)
+        poly = pcbnew.SHAPE_POLY_SET()
+        for i, ring in enumerate(rings):
+            chain = pcbnew.SHAPE_LINE_CHAIN()
+            for x, y in ring:
+                chain.Append(x, y)
+            chain.SetClosed(True)
+            if i == 0:
+                poly.AddOutline(chain)
+            else:
+                poly.AddHole(chain)
+        z.SetOutline(poly)
+        poly.thisown = False                 # SetOutline передаёт владение C++ ZONE
+        board.Add(z)
     hidden, kept = set(), set()
     for f in board.GetFootprints():
         for p in f.Pads():
