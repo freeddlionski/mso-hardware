@@ -84,9 +84,11 @@ def finish(path, ses):
     except TypeError:
         ok = pcbnew.ImportSpecctraSES(ses)
     print('SES импортирован:', ok)
+    if not ok:
+        raise SystemExit('импорт SES не удался')
     full = (0.5, 0.5, W - 0.5, H - 0.5)
-    zone(board, 'GND', pcbnew.F_Cu, full, clearance=0.3)
-    zone(board, 'GND', pcbnew.B_Cu, full, clearance=0.3)
+    zone(board, 'GND', pcbnew.F_Cu, full, clearance=0.3, thermal=False)
+    zone(board, 'GND', pcbnew.B_Cu, full, clearance=0.3, thermal=False)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcbnew.SaveBoard(path, board)
     n = sum(1 for t in board.GetTracks())

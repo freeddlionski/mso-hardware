@@ -85,14 +85,15 @@ jobs:
           jar = [a for a in r['assets'] if a['name'].endswith('.jar')][0]
           print('Freerouting', r['tag_name'], jar['name'])
           urllib.request.urlretrieve(jar['browser_download_url'], 'freerouting.jar')
-          u = 'https://api.adoptium.net/v3/binary/latest/21/ga/linux/x64/jre/hotspot/normal/eclipse'
+          u = 'https://api.adoptium.net/v3/binary/latest/25/ga/linux/x64/jre/hotspot/normal/eclipse'
           req = urllib.request.Request(u, headers={'User-Agent': 'curl/8.0'})
           tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(req).read())).extractall('jre')
           PY
           JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
           cd "$GITHUB_WORKSPACE"
           "$JAVA" -jar /tmp/fr/freerouting.jar -de out/mso74-plata.dsn -do out/mso74-plata.ses -mp 30 -mt 4 \
-            --gui.enabled=false 2>&1 | tail -40
+            --gui.enabled=false 2>&1 | tail -60
+          [ -s out/mso74-plata.ses ] || { echo "Freerouting не выдал SES"; exit 1; }
           python3 plata/kicad/gen/pcb_route.py finish plata/kicad/mso74-plata.kicad_pcb out/mso74-plata.ses
           cp plata/kicad/mso74-plata.kicad_pcb out/
 
