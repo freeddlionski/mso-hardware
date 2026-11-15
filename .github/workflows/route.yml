@@ -49,6 +49,7 @@ jobs:
             kicad-cli sch export netlist --format kicadsexpr --output $W/mso74-plata.net plata/kicad/mso74-plata.kicad_sch
             python3 plata/kicad/gen/pcb_build.py $W/mso74-plata.net plata/kicad/placement.json $PCB
             python3 plata/kicad/gen/pcb_route.py init $PCB
+            python3 plata/kicad/gen/pcb_preroute.py $PCB
           else
             git fetch -q --depth 1 origin route-state
             git --work-tree=$W checkout FETCH_HEAD -- mso74-plata.kicad_pcb mso74-plata.kicad_pro report.md

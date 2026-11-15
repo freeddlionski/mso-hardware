@@ -1,0 +1,24 @@
+{
+  "kicad": "9.0.2",
+  "deterministic_geometry": true,
+  "empty_SES_preserves_tracks_vias_zone_outlines": true,
+  "roundtrip_refill_changed_zones": [],
+  "copper_sha256": "9d68bf23d5ae4ec618f2a6a35d6ff1afcb69592027565506b843a9d743538fec",
+  "tracks": 978,
+  "vias": 491,
+  "locked_zones": 18,
+  "dsn_fixed_wires": 925,
+  "dsn_fixed_vias": 491,
+  "dsn_planes": 21,
+  "ethernet_pairs": 11,
+  "max_ethernet_skew_mm": 0.423487,
+  "edge_max_spacing_mm": {
+    "top": 8.0,
+    "bottom": 8.009993757800315,
+    "left": 8.0,
+    "right": 9.008884503644165
+  },
+  "U1_EP_PTH": 15,
+  "U22_EP_vias": 9,
+  "unfinished": []
+}
