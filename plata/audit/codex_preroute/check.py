@@ -81,6 +81,14 @@ def main():
     planes=findall(structure,'plane')
     assert any(find(p,'polygon')[1]=='F.Cu' for p in planes),'нет закреплённой меди F в DSN'
     manifest=json.loads(Path(a.board).with_suffix('.preroute.json').read_text())
+    assert not manifest['not_routed'],'незавершённая предразводка'
+    eth=[p for p in manifest['pairs'] if p['name'].startswith('ETH ')]
+    assert len(eth)==11 and len({p['name'] for p in eth})==11,'не все 11 Ethernet-пар'
+    for pair in eth:
+        for section in [pair]+([pair['preceding_section']] if 'preceding_section' in pair else []):
+            assert max(v for fan in section['unpaired_fanout_lengths_mm'] for v in fan)<=3.0001,'fanout длиннее 3 мм'
+    for ref,at in {'U10':(196,22),'U22':(206,44),'J7':(222.74,22),'J18':(222.74,45)}.items():
+        p=fp[ref].GetPosition();assert math.dist((p.x/1e6-30,p.y/1e6-30),at)<.00001,'смещён центр '+ref
     by_id={t.m_Uuid.AsString():t for t in b.GetTracks()}
     for route in manifest['routes']:
         actual=sum(by_id[u].GetLength()/1e6 for u in route['item_uuids'])
@@ -96,7 +104,7 @@ def main():
             'tracks':sum(not isinstance(t,pcbnew.PCB_VIA) for t in b.GetTracks()),
             'vias':sum(isinstance(t,pcbnew.PCB_VIA) for t in b.GetTracks()),'locked_zones':len(sig[1]),
             'dsn_fixed_wires':len(wires),'dsn_fixed_vias':len(vias),'dsn_planes':len(planes),
-            'edge_max_spacing_mm':edge_max,'U1_EP_PTH':len(pth),'U22_EP_vias':len(thermal),'unfinished':manifest['not_routed']}
+            'ethernet_pairs':len(eth),'max_ethernet_skew_mm':max(p['skew_mm'] for p in eth),'edge_max_spacing_mm':edge_max,'U1_EP_PTH':len(pth),'U22_EP_vias':len(thermal),'unfinished':manifest['not_routed']}
     Path(a.output).write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(result,ensure_ascii=False,indent=2))
 

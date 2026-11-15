@@ -2,16 +2,16 @@
   "kicad": "9.0.2",
   "deterministic_geometry": true,
   "empty_SES_preserves_tracks_vias_zone_outlines": true,
-  "roundtrip_refill_changed_zones": [
-    "MSO74_PREROUTE_V1:Q1:drain"
-  ],
-  "copper_sha256": "4bf4dd57f6cce981625fc443d1de4b32854dbf1e449a6e28916479cd9f20b3c3",
-  "tracks": 628,
-  "vias": 435,
+  "roundtrip_refill_changed_zones": [],
+  "copper_sha256": "9d68bf23d5ae4ec618f2a6a35d6ff1afcb69592027565506b843a9d743538fec",
+  "tracks": 978,
+  "vias": 491,
   "locked_zones": 18,
-  "dsn_fixed_wires": 604,
-  "dsn_fixed_vias": 435,
-  "dsn_planes": 23,
+  "dsn_fixed_wires": 925,
+  "dsn_fixed_vias": 491,
+  "dsn_planes": 21,
+  "ethernet_pairs": 11,
+  "max_ethernet_skew_mm": 0.423487,
   "edge_max_spacing_mm": {
     "top": 8.0,
     "bottom": 8.009993757800315,
@@ -20,22 +20,5 @@
   },
   "U1_EP_PTH": 15,
   "U22_EP_vias": 9,
-  "unfinished": [
-    "fanout U22.41",
-    "ETH W5500 RX—C64/C65 (нет общего коридора)",
-    "ETH C64/C65—T1 (offset/clearance)",
-    "ETH LNK_A T1—T2 (fanout)",
-    "ETH LNK_B T1—T2 (fanout)",
-    "ETH RTL port0 TX—T2 (нет общего коридора)",
-    "ETH RTL port0 RX—T2 (нет общего коридора)",
-    "ETH RTL port1 RX—J7 (нет общего коридора)",
-    "ETH RTL port1 TX—J7 (нет общего коридора)",
-    "ETH RTL port2 TX—J18 (нет общего коридора)",
-    "ETH RTL port2 RX—J18 (нет общего коридора)",
-    "T1.2—C63.1",
-    "T1.2—R50.2",
-    "T1.6—R51.1",
-    "T1.8—R52.2",
-    "U10.2—R48.1"
-  ]
+  "unfinished": []
 }

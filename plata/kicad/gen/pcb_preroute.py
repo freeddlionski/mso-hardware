@@ -61,30 +61,30 @@ class Router:
         board.Add(self.group)
         for f in sorted(board.GetFootprints(), key=lambda f: f.GetReference()):
             for p in f.Pads():
-                for layer in (F, B):
+                for layer in (F, pcbnew.In2_Cu, B):
                     if p.IsOnLayer(layer):
                         self.obstacle(p, layer)
         for t in board.GetTracks():
-            for layer in (F, B):
+            for layer in (F, pcbnew.In2_Cu, B):
                 if t.IsOnLayer(layer):
                     self.obstacle(t, layer)
 
     def checkpoint(self):
-        return len(self.created),len(self.done),self.serial
+        return len(self.created),len(self.done),self.serial,len(self.pairs)
 
     def rollback(self, checkpoint):
-        count,done,serial=checkpoint
+        count,done,serial,paircount=checkpoint
         for obj in self.created[count:]:
             self.group.RemoveItem(obj)
             self.board.Remove(obj)
-        del self.created[count:];del self.done[done:];self.serial=serial
+        del self.created[count:];del self.done[done:];del self.pairs[paircount:];self.serial=serial
         self.index.clear()
         for f in sorted(self.board.GetFootprints(),key=lambda f:f.GetReference()):
             for p in f.Pads():
-                for layer in (F,B):
+                for layer in (F,pcbnew.In2_Cu,B):
                     if p.IsOnLayer(layer):self.obstacle(p,layer)
         for t in self.board.GetTracks():
-            for layer in (F,B):
+            for layer in (F,pcbnew.In2_Cu,B):
                 if t.IsOnLayer(layer):self.obstacle(t,layer)
 
     def pad(self, ref, pin):
@@ -129,7 +129,7 @@ class Router:
         for ix in range(math.floor((min(a[0], b[0]) - r) / 2), math.floor((max(a[0], b[0]) + r) / 2) + 1):
             for iy in range(math.floor((min(a[1], b[1]) - r) / 2), math.floor((max(a[1], b[1]) + r) / 2) + 1):
                 for other, shape, obj in self.index[layer, ix, iy]:
-                    if other == net or other in ignore or id(obj) in seen:
+                    if (other == net and not (getattr(self,'block_own',None)==(net,layer) and isinstance(obj,pcbnew.PCB_TRACK) and not isinstance(obj,pcbnew.PCB_VIA))) or other in ignore or id(obj) in seen:
                         continue
                     seen.add(id(obj))
                     # 5 нм допуска только на округление offset-пары в единицы KiCad; DRC не меняется.
@@ -156,7 +156,7 @@ class Router:
                           'width_mm': width, 'item_uuids':item_ids,'start_mm':pts[0],'end_mm':pts[-1], 'length_mm': round(sum(distance(a, b) for a, b in zip(pts, pts[1:])), 6)})
         return True
 
-    def search(self, start, goal, net, width, layer=F, margin=2, step=.1, ignore=(), gate=None):
+    def search(self, start, goal, net, width, layer=F, margin=2, step=.1, ignore=(), gate=None,max_nodes=80000):
         def facing(a,b):
             if gate is None:return True
             da,db=gate
@@ -167,13 +167,14 @@ class Router:
             return [start, goal]
         x0, x1 = min(start[0], goal[0]) - margin, max(start[0], goal[0]) + margin
         y0, y1 = min(start[1], goal[1]) - margin, max(start[1], goal[1]) + margin
+        # Сетка привязана к точному start. Старая глобальная сетка давала
+        # микросегменты назад у start/goal; offset превращал их в развороты.
         def coord(n):
-            return round(n[0] * step, 6), round(n[1] * step, 6)
-        s = tuple(round(v / step) for v in start)
-        g = tuple(round(v / step) for v in goal)
-        if not self.free(start, coord(s), width, net, layer, ignore) or not self.free(coord(g), goal, width, net, layer, ignore):
+            return round(start[0]+n[0]*step,6),round(start[1]+n[1]*step,6)
+        s=(0,0)
+        if not self.free(start,start,width,net,layer,ignore) or not self.free(goal,goal,width,net,layer,ignore):
             return None
-        queue = [(distance(coord(s), goal), 0., s)]
+        queue = [(distance(start, goal), 0., s)]
         cost, parent = {s: 0.}, {}
         visited = 0
         directions = ((1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, 1), (-1, -1), (1, -1))
@@ -181,7 +182,10 @@ class Router:
             _, d, n = heapq.heappop(queue)
             if d > cost[n] + 1e-8:
                 continue
-            if n == g:
+            at=coord(n)
+            # Последний отрезок идёт прямо в точный goal, с верной стороны.
+            # Никакого round(goal) → goal с противоположным направлением.
+            if distance(at,goal)<=step*1.5 and facing(at,goal) and self.free(at,goal,width,net,layer,ignore):
                 route = [n]
                 while n != s:
                     n = parent[n]; route.append(n)
@@ -209,7 +213,7 @@ class Router:
                     smooth.append(out[j]);i=j
                 return smooth
             visited += 1
-            if visited > 80000:
+            if visited > max_nodes:
                 return None
             a = coord(n)
             for dx, dy in directions:
@@ -245,7 +249,7 @@ class Router:
         return True
 
     def canvia(self, pos, net='GND', diameter=.6, drill=.3):
-        if any(not self.free(pos, pos, diameter, net, layer) for layer in (F, B)):
+        if any(not self.free(pos, pos, diameter, net, layer) for layer in (F, pcbnew.In2_Cu, B)):
             return None
         # Via проходит сквозь все слои: платы init не содержат внутренние дорожки,
         # внутренние зоны обтекают via при refill. Минимум отверстие–отверстие 0,2.
@@ -268,7 +272,7 @@ class Router:
         v.SetPosition(point(pos)); v.SetWidth(F, mm(diameter)); v.SetDrill(mm(drill))
         v.SetViaType(pcbnew.VIATYPE_THROUGH); v.SetLayerPair(F, B)
         v.SetNet(self.board.FindNet(net)); self.add(v)
-        self.obstacle(v, F); self.obstacle(v, B)
+        self.obstacle(v, F); self.obstacle(v, pcbnew.In2_Cu); self.obstacle(v, B)
         return v
 
     def copper(self, net, rect, layer=F, priority=10, name=''):
@@ -321,7 +325,7 @@ def power(r):
         # не проводим цепь обратной связи через hot loop на F.Cu.
         kelvin(r,(u,13),(rb,1),.15,diameter=.45,drill=.2,source_via=(46.9,y+.6))
         kelvin(r, (fb[0],1), (cout[0],1), .2)
-        kelvin(r, (u,1), (cout[0],1), .2)
+        sense_branch(r,(u,1),r.pad(u,1).GetNetname())
         r.copper('GND',(42.6,y-1.15,44.0,y+1.15),B,name=u+':PGND-back')
     for u,l,cin,cb,cout,fb in [
         ('U2','L1',('C6','C7'),'C8',('C9','C10','C115','C11'),('R13','R14')),
@@ -371,8 +375,8 @@ def power(r):
         if not placed:r.failed.append(ref+' VIN via')
     # LMR 3V3 стоит слева от границы x=82: via здесь попал бы в 24V,
     # поэтому отдельная широкая магистраль к массиву уже справа от границы.
-    q=(85.3,79.6);start=r.pos('L3',2)
-    route=r.search(start,q,'+3V3',1.5,margin=3)
+    q=(85.3,79.6);start=r.pos('C23',1)
+    route=[start,(start[0],80.5),(85.3,80.5),q]
     if route and r.track(route,'+3V3',1.5,label='LMR3V3 to In2'):
         r.copper('+3V3',(83.5,78.5,87.0,80.7),name='3V3:plane-entry')
         for x in (84.5,85.3,86.1):
@@ -423,16 +427,9 @@ def clocks(r):
     for u,yi,yo,y,caps in [('U10',30,31,'Y1',('C61','C62')),
                            ('U22',40,39,'Y3',('C107','C108')),
                            ('U19',1,2,'Y2',('C81',))]:
-        if u=='U22':
-            # XI не режет по диагонали поле CORE/IBREF: вертикальный выход
-            # оставляет слева коридор для их веера. XO обходит землю кварца.
-            paths=[([(207,41.075),(207,38.5),(204.9,38.5),r.pos(y,1)],yi),
-                   ([(207.4,41.075),(207.4,40),(208.3,38.9),(208.3,35.65),r.pos(y,3)],yo)]
-            for pts,pin in paths:
-                if not r.track(pts,r.pad(u,pin).GetNetname(),.15,label=u+' crystal '+str(pin)):
-                    r.failed.append(u+' crystal '+str(pin))
-        else:r.connect((u,yi),(y,1),.15,margin=2,step=.05)
-        if u!='U22':r.connect((u,yo),(y,3 if y!='Y2' else 2),.15,margin=2,step=.05)
+        # Сначала внешний XO: внутренний XI затем не отрезает его выход.
+        r.connect((u,yo),(y,3 if y!='Y2' else 2),.15,margin=4,step=.05)
+        r.connect((u,yi),(y,1),.15,margin=4,step=.05)
         for pin,c in zip((1,3),caps):
             # C81 DNP остаётся площадкой XI, не устанавливаем новый конденсатор.
             r.connect((y,pin),(c,1),.15,margin=2,step=.05)
@@ -509,113 +506,532 @@ def usb(r):
     second=[(dp,[r.pos('U9',1),(223.8,67.05),(223.095,67.755)]+p+[(213.645,66),r.pos('U8',1)]),
             (dm,[r.pos('U9',3),(223.8,68.95),(223.095,68.245)]+n+[(213.645,67),r.pos('U8',2)])]
     pair_paths(r,'USB USBLC6—CH340K',second,.29)
+    # Явная медь проходных каналов USBLC6: native DSN/DRC не должны
+    # надеяться на внутреннее соединение выводов 1↔6 / 3↔4.
+    through=[(dp,[r.pos('U9',6),r.pos('U9',1)]),(dm,[r.pos('U9',4),r.pos('U9',3)])]
+    if pair_paths(r,'USBLC6 flow-through',through,.29):
+        r.pairs[-1]['gap_mm']=round(abs(r.pos('U9',1)[1]-r.pos('U9',3)[1])-.29,6)
+        r.pairs[-1]['note']='короткие параллельные каналы между проходными выводами корпуса'
 
 
-def route_pair(r,name,a,b,out_a,out_b,escape_a=1.4,escape_b=1.8,margin=8):
-    """Совместный коридор 0,68 мм, затем две offset-линии 0,24/0,20.
+def simple_path(points):
+    """Запрет петли/наложения: совпадение общей длины не доказывает skew,
+    если собственная медь замыкает согласующий участок более коротким путём.
+    """
+    pts=[]
+    for p in points:
+        if not pts or distance(pts[-1],p)>.00001:pts.append(p)
+    def cross(a,b,c):return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])
+    for a,b,c in zip(pts,pts[1:],pts[2:]):
+        ab=(b[0]-a[0],b[1]-a[1]);bc=(c[0]-b[0],c[1]-b[1])
+        if (ab[0]*bc[0]+ab[1]*bc[1])/(distance(a,b)*distance(b,c))<-.8:return False
+    for i,(a,b) in enumerate(zip(pts,pts[1:])):
+        for j in range(i+2,len(pts)-1):
+            c,d=pts[j:j+2]
+            if max(min(a[0],b[0]),min(c[0],d[0]))>min(max(a[0],b[0]),max(c[0],d[0]))+.00001:continue
+            if max(min(a[1],b[1]),min(c[1],d[1]))>min(max(a[1],b[1]),max(c[1],d[1]))+.00001:continue
+            if cross(a,b,c)*cross(a,b,d)<=1e-12 and cross(c,d,a)*cross(c,d,b)<=1e-12:return False
+    return True
 
-    Последние миллиметры у выводов — fanout 0,15 мм (шаг QFN 0,4).
-    Никаких двух независимо найденных длинных линий под видом пары.
+
+def route_pair(r,name,a,b,out_a,out_b,escape_a=1.4,escape_b=1.8,margin=8,
+               layer=F,endpoints=None,ribbon=.74,heading_a=None,heading_b=None,length_bias=(0.,0.),end_parallel=None,end_shift=(0.,0.),waypoints=None):
+    """Общий коридор и две линии .24/.20; сначала ОБЕ магистрали, затем fanout.
+
+    Если создавать первый fanout до второй линии, он мог занять место
+    второй линии — ложный тупик первой версии. Проверяем каждую offset-
+    линию реальной формой меди, поэтому коридор .74 мм не ослабляет DRC.
     """
     pads=[r.pad(*p) for p in a+b]
     if pads[0].GetNetname()!=pads[2].GetNetname() or pads[1].GetNetname()!=pads[3].GetNetname():
         raise ValueError('не совпали сети пары '+name)
     nets=[pads[0].GetNetname(),pads[1].GetNetname()]
     r.paired.add(frozenset(nets))
-    positions=[xy(p.GetPosition()) for p in pads]
-    mean_a=tuple((positions[0][i]+positions[1][i])/2 for i in (0,1))
-    mean_b=tuple((positions[2][i]+positions[3][i])/2 for i in (0,1))
-    ca=tuple(mean_a[i]+out_a[i]*escape_a for i in (0,1))
-    cb=tuple(mean_b[i]+out_b[i]*escape_b for i in (0,1))
-    sign_a=(positions[0][0]-positions[1][0])*(-out_a[1])+(positions[0][1]-positions[1][1])*out_a[0]
-    sign_b=(positions[2][0]-positions[3][0])*out_b[1]-(positions[2][1]-positions[3][1])*out_b[0]
-    if sign_a*sign_b<=0:
+    positions=endpoints or [xy(p.GetPosition()) for p in pads]
+    ma=tuple((positions[0][i]+positions[1][i])/2 for i in (0,1))
+    mb=tuple((positions[2][i]+positions[3][i])/2 for i in (0,1))
+    ca=tuple(ma[i]+out_a[i]*escape_a for i in (0,1))
+    cb=tuple(mb[i]+out_b[i]*escape_b+end_shift[i] for i in (0,1))
+    ha,hb=heading_a or out_a,heading_b or out_b
+    sa=tuple(ca[i]+ha[i]*.6 for i in (0,1))
+    sb=tuple(cb[i]+hb[i]*.6 for i in (0,1))
+    sign=(positions[0][0]-positions[1][0])*(-out_a[1])+(positions[0][1]-positions[1][1])*out_a[0]
+    end_sign=(positions[2][0]-positions[3][0])*out_b[1]-(positions[2][1]-positions[3][1])*out_b[0]
+    if sign*end_sign<=0:
         raise ValueError('инверсия порядка проводников '+name)
-    delta=.22 if sign_a>0 else -.22
-    sa=tuple(ca[i]+out_a[i]*.6 for i in (0,1))
-    sb=tuple(cb[i]+out_b[i]*.6 for i in (0,1))
-    route=r.search(sa,sb,nets[0],.90,margin=margin,step=.1,ignore=nets,gate=(out_a,out_b))
+    delta=.22 if sign>0 else -.22
+    # Имена обеих цепей нельзя игнорировать: средняя линия тогда
+    # пересекала площадку N, и смещённая дорожка P замыкалась на неё.
+    # __PAIR_CORRIDOR__ имеет clearance .20 и видит ВСЕ площадки.
+    if waypoints:
+        route=[sa]
+        for target in list(waypoints)+[sb]:
+            piece=r.search(route[-1],target,'__PAIR_CORRIDOR__',ribbon,layer,margin=2,step=.1,max_nodes=30000)
+            if piece is None:route=None;break
+            route+=piece[1:]
+    else:
+        route=r.search(sa,sb,'__PAIR_CORRIDOR__',ribbon,layer,margin=margin,step=.2,gate=(ha,hb),max_nodes=60000)
+        if route is None and ribbon==.74:
+            route=r.search(sa,sb,'__PAIR_CORRIDOR__',ribbon,layer,margin=margin,step=.1,gate=(ha,hb),max_nodes=100000)
     if route is None:
+        if os.environ.get('PCB_PREROUTE_DEBUG'):
+            print('corridor fail',name,layer,ribbon,sa,sb,flush=True)
         r.failed.append(name+' (нет общего коридора)');return False
-    center=[ca]+route+[cb]
-    try:middle=[offset(center,delta),offset(center,-delta)]
-    except ValueError:
-        r.failed.append(name+' (разворот коридора)');return False
-    # Транзакция: если соседний проводник не проходит — не оставлять первый.
-    cp=r.checkpoint();sections=[]
+    try:middle=[offset([ca]+route+[cb],delta),offset([ca]+route+[cb],-delta)]
+    except ValueError:r.failed.append(name+' (разворот коридора)');return False
+    cp=r.checkpoint()
+    if not all(r.track(middle[i],nets[i],.24,layer,label=name) for i in (0,1)):
+        r.rollback(cp);r.failed.append(name+' (offset/clearance)');return False
+    sections=[]
     for i in (0,1):
-        start=r.search(positions[i],middle[i][0],nets[i],.15,margin=2,step=.05)
-        end=r.search(middle[i][-1],positions[i+2],nets[i],.15,margin=2,step=.05)
-        if start is None or end is None:
-            r.rollback(cp);r.failed.append(name+' (fanout)');return False
-        pieces=[(start,.15),(middle[i],.24),(end,.15)]
-        if not all(r.track(p,nets[i],w,label=name) for p,w in pieces):
-            r.rollback(cp);r.failed.append(name+' (offset/clearance)');return False
-        sections.append(pieces)
+        # .15 требуется у .4-мм ряда QFN; крупные площадки не сужаем.
+        w_start=.15 if layer==F and distance(positions[i],xy(pads[i].GetPosition()))<.01 and min(pads[i].GetSize().x,pads[i].GetSize().y)<mm(.24) else .24
+        w_end=.15 if layer==F and min(pads[i+2].GetSize().x,pads[i+2].GetSize().y)<mm(.24) else .24
+        start=r.search(positions[i],middle[i][0],nets[i],w_start,layer,margin=3,step=.05)
+        if start is None or not r.track(start,nets[i],w_start,layer,label=name):
+            r.rollback(cp);r.failed.append(name+' (start fanout)');return False
+        target=end_parallel[i] if end_parallel else positions[i+2]
+        end=r.search(middle[i][-1],target,nets[i],w_end,layer,margin=3,step=.05)
+        if end and end_parallel:end=end+[positions[i+2]]
+        if end is None or not r.track(end,nets[i],w_end,layer,label=name):
+            r.rollback(cp);r.failed.append(name+' (end fanout)');return False
+        sections.append([(start,w_start),(middle[i],.24),(end,w_end)])
     r.rollback(cp)
-    lengths=[sum(distance(a,b) for p,w in pieces for a,b in zip(p,p[1:])) for pieces in sections]
-    # Компенсация только в uncoupled fanout: основную пару не раздвигаем.
-    attempts=[sections]
-    diff=abs(lengths[0]-lengths[1])
+    def lengths(candidate):
+        return [sum(distance(a,b) for p,w in pieces for a,b in zip(p,p[1:]))+length_bias[i] for i,pieces in enumerate(candidate)]
+    ls=lengths(sections);diff=abs(ls[0]-ls[1]);attempts=[sections]
+    def fan_length(pts,sec):
+        last=len(pts)-2 if sec==2 and end_parallel else len(pts)-1
+        return sum(distance(pts[j],pts[j+1]) for j in range(last))
+    raw_fan=[[fan_length(sections[i][j][0],j) for j in (0,2)] for i in (0,1)]
     if diff>.5:
-        short=0 if lengths[0]<lengths[1] else 1
-        attempts=[]
-        for section in (0,2):
-            pts=sections[short][section][0]
-            for j,(a0,b0) in enumerate(zip(pts,pts[1:])):
-                length=distance(a0,b0)
+        short=0 if ls[0]<ls[1] else 1;attempts=[]
+        # Не растягивать один вывод на 4–6 мм ради нулевого skew.
+        # Компенсация делится между двумя короткими fanout; целевой
+        # остаток .35 мм даёт запас к пределу .50 мм.
+        added=diff-.35
+        room=[max(0.,3.-raw_fan[short][k]) for k in (0,1)]
+        weighted=room[0]/sum(room) if sum(room)>0 else .5
+        def variants(sec,amount):
+            pts,w=sections[short][sec]
+            if amount<1e-6:return [pts]
+            if fan_length(pts,sec)+amount>3.+1e-6:return []
+            result=[];limit=len(pts)-2 if sec==2 and end_parallel else len(pts)-1
+            for j in range(limit):
+                a0,b0=pts[j:j+2];length=distance(a0,b0)
                 if length<.4:continue
-                height=math.sqrt(diff*(2*length+diff))/2
-                if height>2:continue
-                for sign in (-1,1):
-                    peak=((a0[0]+b0[0])/2-sign*(b0[1]-a0[1])/length*height,
-                          (a0[1]+b0[1])/2+sign*(b0[0]-a0[0])/length*height)
-                    new=[[(list(p),w) for p,w in pieces] for pieces in sections]
-                    new[short][section]=(pts[:j+1]+[peak]+pts[j+1:],.15)
-                    attempts.append(new)
+                vx,vy=(b0[0]-a0[0])/length,(b0[1]-a0[1])/length
+                for size in (.6,.9,1.2,1.5,.4):
+                    base=min(length,size,3-amount)
+                    if base<.4:continue
+                    for along in (length-base,(length-base)/2,0):
+                        q0=(a0[0]+vx*along,a0[1]+vy*along);q1=(q0[0]+vx*base,q0[1]+vy*base)
+                        for side in (-1,1):
+                            nx,ny=-vy*side*amount/2,vx*side*amount/2
+                            result.append(pts[:j+1]+[q0,(q0[0]+nx,q0[1]+ny),(q1[0]+nx,q1[1]+ny),q1]+pts[j+1:])
+            return result[:60]
+        for fraction in (1.,0.,weighted,.5,.6,.4,.25,.75):
+            src=variants(0,added*fraction);end=variants(2,added*(1-fraction))
+            for start in src:
+                for finish in end:
+                    candidate=[[(list(p),w) for p,w in pieces] for pieces in sections]
+                    candidate[short][0]=(start,sections[short][0][1])
+                    candidate[short][2]=(finish,sections[short][2][1])
+                    attempts.append(candidate)
     for candidate in attempts:
-        ok=True
-        for i in (0,1):
-            for pts,w in candidate[i]:
-                if not r.track(pts,nets[i],w,label=name):ok=False;break
-            if not ok:break
+        if not all(simple_path([p for points,w in candidate[i] for p in points]) for i in (0,1)):continue
+        ok=all(r.track(candidate[i][1][0],nets[i],.24,layer,label=name) for i in (0,1))
         if ok:
-            ls=[sum(distance(a,b) for p,w in pieces for a,b in zip(p,p[1:])) for pieces in candidate]
-            r.pairs.append({'name':name,'nets':nets,'layer':'F.Cu','width_mm':.24,'gap_mm':.2,
-                            'fanout_width_mm':.15,'lengths_mm':[round(v,6) for v in ls],
+            for i in (0,1):
+                for sec in (0,2):
+                    pts,w=candidate[i][sec]
+                    if not r.track(pts,nets[i],w,layer,label=name):ok=False;break
+                if not ok:break
+        if ok:
+            ls=lengths(candidate)
+            fan=[[sum(distance(a,b) for a,b in zip(candidate[i][j][0],candidate[i][j][0][1:])) for j in (0,2)] for i in (0,1)]
+            r.pairs.append({'name':name,'nets':nets,'layer':r.board.GetLayerName(layer),'width_mm':.24,'gap_mm':.2,
+                            'fanout_lengths_mm':fan,
+                            'unpaired_fanout_lengths_mm':[[fan_length(candidate[i][j][0],j) for j in (0,2)] for i in (0,1)],
+                            'parallel_tail_lengths_mm':[distance(candidate[i][2][0][-2],candidate[i][2][0][-1]) if end_parallel else 0 for i in (0,1)],
+                            'length_bias_mm':list(length_bias),'lengths_mm':[round(x,6) for x in ls],
                             'skew_mm':round(abs(ls[0]-ls[1]),6)})
             print('пара:',name,ls,flush=True);return True
         r.rollback(cp)
-    r.failed.append(name+' (согласование длины/зазор)');return False
+    r.failed.append(name+' (согласование/зазор)');return False
+
+
+def pair_return_vias(r,points):
+    """Два коротких возврата на In1 рядом с переходом пары, не на ETH_SH."""
+    result=[]
+    for p in points:
+        existing=[xy(v.GetPosition()) for v in r.board.GetTracks() if isinstance(v,pcbnew.PCB_VIA) and v.GetNetname()=='GND']
+        if any(distance(p,q)<=2.5 for q in existing):continue
+        for radius in (1.0,1.3,1.6,1.9,2.2,2.5,3.):
+            for angle in range(0,360,30):
+                a=math.radians(angle);q=(round(p[0]+radius*math.cos(a),6),round(p[1]+radius*math.sin(a),6))
+                if r.via(q,'GND',.45,.2):result.append(q);break
+            else:continue
+            break
+        else:return None
+    return result
+
+
+def drop_created(r,ids):
+    ids=set(ids)
+    for obj in list(r.created):
+        if obj.m_Uuid.AsString() in ids:
+            r.group.RemoveItem(obj);r.board.Remove(obj);r.created.remove(obj)
+    r.done[:]=[v for v in r.done if not any(u in ids for u in v['item_uuids'])]
+    r.rollback(r.checkpoint())
+
+
+def hybrid_pair(r,name,a,b,heads,bias,oa,ob,surface):
+    """Обход топологического пересечения пар: законченная B-пара до
+    симметричных via в свободной ячейке, затем F над In1 до назначения.
+    Никаких одиночных переходов/несогласованных концов.
+    """
+    recipes={
+      'ETH RTL port0 RX—T2':[(211,29.5),(-1,0),(1,0),4.8],
+      'ETH RTL port1 TX—J7':[(211,27),(1,0),(1,0),3.53],
+      'ETH RTL port2 TX—J18':[(213,53),(1,0),(-1,0),2.8],
+      'ETH RTL port2 RX—J18':[(212.5,56),(1,0),(1,0),2.8],
+    }
+    if name not in recipes:return False
+    center,fo,fe,eb=recipes[name];cp=r.checkpoint();nf=len(r.failed)
+    nets=[r.pad(*p).GetNetname() for p in a]
+    sign=(heads[0][0]-heads[1][0])*(-oa[1])+(heads[0][1]-heads[1][1])*oa[0]
+    for dx,dy in ((0,0),(1,0),(-1,0),(0,1)):
+        stagger=.7 if name=='ETH RTL port2 TX—J18' else (-.7 if ('port2 RX' in name or 'port1 TX' in name) else 0.)
+        stage=[(center[0]+dx+stagger*leg,center[1]+dy+(1 if sign>0 else -1)*leg*.4) for leg in (1,-1)]
+        for ribbon in (.74,.86,.9):
+            r.rollback(cp);del r.failed[nf:]
+            if not all(r.via(stage[i],nets[i],.45,.2) for i in (0,1)):continue
+            if not route_pair(r,name,a,b,oa,(-1,0),1.2,2.1 if stagger else 1.2,margin=24,layer=B,
+                              endpoints=heads[:2]+stage,ribbon=ribbon,length_bias=bias):continue
+            first=r.pairs.pop();first_lengths=first['lengths_mm']
+            end_cp=r.checkpoint();finished=False
+            choices=[(fo,fe,1.2,eb),((-fo[0],-fo[1]),(-fe[0],-fe[1]),2.1 if stagger else 1.2,
+                      3.53 if 'TX' in name and fe==(-1,0) else 2.8)]
+            for da,db,ea,ed in choices:
+                r.rollback(end_cp)
+                shift=(0,-.12) if 'TX' in name and db==(-1,0) else (0,0)
+                if route_pair(r,name,a,b,da,db,ea,ed,margin=24,layer=F,
+                              endpoints=stage+[r.pos(*p) for p in b],ribbon=ribbon,
+                              length_bias=first_lengths,end_shift=shift,
+                              end_parallel=([(224 if db==(1,0) else 219,r.pos(*p)[1]) for p in b] if b[0][0] in ('J7','J18') and db in ((1,0),(-1,0)) else ([(201.7,r.pos(*p)[1]) for p in b] if b[0][0]=='T2' and db==(1,0) else None))):
+                    finished=True;break
+            if not finished:continue
+            returns=pair_return_vias(r,stage+getattr(r,'qfn_returns',{}).get(name,[])[:2])
+            if returns is None:continue
+            pair=r.pairs[-1];pair['layer']='F.Cu/B.Cu';pair['trunk_layer']='B.Cu → F.Cu'
+            pair['via_count_per_leg']=2;pair['F_necks']=surface;pair['GND_returns']=returns
+            pair['staging_vias_mm']=stage;pair['B_section_lengths_including_source_mm']=first_lengths;pair['preceding_section']=first
+            pair['deviation']='B-пара до симметричного перехода в свободной ячейке, затем F; прямой общий коридор перекрыт'
+            remove=[]
+            secondary=getattr(r,'qfn_returns',{}).get(name,[])[2:]
+            for t in r.created:
+                if isinstance(t,pcbnew.PCB_VIA) and t.GetNetname() in nets and any(distance(xy(t.GetPosition()),q)<.00001 for q in secondary):remove.append(t.m_Uuid.AsString())
+            if b[0][0]=='T2':remove += [u for ref,pin in b for u in r.phy_heads[pin][2]]
+            drop_created(r,remove);del r.failed[nf:]
+            return True
+    r.rollback(cp);del r.failed[nf:];return False
+
+
+def collapse_qfn_escape(r,name):
+    if len(getattr(r,'qfn_returns',{}).get(name,[]))>2:
+        secondary=r.qfn_returns[name][2:];ids=[]
+        for route in r.done:
+            if route['label']==name+' parallel B escape':ids+=route['item_uuids']
+        for t in r.created:
+            if isinstance(t,pcbnew.PCB_VIA) and any(distance(xy(t.GetPosition()),q)<.00001 for q in secondary):ids.append(t.m_Uuid.AsString())
+        drop_created(r,ids)
+        first=r.qfn_returns[name][:2];surface=r.bridge_heads[name][2]
+        r.bridge_heads[name]=(first,[v['length_mm'] for v in surface],surface)
+        r.qfn_returns[name]=first
+
+
+def bridge_pair(r,name,a,b,oa,ob,is_rj=False):
+    """Последний вариант после F.Cu: вся магистраль парой на B, одинаковое
+    число .45/.20 via в обоих проводниках и возврат GND у каждого конца.
+    Длины учитывают также короткие F-подводы (вертикаль via одинакова).
+    """
+    collapse_qfn_escape(r,name)
+    cp=r.checkpoint();positions=[r.pos(*p) for p in a+b]
+    nets=[r.pad(*p).GetNetname() for p in a]
+    r.paired.add(frozenset(nets))
+    special={
+      'ETH W5500 TX—T1':[(190.4,20.2),(191.4,18.5)],
+      'ETH RTL port0 RX—T2':[(205.85,38.2),(205.05,38.2)],
+      'ETH RTL port1 RX—J7':[(201.2,40.4),(201.2,41.2)],
+      'ETH RTL port1 TX—J7':[(201.2,42.8),(201.2,42.0)],
+      'ETH RTL port2 TX—J18':[(201.2,45.8),(201.2,46.6)],
+      'ETH RTL port2 RX—J18':[(201.7,48.2),(201.7,47.4)],
+    }
+    cached=getattr(r,"bridge_heads",{}).get(name)
+    heads=[];bias=[0.,0.];all_returns=[];surface=[]
+    for side,(pair,direction) in enumerate(((a,oa),(b,ob))):
+        if side==0 and cached:
+            heads=list(cached[0]);bias=list(cached[1]);surface=list(cached[2]);continue
+        if side==1 and b[0][0]=='T2' and b[0][1] in getattr(r,'phy_heads',{}):
+            for i,pin in enumerate(b):
+                q,length,_=r.phy_heads[pin[1]];heads.append(q);bias[i]+=length
+                surface.append({'side':1,'leg':i,'length_mm':length})
+            continue
+        if side==1 and is_rj:
+            heads+=positions[2:];continue # PTH RJ45 уже проходят до B.Cu
+        pts=positions[side*2:side*2+2]
+        if side==0 and name in special:
+            candidates=[special[name]]
+        else:
+            # У H1102 место за длинной стороной площадки; оба отвода равны.
+            candidates=[[(p[0]+direction[0]*d,p[1]+direction[1]*d) for p in pts] for d in (1.4,1.7,2.)]
+        if side==1 and 'port0 RX' in name:
+            candidates=[[(p[0]+1.4,p[1]) for p in pts]] # CT проходит внутри тела, data выходит наружу
+        # Веер пары подбирается совместно: фиксированная via-головка могла
+        # попасть на питание или соседнюю пару. Шаг .8 сохраняет зазор .20.
+        center=tuple((pts[0][i]+pts[1][i])/2 for i in (0,1))
+        normal=(-direction[1],direction[0])
+        phase=1 if sum((pts[0][i]-pts[1][i])*normal[i] for i in (0,1))>0 else -1
+        for d in (1.,1.8,2.6,3.4):
+            for shift in (0,-.4,.4,-.8,.8,-1.2,1.2):
+                candidates.append([tuple(center[j]+direction[j]*d+normal[j]*(shift+phase*sign*.4) for j in (0,1)) for sign in (1,-1)])
+        side_cp=r.checkpoint();selected=None
+        for hs in candidates:
+            if not all(r.via(q,nets[i],.45,.2) for i,q in enumerate(hs)):
+                r.rollback(side_cp);continue
+            neck_cp=r.checkpoint();paths={}
+            for order in ((0,1),(1,0)):
+                paths={};r.rollback(neck_cp)
+                for i in order:
+                    anchor=pts[i]
+                    path=r.search(anchor,hs[i],nets[i],.15,F,margin=3,step=.05)
+                    if path is None or not r.track(path,nets[i],.15,F,label=name+' F via neck'):break
+                    paths[i]=path
+                if len(paths)==2:break
+            if len(paths)!=2:r.rollback(side_cp);continue
+            paths=[paths[0],paths[1]]
+            selected=hs
+            for i,path in enumerate(paths):
+                length=sum(distance(p,q) for p,q in zip(path,path[1:]));bias[i]+=length
+                surface.append({'side':side,'leg':i,'length_mm':length})
+            break
+        if selected is None:print('bridge head failed',name,side,flush=True);r.rollback(cp);return False
+        heads+=selected
+    # Возвратные via ставим после B-магистрали: раньше они могли
+    # перекрыть её стартовый коридор, хотя рядом оставалось место.
+
+    # Via-головки на B могут выходить в противоположную сторону тела
+    # трансформатора: там нет EP. Это устраняет лишние полные обороты пары.
+    configs=[(oa,ob,1.2,4.8 if 'port0 TX' in name else 1.8)]
+    if is_rj:
+        configs=[(oa,ob,1.2,3.53 if 'TX' in name and ob==(1,0) else 2.8)]
+    else:configs += [((-oa[0],-oa[1]),(-ob[0],-ob[1]),1.2,1.8)]
+    if name=='ETH RTL port0 TX—T2':configs=[((0,1),(-1,0),1.2,1.8)]+configs
+    if name=='ETH RTL port0 RX—T2':configs=[((0,1),(1,0),1.2,1.8)]+configs
+    def rotated(d,angle):
+        c,s=math.cos(angle),math.sin(angle)
+        return (round(d[0]*c-d[1]*s,6),round(d[0]*s+d[1]*c,6))
+    original=list(configs)
+    for da,db,ea,eb in original:
+        for aa in (0,-math.pi/4,math.pi/4):
+            for ab in ((0,) if is_rj else (0,-math.pi/4,math.pi/4)):
+                if aa or ab:configs.append((rotated(da,aa),rotated(db,ab),ea,eb))
+    nf=len(r.failed)
+    for da,db,ea,eb in configs:
+        for width in (.74,.86,.90):
+            del r.failed[nf:]
+            end_parallel=[(224 if db==(1,0) else 219,positions[i+2][1]) for i in (0,1)] if is_rj and db in ((1,0),(-1,0)) else None
+            guides=None
+            if name=='ETH RTL port0 TX—T2' and da==(0,1) and db==(-1,0):
+                guides=[(201.6,40.8),(201.6,36.0),(196.3,36.0),(196.3,39.175)]
+            elif name=='ETH RTL port0 RX—T2' and da==(0,1) and db==(1,0):
+                guides=[(207.8,40.9),(210.0,40.9),(210.0,32.825)]
+            elif name=='ETH RTL port2 TX—J18' and da==(-1,0) and db==(-1,0):
+                guides=[(194.5,45.98),(194.5,30),(216,30),(216,40.56)]
+            if route_pair(r,name,a,b,da,db,ea,eb,margin=28,layer=B,endpoints=heads,ribbon=width,
+                          length_bias=bias,end_parallel=end_parallel,waypoints=guides):
+                returns=pair_return_vias(r,heads)
+                if returns is None:
+                    raise RuntimeError('Нет возвратной GND via у '+name)
+                all_returns+=returns
+                entry=r.pairs[-1];entry['layer']='F.Cu/B.Cu';entry['trunk_layer']='B.Cu'
+                entry['via_count_per_leg']=1 if is_rj else 2
+                entry['F_necks']=surface;entry['GND_returns']=all_returns
+                entry['deviation']='B.Cu: F-попытки не прошли проверку; обе линии с одинаковым числом via'
+                return True
+    if hybrid_pair(r,name,a,b,heads,bias,oa,ob,surface):
+        del r.failed[nf:];return True
+    print('bridge trunk failed',name,r.failed[nf:],flush=True);del r.failed[nf:];r.rollback(cp);return False
+
+
+def ethernet_shields(r):
+    for j,c,res,dy in [('J7','C112','R115',0),('J18','C114','R118',23)]:
+        r.connect((j,8),(c,1),.3,margin=3,label=j+' BS to RC')
+        r.connect((c,1),(res,1),.3,margin=3,label=j+' screen RC')
+        # Две SH-ножки соединены вдоль корпуса на B, вне сигнальной сетки.
+        pads=sorted([p for p in r.fp[j].Pads() if p.GetNumber()=='SH'],key=lambda p:xy(p.GetPosition())[1])
+        top,bottom=[xy(p.GetPosition()) for p in pads]
+        net=r.pad(j,8).GetNetname()
+        paths=[([bottom,(227,bottom[1]-.95),(227,top[1]+.95),top],net),
+               ([top,(220.2,top[1]),r.pos(j,8)],net)]
+        for pts,net in paths:
+            if not r.track(pts,net,.3,B,label=j+' shield B'):
+                path=r.search(pts[0],pts[-1],net,.3,B,margin=3)
+                if not path or not r.track(path,net,.3,B,label=j+' shield B'):r.failed.append(j+' shield')
+
+
+def reserve_ethernet_heads(r):
+    """Общий веер QFN .4 мм: .55 мм прямо от площадки, затем
+    разведение шага .40 → .66 мм. Так соседние выхода не запирают
+    питание/MDI; минимум .15/.20 для дорожек и .45/.20 для via.
+    """
+    r.qfn_heads={};r.bridge_heads={}
+    for pin in tuple(range(1,13))+tuple(range(41,49)):
+        p=r.pad('U22',pin);a=r.pos('U22',pin);net=p.GetNetname()
+        if pin<=12:
+            stem=(a[0]-.55,a[1]);q=(200.,44+(a[1]-44)*1.65)
+        else:
+            stem=(a[0],a[1]-.55);q=(205.2+(a[0]-205.2)*1.65,38.2)
+        q=tuple(round(v,6) for v in q)
+        if not r.via(q,net,.45,.2):raise RuntimeError('QFN via blocked '+str(pin)+' '+str(q))
+        path=[a,stem,q]
+        if not r.track(path,net,.15,label='QFN escape '+str(pin)):
+            raise RuntimeError('QFN escape blocked '+str(pin))
+        r.qfn_heads[pin]=(q,sum(distance(x,y) for x,y in zip(path,path[1:])))
+    # LED/RST — после MDI; эти короткие F-выходы оставляют им путь,
+    # но длинные B-диагонали заранее не запирают Ethernet-пары.
+    r.control_stems={}
+    for pin in (27,30,32):
+        a=r.pos('U22',pin);q=(a[0]+.55,a[1])
+        if not r.track([a,q],r.pad('U22',pin).GetNetname(),.15,label='control stem '+str(pin)):
+            raise RuntimeError('control stem blocked '+str(pin))
+        r.control_stems[pin]=q
+    r.phy_heads={}
+    for pin in (1,3,6,8):
+        p=r.pos('T2',pin);q=(round(p[0]+1.4,6),p[1]);net=r.pad('T2',pin).GetNetname()
+        checkpoint=r.checkpoint()
+        if not r.via(q,net,.45,.2) or not r.track([p,q],net,.15,label='PHY reserve T2.'+str(pin)):
+            raise RuntimeError('T2 PHY reserve '+str(pin))
+        r.phy_heads[pin]=(q,1.4,[o.m_Uuid.AsString() for o in r.created[checkpoint[0]:]])
+    for name,pins in [('ETH RTL port0 TX—T2',(47,46)),('ETH RTL port0 RX—T2',(44,45)),
+                      ('ETH RTL port1 RX—J7',(2,3)),('ETH RTL port1 TX—J7',(5,4)),
+                      ('ETH RTL port2 TX—J18',(9,10)),('ETH RTL port2 RX—J18',(12,11))]:
+        heads=[r.qfn_heads[n][0] for n in pins];bias=[r.qfn_heads[n][1] for n in pins]
+        # Последний резерв в плотном веере: параллельный B-переход
+        # выносит обе линии за поле QFN, затем основная пара вновь на F.
+        target=[(q[0],35.2) if pins[0]>12 else (196.5,q[1]) for q in heads]
+        for i in (0,1):
+            net=r.pad('U22',pins[i]).GetNetname()
+            if not r.via(target[i],net,.45,.2):raise RuntimeError('QFN second via '+name)
+            if not r.track([heads[i],target[i]],net,.24,B,label=name+' parallel B escape'):
+                raise RuntimeError('QFN B escape '+name)
+        surface=[{'side':0,'leg':i,'length_mm':bias[i]} for i in (0,1)]
+        total=[bias[i]+distance(heads[i],target[i]) for i in (0,1)]
+        r.bridge_heads[name]=(target,total,surface)
+        if not hasattr(r,'qfn_returns'):r.qfn_returns={}
+        r.qfn_returns[name]=heads+target
 
 
 def ethernet(r):
     # out_b может смотреть внутрь трансформатора: под ним нет EP, в отличие
     # от U22. Это позволяет сохранить полярность без перекреста/слоя B.
     tasks=[
-      ('ETH W5500 TX—T1', [('U10',2),('U10',1)], [('T1',1),('T1',3)],(-1,0),(0,-1),1.4,1.8),
-      ('ETH W5500 RX—C64/C65',[('U10',6),('U10',5)],[('C64',1),('C65',1)],(-1,0),(1,0),1.4,1.2),
-      ('ETH C64/C65—T1',[('C64',2),('C65',2)],[('T1',6),('T1',8)],(-1,0),(0,-1),1.2,1.8),
-      ('ETH LNK_A T1—T2',[('T1',16),('T1',14)],[('T2',11),('T2',9)],(0,1),(0,1),1.8,1.8),
-      ('ETH LNK_B T1—T2',[('T1',11),('T1',9)],[('T2',16),('T2',14)],(0,1),(0,1),1.8,1.8),
-      ('ETH RTL port0 TX—T2',[('U22',47),('U22',46)],[('T2',1),('T2',3)],(0,-1),(0,1),1.05,1.8),
-      ('ETH RTL port0 RX—T2',[('U22',44),('U22',45)],[('T2',6),('T2',8)],(0,-1),(0,-1),1.05,1.8),
-      ('ETH RTL port1 RX—J7',[('U22',2),('U22',3)],[('J7',1),('J7',2)],(-1,0),(-1,0),1.3,2),
-      ('ETH RTL port1 TX—J7',[('U22',5),('U22',4)],[('J7',3),('J7',6)],(-1,0),(1,0),1.3,2),
-      ('ETH RTL port2 TX—J18',[('U22',9),('U22',10)],[('J18',3),('J18',6)],(-1,0),(-1,0),1.3,2),
-      ('ETH RTL port2 RX—J18',[('U22',12),('U22',11)],[('J18',1),('J18',2)],(-1,0),(1,0),1.3,2),
+      ('ETH W5500 RX—C64/C65',[('U10',6),('U10',5)],[('C64',1),('C65',1)],(-1,0),(1,0),1.4,.65),
+      ('ETH C64/C65—T1',[('C64',2),('C65',2)],[('T1',6),('T1',8)],(-1,0),(0,1),1.2,4.8),
+      ('ETH W5500 TX—T1', [('U10',2),('U10',1)], [('T1',1),('T1',3)],(-1,0),(0,1),1.4,4.8),
+      ('ETH LNK_A T1—T2',[('T1',16),('T1',14)],[('T2',11),('T2',9)],(0,-1),(1,0),1.8,1.8),
+      ('ETH LNK_B T1—T2',[('T1',11),('T1',9)],[('T2',16),('T2',14)],(0,-1),(1,0),1.8,1.8),
+      ('ETH RTL port0 TX—T2',[('U22',47),('U22',46)],[('T2',1),('T2',3)],(0,-1),(1,0),1.05,1.8),
+      ('ETH RTL port0 RX—T2',[('U22',44),('U22',45)],[('T2',6),('T2',8)],(0,-1),(-1,0),1.05,2.2),
+      ('ETH RTL port1 RX—J7',[('U22',2),('U22',3)],[('J7',1),('J7',2)],(-1,0),(-1,0),1.3,2.8),
+      ('ETH RTL port1 TX—J7',[('U22',5),('U22',4)],[('J7',3),('J7',6)],(-1,0),(1,0),1.3,3.0),
+      ('ETH RTL port2 RX—J18',[('U22',12),('U22',11)],[('J18',1),('J18',2)],(-1,0),(1,0),1.3,2.8),
+      ('ETH RTL port2 TX—J18',[('U22',9),('U22',10)],[('J18',3),('J18',6)],(-1,0),(-1,0),1.3,2.8),
     ]
-    for name,a,b,oa,ob,ea,eb in tasks:
-        route_pair(r,name,a,b,oa,ob,ea,eb)
-    # Обвязка PHY/средние точки: не трогаем ETH_SH*, это отдельная земля.
-    for a,b in [(('T1',2),('C63',1)),(('T1',2),('R50',2)),
-                (('T1',7),('C66',1)),(('T1',7),('R51',2)),(('T1',7),('R52',1)),
+    # Резервируем короткую CT/bias-ячейку до магистралей, иначе fanout
+    # занимал соединение между RCT и общими выводами R51/R52.
+    for x,y in [(('T1',2),('C63',1)),                (('T1',7),('C66',1)),(('C66',1),('R51',2)),(('C66',1),('R52',1)),
                 (('T1',6),('R51',1)),(('T1',8),('R52',2)),
-                (('U10',2),('R48',1)),(('U10',1),('R49',1)),
-                (('T2',2),('T2',7)),(('T2',2),('C85',1)),
                 (('J7',4),('J7',5)),(('J7',4),('C67',1)),
                 (('J18',4),('J18',5)),(('J18',4),('C109',1))]:
-        r.connect(a,b,.2,margin=2,step=.1)
+        r.connect(x,y,.24 if x in (('T1',6),('T1',8)) else .2,margin=4,step=.1)
+    if not r.track([r.pos('T2',2),(196.7,39.175),(196.7,32.825),r.pos('T2',7)],r.pad('T2',2).GetNetname(),.2,label='T2 CT inside body'):r.failed.append('T2 CT inside body')
+    kelvin(r,('T1',2),('R50',2),.2,.45,.2,source_via=(176.825,38.8))
+    r.connect(('T2',7),('C85',1),.2,margin=2,label='T2 RCT to C85')
+    kelvin(r,('U10',2),('R48',1),.2,.45,.2,source_via=(193.4,19.75))
+    kelvin(r,('U10',1),('R49',1),.2,.45,.2,source_via=(192.7,19.0))
+    ethernet_shields(r)
+    missing=[]
+    for name,a,b,oa,ob,ea,eb in tasks:
+        errors=len(r.failed);ok=False
+        if name in getattr(r,'bridge_heads',{}):
+            h,bias,surface=r.bridge_heads[name]
+            endpoints=h+[r.pos(*p) for p in b]
+            configs=[(oa,ob,1.2,eb),((-oa[0],-oa[1]),(-ob[0],-ob[1]),1.2,2.2 if b[0][0]=='T2' else 1.8)]
+            for da,db,ex,ey in configs:
+                for width in (.74,.86,.90):
+                    del r.failed[errors:]
+                    parallel=[(224 if db==(1,0) else 219,r.pos(*p)[1]) for p in b] if b[0][0] in ('J7','J18') and db in ((1,0),(-1,0)) else None
+                    shift=(0,-.12) if b[0][0] in ('J7','J18') and 'TX' in name and db==(-1,0) else (0,0)
+                    if route_pair(r,name,a,b,da,db,ex,ey,margin=32,ribbon=width,endpoints=endpoints,length_bias=bias,end_parallel=parallel,end_shift=shift):
+                        ok=True;break
+                if ok:break
+            del r.failed[errors:]
+            if ok:
+                entry=r.pairs[-1];entry['F_necks']=surface
+                entry['layer']='F.Cu/B.Cu';entry['trunk_layer']='F.Cu';entry['via_count_per_leg']=2
+                entry['GND_returns']=pair_return_vias(r,r.qfn_returns[name])
+                entry['deviation']='Параллельный выход QFN на B.Cu, основная пара F.Cu'
+                if b[0][0]=='T2':
+                    remove={u for ref,pin in b for u in r.phy_heads[pin][2]}
+                    for t in list(r.created):
+                        if t.m_Uuid.AsString() in remove:
+                            r.group.RemoveItem(t);r.board.Remove(t);r.created.remove(t)
+                    r.done[:]=[route for route in r.done if not any(u in remove for u in route['item_uuids'])]
+                    r.rollback(r.checkpoint())
+            else:missing.append((name,a,b,oa,ob))
+            continue
+        orientations=[(oa,ob)]
+        if a[0][0] in ('T1','T2'):
+            orientations.append(((-oa[0],-oa[1]),(-ob[0],-ob[1])))
+        for da,db in orientations:
+            for width in (.74,.80,.86,.90):
+                del r.failed[errors:]
+                receiver=name=='ETH C64/C65—T1';transmitter=name=='ETH W5500 TX—T1'
+                target=[('R51',1),('R52',2)] if receiver else b
+                bias=[next(v['length_mm'] for v in r.done if v['label']==label) for label in ('T1.6—R51.1','T1.8—R52.2')] if receiver else [0.,0.]
+                end_y=48.0 if receiver else 45.225
+                parallel=[(r.pos(*p)[0],end_y) for p in target] if receiver or transmitter else None
+                ok=route_pair(r,name,a,target,da,db,ea,(end_y-r.pos(*target[0])[1]) if parallel else eb,ribbon=width,
+                              margin=32 if ('port1' in name or 'port2' in name) else 12,
+                              heading_a=None,
+                              heading_b=(0,-1) if name=='ETH RTL port2 TX—J18' else None,
+                              waypoints=[(182.8,27),(186.6,28),(187.2,49),(183.175,49)] if receiver else None,
+                              end_parallel=parallel,length_bias=bias)
+                if ok and receiver:r.pairs[-1]['fixed_end_lengths_mm']=bias
+                if ok:break
+            if ok:break
+        del r.failed[errors:]
+        if not ok:missing.append((name,a,b,oa,ob))
+    # Внешняя верхняя дуга TX2 — первой. Остальные B-пары остаются
+    # по свою сторону этой дуги, не запирая друг другу выводы.
+    priority={'ETH RTL port2 TX—J18':0,'ETH LNK_A T1—T2':1,'ETH LNK_B T1—T2':2,
+              'ETH RTL port0 TX—T2':3,'ETH RTL port0 RX—T2':4,
+              'ETH RTL port2 RX—J18':5,'ETH W5500 TX—T1':6}
+    missing.sort(key=lambda task:priority.get(task[0],7))
+    for name,a,b,oa,ob in missing:collapse_qfn_escape(r,name)
+    for name,a,b,oa,ob in missing:
+        if not bridge_pair(r,name,a,b,oa,ob,is_rj=b[0][0] in ('J7','J18')):
+            r.failed.append(name+' (F/B не пройдены)')
+    for pair in r.pairs:
+        if pair.get('trunk_layer')=='B.Cu' and pair['name'] in getattr(r,'qfn_returns',{}):
+            secondary=r.qfn_returns[pair['name']][2:]
+            for t in list(r.created):
+                if isinstance(t,pcbnew.PCB_VIA) and t.GetNetname() in pair['nets'] and any(distance(xy(t.GetPosition()),q)<.00001 for q in secondary):
+                    r.group.RemoveItem(t);r.board.Remove(t);r.created.remove(t)
+            pair['GND_returns']=(pair.get('GND_returns') or [])+(pair_return_vias(r,r.qfn_returns[pair['name']][:2]) or [])
+    r.rollback(r.checkpoint())
 
 
 def thermal(r):
@@ -682,7 +1098,108 @@ def back_pad(r, refpin):
     return None
 
 
-def fanout(r):
+def tree_join(r,start,root,net,layer,width,label):
+    """Ближайшая ветвь и перпендикулярное T, без острых пересечений.
+    При поиске подхода своя существующая медь тоже препятствие; только
+    последний прямой отрезок присоединяется к выбранной ветви.
+    """
+    candidates=[]
+    for t in r.board.GetTracks():
+        if isinstance(t,pcbnew.PCB_VIA) or t.GetLayer()!=layer or t.GetNetname()!=net:continue
+        a,b=xy(t.GetStart()),xy(t.GetEnd());length=distance(a,b)
+        if length<.8:continue
+        vx,vy=(b[0]-a[0])/length,(b[1]-a[1])/length
+        along=max(.4,min(length-.4,(start[0]-a[0])*vx+(start[1]-a[1])*vy))
+        p=(a[0]+vx*along,a[1]+vy*along)
+        if distance(start,p)<pcbnew.ToMM(t.GetWidth())/2+.215:return True
+        nx,ny=-vy,vx;side=1 if (start[0]-p[0])*nx+(start[1]-p[1])*ny>=0 else -1
+        for gap in (.8,1.2):
+            lead=(p[0]+nx*side*gap,p[1]+ny*side*gap)
+            candidates.append((distance(start,p),lead,p))
+    for _,lead,p in sorted(candidates)[:8]:
+        r.block_own=(net,layer)
+        path=r.search(start,lead,net,width,layer,margin=3,step=.2,max_nodes=20000)
+        r.block_own=None
+        if path is None or not simple_path(path+[p]):continue
+        if r.track(path+[p],net,width,layer,label=label):return True
+    path=r.search(start,root,net,width,layer,margin=6,step=.1)
+    return bool(path and simple_path(path) and r.track(path,net,width,layer,label=label))
+
+
+def vdd_bridge(r,pins=(18,31)):
+    # Via VDD18/31 могли остаться на островках +3V3 In2. Новый via выбирается
+    # НА ОСНОВНОЙ заполненной области питания, а не по одному имени net.
+    zones=[z for z in r.board.Zones() if not z.GetIsRuleArea() and z.IsOnLayer(pcbnew.In2_Cu) and z.GetNetname()=='+3V3']
+    areas=[]
+    for z in zones:
+        poly=z.GetFilledPolysList(pcbnew.In2_Cu)
+        for i in range(poly.OutlineCount()):areas.append((abs(poly.COutline(i).Area()),poly,i))
+    _,poly,i=max(areas,key=lambda value:value[0]);parent=pcbnew.SHAPE_POLY_SET()
+    parent.AddOutline(poly.COutline(i))
+    for j in range(poly.HoleCount(i)):parent.AddHole(poly.CHole(i,j))
+    routes={v['label']:v for v in r.done};net='+3V3'
+    targets={18:('R113',1),31:('C99',1)}
+    def escape(source,pin):
+        # На противоположной стороне корпуса может быть свободнее, чем
+        # на F между развязкой и LED. Via проверяется на всех слоях.
+        candidates=[(dx*.5,dy*.5) for dx in range(-12,13) for dy in range(-12,13) if 1<=dx*dx+dy*dy<=144]
+        for dx,dy in sorted(candidates,key=lambda v:(v[0]*v[0]+v[1]*v[1],v)):
+            q=(source[0]+dx,source[1]+dy)
+            if not parent.Collide(point(q),0) or not r.canvia(q,net,.45,.2):continue
+            for layer in (B,F):
+                path=r.search(source,q,net,.2,layer,margin=4,step=.1,max_nodes=30000)
+                if path is None:continue
+                cp=r.checkpoint()
+                if r.via(q,net,.45,.2) and r.track(path,net,.2,layer,label='U22 VDD island escape '+str(pin)):return True
+                r.rollback(cp)
+        return False
+    for pin in pins:
+        source=routes['fanout U22.'+str(pin)]['end_mm'];pad=r.pos(*targets[pin])
+        connected=any(isinstance(v,pcbnew.PCB_VIA) and v.GetNetname()==net and distance(xy(v.GetPosition()),source)<.00001
+                      and parent.Collide(v.GetEffectiveShape(pcbnew.In2_Cu),2) for v in r.board.GetTracks())
+        if connected:continue
+        lead=r.search(source,pad,net,.2,F,margin=3,step=.05)
+        if lead is None:
+            if not escape(source,pin):r.failed.append('VDD lead '+str(pin))
+            continue
+        found=False
+        for radius in (.8,1.1,1.5,2.,2.5,3.):
+            for dx,dy in ((-1,0),(1,0),(0,1),(0,-1),(-1,1),(1,1),(-1,-1),(1,-1)):
+                q=(pad[0]+dx*radius,pad[1]+dy*radius)
+                if not parent.Collide(point(q),0) or not r.canvia(q,net,.45,.2):continue
+                path=r.search(pad,q,net,.2,F,margin=2,step=.05)
+                if path is None:continue
+                cp=r.checkpoint()
+                if r.via(q,net,.45,.2) and r.track(lead,net,.2,F,label='U22 VDD lead '+str(pin)) and r.track(path,net,.2,F,label='U22 VDD parent via '+str(pin)):
+                    found=True;break
+                r.rollback(cp)
+            if found:break
+        if not found and not escape(source,pin):r.failed.append('VDD parent plane via '+str(pin))
+
+
+def core_inner(r):
+    """VCORE — питание, ручное дерево In2; In1/GND не разрезается.
+    На B сигналы могли разрезать остров VCORE на несвязанные камеры.
+    Узкое дерево In2 соединяет все core-via, сохраняя остальную +3V3-заливку.
+    """
+    net='SW_VCORE';vias=[v for v in r.created if isinstance(v,pcbnew.PCB_VIA) and v.GetNetname()==net]
+    root=min(vias,key=lambda v:distance(xy(v.GetPosition()),r.pos('C87',1)))
+    root=xy(root.GetPosition())
+    for via in sorted(vias,key=lambda v:(distance(xy(v.GetPosition()),root),xy(v.GetPosition()))):
+        q=xy(via.GetPosition())
+        if distance(q,root)<.00001:continue
+        if not tree_join(r,q,root,net,pcbnew.In2_Cu,.3,'CORE In2 tree'):r.failed.append('CORE In2 '+str(q))
+
+
+def sense_branch(r,source,net):
+    q=back_pad(r,source)
+    tracks=[t for t in r.board.GetTracks() if not isinstance(t,pcbnew.PCB_VIA) and t.GetLayer()==B and t.GetNetname()==net]
+    root=xy(tracks[0].GetStart()) if tracks else None
+    if not q or not root or not tree_join(r,q,root,net,B,.2,'VOUT sense branch '+str(source)):
+        r.failed.append('VOUT sense branch '+str(source))
+
+
+def fanout(r,controls=False):
     """Смещённые via служебных выводов U22 с ЗАВЕРШЁННЫМ подводом B.
 
     3V3 попадает в In2; VCORE не соединяется с 3V3. MDI/кварц на F.
@@ -694,6 +1211,16 @@ def fanout(r):
     backs={}
     for p in sorted(r.fp['U22'].Pads(),key=lambda p:(0 if p.GetNumber() in ('27','30','32','42') else 1,int(p.GetNumber()) if p.GetNumber() else 0)):
         if not p.GetNetname() or not p.GetNumber() or int(p.GetNumber()) in mdi:continue
+        is_control=p.GetNumber() in ('27','30','32')
+        if is_control!=controls:continue
+        if int(p.GetNumber()) in getattr(r,'qfn_heads',{}):
+            if p.GetNumber()=='42':
+                q=r.qfn_heads[42][0];dest=back_pad(r,('R112',1));net=p.GetNetname()
+                path=r.search(q,dest,net,.2,B,margin=4) if dest else None
+                if not path or not r.track(path,net,.2,B,label='QFN IBREF to R112'):r.failed.append('QFN IBREF')
+            continue
+        if p.GetNumber()=='38':
+            if r.track([r.pos('U22',38),r.pos('U22',37)],p.GetNetname(),.15,label='VDD 38—37'):continue
         x,y=xy(p.GetPosition());dx,dy=x-cx,y-cy
         sign=1 if (dx if abs(dx)>abs(dy) else dy)>0 else -1
         cp=r.checkpoint();net=p.GetNetname();short=net.split('/')[-1]
@@ -702,11 +1229,18 @@ def fanout(r):
             # помещается между кварцем и IBREF при кольце 0,125 мм.
             path=r.search((x,y),r.pos('U22',43),net,.15,margin=3,step=.05)
             if path and r.track(path,net,.15,label='CORE U22.41—43'):continue
+        anchor=getattr(r,'control_stems',{}).get(int(p.GetNumber()),(x,y))
         q=None;stem=None
+        if p.GetNumber()=='31':
+            # Via снаружи внутреннего VCORE-дерева: старое (209.925,43.8)
+            # попадало на изолированный остров +3V3. Рядом вход C99.
+            candidate=(211.0,43.8)
+            path=r.search(anchor,candidate,net,.15,margin=2,step=.05)
+            if r.canvia(candidate,net,.45,.2) and path:q,stem=candidate,path
         # Via требует шага больше 0,4 мм; кроме двух радиусов раздвигаем
         # окончания вдоль ряда. Прямое чередование без веера давало бы
         # clearance .10 мм между via и соседним длинным стволом.
-        radii=(1.,1.8,2.6,3.4) if int(p.GetNumber())%2 else (1.8,1.,2.6,3.4)
+        radii=(1.,1.8,2.6,3.4,.4,.6,4.2) if int(p.GetNumber())%2 else (1.8,1.,2.6,3.4,.4,.6,4.2)
         north={
             41:((206.4,39.3),[(206.6,41.075),(206.6,39.8),(206.4,39.3)]),
             42:((206.09,40.2),[(206.2,41.075),(206.2,40.8),(206.09,40.2)]),
@@ -714,17 +1248,18 @@ def fanout(r):
         }
         # Переход IBREF близко к своему выводу, CORE расходятся по обе стороны;
         # все три помещаются между рядом .4 мм и трассами кварца без перекрёста.
-        if int(p.GetNumber()) in north:
+        if int(p.GetNumber()) in north and anchor==(x,y):
             candidate,path=north[int(p.GetNumber())]
             if r.canvia(candidate,net,.45,.2) and all(r.free(a,b,.15,net) for a,b in zip(path,path[1:])):
                 q,stem=candidate,path
         for radius in radii:
+            if is_control and radius<.8:continue
             if q is not None:break
-            tangents={6:(-.8,),8:(.8,)}.get(int(p.GetNumber()),())+(0,-.4,.4,-.8,.8,-1.2,1.2)
+            tangents={6:(-.8,),8:(.8,)}.get(int(p.GetNumber()),())+(0,-.4,.4,-.8,.8,-1.2,1.2,-1.6,1.6,-2.,2.)
             for tangent in tangents:
                 candidate=(x+sign*radius,y+tangent) if abs(dx)>abs(dy) else (x+tangent,y+sign*radius)
                 if not r.canvia(candidate,net,.45,.2):continue
-                path=r.search((x,y),candidate,net,.15,margin=1,step=.05)
+                path=r.search(anchor,candidate,net,.15,margin=3,step=.05)
                 if path is not None:q,stem=candidate,path;break
             if q is not None:break
         if q is None:
@@ -738,20 +1273,37 @@ def fanout(r):
         dest=backs.get(key)
         if dest is None:
             dest=back_pad(r,key)
-        path=r.search(q,dest,net,.2,B,margin=5) if dest else None
-        if path is None or not r.track(path,net,.2,B,label='fanout to '+str(key)):
-            r.rollback(cp);r.failed.append('fanout B U22.'+p.GetNumber());continue
+        if net=='SW_VCORE':
+            ok=bool(dest) # все CORE via соединяются в core_inner() после MDI
+        else:
+            path=r.search(q,dest,net,.2,B,margin=5) if dest else None
+            ok=bool(path and r.track(path,net,.2,B,label='fanout to '+str(key)))
+        if not ok:
+            r.rollback(cp)
+            # LED/RST малоточные: обход на F, если B пересечён MDI-парой.
+            path=r.search(anchor,r.pos(*key),net,.15,F,margin=14,step=.1,max_nodes=160000) if is_control else None
+            if path and r.track(path,net,.15,F,label='control F U22.'+p.GetNumber()):continue
+            r.failed.append('fanout B/F U22.'+p.GetNumber());continue
         backs[key]=dest
     # Все накопительные/развязывающие ёмкости ядра в ту же сеть B.Cu.
-    for key in [('C106',1)]+[('C'+str(i),1) for i in range(86,97)]:
+    for key in ([('C106',1)] if controls else [('C'+str(i),1) for i in range(86,97)]):
         short=r.pad(*key).GetNetname().split('/')[-1]
         master=target[short]
         if key==master:continue
         cp=r.checkpoint();a=back_pad(r,key);b=backs.get(master)
         if b is None:b=back_pad(r,master)
-        path=r.search(a,b,r.pad(*key).GetNetname(),.3,B,margin=5) if a and b else None
-        if path is None or not r.track(path,r.pad(*key).GetNetname(),.3,B,label='RTL decoupling '+key[0]):
-            r.rollback(cp);r.failed.append('RTL decoupling '+key[0]);continue
+        net=r.pad(*key).GetNetname()
+        if net=='SW_VCORE':
+            ok=bool(a and b) # физическая связь — последующее дерево core_inner()
+        else:
+            path=r.search(a,b,net,.3,B,margin=5) if a and b else None
+            ok=bool(path and r.track(path,net,.3,B,label='RTL decoupling '+key[0]))
+        if not ok:
+            r.rollback(cp)
+            if controls:
+                path=r.search(r.pos(*key),r.pos(*master),net,.2,F,margin=10,step=.1)
+                if path and r.track(path,net,.2,F,label='reset capacitor F'):continue
+            r.failed.append('RTL decoupling '+key[0]);continue
         backs[master]=b
 
 
@@ -762,7 +1314,8 @@ def main(path):
     if any(t for t in board.GetTracks()):
         raise SystemExit('pcb_preroute: ожидается свежая плата без дорожек')
     expected={'U1':(34,84),'U2':(68,12),'U3':(68,40),'U4':(68,68),
-              'U5':(46,26),'U6':(46,56),'U22':(206,44),'Y3':(206,36.5)}
+              'U5':(46,26),'U6':(46,56),'U10':(196,22),'U22':(206,44),'Y3':(211,36),
+              'T1':(180,36),'T2':(193.5,36),'J7':(222.74,22),'J18':(222.74,45)}
     fp={f.GetReference():f for f in board.GetFootprints()}
     for ref,pos in expected.items():
         if ref not in fp or distance(xy(fp[ref].GetPosition()),pos)>.001:
@@ -772,10 +1325,21 @@ def main(path):
     thermal(r)
     power(r)
     usb(r)
+    reserve_ethernet_heads(r)
     clocks(r)
     fanout(r)
     ethernet(r)
+    fanout(r,controls=True)
+    core_inner(r)
     ground(r)
+    eth=[p for p in r.pairs if p['name'].startswith('ETH ')]
+    if len(eth)!=11 or len({p['name'] for p in eth})!=11:r.failed.append('требуются все 11 Ethernet-пар')
+    for pair in eth:
+        for section in [pair]+([pair['preceding_section']] if 'preceding_section' in pair else []):
+            if any(v>3.0001 for fan in section.get('unpaired_fanout_lengths_mm',[]) for v in fan):
+                r.failed.append('fanout >3 мм: '+pair['name'])
+    pcbnew.ZONE_FILLER(board).Fill(board.Zones())
+    vdd_bridge(r)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcb_route.save(board,path)
     manifest={'schema':1,'created':len(r.created),'tracks':len([o for o in r.created if isinstance(o,pcbnew.PCB_TRACK) and not isinstance(o,pcbnew.PCB_VIA)]),
