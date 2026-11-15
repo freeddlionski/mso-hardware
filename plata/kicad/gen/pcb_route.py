@@ -71,6 +71,10 @@ def prep(path, dsn):
     keepout_holes(board)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcbnew.SaveBoard(path, board)
+    pcb_rules.apply_to_pro(os.path.splitext(path)[0] + '.kicad_pro')
+    board = pcbnew.LoadBoard(path)           # перечитать с классами цепей из проекта
+    nc = board.GetDesignSettings().m_NetSettings
+    print('классы:', [str(k) for k in nc.GetNetclasses().keys()] if hasattr(nc, 'GetNetclasses') else '?')
     ok = pcbnew.ExportSpecctraDSN(board, dsn)
     print('DSN:', dsn, ok)
     if not ok:
@@ -91,6 +95,7 @@ def finish(path, ses):
     zone(board, 'GND', pcbnew.B_Cu, full, clearance=0.3, thermal=False)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcbnew.SaveBoard(path, board)
+    pcb_rules.apply_to_pro(os.path.splitext(path)[0] + '.kicad_pro')
     n = sum(1 for t in board.GetTracks())
     print('дорожек и переходов:', n)
 

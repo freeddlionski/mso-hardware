@@ -35,7 +35,7 @@ RULES = {
     'min_clearance': 0.15, 'min_track_width': 0.15, 'min_via_diameter': 0.45, 'min_via_annular_width': 0.1,
     'min_through_hole_diameter': 0.2, 'min_hole_to_hole': 0.2, 'min_hole_clearance': 0.2,
     'min_copper_edge_clearance': 0.3, 'min_microvia_diameter': 0.2, 'min_microvia_drill': 0.1,
-    'min_silk_clearance': 0.0, 'min_text_height': 0.8, 'min_text_thickness': 0.08, 'solder_mask_to_copper_clearance': 0.0,
+    'min_silk_clearance': 0.0, 'min_resolved_spokes': 1, 'min_text_height': 0.8, 'min_text_thickness': 0.08, 'solder_mask_to_copper_clearance': 0.0,
 }
 
 # области In2.Cu (координаты платы, мм): x0, y0, x1, y1
@@ -58,3 +58,14 @@ def project_json():
                                  'track_widths': [0.0, 0.2, 0.25, 0.6, 1.0, 2.0, 2.5],
                                  'via_dimensions': [{'diameter': 0.0, 'drill': 0.0}, {'diameter': 0.6, 'drill': 0.3}]}}
     return net, board
+
+
+def apply_to_pro(pro):
+    """Записать классы и правила в .kicad_pro (pcbnew.SaveBoard перезаписывает его значениями по умолчанию)."""
+    import json
+    import os
+    d = json.load(open(pro, encoding='utf-8')) if os.path.exists(pro) else {}
+    d['net_settings'], board = project_json()
+    d.setdefault('board', {}).setdefault('design_settings', {}).update(board['design_settings'])
+    with open(pro, 'w', encoding='utf-8') as f:
+        json.dump(d, f, indent=2, ensure_ascii=False)

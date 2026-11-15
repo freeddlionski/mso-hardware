@@ -107,6 +107,8 @@ def main(netpath, placement, out):
         board.Add(f)
 
     pcbnew.SaveBoard(out, board)
+    import pcb_rules
+    pcb_rules.apply_to_pro(os.path.splitext(out)[0] + '.kicad_pro')
     print('плата:', out, 'деталей', len(comps), 'цепей', len(netitems))
 
 

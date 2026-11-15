@@ -81,10 +81,9 @@ jobs:
           mkdir -p /tmp/fr && cd /tmp/fr
           python3 - <<'PY'
           import json, urllib.request, tarfile, io
-          r = json.load(urllib.request.urlopen('https://api.github.com/repos/freerouting/freerouting/releases/latest'))
-          jar = [a for a in r['assets'] if a['name'].endswith('.jar')][0]
-          print('Freerouting', r['tag_name'], jar['name'])
-          urllib.request.urlretrieve(jar['browser_download_url'], 'freerouting.jar')
+          # версия закреплена — результат воспроизводим и без запроса к API GitHub (лимит запросов)
+          urllib.request.urlretrieve('https://github.com/freerouting/freerouting/releases/download/v2.5.0/freerouting-2.5.0.jar',
+                                     'freerouting.jar')
           u = 'https://api.adoptium.net/v3/binary/latest/25/ga/linux/x64/jre/hotspot/normal/eclipse'
           req = urllib.request.Request(u, headers={'User-Agent': 'curl/8.0'})
           tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(req).read())).extractall('jre')

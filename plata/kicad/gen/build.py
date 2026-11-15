@@ -91,11 +91,7 @@ def main(official):
                        'sheets': [], 'text_variables': {}}, f, indent=2)
     # правила трассировки (pcb_rules.py) — всегда из генератора
     import pcb_rules
-    d = json.load(open(pro, encoding='utf-8'))
-    d['net_settings'], board = pcb_rules.project_json()
-    d.setdefault('board', {}).update(board)
-    with open(pro, 'w', encoding='utf-8') as f:
-        json.dump(d, f, indent=2, ensure_ascii=False)
+    pcb_rules.apply_to_pro(pro)
     print('ok:', [s.name for s in proj.sheets])
 
 
