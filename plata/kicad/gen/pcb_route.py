@@ -101,10 +101,12 @@ def init(path):
 
 def export(path, stage, dsn):
     board = load(path)
-    for z in list(board.Zones()):
-        if not z.GetIsRuleArea() and z.GetLayer() in (pcbnew.F_Cu, pcbnew.B_Cu):
-            board.Remove(z)                  # только в памяти: наружные заливки трассировщику не нужны
-    routed = {t.GetNetname() for t in board.GetTracks()}
+    tracks = list(board.Tracks())
+    routed = {t.GetNetname() for t in tracks}
+    ntracks = len(tracks)
+    outer = [z for z in board.Zones() if not z.GetIsRuleArea() and z.GetLayer() in (pcbnew.F_Cu, pcbnew.B_Cu)]
+    for z in outer:
+        board.Remove(z)                      # только в памяти: наружные заливки трассировщику не нужны
     hidden, kept = set(), set()
     for f in board.GetFootprints():
         for p in f.Pads():
@@ -117,7 +119,7 @@ def export(path, stage, dsn):
                 hidden.add(n)
                 p.SetNetCode(0)              # только в памяти: для трассировщика это препятствие без цепи
     print('этап %s: разводятся %d цепей, отложено %d; дорожек на плате %d'
-          % (stage, len(kept), len(hidden), len(list(board.GetTracks()))))
+          % (stage, len(kept), len(hidden), ntracks))
     if not pcbnew.ExportSpecctraDSN(board, dsn):
         raise SystemExit('экспорт DSN не удался')
 
