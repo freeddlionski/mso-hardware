@@ -82,6 +82,9 @@ def keepout_holes(board):
 
 def init(path):
     board = load(path)
+    # In1 — сплошная земля: тип «питание» → в Specctra (type power), трассировщик по нему дорожки не ведёт.
+    # (Первый прогон без этого проложил по In1 сигналы и даже 24 В — разрезал опорную землю.)
+    board.SetLayerType(pcbnew.In1_Cu, pcbnew.LT_POWER)
     zone(board, 'GND', pcbnew.In1_Cu, FULL)
     for net, rect in pcb_rules.IN2:
         zone(board, net, pcbnew.In2_Cu, rect)
