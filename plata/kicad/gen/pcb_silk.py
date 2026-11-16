@@ -182,7 +182,7 @@ def main(path):
     # Названия узлов: ближайшее свободное место к точке у детали.
     for ref, (s_, dx, dy) in TITLES.items():
         if ref not in titled:
-            put(s_, near(ref, dx, dy), h=1.2)
+            put(s_, near(ref, dx, dy, r=30), h=1.2)
     # Шильдик платы — ближе к центру низа.
     b = board.GetBoardEdgesBoundingBox()
     x0, y0 = pcbnew.ToMM(b.GetCenter().x), pcbnew.ToMM(b.GetBottom()) - 30
