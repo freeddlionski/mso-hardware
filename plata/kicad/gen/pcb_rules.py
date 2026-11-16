@@ -85,4 +85,7 @@ DRU = """(version 1)
 (rule "площадки одного корпуса — по посадочному месту"
   (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent")
   (constraint clearance (min 0.15mm)))
+(rule "отверстия крепления разъёма USB-C — по посадочному месту"
+  (condition "A.Type == 'Pad' && B.Type == 'Pad' && A.Parent == B.Parent && A.Parent.Reference == 'J5'")
+  (constraint hole_clearance (min 0.18mm)))
 """
