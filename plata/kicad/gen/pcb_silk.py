@@ -87,7 +87,7 @@ def main(path):
                 and not any(hit(b, o) for o, _ in silk[sl]) and not any(hit(b, p) for p in pads[sl])
                 and not any(hit(b, o) for o in placed[sl]))
 
-    def put(text, cands, h=1.0, rot=0, anchor=None):
+    def put(text, cands, h=1.0, rot=0, anchor=None, quiet=False):
         """Первое свободное место из cands (x, y мм). anchor: 'bottom' — низ текста в точке (для 90°)."""
         for hh in (h, 0.8):
             t = pcbnew.PCB_TEXT(board)
@@ -105,9 +105,10 @@ def main(path):
                 if free(b):
                     board.Add(t)
                     placed[sl].append(rect(t.GetBoundingBox(), GAP_SILK))
-                    return True
-        print('нет места для подписи:', text)
-        return False
+                    return t
+        if not quiet:
+            print('нет места для подписи:', text)
+        return None
 
     byref = {fp.GetReference(): fp for fp in fps}
 
@@ -120,13 +121,32 @@ def main(path):
         q = [p.GetPosition() for p in fp.Pads() if p.GetNumber() == n][0]
         return pcbnew.ToMM(q.x), pcbnew.ToMM(q.y)
 
-    # Клеммы по нижнему краю: подпись каждого контакта над корпусом, снизу вверх.
+    # Клеммы по нижнему краю: подпись каждого контакта над корпусом, снизу вверх. Если хоть одна не влезла —
+    # одна строка «НАЗВАНИЕ: контакты слева направо» рядом с разъёмом.
+    def near(ref, dx, dy, r=16):
+        c = byref[ref].GetBoundingBox(False).GetCenter()
+        x0, y0 = pcbnew.ToMM(c.x) + dx, pcbnew.ToMM(c.y) + dy
+        return sorted(((x0 + i * 0.5, y0 + j * 0.5) for i in range(-2 * r, 2 * r + 1) for j in range(-r, r + 1)),
+                      key=lambda p: (p[0] - x0) ** 2 + 4 * (p[1] - y0) ** 2)
+
+    titled = set()
     for ref, pins in PIN_LABELS.items():
         fp = byref[ref]
         top = silk_top(fp)
+        got = []
         for n, text in pins.items():
             x, _ = pad(fp, n)
-            put(text, [(x, top - 0.3 - k * 0.5) for k in range(12)], rot=90, anchor='bottom')
+            got.append(put(text, [(x, top - 0.3 - k * 0.5) for k in range(12)], rot=90, anchor='bottom', quiet=True))
+        if all(got):
+            continue
+        for t in got:
+            if t:
+                board.Remove(t)
+                placed[sl].pop(next(i for i, b in enumerate(placed[sl]) if b == rect(t.GetBoundingBox(), GAP_SILK)))
+        title, dx, dy = TITLES[ref]
+        line = title + ': ' + ' '.join(pins.values())
+        if put(line, near(ref, dx, dy + 2), h=1.0):
+            titled.add(ref)
     for ref, pins in PIN_SIDE.items():
         fp = byref[ref]
         right = pcbnew.ToMM(fp.GetBoundingBox(False).GetRight())
@@ -135,11 +155,8 @@ def main(path):
             put(text, [(right + 2 + k * 0.5, y) for k in range(12)])
     # Названия узлов: ближайшее свободное место к точке у детали.
     for ref, (text, dx, dy) in TITLES.items():
-        c = byref[ref].GetBoundingBox(False).GetCenter()
-        x0, y0 = pcbnew.ToMM(c.x) + dx, pcbnew.ToMM(c.y) + dy
-        cands = sorted(((x0 + i * 0.5, y0 + j * 0.5) for i in range(-16, 17) for j in range(-16, 17)),
-                       key=lambda p: (p[0] - x0) ** 2 + (p[1] - y0) ** 2)
-        put(text, cands, h=1.2)
+        if ref not in titled:
+            put(text, near(ref, dx, dy), h=1.2)
     # Шильдик платы — ближе к центру низа.
     b = board.GetBoardEdgesBoundingBox()
     x0, y0 = pcbnew.ToMM(b.GetCenter().x), pcbnew.ToMM(b.GetBottom()) - 30
