@@ -149,8 +149,10 @@ def main(path):
                 placed[sl].pop(next(i for i, b in enumerate(placed[sl]) if b == rect(t.GetBoundingBox(), GAP_SILK)))
         title, dx, dy = TITLES[ref]
         line = title + ': ' + ' '.join(pins.values())
-        if put(line, near(ref, dx, dy + 2), h=1.0):
+        if put(line, near(ref, dx, dy + 2), h=1.0, quiet=True):
             titled.add(ref)
+        else:   # контакты отдельной строкой, название — обычным порядком ниже
+            put(' '.join(pins.values()), near(ref, dx, dy + 3), h=1.0)
     for ref, pins in PIN_SIDE.items():
         fp = byref[ref]
         right = pcbnew.ToMM(fp.GetBoundingBox(False).GetRight())
