@@ -1,0 +1,125 @@
+{
+  "kicad": "9.0.2",
+  "deterministic_geometry": true,
+  "empty_SES_preserves_tracks_vias_zone_outlines": true,
+  "roundtrip_refill_changed_zones": [],
+  "copper_sha256": "f01fea53d2812de453d376c1f3ac22ca418fa55f8c9ee2e9b629cbbc086e3167",
+  "tracks": 1164,
+  "vias": 602,
+  "locked_zones": 18,
+  "dsn_fixed_wires": 1115,
+  "dsn_fixed_vias": 602,
+  "dsn_planes": 21,
+  "ethernet_pairs": 11,
+  "max_ethernet_skew_mm": 0.423487,
+  "edge_max_spacing_mm": {
+    "top": 8.0,
+    "bottom": 8.009993757800315,
+    "left": 8.0,
+    "right": 9.008884503644165
+  },
+  "U1_EP_PTH": 15,
+  "U22_EP_vias": 9,
+  "unfinished": [],
+  "supplies": {
+    "+3V3": {
+      "source": [
+        "C23",
+        1
+      ],
+      "pads": 71,
+      "unconnected": []
+    },
+    "+24V_P": {
+      "source": [
+        "U1",
+        18
+      ],
+      "pads": 39,
+      "unconnected": []
+    },
+    "+5V": {
+      "source": [
+        "C17",
+        1
+      ],
+      "pads": 21,
+      "unconnected": []
+    },
+    "+3V3A": {
+      "source": [
+        "FB1",
+        2
+      ],
+      "pads": 15,
+      "unconnected": []
+    },
+    "/Питание/VTK_24V": {
+      "source": [
+        "F2",
+        2
+      ],
+      "pads": 3,
+      "unconnected": []
+    },
+    "MDB_24V": {
+      "source": [
+        "F3",
+        2
+      ],
+      "pads": 4,
+      "unconnected": []
+    },
+    "/Расширитель входов-выходов/EXT_24V": {
+      "source": [
+        "F19",
+        2
+      ],
+      "pads": 2,
+      "unconnected": []
+    }
+  },
+  "new_supply_vias": {
+    "+24V_P": 17,
+    "+3V3": 58,
+    "+3V3A": 14,
+    "+5V": 17,
+    "/Питание/VTK_24V": 2,
+    "/Расширитель входов-выходов/EXT_24V": 1,
+    "MDB_24V": 2
+  },
+  "new_main_plane_vias": {
+    "+24V_P": 15,
+    "+3V3": 53
+  },
+  "new_main_plane_vias_total": 68,
+  "native_DRC_violations": {
+    "hole_clearance": 4,
+    "silk_edge_clearance": 26,
+    "silk_over_copper": 161,
+    "silk_overlap": 184
+  },
+  "native_unconnected_items": 300,
+  "native_unconnected_supply_items": {
+    "+24V_P": 0,
+    "+3V3": 0,
+    "+3V3A": 0,
+    "+5V": 0,
+    "/Питание/VTK_24V": 0,
+    "/Расширитель входов-выходов/EXT_24V": 0,
+    "MDB_24V": 0
+  },
+  "other_net_unconnected_regressions": {},
+  "VIN_B_priorities": {
+    "U1:VIN": 10,
+    "Q1-U1:VIN-top": 11,
+    "Q1:drain": 12
+  },
+  "new_supply_holes_clear_of_SMD_by_mm": 0.1,
+  "right_edge_keepout_in_DSN": [
+    "B.Cu",
+    "F.Cu",
+    "In1.Cu",
+    "In2.Cu"
+  ]
+}
