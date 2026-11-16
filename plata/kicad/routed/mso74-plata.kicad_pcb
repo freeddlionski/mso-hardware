@@ -8649,12 +8649,12 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R56"
-			(at 2.961905 0 0)
+			(at 0 1.75325 0)
 			(layer "F.SilkS")
 			(uuid "58381a77-55bc-4ac7-867f-d9e69f07d271")
 			(effects
 				(font
-					(size 0.8 0.8)
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -25285,7 +25285,7 @@
 		(descr "Diode SMA (DO-214AC)")
 		(tags "Diode SMA (DO-214AC)")
 		(property "Reference" "D24"
-			(at -0.0225 -2.77325 0)
+			(at -5.297381 0 0)
 			(layer "F.SilkS")
 			(uuid "4abdc79c-f7d7-45f9-915d-e7dfc25dc8e4")
 			(effects
@@ -34487,7 +34487,7 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R67"
-			(at 0 1.75325 0)
+			(at -3.232381 0 0)
 			(layer "F.SilkS")
 			(uuid "6dd7e22c-0a77-4120-aa8f-0000784466ba")
 			(effects
@@ -34648,7 +34648,7 @@
 		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C77"
-			(at -3.232381 0 0)
+			(at 3.232381 0 0)
 			(layer "F.SilkS")
 			(uuid "69b30e33-c40f-48fb-bbe8-ba71186ebb0f")
 			(effects
@@ -43023,12 +43023,12 @@
 		(descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "LED")
 		(property "Reference" "D11"
-			(at 2.961905 0 0)
+			(at 3.232381 0 0)
 			(layer "F.SilkS")
 			(uuid "e3f3b0c8-bfc9-4e8d-9569-3910968aed46")
 			(effects
 				(font
-					(size 0.8 0.8)
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -58150,7 +58150,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-02A, example for new mpn: 39-28-x02x, 1 Pins per row, Mounting:  (http://www.molex.com/pdm_docs/sd/039281043_sd.pdf), generated with kicad-footprint-generator")
 		(tags "connector Molex Mini-Fit_Jr vertical")
 		(property "Reference" "J4"
-			(at 0 10.27325 0)
+			(at -4.357143 3.25 0)
 			(layer "F.SilkS")
 			(uuid "3aaa69f1-fe3b-4a2b-8639-a6f3f285b14e")
 			(effects
@@ -67762,7 +67762,7 @@
 		(descr "SOD-123")
 		(tags "SOD-123")
 		(property "Reference" "D36"
-			(at -0.0225 -2.17325 0)
+			(at 3.37325 0 90)
 			(layer "F.SilkS")
 			(uuid "aa9b7acd-03cf-43a7-92aa-63a9df8a13da")
 			(effects
@@ -74062,7 +74062,7 @@
 		(descr "Molex Mini-Fit Jr. Power Connectors, old mpn/engineering number: 5566-02A, example for new mpn: 39-28-x02x, 1 Pins per row, Mounting:  (http://www.molex.com/pdm_docs/sd/039281043_sd.pdf), generated with kicad-footprint-generator")
 		(tags "connector Molex Mini-Fit_Jr vertical")
 		(property "Reference" "J3"
-			(at 0 10.27325 0)
+			(at -4.357143 3.25 0)
 			(layer "F.SilkS")
 			(uuid "97184923-dccf-474b-92b7-c6d0b0375499")
 			(effects
@@ -74447,12 +74447,12 @@
 		(descr "SMD pad as test Point, diameter 1.5mm")
 		(tags "test point SMD pad")
 		(property "Reference" "TP18"
-			(at 3.036667 0 0)
+			(at 3.383333 0 0)
 			(layer "F.SilkS")
 			(uuid "0720ea3f-49b2-4867-8a31-509804df4bea")
 			(effects
 				(font
-					(size 0.8 0.8)
+					(size 1 1)
 					(thickness 0.15)
 				)
 			)
@@ -84558,32 +84558,10 @@
 		(layer "Edge.Cuts")
 		(uuid "f6279ace-8b58-495f-8adc-a089c74bed94")
 	)
-	(gr_text "GND"
-		(at 41.245 63.5 0)
-		(layer "F.SilkS")
-		(uuid "1014edfc-7cae-48c8-ae42-3bfc07f8c04d")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.15)
-			)
-		)
-	)
-	(gr_text "GND"
-		(at 41.245 93.5 0)
-		(layer "F.SilkS")
-		(uuid "bb4d5a19-be17-492a-ab23-b1cae83a4bd4")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.15)
-			)
-		)
-	)
 	(gr_text "RS-232: TXD RXD GND"
 		(at 96.062 134.9325 0)
 		(layer "F.SilkS")
-		(uuid "da33a782-4830-4e54-b9ce-74c20d55c3b5")
+		(uuid "8fa07c8c-6924-4253-ae4f-ffef6b01ce31")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -84594,7 +84572,7 @@
 	(gr_text "RS-485: A B GND"
 		(at 114.492 133.4325 0)
 		(layer "F.SilkS")
-		(uuid "a2678ff7-144f-41cf-90fd-1ac2b10ca3f5")
+		(uuid "60802eb9-cd91-4f46-8e63-6f70b20fa35a")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -84602,21 +84580,10 @@
 			)
 		)
 	)
-	(gr_text "+12 GND ИМП БЛК"
-		(at 132.483 132.9325 0)
+	(gr_text "+24 1 2 3 4 GND"
+		(at 230.72 127.9325 0)
 		(layer "F.SilkS")
-		(uuid "026b590c-c3ba-4dbe-9f34-cf88b4b7e106")
-		(effects
-			(font
-				(size 0.8 0.8)
-				(thickness 0.15)
-			)
-		)
-	)
-	(gr_text "ВЫХОДЫ"
-		(at 233.22 127.9325 0)
-		(layer "F.SilkS")
-		(uuid "8e20dabf-7a51-45d3-88ca-c0e71ca9da20")
+		(uuid "08509723-f1bf-4206-8606-c47cf889d9df")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -84627,7 +84594,7 @@
 	(gr_text "VENDOTEK LAN"
 		(at 235.85 69.56 0)
 		(layer "F.SilkS")
-		(uuid "7a7b5c18-a460-493a-8f50-4564cdf99b8e")
+		(uuid "809a0bb8-bbeb-4336-8f5a-bb96ac129623")
 		(effects
 			(font
 				(size 0.8 0.8)
@@ -84638,7 +84605,7 @@
 	(gr_text "КН"
 		(at 186.613 135.00025 0)
 		(layer "F.SilkS")
-		(uuid "010c1971-b44a-4e2f-9489-43bc7efe02ad")
+		(uuid "3aec37bc-5a2d-4530-aca6-3c3bedd38f83")
 		(effects
 			(font
 				(size 0.9 0.9)
@@ -84649,7 +84616,7 @@
 	(gr_text "GND"
 		(at 190.423 135.00025 0)
 		(layer "F.SilkS")
-		(uuid "03339fee-04bb-49c1-8d52-0cae2f20ea54")
+		(uuid "0f4ef318-e8fe-47da-8c47-d8dff0d1900e")
 		(effects
 			(font
 				(size 0.9 0.9)
@@ -84657,10 +84624,10 @@
 			)
 		)
 	)
-	(gr_text "VENDOTEK 24В: +24V GND"
-		(at 45.855 131.2775 0)
+	(gr_text "+5V"
+		(at 36.5 52.25 0)
 		(layer "F.SilkS")
-		(uuid "f460d76f-e726-421a-ae57-917a7b43ddad")
+		(uuid "fca18be1-3ee9-4706-a7b2-0898911ead35")
 		(effects
 			(font
 				(size 1 1)
@@ -84668,10 +84635,65 @@
 			)
 		)
 	)
-	(gr_text "КУПЮРНИК: +24 +12 GND ИМП"
-		(at 169.223 131.4325 0)
+	(gr_text "GND"
+		(at 36.5 66.25 0)
 		(layer "F.SilkS")
-		(uuid "0eb77746-0c51-4df4-bf9a-b24700c73f12")
+		(uuid "d09fd374-f209-4508-b19d-e651b8a58e28")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+5V"
+		(at 36.5 82.25 0)
+		(layer "F.SilkS")
+		(uuid "2615203c-9bac-4eba-8ca7-88b8cfc17985")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 36.5 96.25 0)
+		(layer "F.SilkS")
+		(uuid "b3adc9f1-8185-4246-a7dc-525b97b7a2a5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "VENDOTEK 24В: +24V GND"
+		(at 45.855 131.2775 0)
+		(layer "F.SilkS")
+		(uuid "96dcb267-2a32-451f-a970-3dc19a3a7f58")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+24 +12 GND ИМП"
+		(at 163.723 129.4325 0)
+		(layer "F.SilkS")
+		(uuid "7cade2e2-8c09-483d-bf5d-e98043716a05")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+12 GND ИМП БЛК"
+		(at 163.983 131.4325 0)
+		(layer "F.SilkS")
+		(uuid "ee92dfcf-32eb-40bf-8539-dd2f97db0762")
 		(effects
 			(font
 				(size 1 1)
@@ -84682,7 +84704,7 @@
 	(gr_text "1 2 3 4 GND GND"
 		(at 205.36 133.4325 0)
 		(layer "F.SilkS")
-		(uuid "62bb35e3-1ae5-443d-950f-526b67dfb539")
+		(uuid "4c27c8d1-a25b-45b1-aed8-2dbef3dcad63")
 		(effects
 			(font
 				(size 1 1)
@@ -84693,7 +84715,7 @@
 	(gr_text "+24V"
 		(at 42.64 134.605 90)
 		(layer "F.SilkS")
-		(uuid "c0f853ef-b473-4894-b117-2849b5b9c7d4")
+		(uuid "d403c3dd-2c6a-43b1-8481-2fe59740dada")
 		(effects
 			(font
 				(size 1 1)
@@ -84704,7 +84726,7 @@
 	(gr_text "GND"
 		(at 47.72 135.081191 90)
 		(layer "F.SilkS")
-		(uuid "ad9dbb01-0d19-4516-8eac-708f9960d3e1")
+		(uuid "96445bf9-2260-43e1-a608-869376195fe9")
 		(effects
 			(font
 				(size 1 1)
@@ -84713,9 +84735,9 @@
 		)
 	)
 	(gr_text "ТАБЛО 1"
-		(at 36 51.75 0)
+		(at 36 50.25 0)
 		(layer "F.SilkS")
-		(uuid "4e6d034f-4e09-4b3a-8e06-39d0ce0e0fb8")
+		(uuid "628348b8-6fc5-454e-baf2-663e0df227f8")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84724,9 +84746,9 @@
 		)
 	)
 	(gr_text "ТАБЛО 2"
-		(at 36 81.75 0)
+		(at 36 80.25 0)
 		(layer "F.SilkS")
-		(uuid "0f1c98dd-42d9-4246-aa30-19201432ffe2")
+		(uuid "7a6ca87c-d73c-4312-a6ef-2b65e649a60f")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84737,7 +84759,7 @@
 	(gr_text "ПИТАНИЕ 24В"
 		(at 45.185 129.2775 0)
 		(layer "F.SilkS")
-		(uuid "bf890935-12de-4ce8-ac6a-f700f04a5e48")
+		(uuid "61220149-2fdb-416c-89f7-3ce48ff82e9c")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84748,7 +84770,7 @@
 	(gr_text "120 Ом"
 		(at 92.492 133.1 0)
 		(layer "F.SilkS")
-		(uuid "a782ac84-c84c-410c-9a6d-762520f2f9ec")
+		(uuid "cb61213a-4e62-40c9-87a4-d9dfea9a403c")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84757,9 +84779,9 @@
 		)
 	)
 	(gr_text "МОНЕТНИК"
-		(at 120.483 135.9325 0)
+		(at 133.483 132.9325 0)
 		(layer "F.SilkS")
-		(uuid "3d7c4bc7-b7ea-4176-924c-ae5de3d73efc")
+		(uuid "fc7d9e8a-b0f1-4d28-bb93-de9dde9df281")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84770,7 +84792,7 @@
 	(gr_text "HUB75"
 		(at 146.89 41.7475 0)
 		(layer "F.SilkS")
-		(uuid "8f851867-3249-4784-a4f1-ccb9accbcb59")
+		(uuid "3328c9c4-f2c8-4820-812a-c78ffb6d3024")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84781,7 +84803,7 @@
 	(gr_text "UART"
 		(at 161.5 50.725 0)
 		(layer "F.SilkS")
-		(uuid "d27e6794-c257-4041-9559-023b91386b98")
+		(uuid "b943172d-ae23-4c1c-b14e-7d879ff92d44")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84792,7 +84814,18 @@
 	(gr_text "RESET"
 		(at 168 80.5 0)
 		(layer "F.SilkS")
-		(uuid "f0ce37de-29f6-46bc-a891-8a80cdcfd054")
+		(uuid "1b44f4e2-c581-46bc-b16a-58313a68f9f1")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "MDB"
+		(at 173.998 131.5 0)
+		(layer "F.SilkS")
+		(uuid "8cfb2239-d7df-4a32-bc49-ded3e2992968")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84803,18 +84836,7 @@
 	(gr_text "BOOT"
 		(at 178 80.5 0)
 		(layer "F.SilkS")
-		(uuid "52d77368-a78c-4114-83c0-326b9dd97204")
-		(effects
-			(font
-				(size 1.2 1.2)
-				(thickness 0.15)
-			)
-		)
-	)
-	(gr_text "MDB"
-		(at 183.998 133 0)
-		(layer "F.SilkS")
-		(uuid "b9a86b3b-8997-4ed7-92b0-dc24445cfb6b")
+		(uuid "f7c35aaf-5262-4298-8da7-8228b0082ec0")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84823,9 +84845,9 @@
 		)
 	)
 	(gr_text "СЕРВИС"
-		(at 189.963 132.9325 0)
+		(at 188.463 132.9325 0)
 		(layer "F.SilkS")
-		(uuid "02fb25cf-8610-4703-9d69-24582f3ff0ec")
+		(uuid "f0914364-16d1-4371-b855-835d83d3577c")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84836,7 +84858,7 @@
 	(gr_text "СЕРВИС"
 		(at 190 128.5 0)
 		(layer "F.SilkS")
-		(uuid "14fc420c-171f-414a-9632-6cc6b2fd0748")
+		(uuid "e1122e4a-a056-478b-8388-770406865aa9")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84847,7 +84869,7 @@
 	(gr_text "ВХОДЫ"
 		(at 208.86 131.4325 0)
 		(layer "F.SilkS")
-		(uuid "c3c158cc-0560-4676-a580-e48ee9e83e87")
+		(uuid "61409cda-3efd-4686-942f-eecb4e490eb0")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84858,7 +84880,7 @@
 	(gr_text "РЕЗЕРВ"
 		(at 211.5 110 0)
 		(layer "F.SilkS")
-		(uuid "9ef73516-d041-45b2-b615-fc51adcdca2e")
+		(uuid "e561f199-c75d-474e-abc9-0fcb4bd62060")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84869,7 +84891,7 @@
 	(gr_text "СЕТЬ"
 		(at 242.35 47.56 0)
 		(layer "F.SilkS")
-		(uuid "935e17ed-4e0c-4f68-a79c-44e67d2e8dda")
+		(uuid "51d51b36-4980-4ae7-be50-1826f17f55d5")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84880,7 +84902,7 @@
 	(gr_text "USB"
 		(at 258.97 95 0)
 		(layer "F.SilkS")
-		(uuid "db633d99-9e10-4e33-8670-e8c885ed0635")
+		(uuid "495154e0-da3d-4636-bba9-30d3afa99c6d")
 		(effects
 			(font
 				(size 1.2 1.2)
@@ -84891,7 +84913,7 @@
 	(gr_text "МСО74 · mso74.ru · плата rev A 2026"
 		(at 150 110.05 0)
 		(layer "F.SilkS")
-		(uuid "35d8aa58-b219-457a-a292-17aae80791b2")
+		(uuid "00cdd9ac-b1fc-454c-a175-4fc2342a0138")
 		(effects
 			(font
 				(size 1.5 1.5)
