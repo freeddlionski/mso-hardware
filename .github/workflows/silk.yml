@@ -1,0 +1,33 @@
+name: Шелкография готовой платы (обозначения)
+
+# Меняется pcb_silk.py в рабочей ветке → раскладываем обозначения на plata/kicad/routed и коммитим плату в ту же ветку.
+# Медь и детали не трогаются. Проверка результата — обычный kicad.yml в PR.
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches-ignore: [main]
+    paths: ['plata/kicad/gen/pcb_silk.py']
+  workflow_dispatch:
+
+jobs:
+  silk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: kicad/kicad:9.0
+      options: --user root
+    steps:
+      - uses: actions/checkout@v4
+      - name: Обозначения
+        run: |
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          cd plata/kicad/gen && python3 pcb_silk.py ../routed/mso74-plata.kicad_pcb
+      - name: Коммит в ветку
+        run: |
+          git add plata/kicad/routed
+          git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com \
+            commit -qm "Шелкография: обозначения разложены (pcb_silk.py)" || exit 0
+          git push -q origin HEAD:${GITHUB_REF_NAME}
