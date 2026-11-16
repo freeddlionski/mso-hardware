@@ -84551,6 +84551,234 @@
 		(layer "Edge.Cuts")
 		(uuid "f6279ace-8b58-495f-8adc-a089c74bed94")
 	)
+	(gr_text "TXD RXD GND"
+		(at 81.5 137.5 0)
+		(layer "F.SilkS")
+		(uuid "f23b8035-6edf-41fc-8456-e8fcedcd6b5c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 114.3 137.5 0)
+		(layer "F.SilkS")
+		(uuid "6d0d0b53-8f6e-45aa-84ad-8430254bb0c2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "SRV GND"
+		(at 185 134 0)
+		(layer "F.SilkS")
+		(uuid "886cd1e2-3c03-44f1-bc61-c602259b0815")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "J15/IN:1234GNDGND\nJ16/OUT:+24V1234GND"
+		(at 192 110 0)
+		(layer "F.SilkS")
+		(uuid "f312b0a6-5f3d-44cc-a717-3c327a45ef3f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "+24V"
+		(at 42.64 134.79 90)
+		(layer "F.SilkS")
+		(uuid "0e1b257c-990b-4707-bba7-bebfe29ce262")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 47.72 134.79 90)
+		(layer "F.SilkS")
+		(uuid "f73f98a3-213c-40f9-aeac-c1e8439eb095")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "+24V	"
+		(at 55.8 134.79 90)
+		(layer "F.SilkS")
+		(uuid "6b9b5236-59a4-4b93-beb6-2791333e3946")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 65 134.79 90)
+		(layer "F.SilkS")
+		(uuid "802a8237-2f5c-4c9a-94ee-6540e481dd9c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "A"
+		(at 100 134.5 90)
+		(layer "F.SilkS")
+		(uuid "346fadfc-916c-4287-b0a3-2cda77b9a0c7")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "B"
+		(at 105 134.5 90)
+		(layer "F.SilkS")
+		(uuid "16b6fa76-3f05-4631-ae54-0092207ba560")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "+12V"
+		(at 125 135 90)
+		(layer "F.SilkS")
+		(uuid "2b2fceeb-acda-482c-994c-f843587f1fa6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 126.6 135 90)
+		(layer "F.SilkS")
+		(uuid "627b7dbd-1dbc-4d75-9fc4-1a6c58b1465f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "IMP"
+		(at 128.2 134.8 90)
+		(layer "F.SilkS")
+		(uuid "52085e79-71b5-43e1-bcc2-b8df8c03c365")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "BLK"
+		(at 129.9 134.8 90)
+		(layer "F.SilkS")
+		(uuid "193a71cc-3294-4971-be1b-01def5b89654")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "+24V"
+		(at 131.5 134 90)
+		(layer "F.SilkS")
+		(uuid "fe166d36-f9a8-4406-b76f-3f5a83e90484")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "+12V"
+		(at 133.2 134 90)
+		(layer "F.SilkS")
+		(uuid "95ce73dc-856f-4e15-8771-9439616948ac")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "GND"
+		(at 134.7 133.8 90)
+		(layer "F.SilkS")
+		(uuid "d0eaa534-9832-4d6e-9d23-d45de23608a5")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "IMP"
+		(at 146.5 145 90)
+		(layer "F.SilkS")
+		(uuid "2007d2a1-5bea-49c3-82df-4f2b22d02038")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+			(justify left bottom)
+		)
+	)
+	(gr_text "MCO74 • kolman74 • mso74.ru • rev A 2026"
+		(at 120 100 0)
+		(layer "F.SilkS")
+		(uuid "da373f5e-6222-4eec-abbb-bf346f5b0998")
+		(effects
+			(font
+				(size 2 2)
+				(thickness 0.2)
+			)
+			(justify left bottom)
+		)
+	)
 	(segment
 		(start 165.056 131.619)
 		(end 146.523 131.619)
