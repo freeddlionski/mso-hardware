@@ -171,13 +171,14 @@ def main(path):
         if put(title + ': ' + ' '.join(pins.values()), near(ref, dx, dy + 2), quiet=True):
             titled.add(ref)
         else:
-            put(' '.join(pins.values()), near(ref, dx, dy + 3))
+            put(' '.join(pins.values()), near(ref, dx, dy + 3, r=30))
     for ref, pins in PIN_SIDE.items():
         fp = byref[ref]
         right = pcbnew.ToMM(court[ref][2])
         for n, s_ in pins.items():
             _, y = pad(fp, n)
-            put(s_, [(right + 1 + k * 0.5, y + dy) for k in range(30) for dy in (0, -1, 1, -2, 2)])
+            side = [(right + 1 + k * 0.5, y + dy) for k in range(30) for dy in (0, -1, 1, -2, 2)]
+            put(s_, side + near(ref, 0, -5 if n == '1' else 5, r=8))
     # Названия узлов: ближайшее свободное место к точке у детали.
     for ref, (s_, dx, dy) in TITLES.items():
         if ref not in titled:
