@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/drc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-11-16T07:42:06+0000",
+    "date": "2026-11-16T08:45:30+0000",
     "included_severities": [
         "error",
         "warning",
@@ -153,12 +153,12 @@
             "description": "Missing connection between items",
             "items": [
                 {
-                    "description": "Track [/Питание/EF_BGATE] on B.Cu, length 6.4489 mm",
+                    "description": "Track [/Питание/EF_BGATE] on B.Cu, length 8.8460 mm",
                     "pos": {
-                        "x": 70.6997,
-                        "y": 115.925
+                        "x": 66.1396,
+                        "y": 111.365
                     },
-                    "uuid": "cc933d0f-1dad-4675-a49d-56b6fcb83737"
+                    "uuid": "8579dd13-d3f9-4d3d-aca0-17794166b0be"
                 },
                 {
                     "description": "Pad 4 [/Питание/EF_BGATE] of U1 on F.Cu",
@@ -281,7 +281,7 @@
                         "x": 146.862,
                         "y": 50.375
                     },
-                    "uuid": "af32a337-5ae3-4d79-994d-1479b4d9a700"
+                    "uuid": "1e0f2996-0b17-4a36-af75-febeee83849b"
                 }
             ],
             "severity": "error",
@@ -304,7 +304,7 @@
                         "x": 245.148,
                         "y": 60.874
                     },
-                    "uuid": "7693ff17-c175-4575-8ddc-d2d384148b40"
+                    "uuid": "954c936a-f705-4f72-a6c8-d6a003ebb593"
                 }
             ],
             "severity": "error",
@@ -505,7 +505,7 @@
                         "x": 84.1294,
                         "y": 90.0
                     },
-                    "uuid": "cff5583a-3eef-45c7-a81c-cedfa46e9242"
+                    "uuid": "7c1454d7-72ff-4d6f-9b82-356415239cf6"
                 }
             ],
             "severity": "warning",
@@ -520,7 +520,7 @@
                         "x": 255.759,
                         "y": 37.2943
                     },
-                    "uuid": "f94ddec7-eb1c-42c8-b453-44ca91e52a13"
+                    "uuid": "bec3b309-4b5e-4ee9-8231-09899e0e7daf"
                 }
             ],
             "severity": "warning",
@@ -535,7 +535,7 @@
                         "x": 63.0624,
                         "y": 101.209
                     },
-                    "uuid": "c8434267-3981-44ca-9d92-ff3bb34b3d3d"
+                    "uuid": "64639407-4c66-4e0d-9a32-b92289a718ef"
                 }
             ],
             "severity": "warning",
@@ -550,7 +550,7 @@
                         "x": 148.203,
                         "y": 48.8797
                     },
-                    "uuid": "e722f354-7988-4123-a3f3-b90c3c7df3b0"
+                    "uuid": "b9c8480b-d7e1-4492-b43d-63d75eb6cf1b"
                 }
             ],
             "severity": "warning",
@@ -565,7 +565,7 @@
                         "x": 245.148,
                         "y": 60.874
                     },
-                    "uuid": "eacc1503-3126-472c-aa82-597053096036"
+                    "uuid": "0444a8aa-bfa1-499d-8f1d-245897b4a662"
                 }
             ],
             "severity": "warning",
