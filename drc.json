@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/drc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-11-16T04:50:55+0000",
+    "date": "2026-11-16T05:57:01+0000",
     "included_severities": [
         "error",
         "warning",
@@ -38,12 +38,12 @@
             "description": "Missing connection between items",
             "items": [
                 {
-                    "description": "Pad 1 [+5V_LCD2] of TP7 on F.Cu",
+                    "description": "Track [+5V_LCD2] on F.Cu, length 1.6294 mm",
                     "pos": {
-                        "x": 82.5,
+                        "x": 84.1294,
                         "y": 90.0
                     },
-                    "uuid": "27e0f155-7a5f-42a6-b08b-ab108652203f"
+                    "uuid": "24fd2a26-28f7-486c-8cc1-f794cfff70b1"
                 },
                 {
                     "description": "Track [+5V_LCD2] on B.Cu, length 3.9426 mm",
@@ -161,12 +161,12 @@
                     "uuid": "55d8f1a5-2ab6-4635-9622-63ad108401f5"
                 },
                 {
-                    "description": "Track [/MDB и входы/+12V_T] on F.Cu, length 1.6047 mm",
+                    "description": "Pad 1 [/MDB и входы/+12V_T] of D27 on F.Cu",
                     "pos": {
                         "x": 140.483,
                         "y": 137.6
                     },
-                    "uuid": "a9bb7f14-c4e6-4750-ab7a-cb6077837285"
+                    "uuid": "4c406e86-d7f3-47cf-9552-e557b82daa74"
                 }
             ],
             "severity": "error",
@@ -181,7 +181,7 @@
                         "x": 66.1396,
                         "y": 111.365
                     },
-                    "uuid": "e7b3f3b3-1724-4b1f-b2f8-a978fe438661"
+                    "uuid": "63522fd5-7b81-4b41-a696-f56502082953"
                 },
                 {
                     "description": "Pad 4 [/Питание/EF_BGATE] of U1 on F.Cu",
@@ -299,58 +299,12 @@
                     "uuid": "cf8905c0-084b-49d4-99ea-c74511cf9336"
                 },
                 {
-                    "description": "Pad 18 [/Табло и часы/HUBB_C] of U18 on F.Cu",
+                    "description": "Track [/Табло и часы/HUBB_C] on F.Cu, length 1.3410 mm",
                     "pos": {
-                        "x": 146.8625,
+                        "x": 146.862,
                         "y": 50.375
                     },
-                    "uuid": "092262c5-e5b1-4412-a2c4-18828062871b"
-                }
-            ],
-            "severity": "error",
-            "type": "unconnected_items"
-        },
-        {
-            "description": "Missing connection between items",
-            "items": [
-                {
-                    "description": "Pad 2 [MDB_RX] of R65 on F.Cu",
-                    "pos": {
-                        "x": 155.323,
-                        "y": 130.5
-                    },
-                    "uuid": "1f3901b0-cafd-4fd2-bb7d-4ab23842ad70"
-                },
-                {
-                    "description": "Pad 3 [MDB_RX] of D22 on F.Cu",
-                    "pos": {
-                        "x": 155.4355,
-                        "y": 133.5
-                    },
-                    "uuid": "724498d1-e8a1-4656-b61b-1b3f4d2fd219"
-                }
-            ],
-            "severity": "error",
-            "type": "unconnected_items"
-        },
-        {
-            "description": "Missing connection between items",
-            "items": [
-                {
-                    "description": "Track [MDB_RX] on F.Cu, length 2.8849 mm",
-                    "pos": {
-                        "x": 169.109,
-                        "y": 62.9491
-                    },
-                    "uuid": "533090b3-dbdd-46dc-a101-dd0936cfc174"
-                },
-                {
-                    "description": "Pad 2 [MDB_RX] of R65 on F.Cu",
-                    "pos": {
-                        "x": 155.323,
-                        "y": 130.5
-                    },
-                    "uuid": "1f3901b0-cafd-4fd2-bb7d-4ab23842ad70"
+                    "uuid": "dbe395cf-0229-4154-a5f8-e32a97eea239"
                 }
             ],
             "severity": "error",
@@ -373,7 +327,7 @@
                         "x": 245.148,
                         "y": 60.874
                     },
-                    "uuid": "4efda010-a01a-475e-8fd9-9c9334bb8fde"
+                    "uuid": "dd4d5ea3-7f3f-4a4e-bf7d-0aec81e00d74"
                 }
             ],
             "severity": "error",
@@ -383,12 +337,12 @@
             "description": "Missing connection between items",
             "items": [
                 {
-                    "description": "Track [VIN_F] on B.Cu, length 16.5568 mm",
+                    "description": "PTH pad 2 [VIN_F] of F1",
                     "pos": {
                         "x": 53.92,
                         "y": 118.0
                     },
-                    "uuid": "92accf80-d50e-4829-ac9e-ad26be3b62b3"
+                    "uuid": "df243777-3b55-4ea5-8a99-35df0dabff0d"
                 },
                 {
                     "description": "Pad 1 [VIN_F] of C1 on F.Cu",
@@ -414,12 +368,12 @@
                     "uuid": "c2e905ac-cba2-40cf-ba34-cd9dd7ff3d90"
                 },
                 {
-                    "description": "Via [VIN_F] on F.Cu - B.Cu",
+                    "description": "Track [VIN_F] on F.Cu, length 1.6375 mm",
                     "pos": {
-                        "x": 59.5,
+                        "x": 61.1375,
                         "y": 114.325
                     },
-                    "uuid": "bb2a6ca2-1fe2-47c4-896d-4805b344bf7d"
+                    "uuid": "991b7488-955e-48d9-a3aa-20091fadd5d9"
                 }
             ],
             "severity": "error",
@@ -437,12 +391,12 @@
                     "uuid": "c2e905ac-cba2-40cf-ba34-cd9dd7ff3d90"
                 },
                 {
-                    "description": "Track [VIN_F] on B.Cu, length 16.5568 mm",
+                    "description": "PTH pad 2 [VIN_F] of F1",
                     "pos": {
                         "x": 53.92,
                         "y": 118.0
                     },
-                    "uuid": "92accf80-d50e-4829-ac9e-ad26be3b62b3"
+                    "uuid": "df243777-3b55-4ea5-8a99-35df0dabff0d"
                 }
             ],
             "severity": "error",
@@ -574,7 +528,7 @@
                         "x": 84.1294,
                         "y": 90.0
                     },
-                    "uuid": "e900293a-b9e3-4fa0-9cc0-0d9f4c370ab5"
+                    "uuid": "7c434c06-fcae-4de4-af3c-31e9e9f6c24b"
                 }
             ],
             "severity": "warning",
@@ -589,7 +543,7 @@
                         "x": 255.759,
                         "y": 37.2943
                     },
-                    "uuid": "3b639e5e-6ecc-4f8b-ab6a-4b432ed52a10"
+                    "uuid": "922d4be2-d0f3-4322-a4dc-016198679f24"
                 }
             ],
             "severity": "warning",
@@ -604,7 +558,7 @@
                         "x": 63.0624,
                         "y": 101.209
                     },
-                    "uuid": "da89c0dd-5bcc-4c51-b0e5-619b44ac0db5"
+                    "uuid": "bbcc40dc-56b9-4602-b3d5-f2d6b6841f85"
                 }
             ],
             "severity": "warning",
@@ -616,10 +570,10 @@
                 {
                     "description": "Via [/Табло и часы/HUBB_C] on F.Cu - B.Cu",
                     "pos": {
-                        "x": 148.2028,
+                        "x": 148.203,
                         "y": 48.8797
                     },
-                    "uuid": "f56c8daa-00f6-45a8-86f2-5c359ec9cd09"
+                    "uuid": "bfdd197b-af98-40bc-a0c7-4a562186bd07"
                 }
             ],
             "severity": "warning",
@@ -634,7 +588,7 @@
                         "x": 245.148,
                         "y": 60.874
                     },
-                    "uuid": "856348b3-b780-4138-9a4b-0887c1a65a07"
+                    "uuid": "de0064e6-8841-48d5-a10d-14ac781aa5bf"
                 }
             ],
             "severity": "warning",
