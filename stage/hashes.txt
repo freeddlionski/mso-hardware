@@ -1,2 +1,2 @@
 53e09160f23bb79af0837476b9ec51311e46c63219db37c774b3d23833933629  /__w/mso-hardware/mso-hardware/plata/kicad/placement.json
-83154426efb81d1fa6398487956eec59c1a51e47bdc811f5e05e39f24e2c9069  /__w/mso-hardware/mso-hardware/work/mso74-plata.kicad_pcb
+9288e2230d919efd2d13e2043e92f816457a203da3ec1a1273c1aa77f018c63b  /__w/mso-hardware/mso-hardware/work/mso74-plata.kicad_pcb
