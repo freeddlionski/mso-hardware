@@ -88,11 +88,11 @@ def main(path):
         c = fp.GetCourtyard(pcbnew.F_CrtYd).BBox()
         court[fp.GetReference()] = rect(c if c.GetWidth() > 0 else fp.GetBoundingBox(False))
 
-    def free(b, own=None):
+    def free(b, own=None, courts=True):
         return (edge[0] <= b[0] and b[2] <= edge[2] and edge[1] <= b[1] and b[3] <= edge[3]
                 and not any(hit(b, o) for o, _ in silk[sl]) and not any(hit(b, p) for p in pads[sl])
                 and not any(hit(b, o) for o in placed[sl])
-                and not any(hit(b, c) for r, c in court.items() if r != own))
+                and not (courts and any(hit(b, c) for r, c in court.items() if r != own)))
 
     def text(s_, h, rot=0):
         t = pcbnew.PCB_TEXT(board)
@@ -133,7 +133,7 @@ def main(path):
     def silk_top(fp):
         ys = [g.GetBoundingBox().GetTop() for g in fp.GraphicalItems()
               if g.GetLayer() == sl and g.GetClass() != 'PCB_TEXT']
-        return pcbnew.ToMM(min(ys + [court[fp.GetReference()][1]]))
+        return pcbnew.ToMM(min(ys)) if ys else pcbnew.ToMM(court[fp.GetReference()][1])
 
     def pad(fp, n):
         q = [p.GetPosition() for p in fp.Pads() if p.GetNumber() == n][0]
@@ -154,7 +154,7 @@ def main(path):
             for n, t in ts.items():
                 x, _ = pad(fp, n)
                 for dx in (0, -0.4, 0.4):
-                    if free(at(t, x + dx, y, bottom=True), own=ref):
+                    if free(at(t, x + dx, y, bottom=True), courts=False):   # у самых выводов, мелкие корпуса рядом — можно
                         spots[n] = x + dx
                         break
                 else:
