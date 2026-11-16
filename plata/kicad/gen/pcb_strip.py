@@ -9,7 +9,7 @@ python3 pcb_strip.py BOARD.kicad_pcb  — правит файл на месте 
 import sys
 import uuid
 from pathlib import Path
-from sexp import parse, find, findall, dump
+from sexp import parse, find, findall, dump, Q
 
 OLD, NEW = 150.0, 157.0          # нижний край, мм (координаты файла)
 DY = NEW - OLD
@@ -36,7 +36,7 @@ def num(v):
 
 
 def text(s, x, y, h):
-    return ['gr_text', s, ['at', num(x), num(y), '0'], ['layer', 'F.SilkS'], ['uuid', str(uuid.uuid4())],
+    return ['gr_text', Q(s), ['at', num(x), num(y), '0'], ['layer', Q('F.SilkS')], ['uuid', Q(str(uuid.uuid4()))],
             ['effects', ['font', ['size', num(h), num(h)], ['thickness', '0.15']]]]
 
 
