@@ -103,6 +103,10 @@ jobs:
           kicad-cli pcb render --side top --width 2400 --height 1300 --output out/fab/3d-top.png $R/mso74-plata.kicad_pcb || true
           kicad-cli pcb render --side bottom --width 2400 --height 1300 --output out/fab/3d-bottom.png $R/mso74-plata.kicad_pcb || true
           ls -la out/fab out/fab/gerber
+          # заказ JLCPCB: архив Gerber+сверловка, BOM и координаты в их формате
+          mkdir -p out/jlc && (cd out/fab/gerber && python3 -m zipfile -c ../../jlc/gerber_mso74.zip $(ls | grep -v -e _map -e gbrjob))
+          python3 plata/kicad/gen/jlc_files.py $R/mso74-plata.kicad_pcb out/fab/positions.csv out/jlc || true
+          ls -la out/jlc
 
       - name: DRC платы
         if: always()
@@ -135,6 +139,11 @@ jobs:
         with:
           name: kicad-out
           path: out/
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jlc-order
+          path: out/jlc/
           if-no-files-found: ignore
 
       - name: Выгрузка в ветку kicad-out (main) или kicad-out-pr (PR) — смотреть без скачивания артефакта
