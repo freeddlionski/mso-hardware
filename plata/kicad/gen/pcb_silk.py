@@ -82,87 +82,106 @@ def main(path):
         fp.Reference().SetVisible(True)
     sl = pcbnew.F_SilkS
 
-    def free(b):
+    byref = {fp.GetReference(): fp for fp in fps}
+    court = {}                                   # корпуса деталей: подписи на них не кладём
+    for fp in fps:
+        c = fp.GetCourtyard(pcbnew.F_CrtYd).BBox()
+        court[fp.GetReference()] = rect(c if c.GetWidth() > 0 else fp.GetBoundingBox(False))
+
+    def free(b, own=None):
         return (edge[0] <= b[0] and b[2] <= edge[2] and edge[1] <= b[1] and b[3] <= edge[3]
                 and not any(hit(b, o) for o, _ in silk[sl]) and not any(hit(b, p) for p in pads[sl])
-                and not any(hit(b, o) for o in placed[sl]))
+                and not any(hit(b, o) for o in placed[sl])
+                and not any(hit(b, c) for r, c in court.items() if r != own))
 
-    def put(text, cands, h=1.0, rot=0, anchor=None, quiet=False):
-        """Первое свободное место из cands (x, y мм). anchor: 'bottom' — низ текста в точке (для 90°)."""
+    def text(s_, h, rot=0):
+        t = pcbnew.PCB_TEXT(board)
+        t.SetLayer(sl)
+        t.SetText(s_)
+        t.SetTextSize(pcbnew.VECTOR2I(MM(h), MM(h)))
+        t.SetTextThickness(MM(0.15))
+        t.SetTextAngle(pcbnew.EDA_ANGLE(rot, pcbnew.DEGREES_T))
+        return t
+
+    def at(t, x, y, bottom=False):
+        t.SetTextPos(pcbnew.VECTOR2I(MM(x), MM(y)))
+        if bottom:
+            t.Move(pcbnew.VECTOR2I(0, MM(y) - t.GetBoundingBox().GetBottom()))
+        return rect(t.GetBoundingBox())
+
+    def add(t):
+        board.Add(t)
+        placed[sl].append(rect(t.GetBoundingBox(), GAP_SILK))
+
+    def put(s_, cands, h=1.0, quiet=False):
         for hh in (h, 0.8):
-            t = pcbnew.PCB_TEXT(board)
-            t.SetLayer(sl)
-            t.SetText(text)
-            t.SetTextSize(pcbnew.VECTOR2I(MM(hh), MM(hh)))
-            t.SetTextThickness(MM(0.15))
-            t.SetTextAngle(pcbnew.EDA_ANGLE(rot, pcbnew.DEGREES_T))
+            t = text(s_, hh)
             for x, y in cands:
-                t.SetTextPos(pcbnew.VECTOR2I(MM(x), MM(y)))
-                b = t.GetBoundingBox()
-                if anchor == 'bottom':
-                    t.Move(pcbnew.VECTOR2I(0, MM(y) - b.GetBottom()))
-                b = rect(t.GetBoundingBox())
-                if free(b):
-                    board.Add(t)
-                    placed[sl].append(rect(t.GetBoundingBox(), GAP_SILK))
+                if free(at(t, x, y)):
+                    add(t)
                     return t
         if not quiet:
-            print('нет места для подписи:', text)
+            print('нет места для подписи:', s_)
         return None
 
-    byref = {fp.GetReference(): fp for fp in fps}
-
-    def silk_top(fp):
-        ys = [g.GetBoundingBox().GetTop() for g in fp.GraphicalItems()
-              if g.GetLayer() == sl and g.GetClass() != 'PCB_TEXT']
-        return pcbnew.ToMM(min(ys)) if ys else pcbnew.ToMM(fp.GetBoundingBox(False).GetTop())
-
-    def pad(fp, n):
-        q = [p.GetPosition() for p in fp.Pads() if p.GetNumber() == n][0]
-        return pcbnew.ToMM(q.x), pcbnew.ToMM(q.y)
-
-    # Клеммы по нижнему краю: подпись каждого контакта над корпусом, снизу вверх. Если хоть одна не влезла —
-    # одна строка «НАЗВАНИЕ: контакты слева направо» рядом с разъёмом.
     def near(ref, dx, dy, r=16):
         c = byref[ref].GetBoundingBox(False).GetCenter()
         x0, y0 = pcbnew.ToMM(c.x) + dx, pcbnew.ToMM(c.y) + dy
         return sorted(((x0 + i * 0.5, y0 + j * 0.5) for i in range(-2 * r, 2 * r + 1) for j in range(-r, r + 1)),
                       key=lambda p: (p[0] - x0) ** 2 + 4 * (p[1] - y0) ** 2)
 
+    def silk_top(fp):
+        ys = [g.GetBoundingBox().GetTop() for g in fp.GraphicalItems()
+              if g.GetLayer() == sl and g.GetClass() != 'PCB_TEXT']
+        return pcbnew.ToMM(min(ys + [court[fp.GetReference()][1]]))
+
+    def pad(fp, n):
+        q = [p.GetPosition() for p in fp.Pads() if p.GetNumber() == n][0]
+        return pcbnew.ToMM(q.x), pcbnew.ToMM(q.y)
+
+    # Клеммы по нижнему краю: подписи контактов над корпусом, все на одной высоте. Не влезли —
+    # строка «НАЗВАНИЕ: контакты слева направо» над разъёмом.
     titled = set()
     for ref, pins in PIN_LABELS.items():
         fp = byref[ref]
         top = silk_top(fp)
-        got = []
-        for n, text in pins.items():
-            x, _ = pad(fp, n)
-            cands = [(x + dx, top - 0.3 - k * 0.25) for k in range(36) for dx in (0, -0.4, 0.4)]
-            if len(text) > 3:
-                got.append(put(text, cands, rot=90, anchor='bottom', quiet=True))
-            else:
-                got.append(put(text, cands, h=0.9, anchor='bottom', quiet=True))
-        if all(got):
+        rot = 90 if max(len(v) for v in pins.values()) > 3 else 0
+        ts = {n: text(v, 1.0 if rot else 0.9, rot) for n, v in pins.items()}
+        done = False
+        for k in range(40):
+            y = top - 0.3 - k * 0.25
+            spots = {}
+            for n, t in ts.items():
+                x, _ = pad(fp, n)
+                for dx in (0, -0.4, 0.4):
+                    if free(at(t, x + dx, y, bottom=True), own=ref):
+                        spots[n] = x + dx
+                        break
+                else:
+                    break
+            if len(spots) == len(ts):
+                for n, t in ts.items():
+                    at(t, spots[n], y, bottom=True)
+                    add(t)
+                done = True
+                break
+        if done:
             continue
-        for t in got:
-            if t:
-                board.Remove(t)
-                placed[sl].pop(next(i for i, b in enumerate(placed[sl]) if b == rect(t.GetBoundingBox(), GAP_SILK)))
         title, dx, dy = TITLES[ref]
-        line = title + ': ' + ' '.join(pins.values())
-        if put(line, near(ref, dx, dy + 2), h=1.0, quiet=True):
+        if put(title + ': ' + ' '.join(pins.values()), near(ref, dx, dy + 2), quiet=True):
             titled.add(ref)
-        else:   # контакты отдельной строкой, название — обычным порядком ниже
-            put(' '.join(pins.values()), near(ref, dx, dy + 3), h=1.0)
+        else:
+            put(' '.join(pins.values()), near(ref, dx, dy + 3))
     for ref, pins in PIN_SIDE.items():
         fp = byref[ref]
-        right = pcbnew.ToMM(fp.GetBoundingBox(False).GetRight())
-        for n, text in pins.items():
+        right = pcbnew.ToMM(court[ref][2])
+        for n, s_ in pins.items():
             _, y = pad(fp, n)
-            put(text, [(right + 1 + k * 0.5, y + dy) for k in range(30) for dy in (0, -1, 1, -2, 2)])
+            put(s_, [(right + 1 + k * 0.5, y + dy) for k in range(30) for dy in (0, -1, 1, -2, 2)])
     # Названия узлов: ближайшее свободное место к точке у детали.
-    for ref, (text, dx, dy) in TITLES.items():
+    for ref, (s_, dx, dy) in TITLES.items():
         if ref not in titled:
-            put(text, near(ref, dx, dy), h=1.2)
+            put(s_, near(ref, dx, dy), h=1.2)
     # Шильдик платы — ближе к центру низа.
     b = board.GetBoardEdgesBoundingBox()
     x0, y0 = pcbnew.ToMM(b.GetCenter().x), pcbnew.ToMM(b.GetBottom()) - 30
