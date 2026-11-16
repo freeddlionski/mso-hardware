@@ -72,6 +72,38 @@ jobs:
           python3 plata/kicad/gen/pcb_build.py out/mso74-plata.net plata/kicad/placement.json plata/kicad/mso74-plata.kicad_pcb
           cp plata/kicad/mso74-plata.kicad_pcb out/   # плата без дорожек; трассировка — отдельный поэтапный route.yml
 
+      - name: Готовая плата (plata/kicad/routed) — DRC, сверка со схемой, файлы для завода
+        if: always()
+        run: |
+          R=plata/kicad/routed; [ -f $R/mso74-plata.kicad_pcb ] || { echo "Готовой платы нет — пропуск"; exit 0; }
+          # сверка «схема ↔ плата»: схема и разведённая плата в одной папке под одним именем
+          rm -rf /tmp/par && mkdir -p /tmp/par && cp -r plata/kicad/*.kicad_sch plata/kicad/*lib-table plata/kicad/lib /tmp/par/ 2>/dev/null || true
+          cp $R/mso74-plata.kicad_pcb $R/mso74-plata.kicad_pro $R/mso74-plata.kicad_dru /tmp/par/
+          kicad-cli pcb drc --format json --severity-all --schematic-parity --output out/routed-drc.json /tmp/par/mso74-plata.kicad_pcb || true
+          python3 - <<'PY'
+          import json, collections
+          d = json.load(open('out/routed-drc.json'))
+          c = collections.Counter(v['type'] for v in d.get('violations', []))
+          print('===== Готовая плата: DRC по типам =====')
+          for k, n in c.most_common(): print('%5d  %s' % (n, k))
+          print('не разведено связей:', len(d.get('unconnected_items', [])))
+          p = d.get('schematic_parity', [])
+          print('расхождений схема ↔ плата:', len(p))
+          for v in p[:30]: print('   ', v.get('description'), '|', ' / '.join(i.get('description', '') for i in v.get('items', [])))
+          PY
+          mkdir -p out/fab/gerber
+          kicad-cli pcb export gerbers --output out/fab/gerber/ --layers F.Cu,In1.Cu,In2.Cu,B.Cu,F.Paste,B.Paste,F.SilkS,B.SilkS,F.Mask,B.Mask,Edge.Cuts \
+            --subtract-soldermask --use-drill-file-origin $R/mso74-plata.kicad_pcb || true
+          kicad-cli pcb export drill --output out/fab/gerber/ --format excellon --excellon-separate-th --generate-map --map-format gerberx2 \
+            $R/mso74-plata.kicad_pcb || true
+          kicad-cli pcb export pos --output out/fab/positions.csv --format csv --units mm --side both --exclude-dnp $R/mso74-plata.kicad_pcb || true
+          for L in F.Cu In1.Cu In2.Cu B.Cu; do
+            kicad-cli pcb export pdf --layers $L,Edge.Cuts --output out/fab/layer-$L.pdf $R/mso74-plata.kicad_pcb || true
+          done
+          kicad-cli pcb render --side top --width 2400 --height 1300 --output out/fab/3d-top.png $R/mso74-plata.kicad_pcb || true
+          kicad-cli pcb render --side bottom --width 2400 --height 1300 --output out/fab/3d-bottom.png $R/mso74-plata.kicad_pcb || true
+          ls -la out/fab out/fab/gerber
+
       - name: DRC платы
         if: always()
         run: |

@@ -1,0 +1,60 @@
+{
+  "checks": {
+    "removed_tracks_match_manifest": true,
+    "new_tracks_match_manifest": true,
+    "only_existing_via_size_changed": true,
+    "sense_via_change_only_size_drill": true,
+    "footprints_positions_pads_nets_unchanged": true,
+    "all_added_copper_locked": true,
+    "minimum_added_track_015": true,
+    "new_via_sizes": true,
+    "In1_no_tracks": true,
+    "repeat_same_copper": true,
+    "DRC_909": true,
+    "zero_unconnected": true,
+    "only_known_DRC": true,
+    "four_known_J5_holes": true,
+    "all_original_ETH_USB_copper_unchanged": true,
+    "new_In2_no_direct_cut_B_fast_reference": true,
+    "netlist_pin_parity": true,
+    "U1_EP_15_PTH_preserved": true
+  },
+  "failed": [],
+  "copper_sha256": "04452d473c9d309296c8ee71ec8a7715c0cf3c40a6c3848a577cf33b2c91f423",
+  "DRC": {
+    "version": "9.0.9",
+    "unconnected": 0,
+    "violations": {
+      "hole_clearance": 4,
+      "silk_overlap": 184,
+      "silk_over_copper": 161,
+      "silk_edge_clearance": 26
+    }
+  },
+  "source_tracks_vias": 3991,
+  "final_tracks_vias": 4112,
+  "retained": 3937,
+  "removed_tracks_vias": 54,
+  "added_tracks_vias": 175,
+  "changed_existing": [
+    "bb2a6ca2-1fe2-47c4-896d-4805b344bf7d"
+  ],
+  "added_counts": {
+    "track": 147,
+    "via": 28
+  },
+  "removed_by_net": {
+    "/Питание/EF_DRV": 15,
+    "/Питание/EF_BGATE": 8,
+    "/Питание/EF_SHDN": 8,
+    "/Питание/EF_PGTH": 14,
+    "/Табло и часы/HUBB_C": 5,
+    "SW_VCORE": 3,
+    "/Ethernet/ETH_LED_G": 1
+  },
+  "footprints": 390,
+  "netlist_components": 386,
+  "parity_errors": [],
+  "reference_cuts": [],
+  "file_sha256": "13993edaf51b805a0033b473ff21016748596f70ab2756ce39133b04299b9ee1"
+}

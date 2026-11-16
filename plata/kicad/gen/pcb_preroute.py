@@ -44,7 +44,7 @@ def clearance(net):
 
 
 class Router:
-    def __init__(self, board):
+    def __init__(self, board, protect_zones=False):
         self.board = board
         self.fp = {f.GetReference(): f for f in board.GetFootprints()}
         self.index = collections.defaultdict(list)
@@ -55,6 +55,9 @@ class Router:
         self.edge_stitches = []
         self.done = []
         self.failed = []
+        self.protect_zones = protect_zones
+        self.reference_guards=[]
+        self.reference_guard_ready=False
         self.group = pcbnew.PCB_GROUP(board)
         self.group.SetName(TAG)
         self.group.SetLocked(True)
@@ -62,12 +65,13 @@ class Router:
         for f in sorted(board.GetFootprints(), key=lambda f: f.GetReference()):
             for p in f.Pads():
                 for layer in (F, pcbnew.In2_Cu, B):
-                    if p.IsOnLayer(layer):
+                    if p.IsOnLayer(layer) or p.GetAttribute()==pcbnew.PAD_ATTRIB_NPTH:
                         self.obstacle(p, layer)
         for t in board.GetTracks():
             for layer in (F, pcbnew.In2_Cu, B):
                 if t.IsOnLayer(layer):
                     self.obstacle(t, layer)
+        self.index_power_zones()
 
     def checkpoint(self):
         return len(self.created),len(self.done),self.serial,len(self.pairs)
@@ -82,10 +86,26 @@ class Router:
         for f in sorted(self.board.GetFootprints(),key=lambda f:f.GetReference()):
             for p in f.Pads():
                 for layer in (F,pcbnew.In2_Cu,B):
-                    if p.IsOnLayer(layer):self.obstacle(p,layer)
+                    if p.IsOnLayer(layer) or p.GetAttribute()==pcbnew.PAD_ATTRIB_NPTH:self.obstacle(p,layer)
         for t in self.board.GetTracks():
             for layer in (F,pcbnew.In2_Cu,B):
                 if t.IsOnLayer(layer):self.obstacle(t,layer)
+        self.index_power_zones()
+
+    def index_power_zones(self):
+        # При доводке готовой платы не режем закреплённые силовые острова
+        # чужими дорожками. GND заливается заново; In2 содержит ручное дерево CORE.
+        for obj,layer,shape in self.reference_guards:self.obstacle(obj,layer,shape)
+        if not self.protect_zones:return
+        for z in self.board.Zones():
+            if z.GetIsRuleArea() or not z.IsLocked() or z.GetNetname()=='GND':continue
+            for layer in (F,B):
+                if not z.IsOnLayer(layer):continue
+                poly=z.GetFilledPolysList(layer)
+                for i in range(poly.OutlineCount()):
+                    part=pcbnew.SHAPE_POLY_SET();part.AddOutline(poly.COutline(i))
+                    for j in range(poly.HoleCount(i)):part.AddHole(poly.CHole(i,j))
+                    self.obstacle(z,layer,part)
 
     def pad(self, ref, pin):
         pads = [p for p in self.fp[ref].Pads() if p.GetNumber() == str(pin)]
@@ -105,11 +125,15 @@ class Router:
         self.created.append(obj)
         return obj
 
-    def obstacle(self, obj, layer):
-        shape = obj.GetEffectiveShape(layer)
+    def obstacle(self, obj, layer, shape=None):
+        explicit_shape=shape is not None
+        if shape is None:
+            shape = obj.GetEffectiveShape(layer)
+            if isinstance(obj,pcbnew.PAD) and obj.GetAttribute()==pcbnew.PAD_ATTRIB_NPTH:
+                shape=pcbnew.SHAPE_CIRCLE(obj.GetPosition(),max(obj.GetDrillSize().x,obj.GetDrillSize().y)//2)
         bb = shape.BBox()
         p0, p1 = xy(bb.GetOrigin()), xy(bb.GetEnd())
-        entry = (obj.GetNetname(), shape, obj)
+        entry = (obj.GetNetname(), shape, shape if explicit_shape else obj)
         # Ячейка 2 мм — только пространственный индекс, не точность маршрута.
         for ix in range(math.floor(p0[0] / 2), math.floor(p1[0] / 2) + 1):
             for iy in range(math.floor(p0[1] / 2), math.floor(p1[1] / 2) + 1):
@@ -129,12 +153,12 @@ class Router:
         for ix in range(math.floor((min(a[0], b[0]) - r) / 2), math.floor((max(a[0], b[0]) + r) / 2) + 1):
             for iy in range(math.floor((min(a[1], b[1]) - r) / 2), math.floor((max(a[1], b[1]) + r) / 2) + 1):
                 for other, shape, obj in self.index[layer, ix, iy]:
-                    if (other == net and not (getattr(self,'block_own',None)==(net,layer) and isinstance(obj,pcbnew.PCB_TRACK) and not isinstance(obj,pcbnew.PCB_VIA))) or other in ignore or id(obj) in seen:
+                    if (isinstance(obj,pcbnew.SHAPE_POLY_SET) and (other,layer) in getattr(self,'allowed_zone_cuts',set())) or (other == net and not (getattr(self,'block_own',None)==(net,layer) and isinstance(obj,pcbnew.PCB_TRACK) and not isinstance(obj,pcbnew.PCB_VIA))) or other in ignore or id(obj) in seen:
                         continue
                     seen.add(id(obj))
                     # 5 нм допуска только на округление offset-пары в единицы KiCad; DRC не меняется.
                     gap = max(clearance(net), clearance(other), .15) + (-.000005 if frozenset((net,other)) in self.paired else .006)
-                    if shape.Collide(segment, mm(gap)):
+                    if pcbnew.SHAPE.Collide(shape,segment,mm(gap)):
                         return False
         return True
 
@@ -349,11 +373,10 @@ def power(r):
     r.copper('VIN_F',(22,80.5,43,105),B,name='input:VIN_F')
     r.copper('VIN_F',(40.5,80.8,43.8,85.2),name='Q1:source')
     vinb=r.pad('U1',1).GetNetname()
-    # KiCad 9.0.9 проверяет пересечение даже зон одной цепи: приоритеты
-    # различаются, электрическая цепь и геометрия силовой меди сохранены.
-    r.copper(vinb,(29.4,79.2,31.9,82.9),priority=10,name='U1:VIN')
-    r.copper(vinb,(29.4,76.0,49.4,80.2),priority=11,name='Q1-U1:VIN-top')
-    r.copper(vinb,(44.1,78,49.4,86.4),priority=12,name='Q1:drain')
+    # Один контур — объединение прежних трёх прямоугольников: разные
+    # приоритеты убрали zones_intersect, но оставили разрывы VIN_B после refill.
+    z=r.copper(vinb,(29.4,76,49.4,86.4),priority=12,name='Q1-U1:VIN')
+    set_vin_outline(z)
     r.copper('+24V_P',(36.2,79.2,39.1,82.9),name='U1:OUT')
     # 15 PTH EP21 остаются из footprint. Локальная нижняя медь отводит
     # тепло в In1 через них; ни одного отверстия не удаляем и не добавляем туда.
@@ -386,7 +409,7 @@ def power(r):
     else:r.failed.append('LMR3V3 to In2')
     # IN_SYS должен видеть VIN_F до защиты обратной полярности.
     r.track([r.pos('U1',6),(29.5,84.325)],'VIN_F',.25,label='U1 IN_SYS')
-    r.via((29.5,84.325),'VIN_F')
+    r.via((29.5,84.325),'VIN_F',.45,.2)
 
 
 def kelvin(r,a,b,width,diameter=.6,drill=.3,source_via=None):
@@ -1100,7 +1123,7 @@ def back_pad(r, refpin):
     return None
 
 
-def tree_join(r,start,root,net,layer,width,label):
+def tree_join(r,start,root,net,layer,width,label,short_t=False):
     """Ближайшая ветвь и перпендикулярное T, без острых пересечений.
     При поиске подхода своя существующая медь тоже препятствие; только
     последний прямой отрезок присоединяется к выбранной ветви.
@@ -1114,6 +1137,10 @@ def tree_join(r,start,root,net,layer,width,label):
         along=max(.4,min(length-.4,(start[0]-a[0])*vx+(start[1]-a[1])*vy))
         p=(a[0]+vx*along,a[1]+vy*along)
         if distance(start,p)<pcbnew.ToMM(t.GetWidth())/2+.215:return True
+        # Если via уже ближе .8 мм к ветви, lead позади него создаёт
+        # разворот; прежний fallback давал острый язычок в стыке R5.
+        if short_t and distance(start,p)<.8 and r.free(start,p,width,net,layer):
+            if r.track([start,p],net,width,layer,label=label+' short T'):return True
         nx,ny=-vy,vx;side=1 if (start[0]-p[0])*nx+(start[1]-p[1])*ny>=0 else -1
         for gap in (.8,1.2):
             lead=(p[0]+nx*side*gap,p[1]+ny*side*gap)
@@ -1560,6 +1587,200 @@ def supplies(r):
     print('питание: добавлено %d via; неполных цепей %s'%(len(r.supply_added_vias),{n:d['unconnected'] for n,d in r.supply_checks.items() if d['unconnected']}),flush=True)
 
 
+def set_vin_outline(z):
+    """Точная сумма трёх прежних прямоугольников VIN_B; не bounding box."""
+    poly=pcbnew.SHAPE_POLY_SET();poly.NewOutline()
+    for q in ((29.4,76),(49.4,76),(49.4,86.4),(44.1,86.4),
+              (44.1,80.2),(31.9,80.2),(31.9,82.9),(29.4,82.9)):
+        p=point(q);poly.Append(p.x,p.y)
+    z.SetOutline(poly);poly.thisown=False
+    z.SetZoneName(TAG+':Q1-U1:VIN');z.SetAssignedPriority(12)
+
+
+def detail_escape(r,key,width=.2,avoid=()):
+    p=r.pad(*key);net=p.GetNetname();start=xy(p.GetPosition())
+    if p.GetDrillSize().x:return start
+    g=SupplyGraph(r,net,key)
+    existing=[v for v in g.vias if g.linked(v) and distance(start,xy(v.GetPosition()))<7
+              and r.free(xy(v.GetPosition()),xy(v.GetPosition()),width,net,B)
+              and not any(distance(xy(v.GetPosition()),a)<.05 for a in avoid)]
+    if existing:return xy(min(existing,key=lambda v:distance(start,xy(v.GetPosition()))).GetPosition())
+    for diameter,drill in ((.45,.2),(.6,.3)):
+        candidates=supply_candidates(r,p)+[(start[0]+dx*.2,start[1]+dy*.2)
+            for dx in range(-15,16) for dy in range(-15,16) if dx and dy and 4<=dx*dx+dy*dy<=225]
+        for q in sorted(set(candidates),key=lambda q:(distance(start,q),q)):
+            if any(distance(q,a)<.05 for a in avoid):continue
+            if net.split('/')[-1] in ('ETH_1V2','ETH_TOCAP') and not reference_via_clear(r,q,diameter):continue
+            if not r.canvia(q,net,diameter,drill) or not supply_hole_clear(r,q,net,drill):continue
+            if not r.free(q,q,width,net,B):continue
+            for neck in dict.fromkeys((width,.2,.15)):
+                path=r.search(start,q,net,neck,F,margin=2,step=.05,max_nodes=15000)
+                if path is None:continue
+                cp=r.checkpoint()
+                if r.via(q,net,diameter,drill) and r.track(path,net,neck,F,label='detail escape '+str(key)):return q
+                r.rollback(cp)
+    return None
+
+
+def detail_link(r,a,b,width=.2,prefer_b=False):
+    pa,pb=r.pad(*a),r.pad(*b);net=pa.GetNetname()
+    if net!=pb.GetNetname():raise ValueError((a,b,'разные цепи'))
+    if SupplyGraph(r,net,b).linked(pa):return True
+    cp=r.checkpoint();label='detail %s.%s—%s.%s'%(*a,*b)
+    skip_f=r.protect_zones and a in (('U10',20),('U10',22),('U5',6),('U6',6))
+    if not prefer_b and not skip_f:
+        for w in dict.fromkeys((width,.15)):
+            if width>.3 and w<width:continue
+            path=r.search(xy(pa.GetPosition()),xy(pb.GetPosition()),net,w,F,margin=6,step=.05,max_nodes=100000)
+            if path and r.track(path,net,w,F,label=label):
+                print('detail F:',label,flush=True);return True
+    if (net=='VIN_F' and a==('U1',6)) or a in (('U10',20),('U10',22),('R85',1)):
+        x=detail_escape(r,a,width);y=detail_escape(r,b,width)
+        # Адрес C — электрически короткая медленная логическая ветвь.
+        # Сначала пробуем B, In2 только при барьере готовой B-разводки.
+        if a==('R85',1) and x and y:
+            bp=r.search(x,y,net,width,B,margin=5,step=.2,max_nodes=25000)
+            if bp and r.track(bp,net,width,B,label=label):return True
+        if a in (('U10',20),('U10',22)):guard_fast_reference(r)
+        path=r.search(x,y,net,width,pcbnew.In2_Cu,margin=4,step=.1) if x and y else None
+        if path and r.track(path,net,width,pcbnew.In2_Cu,label=label+' sense In2'):
+            print('detail In2:',label,flush=True);return True
+        r.rollback(cp)
+    aa=[];bb=[]
+    for attempt in range(6):
+        x=detail_escape(r,a,width,aa);y=detail_escape(r,b,width,bb)
+        if x and y:
+            path=r.search(x,y,net,width,B,margin=10,step=.1,max_nodes=120000)
+            if path and r.track(path,net,width,B,label=label):
+                print('detail B:',label,flush=True);return True
+        r.rollback(cp)
+        if attempt%2==0 and x:aa.append(x)
+        elif y:bb.append(y)
+    if prefer_b:return detail_link(r,a,b,width,False)
+    print('detail deferred:',label,flush=True);return False
+
+
+def fast_b_items(r):
+    if not hasattr(r,'fast_b_cache'):
+        r.fast_b_cache=[t for t in r.board.GetTracks() if not isinstance(t,pcbnew.PCB_VIA) and t.GetLayer()==B
+                        and any(c in ('ETH','USB') and fnmatch.fnmatchcase(t.GetNetname(),pat) for c,pat in pcb_rules.PATTERNS)]
+    return r.fast_b_cache
+
+
+def guard_fast_reference(r):
+    if r.reference_guard_ready:return
+    r.reference_guard_ready=True
+    for t in fast_b_items(r):
+        shape=pcbnew.SHAPE_SEGMENT(t.GetStart(),t.GetEnd(),t.GetWidth()+mm(1.4))
+        r.reference_guards.append((t,pcbnew.In2_Cu,shape))
+        r.obstacle(t,pcbnew.In2_Cu,shape)
+
+
+def reference_via_clear(r,q,diameter=.45):
+    # Помимо DRC: 0,30 мм вырез питания вокруг via + 0,60 мм запаса
+    # опорной меди до проекции B-пары (около 3h наружного диэлектрика).
+    circle=pcbnew.SHAPE_CIRCLE(point(q),mm(diameter/2+.3+.6))
+    return not any(pcbnew.SHAPE.Collide(circle,t.GetEffectiveShape(B),0) for t in fast_b_items(r))
+
+
+def core_testpoint(r):
+    net=r.pad('TP8',1).GetNetname();g=SupplyGraph(r,net,('U22',1))
+    if g.linked(r.pad('TP8',1)):return
+    # Старый fanout TP8 пересекал проекцию RX0 на In2. Выход смещён
+    # к свободному полю; In1 остаётся сплошной землёй. Пары не трогаем.
+    guard_fast_reference(r)
+    source=None;hint=(214.4,32.8)
+    candidates=[(hint[0]+dx*.1,hint[1]+dy*.1) for dx in range(-5,6) for dy in range(-5,9)]
+    for q in sorted(candidates,key=lambda q:(distance(q,hint),q)):
+        if not r.canvia(q,net,.45,.2) or not supply_hole_clear(r,q,net,.2):continue
+        path=r.search(r.pos('TP8',1),q,net,.2,F,margin=3,step=.1,max_nodes=30000)
+        if path and r.via(q,net,.45,.2) and r.track(path,net,.2,F,label='TP8 reference-safe F escape'):
+            source=q;break
+    if source is None:r.failed.append('TP8 reference-safe source');return
+    targets=[v for v in g.vias if g.linked(v) and r.free(xy(v.GetPosition()),xy(v.GetPosition()),.45,net,pcbnew.In2_Cu)]
+    for v in sorted(targets,key=lambda v:(distance(source,xy(v.GetPosition())),xy(v.GetPosition()))):
+        target=xy(v.GetPosition())
+        path=r.search(source,target,net,.3,pcbnew.In2_Cu,margin=8,step=.1,max_nodes=140000)
+        if path and r.track(path,net,.3,pcbnew.In2_Cu,label='CORE TP8 reference-safe In2'):return
+    r.failed.append('TP8 reference-safe In2')
+
+
+def power_details(r):
+    """Мелкие обязательные цепи до FR: RT, LDO W5500, VBUS, sense и TP.
+    Не соединяет глобальный VIN_F через чужую силовую медь на F.
+    Одни рецепты используются и при новом init, и при доводке route-state.
+    """
+    recipes=[
+        (('C3',1),('U1',3),.2,False),
+        (('C1',1),('F1',2),.6,True),
+        (('R1',1),('F1',2),.25,True),
+        (('U1',6),('R1',1),.25,False),
+        (('Q2',2),('F1',2),.25,True),
+        (('U1',4),('Q2',3),.2,True),
+        (('U5',6),('R28',1),.2,False),
+        (('U6',6),('R35',1),.2,False),
+        (('U10',22),('C60',1),.2,False),
+        (('U10',20),('C59',1),.2,False),
+        (('TP6',1),('R30',1),.2,True),
+        (('TP7',1),('R37',1),.2,True),
+        (('U9',5),('J5','A4'),.2,False),
+        (('J5','A4'),('J5','A9'),.2,False),
+        (('D27',1),('J12',2),.6,False),
+        (('R85',1),('U18',18),.2,True),
+    ]
+    for a,b,width,prefer_b in recipes:
+        # Узкие сигнальные ветви в верхнем левом углу B: разрешаем
+        # локально обтечь их входной зоне VIN_F; 4-мм ствол не трогаем.
+        r.allowed_zone_cuts={('VIN_F',B)} if a in (('C3',1),('U1',4)) else set()
+        if not detail_link(r,a,b,width,prefer_b):r.failed.append('detail '+str(a)+' '+str(b))
+    r.allowed_zone_cuts=set()
+    core_testpoint(r)
+
+
+def pmic_details(r):
+    """Управление входной eFuse по In2: In1/GND и силовой VIN_B на F непрерывны.
+
+    В старом route-state EF_PGTH/SHDN пересекали пустые стыки отдельных
+    VIN_B-зон на F и разрезали их. Здесь это короткие ручные управляющие
+    ветви In2, не допуск Freerouting к сигнальной трассировке всего слоя.
+    """
+    r.allowed_zone_cuts={('VIN_F',B),(r.pad('U1',1).GetNetname(),F)}
+    sources={}
+    for pin,fixed in ((4,(30.01,83.005)),(5,(29.85,83.65)),(13,None),(16,None)):
+        key=('U1',pin);net=r.pad(*key).GetNetname()
+        # На штатной предразводке или повторно добавленном дереве ничего
+        # не дублируем. Проверяется физическая компонента, а не имя net.
+        g=SupplyGraph(r,net,key)
+        pending=[(ref,pad.GetNumber()) for ref,pad in g.pads if not g.linked(pad)]
+        if not pending:continue
+        if fixed:
+            # Два смещённых выхода у левого ряда .65 мм: отверстия вне
+            # площадок; все штатные зазоры, в том числе .30 мм до VIN_B,
+            # сохраняются. Они освобождают EN/DRV без via-in-pad.
+            if not r.canvia(fixed,net,.45,.2) or not supply_hole_clear(r,fixed,net,.2):
+                r.failed.append('U1 control fixed via '+str(pin));continue
+            path=r.search(r.pos(*key),fixed,net,.15,F,margin=2,step=.025,max_nodes=35000)
+            if not path or not r.via(fixed,net,.45,.2) or not r.track(path,net,.15,F,label='U1 control escape '+str(pin)):
+                r.failed.append('U1 control escape '+str(pin));continue
+            source=fixed
+        else:source=detail_escape(r,key,.2)
+        if source is None:r.failed.append('U1 control source '+str(pin));continue
+        sources[pin]=source
+    # Все выходы размещены ДО деревьев In2: иначе первое дерево может
+    # занять единственное свободное место via соседнего вывода .65 мм.
+    for pin,source in sources.items():
+        key=('U1',pin);net=r.pad(*key).GetNetname();g=SupplyGraph(r,net,key)
+        pending=[(ref,pad.GetNumber()) for ref,pad in g.pads if not g.linked(pad)]
+        for other in sorted(set(pending)):
+            g=SupplyGraph(r,net,key)
+            if g.linked(r.pad(*other)):continue
+            target=detail_escape(r,other,.2)
+            if not target or not tree_join(r,target,source,net,pcbnew.In2_Cu,.2,'U1 control In2 '+str(pin)+' '+str(other),short_t=True):
+                r.failed.append('U1 control In2 '+str(other))
+        print('PMIC control:',pin,net,flush=True)
+    r.allowed_zone_cuts=set()
+
+
 def main(path):
     board=pcb_route.load(path)
     if any(g.GetName()==TAG for g in board.Groups()):
@@ -1596,6 +1817,9 @@ def main(path):
     vdd_bridge(r)
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     supplies(r)
+    pmic_details(r)
+    power_details(r)
+    pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcb_route.save(board,path)
     manifest={'schema':1,'created':len(r.created),'tracks':len([o for o in r.created if isinstance(o,pcbnew.PCB_TRACK) and not isinstance(o,pcbnew.PCB_VIA)]),
               'supply_fanouts':r.supply_fanouts,'supply_checks':r.supply_checks,'supply_added_vias':r.supply_added_vias,
