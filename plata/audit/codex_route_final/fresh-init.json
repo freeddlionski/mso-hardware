@@ -1,0 +1,901 @@
+{
+  "stage": "netlist → pcb_build → init → pcb_preroute, ДО Freerouting",
+  "preroute_exit_code": 0,
+  "created": 1901,
+  "tracks": 1257,
+  "vias": 627,
+  "not_routed": [],
+  "kicad_version": "9.0.9",
+  "remaining_for_autorouter": 279,
+  "violations": {
+    "hole_clearance": 4,
+    "silk_overlap": 184,
+    "silk_over_copper": 161,
+    "silk_edge_clearance": 26
+  },
+  "pairs": [
+    {
+      "name": "USB J5 B6/B7—USBLC6",
+      "nets": [
+        "/ESP32-S3 и USB/USB_DP",
+        "/ESP32-S3 и USB/USB_DM"
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.29,
+      "gap_mm": 0.2,
+      "lengths_mm": [
+        5.948698,
+        5.948698
+      ],
+      "skew_mm": 0.0
+    },
+    {
+      "name": "USB-C A6/A7—B6/B7 copies",
+      "nets": [
+        "/ESP32-S3 и USB/USB_DP",
+        "/ESP32-S3 и USB/USB_DM"
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.15,
+      "gap_mm": null,
+      "lengths_mm": [
+        3.03,
+        3.07
+      ],
+      "skew_mm": 0.04,
+      "note": "короткий fanout, не контролируемая по импедансу пара"
+    },
+    {
+      "name": "USB USBLC6—CH340K",
+      "nets": [
+        "/ESP32-S3 и USB/USB_DP",
+        "/ESP32-S3 и USB/USB_DM"
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.29,
+      "gap_mm": 0.2,
+      "lengths_mm": [
+        17.203036,
+        17.034894
+      ],
+      "skew_mm": 0.168142
+    },
+    {
+      "name": "USBLC6 flow-through",
+      "nets": [
+        "/ESP32-S3 и USB/USB_DP",
+        "/ESP32-S3 и USB/USB_DM"
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.29,
+      "gap_mm": 1.61,
+      "lengths_mm": [
+        2.275,
+        2.275
+      ],
+      "skew_mm": 0.0,
+      "note": "короткие параллельные каналы между проходными выводами корпуса"
+    },
+    {
+      "name": "ETH W5500 RX—C64/C65",
+      "nets": [
+        "/Ethernet/ETH_RXP",
+        "/Ethernet/ETH_RXN"
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.4003213916812154,
+          1.43558350505988
+        ],
+        [
+          1.4003213916812154,
+          1.43558350505988
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.4003213916812154,
+          1.43558350505988
+        ],
+        [
+          1.4003213916812154,
+          1.43558350505988
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        0,
+        0
+      ],
+      "length_bias_mm": [
+        0.0,
+        0.0
+      ],
+      "lengths_mm": [
+        6.79229,
+        6.79229
+      ],
+      "skew_mm": 0.0
+    },
+    {
+      "name": "ETH C64/C65—T1",
+      "nets": [
+        "/Ethernet/ETH_RDP",
+        "/Ethernet/ETH_RDN"
+      ],
+      "layer": "F.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.7545369759568978,
+          7.700000000000003
+        ],
+        [
+          2.29510565394564,
+          7.700000000000003
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.7545369759568978,
+          2.280000000000001
+        ],
+        [
+          2.29510565394564,
+          2.280000000000001
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        5.420000000000002,
+        5.420000000000002
+      ],
+      "length_bias_mm": [
+        2.481315,
+        2.481315
+      ],
+      "lengths_mm": [
+        46.946035,
+        46.596035
+      ],
+      "skew_mm": 0.35,
+      "fixed_end_lengths_mm": [
+        2.481315,
+        2.481315
+      ]
+    },
+    {
+      "name": "ETH RTL port1 RX—J7",
+      "nets": [
+        "SW_RXP1",
+        "SW_RXN1"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.2050311199300923,
+          4.266307894677648
+        ],
+        [
+          1.8904353816766108,
+          1.7263078946776274
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.2050311199300923,
+          0.5263078946776386
+        ],
+        [
+          1.8904353816766108,
+          0.5263078946776386
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        3.740000000000009,
+        1.1999999999999886
+      ],
+      "length_bias_mm": [
+        6.832898668654673,
+        6.733975596014233
+      ],
+      "lengths_mm": [
+        47.451883,
+        47.101883
+      ],
+      "skew_mm": 0.35,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 3.332898668654673
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 3.2339755960142322
+        }
+      ],
+      "trunk_layer": "F.Cu",
+      "via_count_per_leg": 2,
+      "GND_returns": [
+        [
+          200.65,
+          39.904167
+        ],
+        [
+          195.633975,
+          40.53
+        ]
+      ],
+      "deviation": "Параллельный выход QFN на B.Cu, основная пара F.Cu"
+    },
+    {
+      "name": "ETH RTL port1 TX—J7",
+      "nets": [
+        "SW_TXP1",
+        "SW_TXN1"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.2050311199300923,
+          3.0045056606385563
+        ],
+        [
+          1.2099733762867528,
+          5.544505660638577
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.2050311199300923,
+          1.7445056606385656
+        ],
+        [
+          1.2099733762867528,
+          1.7445056606385656
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        1.259999999999991,
+        3.8000000000000114
+      ],
+      "length_bias_mm": [
+        6.604941290910604,
+        6.657321422456377
+      ],
+      "lengths_mm": [
+        72.024658,
+        71.601171
+      ],
+      "skew_mm": 0.423487,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 3.1049412909106042
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 3.1573214224563766
+        }
+      ],
+      "trunk_layer": "F.Cu",
+      "via_count_per_leg": 2,
+      "GND_returns": [
+        [
+          199.35,
+          44.135833
+        ],
+        [
+          197.0,
+          43.876025
+        ]
+      ],
+      "deviation": "Параллельный выход QFN на B.Cu, основная пара F.Cu"
+    },
+    {
+      "name": "ETH RTL port2 TX—J18",
+      "nets": [
+        "/Коммутатор Ethernet/SW_TXP2",
+        "/Коммутатор Ethernet/SW_TXN2"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.2050311199300923,
+          5.452103968805645
+        ],
+        [
+          1.55837694637225,
+          2.9121039688056305
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.2050311199300923,
+          1.7121039688056352
+        ],
+        [
+          1.55837694637225,
+          1.712103968805642
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        3.740000000000009,
+        1.1999999999999886
+      ],
+      "length_bias_mm": [
+        3.1573214224563766,
+        3.2339755960142322
+      ],
+      "lengths_mm": [
+        63.944457,
+        63.594457
+      ],
+      "skew_mm": 0.35,
+      "trunk_layer": "B.Cu",
+      "via_count_per_leg": 1,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 3.1573214224563766
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 3.2339755960142322
+        }
+      ],
+      "GND_returns": [
+        [
+          224.04,
+          42.46
+        ],
+        [
+          221.5,
+          38.66
+        ]
+      ],
+      "deviation": "B.Cu: F-попытки не прошли проверку; обе линии с одинаковым числом via"
+    },
+    {
+      "name": "ETH LNK_A T1—T2",
+      "nets": [
+        "LNK_A_P",
+        "LNK_A_N"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.5945218719101857,
+          2.0838665984174547
+        ],
+        [
+          2.093738649143832,
+          2.0838665984174547
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.5945218719101857,
+          2.0838665984174547
+        ],
+        [
+          2.093738649143832,
+          2.0838665984174547
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        0,
+        0
+      ],
+      "length_bias_mm": [
+        2.8000000000000043,
+        2.8000000000000043
+      ],
+      "lengths_mm": [
+        19.385062,
+        19.035062
+      ],
+      "skew_mm": 0.35,
+      "trunk_layer": "B.Cu",
+      "via_count_per_leg": 2,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 1.3999999999999986
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 1.3999999999999986
+        },
+        {
+          "side": 1,
+          "leg": 0,
+          "length_mm": 1.4000000000000057
+        },
+        {
+          "side": 1,
+          "leg": 1,
+          "length_mm": 1.4000000000000057
+        }
+      ],
+      "GND_returns": [
+        [
+          176.555,
+          30.175
+        ],
+        [
+          191.475,
+          34.095
+        ],
+        [
+          191.475,
+          31.555
+        ]
+      ],
+      "deviation": "B.Cu: F-попытки не прошли проверку; обе линии с одинаковым числом via"
+    },
+    {
+      "name": "ETH LNK_B T1—T2",
+      "nets": [
+        "LNK_B_P",
+        "LNK_B_N"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.5945218719102043,
+          2.083866598417479
+        ],
+        [
+          2.8017698484178357,
+          2.8707875566074907
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.5945218719102043,
+          2.083866598417479
+        ],
+        [
+          2.8017698484178357,
+          2.8707875566074907
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        0,
+        0
+      ],
+      "length_bias_mm": [
+        2.8000000000000043,
+        2.8000000000000043
+      ],
+      "lengths_mm": [
+        26.615053,
+        26.265053
+      ],
+      "skew_mm": 0.35,
+      "trunk_layer": "B.Cu",
+      "via_count_per_leg": 2,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 1.3999999999999986
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 1.3999999999999986
+        },
+        {
+          "side": 1,
+          "leg": 0,
+          "length_mm": 1.4000000000000057
+        },
+        {
+          "side": 1,
+          "leg": 1,
+          "length_mm": 1.4000000000000057
+        }
+      ],
+      "GND_returns": [
+        [
+          182.905,
+          30.175
+        ],
+        [
+          191.341025,
+          40.945
+        ],
+        [
+          190.475,
+          36.905
+        ]
+      ],
+      "deviation": "B.Cu: F-попытки не прошли проверку; обе линии с одинаковым числом via"
+    },
+    {
+      "name": "ETH RTL port0 TX—T2",
+      "nets": [
+        "/Коммутатор Ethernet/SW_TXP0",
+        "/Коммутатор Ethernet/SW_TXN0"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.205031119930098,
+          2.0838665984174547
+        ],
+        [
+          1.6865007421047808,
+          2.0838665984174547
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.205031119930098,
+          2.0838665984174547
+        ],
+        [
+          1.6865007421047808,
+          2.0838665984174547
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        0,
+        0
+      ],
+      "length_bias_mm": [
+        4.364150989478489,
+        4.307482767699478
+      ],
+      "lengths_mm": [
+        25.556728,
+        25.206728
+      ],
+      "skew_mm": 0.35,
+      "trunk_layer": "B.Cu",
+      "via_count_per_leg": 2,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 2.9641509894784894
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 2.9074827676994777
+        },
+        {
+          "side": 1,
+          "leg": 0,
+          "length_mm": 1.4
+        },
+        {
+          "side": 1,
+          "leg": 1,
+          "length_mm": 1.4
+        }
+      ],
+      "GND_returns": [
+        [
+          203.05,
+          37.333975
+        ]
+      ],
+      "deviation": "B.Cu: F-попытки не прошли проверку; обе линии с одинаковым числом via"
+    },
+    {
+      "name": "ETH RTL port0 RX—T2",
+      "nets": [
+        "/Коммутатор Ethernet/SW_RXP0",
+        "/Коммутатор Ethernet/SW_RXN0"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          2.6514229862506644,
+          2.8220899265355333
+        ],
+        [
+          1.205031119930098,
+          2.083866598417479
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          2.6514229862506644,
+          2.8220899265355333
+        ],
+        [
+          1.205031119930098,
+          2.083866598417479
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        0,
+        0
+      ],
+      "length_bias_mm": [
+        4.278631572404702,
+        4.278631572404702
+      ],
+      "lengths_mm": [
+        30.9862,
+        31.3362
+      ],
+      "skew_mm": 0.35,
+      "trunk_layer": "B.Cu",
+      "via_count_per_leg": 2,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 2.8786315724047027
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 2.8786315724047027
+        },
+        {
+          "side": 1,
+          "leg": 0,
+          "length_mm": 1.4
+        },
+        {
+          "side": 1,
+          "leg": 1,
+          "length_mm": 1.4
+        }
+      ],
+      "GND_returns": [
+        [
+          205.03,
+          37.333975
+        ],
+        [
+          199.325,
+          35.095
+        ],
+        [
+          200.625,
+          31.555
+        ]
+      ],
+      "deviation": "B.Cu: F-попытки не прошли проверку; обе линии с одинаковым числом via"
+    },
+    {
+      "name": "ETH RTL port2 RX—J18",
+      "nets": [
+        "/Коммутатор Ethernet/SW_RXP2",
+        "/Коммутатор Ethernet/SW_RXN2"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          1.4115239990875166,
+          4.266307894677645
+        ],
+        [
+          2.80577974901807,
+          3.7190099463752313
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          1.4115239990875166,
+          0.5263078946776358
+        ],
+        [
+          2.80577974901807,
+          2.5190099463752427
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        3.740000000000009,
+        1.1999999999999886
+      ],
+      "length_bias_mm": [
+        23.027149,
+        23.377149
+      ],
+      "lengths_mm": [
+        50.016437,
+        49.666437
+      ],
+      "skew_mm": 0.35,
+      "trunk_layer": "B.Cu → F.Cu",
+      "via_count_per_leg": 2,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 3.451814087773362
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 3.332898668654673
+        }
+      ],
+      "GND_returns": [
+        [
+          211.8,
+          55.6
+        ],
+        [
+          200.866025,
+          48.13
+        ]
+      ],
+      "staging_vias_mm": [
+        [
+          210.8,
+          55.6
+        ],
+        [
+          212.2,
+          56.4
+        ]
+      ],
+      "B_section_lengths_including_source_mm": [
+        23.027149,
+        23.377149
+      ],
+      "preceding_section": {
+        "name": "ETH RTL port2 RX—J18",
+        "nets": [
+          "/Коммутатор Ethernet/SW_RXP2",
+          "/Коммутатор Ethernet/SW_RXN2"
+        ],
+        "layer": "B.Cu",
+        "width_mm": 0.24,
+        "gap_mm": 0.2,
+        "fanout_lengths_mm": [
+          [
+            2.5547055670609318,
+            2.6059321540794143
+          ],
+          [
+            1.2050311199300923,
+            2.80577974901807
+          ]
+        ],
+        "unpaired_fanout_lengths_mm": [
+          [
+            2.5547055670609318,
+            2.6059321540794143
+          ],
+          [
+            1.2050311199300923,
+            2.80577974901807
+          ]
+        ],
+        "parallel_tail_lengths_mm": [
+          0,
+          0
+        ],
+        "length_bias_mm": [
+          3.451814087773362,
+          3.332898668654673
+        ],
+        "lengths_mm": [
+          23.027149,
+          23.377149
+        ],
+        "skew_mm": 0.35
+      },
+      "deviation": "B-пара до симметричного перехода в свободной ячейке, затем F; прямой общий коридор перекрыт"
+    },
+    {
+      "name": "ETH W5500 TX—T1",
+      "nets": [
+        "/Ethernet/ETH_TXP",
+        "/Ethernet/ETH_TXN"
+      ],
+      "layer": "F.Cu/B.Cu",
+      "width_mm": 0.24,
+      "gap_mm": 0.2,
+      "fanout_lengths_mm": [
+        [
+          2.7811393982024715,
+          2.770723097367034
+        ],
+        [
+          1.2134249049693897,
+          2.7819171736730333
+        ]
+      ],
+      "unpaired_fanout_lengths_mm": [
+        [
+          2.7811393982024715,
+          2.770723097367034
+        ],
+        [
+          1.2134249049693897,
+          2.7819171736730333
+        ]
+      ],
+      "parallel_tail_lengths_mm": [
+        0,
+        0
+      ],
+      "length_bias_mm": [
+        3.206239186818854,
+        3.206239186818854
+      ],
+      "lengths_mm": [
+        41.804382,
+        42.154382
+      ],
+      "skew_mm": 0.35,
+      "trunk_layer": "B.Cu",
+      "via_count_per_leg": 2,
+      "F_necks": [
+        {
+          "side": 0,
+          "leg": 0,
+          "length_mm": 1.8062391868188554
+        },
+        {
+          "side": 0,
+          "leg": 1,
+          "length_mm": 1.8062391868188554
+        },
+        {
+          "side": 1,
+          "leg": 0,
+          "length_mm": 1.3999999999999986
+        },
+        {
+          "side": 1,
+          "leg": 1,
+          "length_mm": 1.3999999999999986
+        }
+      ],
+      "GND_returns": [
+        [
+          189.2375,
+          18.514359
+        ],
+        [
+          174.429167,
+          41.175
+        ],
+        [
+          179.095,
+          41.825
+        ]
+      ],
+      "deviation": "B.Cu: F-попытки не прошли проверку; обе линии с одинаковым числом via"
+    }
+  ]
+}
