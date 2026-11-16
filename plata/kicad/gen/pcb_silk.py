@@ -71,11 +71,11 @@ def main(path):
             for sl, cu in sides.items():
                 if p.IsOnLayer(cu) or p.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH:
                     pads[sl].append(rect(p.GetBoundingBox(), GAP_PAD))
-    for d in list(board.Drawings()):          # прошлые подписи — заново
+    drawings = list(board.Drawings())
+    for d in drawings:                           # прошлые подписи — заново
         if d.GetClass() == 'PCB_TEXT' and d.GetLayer() in silk:
             board.Remove(d)
-    for d in board.Drawings():
-        if d.GetLayer() in silk:
+        elif d.GetLayer() in silk:
             silk[d.GetLayer()].append((rect(d.GetBoundingBox(), GAP_SILK), None))
     placed = {l: [] for l in sides}
     for fp in fps:
