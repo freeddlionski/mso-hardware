@@ -1,7 +1,7 @@
 {
     "$schema": "https://schemas.kicad.org/drc.v1.json",
     "coordinate_units": "mm",
-    "date": "2026-11-16T06:46:30+0000",
+    "date": "2026-11-16T07:42:06+0000",
     "included_severities": [
         "error",
         "warning",
@@ -23,12 +23,12 @@
                     "uuid": "2e10c0f0-045d-4c3a-8f86-fc97fd2553f2"
                 },
                 {
-                    "description": "Track [+5V_LCD1] on F.Cu, length 0.8000 mm",
+                    "description": "Track [+5V_LCD1] on B.Cu, length 24.7263 mm",
                     "pos": {
-                        "x": 78.875,
+                        "x": 78.075,
                         "y": 52.3
                     },
-                    "uuid": "b10e182f-7ad2-431b-a3f7-05784dd00987"
+                    "uuid": "a4ea5cf5-e88c-4575-91ad-ba35d058c350"
                 }
             ],
             "severity": "error",
@@ -158,7 +158,7 @@
                         "x": 70.6997,
                         "y": 115.925
                     },
-                    "uuid": "d03b0ce6-f276-45f1-ba3b-6bd01691f1fb"
+                    "uuid": "cc933d0f-1dad-4675-a49d-56b6fcb83737"
                 },
                 {
                     "description": "Pad 4 [/Питание/EF_BGATE] of U1 on F.Cu",
@@ -281,7 +281,7 @@
                         "x": 146.862,
                         "y": 50.375
                     },
-                    "uuid": "b951d267-c801-4e73-8548-d5b8e6ede977"
+                    "uuid": "af32a337-5ae3-4d79-994d-1479b4d9a700"
                 }
             ],
             "severity": "error",
@@ -304,7 +304,7 @@
                         "x": 245.148,
                         "y": 60.874
                     },
-                    "uuid": "e58a3e16-cb59-4724-b191-db2cd3395283"
+                    "uuid": "7693ff17-c175-4575-8ddc-d2d384148b40"
                 }
             ],
             "severity": "error",
@@ -314,12 +314,35 @@
             "description": "Missing connection between items",
             "items": [
                 {
-                    "description": "PTH pad 2 [VIN_F] of F1",
+                    "description": "Track [VIN_F] on B.Cu, length 16.5568 mm",
                     "pos": {
                         "x": 53.92,
                         "y": 118.0
                     },
-                    "uuid": "df243777-3b55-4ea5-8a99-35df0dabff0d"
+                    "uuid": "92accf80-d50e-4829-ac9e-ad26be3b62b3"
+                },
+                {
+                    "description": "Pad 1 [VIN_F] of R1 on F.Cu",
+                    "pos": {
+                        "x": 57.2,
+                        "y": 114.825
+                    },
+                    "uuid": "c2e905ac-cba2-40cf-ba34-cd9dd7ff3d90"
+                }
+            ],
+            "severity": "error",
+            "type": "unconnected_items"
+        },
+        {
+            "description": "Missing connection between items",
+            "items": [
+                {
+                    "description": "Track [VIN_F] on B.Cu, length 16.5568 mm",
+                    "pos": {
+                        "x": 53.92,
+                        "y": 118.0
+                    },
+                    "uuid": "92accf80-d50e-4829-ac9e-ad26be3b62b3"
                 },
                 {
                     "description": "Pad 1 [VIN_F] of C1 on F.Cu",
@@ -360,29 +383,6 @@
             "description": "Missing connection between items",
             "items": [
                 {
-                    "description": "Pad 1 [VIN_F] of R1 on F.Cu",
-                    "pos": {
-                        "x": 57.2,
-                        "y": 114.825
-                    },
-                    "uuid": "c2e905ac-cba2-40cf-ba34-cd9dd7ff3d90"
-                },
-                {
-                    "description": "PTH pad 2 [VIN_F] of F1",
-                    "pos": {
-                        "x": 53.92,
-                        "y": 118.0
-                    },
-                    "uuid": "df243777-3b55-4ea5-8a99-35df0dabff0d"
-                }
-            ],
-            "severity": "error",
-            "type": "unconnected_items"
-        },
-        {
-            "description": "Missing connection between items",
-            "items": [
-                {
                     "description": "Pad 2 [VIN_F] of Q2 on F.Cu",
                     "pos": {
                         "x": 63.0625,
@@ -391,12 +391,12 @@
                     "uuid": "64d6b94a-c40b-41c7-80be-fef0d30e117a"
                 },
                 {
-                    "description": "Track [VIN_F] on F.Cu, length 1.6375 mm",
+                    "description": "Pad 6 [VIN_F] of U1 on F.Cu",
                     "pos": {
                         "x": 61.1375,
                         "y": 114.325
                     },
-                    "uuid": "991b7488-955e-48d9-a3aa-20091fadd5d9"
+                    "uuid": "294ea5a0-3d76-45a0-b5c5-054dd31351d7"
                 }
             ],
             "severity": "error",
@@ -505,7 +505,7 @@
                         "x": 84.1294,
                         "y": 90.0
                     },
-                    "uuid": "17b31feb-6b4d-4b34-9388-5dfa0101c064"
+                    "uuid": "cff5583a-3eef-45c7-a81c-cedfa46e9242"
                 }
             ],
             "severity": "warning",
@@ -520,7 +520,7 @@
                         "x": 255.759,
                         "y": 37.2943
                     },
-                    "uuid": "7a8f24d0-45c0-454a-a222-5165db3758a4"
+                    "uuid": "f94ddec7-eb1c-42c8-b453-44ca91e52a13"
                 }
             ],
             "severity": "warning",
@@ -535,7 +535,7 @@
                         "x": 63.0624,
                         "y": 101.209
                     },
-                    "uuid": "806ccb20-40bf-404d-bcb4-b318a74ba8b2"
+                    "uuid": "c8434267-3981-44ca-9d92-ff3bb34b3d3d"
                 }
             ],
             "severity": "warning",
@@ -550,7 +550,7 @@
                         "x": 148.203,
                         "y": 48.8797
                     },
-                    "uuid": "014e4741-80d2-4d15-9131-627a8d4169e5"
+                    "uuid": "e722f354-7988-4123-a3f3-b90c3c7df3b0"
                 }
             ],
             "severity": "warning",
@@ -565,7 +565,7 @@
                         "x": 245.148,
                         "y": 60.874
                     },
-                    "uuid": "331caf76-af69-42e9-81c5-03384eaf7293"
+                    "uuid": "eacc1503-3126-472c-aa82-597053096036"
                 }
             ],
             "severity": "warning",

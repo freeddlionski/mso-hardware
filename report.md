@@ -9,3 +9,4 @@
 | rest | 1 | 248 | 20 | via_dangling 5, hole_clearance 4 |
 | rest | 2 | 20 | 18 | via_dangling 5, hole_clearance 4 |
 | rest | 3 | 18 | 17 | via_dangling 5, hole_clearance 4 |
+| rest | 3 | 18 | 17 | via_dangling 5, hole_clearance 4 |
