@@ -1152,12 +1152,13 @@
 		(descr "Fuse SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "fuse")
 		(property "Reference" "F11"
-			(at -3.30325 0 90)
+			(at 0 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "a1007fe1-74ad-4826-a8d6-2164fa4fd0c3")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -6300,7 +6301,7 @@
 		(descr "Fuse SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "fuse")
 		(property "Reference" "F9"
-			(at 0 -2.15325 0)
+			(at 0 -2.334762 90)
 			(layer "F.SilkS")
 			(uuid "f0d48cff-1ddc-4b8c-a4fa-b0aeae2c167a")
 			(effects
@@ -10426,12 +10427,13 @@
 		(descr "Fuse SMD 2920 (7451 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size from: http://www.megastar.com/products/fusetronic/polyswitch/PDF/smd2920.pdf), generated with kicad-footprint-generator")
 		(tags "fuse")
 		(property "Reference" "F17"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "a475de6e-3246-4573-a9fe-04ee2dbe1443")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -14195,8 +14197,9 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R118"
-			(at 0 -1.63625 0)
+			(at 0 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "6097b413-2b78-427a-8029-6a0f1ce0f68e")
 			(effects
 				(font
@@ -18384,7 +18387,7 @@
 		(descr "Through hole straight pin header, 1x03, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x03 2.54mm single row")
 		(property "Reference" "J6"
-			(at 0 -2.79325 0)
+			(at 0 7.87325 0)
 			(layer "F.SilkS")
 			(uuid "42e4ae93-f30e-4a54-bb13-aeb009ea1633")
 			(effects
@@ -23549,12 +23552,12 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R95"
-			(at 3.232381 0 90)
+			(at 2.961905 0 90)
 			(layer "F.SilkS")
 			(uuid "a5566045-f060-4ac1-8349-21139dc14932")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -25284,7 +25287,7 @@
 		(descr "Diode SMA (DO-214AC)")
 		(tags "Diode SMA (DO-214AC)")
 		(property "Reference" "D24"
-			(at -0.0225 -2.77325 0)
+			(at -5.297381 0 0)
 			(layer "F.SilkS")
 			(uuid "4abdc79c-f7d7-45f9-915d-e7dfc25dc8e4")
 			(effects
@@ -27515,7 +27518,7 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R74"
-			(at 0 1.75325 0)
+			(at -3.232381 0 0)
 			(layer "F.SilkS")
 			(uuid "569bdc64-7e31-4b71-8731-ed2ac00fa6b8")
 			(effects
@@ -29470,7 +29473,7 @@
 		(descr "KANGNEX: drill 1.4 mm per KANGNEX datasheet; based on KiCad Generic Phoenix Contact connector footprint for: MC_1,5/3-G-3.81; number of pins: 03; pin pitch: 3.81mm; Angled || order number: 1803280 8A 160V")
 		(tags "phoenix_contact connector MC_01x03_G_3.81mm")
 		(property "Reference" "J9"
-			(at 3.755 -3.65825 0)
+			(at 11.877143 2.9325 0)
 			(layer "F.SilkS")
 			(uuid "c0778e47-cbfd-4c74-9f1d-8afe2f544f37")
 			(effects
@@ -29914,7 +29917,7 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R87"
-			(at 0 1.75325 0)
+			(at 0 2.482381 90)
 			(layer "F.SilkS")
 			(uuid "ca132fa6-d100-48fe-82ad-67af26ee68bb")
 			(effects
@@ -30236,7 +30239,7 @@
 		(descr "Fuse SMD 2920 (7451 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size from: http://www.megastar.com/products/fusetronic/polyswitch/PDF/smd2920.pdf), generated with kicad-footprint-generator")
 		(tags "fuse")
 		(property "Reference" "F8"
-			(at -5.804762 0 0)
+			(at 0 0 0)
 			(layer "F.SilkS")
 			(uuid "44a80ad2-0ec3-4cb2-8f29-7e0d805af913")
 			(effects
@@ -33920,12 +33923,13 @@
 		(descr "Through hole straight pin header, 1x02, 2.54mm pitch, single row")
 		(tags "Through hole pin header THT 1x02 2.54mm single row")
 		(property "Reference" "JP1"
-			(at 2.79325 1.275 0)
+			(at 0 1.275 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "63bdb8bc-0f2b-4840-99f7-d8d42a37e32c")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -34324,12 +34328,13 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R9"
-			(at 2.75619 0 0)
+			(at 0 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "6facb027-52d3-4684-a19c-5d9157c6e323")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -38770,12 +38775,13 @@
 		(descr "Diode SMA (DO-214AC)")
 		(tags "Diode SMA (DO-214AC)")
 		(property "Reference" "D38"
-			(at 4.52325 0 90)
+			(at -0.0225 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "fabfbbe3-dd18-4105-b547-bb854e5186e6")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -39061,12 +39067,13 @@
 		(descr "SOD-123")
 		(tags "SOD-123")
 		(property "Reference" "D18"
-			(at -3.41825 0 0)
+			(at -0.0225 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "434936bc-7446-4849-a589-a41c48c1a7f0")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -39362,7 +39369,7 @@
 		(descr "SOT, 5 Pin (JEDEC MO-178 Var AA https://www.jedec.org/document_search?search_api_views_fulltext=MO-178), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOT TO_SOT_SMD")
 		(property "Reference" "U14"
-			(at 0 2.72325 0)
+			(at 3.07325 -0.0875 90)
 			(layer "F.SilkS")
 			(uuid "0055bf73-6502-4ce4-829a-db2f9e35b26b")
 			(effects
@@ -41402,12 +41409,13 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R85"
-			(at 0 1.75325 0)
+			(at 0 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "5c55fca7-1070-47b1-9877-174ecd0d25fc")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -41724,7 +41732,7 @@
 		(descr "SMD pad as test Point, diameter 1.5mm")
 		(tags "test point SMD pad")
 		(property "Reference" "TP16"
-			(at 0 2.27325 0)
+			(at 0 3.383333 90)
 			(layer "F.SilkS")
 			(uuid "1106767c-563b-4f8d-95c6-f9aab37fb546")
 			(effects
@@ -43922,12 +43930,13 @@
 		(descr "SOD-123")
 		(tags "SOD-123")
 		(property "Reference" "D21"
-			(at 3.37325 0 0)
+			(at -0.0225 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "8b065062-6f62-4c57-8ddd-1d9754267e4f")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -45893,7 +45902,7 @@
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 76, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf, https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
 		(tags "capacitor")
 		(property "Reference" "C69"
-			(at 2.72325 0 0)
+			(at 0 -2.00325 90)
 			(layer "F.SilkS")
 			(uuid "1a4be9c1-7cc2-47d4-bca8-3998c9d68d62")
 			(effects
@@ -46216,7 +46225,7 @@
 		(descr "SOIC, 16 Pin (JEDEC MS-012, variation AC, https://www.jedec.org/document_search?search_api_views_fulltext=MS-012, https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/soic_narrow-r/r_16.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py")
 		(tags "SOIC SO 16-pin-NSOP R-16 R-16-S D0016A M2B SO16 SOT109-1 751B SOIC_N narrow")
 		(property "Reference" "U12"
-			(at 0 6.22325 0)
+			(at 0 -0.0875 90)
 			(layer "F.SilkS")
 			(uuid "b78207f5-feeb-4ecf-aee2-08454fe16a6e")
 			(effects
@@ -48591,7 +48600,7 @@
 		(descr "Through hole straight pin header, 2x05, 2.54mm pitch, double rows")
 		(tags "Through hole pin header THT 2x05 2.54mm double row")
 		(property "Reference" "J17"
-			(at 1.275 -2.79325 0)
+			(at 1.275 12.95325 0)
 			(layer "F.SilkS")
 			(uuid "bc2ab533-9309-45c0-bb0a-500de64c402d")
 			(effects
@@ -49748,7 +49757,7 @@
 		(descr "Diode SMA (DO-214AC)")
 		(tags "Diode SMA (DO-214AC)")
 		(property "Reference" "D28"
-			(at -0.0225 -2.77325 0)
+			(at -5.297381 0 0)
 			(layer "F.SilkS")
 			(uuid "7edfc03b-591b-4120-830d-7166a36c0fe9")
 			(effects
@@ -50831,12 +50840,13 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R64"
-			(at 3.232381 0 90)
+			(at 0 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "240c840c-b6b2-450f-9714-9de1d15091b7")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -50992,7 +51002,7 @@
 		(descr "Resistor SMD 2512 (6332 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R62"
-			(at 5.582381 0 0)
+			(at 0 0 0)
 			(layer "F.SilkS")
 			(uuid "d2b66d81-5abf-46b2-805d-6b067a654cab")
 			(effects
@@ -53992,12 +54002,13 @@
 		(descr "Fuse SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "fuse")
 		(property "Reference" "F12"
-			(at 3.960952 0 0)
+			(at 0 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "9f1783d1-5a14-4395-af3b-d9666d0f2b8f")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -54937,12 +54948,12 @@
 		(descr "LED SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: http://www.tortai-tech.com/upload/download/2011102023233369053.pdf), generated with kicad-footprint-generator")
 		(tags "LED")
 		(property "Reference" "D5"
-			(at -0.02 -1.79325 0)
+			(at -2.620952 0 0)
 			(layer "F.SilkS")
 			(uuid "58b0de42-fc8e-499c-a49c-5ce83f3e8f92")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -57030,12 +57041,13 @@
 		(at 241 66)
 		(descr "SMD3225/4, Crystal, 3.2x2.5mm package, SMD, generated with kicad-footprint-generator make_crystal.py, http://www.txccrystal.com/images/pdf/7m-accuracy.pdf")
 		(property "Reference" "Y3"
-			(at 0 2.77325 0)
+			(at 0 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "67dd805b-db0b-467f-820c-c7bd27dd6606")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -60169,7 +60181,7 @@
 		(descr "KANGNEX: drill 1.4 mm per KANGNEX datasheet; based on KiCad Generic Phoenix Contact connector footprint for: MC_1,5/3-G-3.81; number of pins: 03; pin pitch: 3.81mm; Angled || order number: 1803280 8A 160V")
 		(tags "phoenix_contact connector MC_01x03_G_3.81mm")
 		(property "Reference" "J8"
-			(at -4.367143 2.9325 0)
+			(at 3.755 2.9325 0)
 			(layer "F.SilkS")
 			(uuid "9eacd548-2b83-41f3-bcbf-2b8826e002cc")
 			(effects
@@ -67755,12 +67767,13 @@
 		(descr "SOD-123")
 		(tags "SOD-123")
 		(property "Reference" "D36"
-			(at -0.0225 -2.17325 0)
+			(at -0.0225 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "aa9b7acd-03cf-43a7-92aa-63a9df8a13da")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -68056,7 +68069,7 @@
 		(descr "Low-profile SMD Tactile Switch, https://www.e-switch.com/system/asset/product_line/data_sheet/165/TL3342.pdf")
 		(tags "SPST Tactile Switch")
 		(property "Reference" "SW2"
-			(at 0 4.02325 0)
+			(at 6.073809 0 0)
 			(layer "F.SilkS")
 			(uuid "9f8c173d-bccb-46de-bc5b-bc64cd07f625")
 			(effects
@@ -68640,7 +68653,7 @@
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: IPC-SM-782 page 72, https://www.pcb-3d.com/wordpress/wp-content/uploads/ipc-sm-782a_amendment_1_and_2.pdf), generated with kicad-footprint-generator")
 		(tags "resistor")
 		(property "Reference" "R55"
-			(at 0 2.482381 0)
+			(at 3.232381 0 90)
 			(layer "F.SilkS")
 			(uuid "07ad2350-2e4d-468e-9018-2fa445fc4c0c")
 			(effects
@@ -69869,7 +69882,7 @@
 		(descr "Fuse SMD 2920 (7451 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size from: http://www.megastar.com/products/fusetronic/polyswitch/PDF/smd2920.pdf), generated with kicad-footprint-generator")
 		(tags "fuse")
 		(property "Reference" "F16"
-			(at 0 0 0)
+			(at -5.62325 0 90)
 			(layer "F.SilkS")
 			(uuid "4e210753-7f4c-4796-b0ad-6a3665c03535")
 			(effects
@@ -78597,8 +78610,9 @@
 		(descr "Diode SMA (DO-214AC)")
 		(tags "Diode SMA (DO-214AC)")
 		(property "Reference" "D13"
-			(at -0.0225 -2.65625 0)
+			(at -0.0225 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "6a226ae3-11be-4c24-a6b5-c3415096a983")
 			(effects
 				(font
@@ -81046,12 +81060,13 @@
 		(descr "Diode SMA (DO-214AC)")
 		(tags "Diode SMA (DO-214AC)")
 		(property "Reference" "D19"
-			(at -0.0225 -2.77325 0)
+			(at -0.0225 0 90)
 			(layer "F.SilkS")
+			(hide yes)
 			(uuid "6f731f00-035f-45a3-9dee-8a958d39a4a4")
 			(effects
 				(font
-					(size 1 1)
+					(size 0.8 0.8)
 					(thickness 0.15)
 				)
 			)
@@ -84550,6 +84565,457 @@
 		)
 		(layer "Edge.Cuts")
 		(uuid "f6279ace-8b58-495f-8adc-a089c74bed94")
+	)
+	(gr_text "VENDOTEK 24В"
+		(at 66.854999 136.2775 0)
+		(layer "F.SilkS")
+		(uuid "61d05bcc-a799-4f5d-b542-d47002d3e6d7")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "120 Ом"
+		(at 97.492 134.1 0)
+		(layer "F.SilkS")
+		(uuid "d4c10e1b-6b9c-4c66-a19c-3ffa63026c0a")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "МОНЕТНИК"
+		(at 131.983 128.9325 0)
+		(layer "F.SilkS")
+		(uuid "3a11797f-7cef-4aba-957a-d83e3bd6d9c1")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "HUB75"
+		(at 134.89 47.2475 0)
+		(layer "F.SilkS")
+		(uuid "32c1aa25-dafe-437e-b1f7-1582deba2841")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "VENDOTEK LAN"
+		(at 243.85 69.06 0)
+		(layer "F.SilkS")
+		(uuid "ed689421-995d-452f-a0f5-3d5e7fbba2b6")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+24V"
+		(at 57.81 129.984999 90)
+		(layer "F.SilkS")
+		(uuid "038d10b8-c532-4712-a6e8-e973c9ca6b8c")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "ВХ1"
+		(at 211.89 134.233095 90)
+		(layer "F.SilkS")
+		(uuid "9b65d4e9-2270-4c6d-b497-4d2be35f9209")
+		(effects
+			(font
+				(size 0.8 0.8)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+5V"
+		(at 42.225 56 0)
+		(layer "F.SilkS")
+		(uuid "d9565753-ae5e-4cb2-a06e-bb8e695d771e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+5V"
+		(at 42.225 86 0)
+		(layer "F.SilkS")
+		(uuid "d8690cb9-58b8-4777-bf40-3520edd1ad58")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+24V"
+		(at 42.64 134.605 90)
+		(layer "F.SilkS")
+		(uuid "136863a1-66ee-4124-8890-a27dbf378bc4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 47.72 135.081191 90)
+		(layer "F.SilkS")
+		(uuid "d4be7ed5-a803-4fb7-b4e9-1f25c9315ce3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "TXD"
+		(at 85.307 137.557857 90)
+		(layer "F.SilkS")
+		(uuid "cac32edc-23c8-4b86-bf78-997e9e1f56f6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "RXD"
+		(at 89.117 137.43881 90)
+		(layer "F.SilkS")
+		(uuid "65505e6f-c07c-4142-a078-9a21677f9f6e")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 92.927 133.891191 90)
+		(layer "F.SilkS")
+		(uuid "adf1b725-bdc0-435a-a043-3ed7bf809828")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "A"
+		(at 101.237 134.986429 90)
+		(layer "F.SilkS")
+		(uuid "a97a47f6-fe03-452f-af79-f1360da70176")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "B"
+		(at 105.047 134.915 90)
+		(layer "F.SilkS")
+		(uuid "68a7f9ae-6f2a-452b-bec2-1480cf56adeb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+12V"
+		(at 130.323 133.415 90)
+		(layer "F.SilkS")
+		(uuid "113182a2-5fe7-482b-a7d0-9573ef1ea809")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 134.133 131.89119 90)
+		(layer "F.SilkS")
+		(uuid "093f8beb-4dbf-427a-85a5-df8efd008df8")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 157.683 131.89119 90)
+		(layer "F.SilkS")
+		(uuid "e58a6115-552f-4e26-b7f6-36f0b6d1fb1f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "ИМП"
+		(at 161.493 132.795953 90)
+		(layer "F.SilkS")
+		(uuid "8fafbec5-4fc8-4082-a3de-7c5371953a40")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "КН"
+		(at 186.613 134.391191 90)
+		(layer "F.SilkS")
+		(uuid "ec8cd9b7-5c26-4629-b52b-4336ec6b51b2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 190.423 133.891191 90)
+		(layer "F.SilkS")
+		(uuid "792afc76-85cc-4b6e-a491-0896db9d41f6")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 230.94 133.891191 90)
+		(layer "F.SilkS")
+		(uuid "8539819d-6adb-4991-abd3-2ebe590926e4")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "+24V"
+		(at 239.25 136.415 90)
+		(layer "F.SilkS")
+		(uuid "d5bd38a6-205b-49ec-9d1c-469ff6e970d3")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "GND"
+		(at 258.3 136.891191 90)
+		(layer "F.SilkS")
+		(uuid "57d87a04-8e0f-4bf8-9a18-5ce5343a3489")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "ТАБЛО 1"
+		(at 40 49.25 0)
+		(layer "F.SilkS")
+		(uuid "002e58c7-fa35-43c1-9bbe-851dee201960")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "ТАБЛО 2"
+		(at 40 79.25 0)
+		(layer "F.SilkS")
+		(uuid "0387c5f5-928c-4db0-b11f-a45980a14b40")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "ПИТАНИЕ 24В"
+		(at 45.185 131.2775 0)
+		(layer "F.SilkS")
+		(uuid "0869709f-cfa8-4058-a562-787c25fe84a6")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "RS-485"
+		(at 112.492 133.4325 0)
+		(layer "F.SilkS")
+		(uuid "43161f11-0f09-4698-bdda-33dda2a88cc2")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "КУПЮРНИК"
+		(at 157.723 128.4325 0)
+		(layer "F.SilkS")
+		(uuid "7eeaf8a7-9c43-4e06-9e63-8e6c23a212a1")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "UART"
+		(at 162 50.725 0)
+		(layer "F.SilkS")
+		(uuid "ba803614-d740-4fd3-98de-22a53633bb1e")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "RESET"
+		(at 168 80 0)
+		(layer "F.SilkS")
+		(uuid "4ca9fbfe-460c-4bbb-97e8-5503e4dee09f")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "MDB"
+		(at 173.998 131.5 0)
+		(layer "F.SilkS")
+		(uuid "348572c6-0c80-47c3-b391-3175b5fb1a9c")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "BOOT"
+		(at 178 80 0)
+		(layer "F.SilkS")
+		(uuid "2aa1d811-5ab1-4ac9-ae2e-d5719940b9e6")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "СЕРВИС"
+		(at 185.463 131.9325 0)
+		(layer "F.SilkS")
+		(uuid "64e97f8e-8ab0-4a5a-90e1-6b93eb494fcb")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "СЕРВИС"
+		(at 190 128.5 0)
+		(layer "F.SilkS")
+		(uuid "fe21ee63-630b-463f-8e95-695b0c27cb9a")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "РЕЗЕРВ"
+		(at 218.5 106 0)
+		(layer "F.SilkS")
+		(uuid "1b15e6d6-e30c-46ed-b024-b89ea3d3901e")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "ВХОДЫ"
+		(at 228.36 128.9325 0)
+		(layer "F.SilkS")
+		(uuid "7945b286-8007-4e27-8228-2006b4d912ee")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "СЕТЬ"
+		(at 245.85 50.06 0)
+		(layer "F.SilkS")
+		(uuid "8c87d0ab-e58f-42b5-ac72-142dd10a088c")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "USB"
+		(at 259.47 95.5 0)
+		(layer "F.SilkS")
+		(uuid "78987c81-749c-4e88-b95e-e4aadd14fd2c")
+		(effects
+			(font
+				(size 1.2 1.2)
+				(thickness 0.15)
+			)
+		)
+	)
+	(gr_text "МСО74 · mso74.ru · плата rev A 2026"
+		(at 150 110.05 0)
+		(layer "F.SilkS")
+		(uuid "8df1c7dc-5345-46ff-b439-a13a3d09d45a")
+		(effects
+			(font
+				(size 1.5 1.5)
+				(thickness 0.15)
+			)
+		)
 	)
 	(segment
 		(start 165.056 131.619)
