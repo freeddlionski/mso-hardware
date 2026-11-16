@@ -21,7 +21,7 @@ def parts(board):
         props = {p[1]: p[2] for p in findall(fp, 'property')}
         attr = find(fp, 'attr') or []
         out[props['Reference']] = dict(
-            value=props.get('Value', '') if props.get('Value', '').isascii() else (props.get('MPN') or props['LCSC']), lcsc=props.get('LCSC', '').strip(), fp=fp[1].split(':')[-1],
+            value=props.get('Value', '') if props.get('Value', '').isascii() else (props.get('MPN') or props.get('LCSC', '')), lcsc=props.get('LCSC', '').strip(), fp=fp[1].split(':')[-1],
             skip='dnp' in attr or 'exclude_from_bom' in attr, tht='through_hole' in attr)
     return out
 
