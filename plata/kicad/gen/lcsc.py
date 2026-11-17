@@ -106,8 +106,8 @@ PARTS = {
     ('150', 'R_0805_2012Metric'): ('C17471', '0805W8F1500T5E', 'осн.'),
     ('680 DNP', 'R_0603_1608Metric'): ('C23228', '0603WAF6800T5E', 'осн.; не ставим'),
     # --- внутренние разъёмы ---
-    ('Табло 1: +5V / GND', 'Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical'): ('C20539146', 'HC-5566-2*1A-05', 'HCTL, аналог Molex 5566-02A; сверить отверстия'),
-    ('Табло 2: +5V / GND', 'Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical'): ('C20539146', 'HC-5566-2*1A-05', 'HCTL, аналог Molex 5566-02A; сверить отверстия'),
+    ('Табло 1: +5V / GND', 'TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal'): ('C8465', 'WJ500V-5.08-2P', 'KANGNEX, винтовая 5,08, 18 А (как Phoenix MKDS 1,5)'),
+    ('Табло 2: +5V / GND', 'TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal'): ('C8465', 'WJ500V-5.08-2P', 'KANGNEX, винтовая 5,08, 18 А (как Phoenix MKDS 1,5)'),
     ('MDB Mini-Fit Jr 2×3', 'Molex_Mini-Fit_Jr_5566-06A_2x03_P4.20mm_Vertical'): ('C20539148', 'HC-5566-2*3A-05', 'HCTL, аналог Molex 5566-06A; сверить отверстия'),
     ('HUB75 IDC-16', 'IDC-Header_2x08_P2.54mm_Vertical'): ('C3406', '2.54-2*8P box header', 'BOOMELE, вилка с кожухом'),
     ('UART0 (диагностика)', 'PinHeader_1x03_P2.54mm_Vertical'): ('C49257', '2.54-1*3P', 'BOOMELE; не ставим'),
