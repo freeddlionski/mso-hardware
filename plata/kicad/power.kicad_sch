@@ -22375,7 +22375,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
 			(at 429.26 66.04 0)
 			(effects
 				(font
@@ -22393,7 +22393,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C20539146"
+		(property "LCSC" "C8465"
 			(at 429.26 66.04 0)
 			(effects
 				(font
@@ -22402,7 +22402,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "Molex 5566-02A"
+		(property "MPN" "WJ500V-5.08-2P"
 			(at 429.26 66.04 0)
 			(effects
 				(font
@@ -22411,7 +22411,7 @@
 				(hide yes)
 			)
 		)
-		(property "Примечание" "Mini-Fit Jr 2 конт. — не стыкуется с клеммами 24 В"
+		(property "Примечание" "винтовая клемма 5,08; защиты от +24 В и переполюсовки нет — в ревизии B вернуть (аудит 17.11)"
 			(at 429.26 66.04 0)
 			(effects
 				(font
@@ -27266,7 +27266,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_Molex:Molex_Mini-Fit_Jr_5566-02A_2x01_P4.20mm_Vertical"
+		(property "Footprint" "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal"
 			(at 429.26 193.04 0)
 			(effects
 				(font
@@ -27284,7 +27284,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C20539146"
+		(property "LCSC" "C8465"
 			(at 429.26 193.04 0)
 			(effects
 				(font
@@ -27293,7 +27293,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "Molex 5566-02A"
+		(property "MPN" "WJ500V-5.08-2P"
 			(at 429.26 193.04 0)
 			(effects
 				(font
@@ -27302,7 +27302,7 @@
 				(hide yes)
 			)
 		)
-		(property "Примечание" "Mini-Fit Jr 2 конт. — не стыкуется с клеммами 24 В"
+		(property "Примечание" "винтовая клемма 5,08; защиты от +24 В и переполюсовки нет — в ревизии B вернуть (аудит 17.11)"
 			(at 429.26 193.04 0)
 			(effects
 				(font

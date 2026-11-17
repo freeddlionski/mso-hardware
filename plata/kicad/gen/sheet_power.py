@@ -119,7 +119,7 @@ def lm61460(sh, x, y, tag, out, term_ref_note):
     # (Mini-Fit заменён: подключение проводом под винт; 18 А, провод до 2,5 мм²)
     j = sh.part('Connector_Generic:Conn_01x02', 'J', 'Табло ' + tag[-1] + ': +5V / GND', (x + 124.46, y + 2.54),
                 fp='TerminalBlock_Phoenix:TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal', mpn='WJ500V-5.08-2P',
-                fields={'Примечание': 'винтовая клемма 5,08, несъёмная — с вилками 24 В не путается',
+                fields={'Примечание': 'винтовая клемма 5,08; защиты от +24 В и переполюсовки нет — в ревизии B вернуть (аудит 17.11)',
                         'Шелкография': '+5V LED%s, GND' % tag[-1]})
     sh.connect(j, {'1': out, '2': 'GND'})
 
