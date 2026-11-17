@@ -6775,7 +6775,7 @@
 				)
 			)
 		)
-		(property "Value" "2.2k 1W"
+		(property "Value" "1k 1W"
 			(at 198.12 209.55 90)
 			(effects
 				(font
@@ -6801,7 +6801,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C453411"
+		(property "LCSC" "C453362"
 			(at 198.12 205.74 0)
 			(effects
 				(font
@@ -6810,7 +6810,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "RC-12K2201FT"
+		(property "MPN" "RC-12K1001FT"
 			(at 198.12 205.74 0)
 			(effects
 				(font

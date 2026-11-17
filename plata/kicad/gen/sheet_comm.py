@@ -72,7 +72,8 @@ def build(proj):
     two(sh, 'Device:D_TVS', 'D', 'SMAJ8.0CA', xp, y - 10.16, 'VTK_TX_U', 'GND', fp='Diode_SMD:D_SMA', mpn='SMAJ8.0CA')
     two(sh, 'Device:D_TVS', 'D', 'SMAJ8.0CA', xp, y + 10.16, 'VTK_RX_U', 'GND', fp='Diode_SMD:D_SMA', mpn='SMAJ8.0CA')
     R(sh, '2.2k 1W', xp + 20.32, y - 10.16, 'VTK_TX_U', 'VTK_TX_T', 'R2512')
-    R(sh, '2.2k 1W', xp + 20.32, y + 10.16, 'VTK_RX_U', 'VTK_RX_T', 'R2512')
+    # приём: 1 кОм (аудит 17.11) — с ёмкостью SMAJ8.0CA (~1 нФ) 2,2 кОм заваливали фронты на 115200; +32 В: 22 мА, 0,49 Вт
+    R(sh, '1k 1W', xp + 20.32, y + 10.16, 'VTK_RX_U', 'VTK_RX_T', 'R2512')
     xa = 215.9
     j = sh.part('Connector_Generic:Conn_01x03', 'J', 'Vendotek RS-232: TXD / RXD / GND', (xa + 40.64, y), fp=TERM3,
                 fields={'Примечание': 'TXD — выход платы (к RXD терминала), RXD — вход платы', 'Шелкография': 'TXD, RXD, GND'})
