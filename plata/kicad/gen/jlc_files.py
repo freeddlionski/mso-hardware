@@ -41,7 +41,8 @@ def main(board, pos, outdir):
         if not p['lcsc']:
             missing.append(ref)
             continue
-        groups[(p['lcsc'], p['value'], p['fp'])].append(ref)
+        key = next((k for k in groups if k[0] == p['lcsc']), (p['lcsc'], p['value'], p['fp']))   # одна строка на номер LCSC
+        groups[key].append(ref)
     key = lambda r: (''.join(c for c in r if c.isalpha()), int(''.join(c for c in r if c.isdigit()) or 0))
     with open(out / 'bom_jlc.csv', 'w', newline='', encoding='utf-8') as f:
         w = csv.writer(f)
