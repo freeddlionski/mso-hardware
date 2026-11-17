@@ -51523,7 +51523,7 @@
 				)
 			)
 		)
-		(property "Value" "2.2k 1W"
+		(property "Value" "1k 1W"
 			(at 0 2.63 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -51559,7 +51559,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C453411"
+		(property "LCSC" "C453362"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -51571,7 +51571,7 @@
 				)
 			)
 		)
-		(property "MPN" "RC-12K2201FT"
+		(property "MPN" "RC-12K1001FT"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
