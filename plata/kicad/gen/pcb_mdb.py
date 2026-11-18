@@ -222,6 +222,7 @@ def prepare(board_path, net_path, placement, snapshot):
         if name and not name.startswith('unconnected-') and not board.FindNet(name):
             ni = pcbnew.NETINFO_ITEM(board, name)
             board.Add(ni)
+            ni.thisown = False          # владелец — плата (иначе сборщик мусора Python удалит объект платы)
             new_nets.add(name)
             print('новая цепь', name)
 
@@ -249,6 +250,7 @@ def prepare(board_path, net_path, placement, snapshot):
             f.Reference().SetVisible(True)
             f.Value().SetVisible(False)
             board.Add(f)
+            f.thisown = False
             added.append(f)
             print('новая деталь', ref, c.value, c.fp, (x, y, rot))
         try:
@@ -268,6 +270,7 @@ def prepare(board_path, net_path, placement, snapshot):
                 fld.SetVisible(False)
                 fld.SetLayer(pcbnew.F_Fab)
                 f.AddField(fld)
+                fld.thisown = False
             if fld.GetText() != v:
                 print('поле %s %s: %s → %s' % (ref, key, fld.GetText() or '—', v))
                 fld.SetText(v)
@@ -398,6 +401,7 @@ def export(board_path, dsn):
         z.SetOutline(poly)
         poly.thisown = False
         board.Add(z)
+        z.thisown = False
     kept, hidden = set(), set()
     for f in board.GetFootprints():
         for p in f.Pads():
@@ -453,6 +457,7 @@ def finish(board_path, snapshot):
             if pnet != net and item_rect_dist(t, pr) < pcbnew.FromMM(0.15):
                 raise SystemExit('возврат %s задевает %s.%s (%s) — плату не сохраняю' % (key, fref, pnum, pnet))
         board.Add(t)
+        t.thisown = False
         restored += 1
         print('   возвращено:', key)
     total = len({seg_key(t) for t in board.GetTracks()})
@@ -547,6 +552,7 @@ def add_gnd_vias(board):
         via.SetDrill(drill)
         via.SetNet(gnd)
         board.Add(via)
+        via.thisown = False
         tr = pcbnew.PCB_TRACK(board)
         tr.SetStart(pcbnew.VECTOR2I(cx, cy))
         tr.SetEnd(v)
@@ -554,6 +560,7 @@ def add_gnd_vias(board):
         tr.SetLayer(pcbnew.F_Cu)
         tr.SetNet(gnd)
         board.Add(tr)
+        tr.thisown = False
         vias.append((spot[0], spot[1], rv))
         print('%s.%s → переход GND (%.2f; %.2f)' % (ref, num, pcbnew.ToMM(spot[0]), pcbnew.ToMM(spot[1])))
 
