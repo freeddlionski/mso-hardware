@@ -5,15 +5,49 @@
 - +24V_P: переход F3.1 → B.Cu перенесён в площадку F3.1 (на линию B.Cu 157,62) — освобождает проход для +5V.
 - +5V: Q12.2 / U24.1 были островом — R121.1 → переход → B.Cu вдоль F3 → переход у Q12.2.
 - висящий переход +5V (157,81; 127,33) — убран (обе дорожки на F.Cu).
+- поля LCSC/MPN новых деталей были пустые (pcbnew в pcb_mdb.py записал их мимо) — без них детали выпадали из BOM
+  заводу; берутся из схемы io.kicad_sch.
 
 Повторный запуск ничего не меняет (снимаем только найденное, добавляем только отсутствующее).
 Запуск: python3 mdb_hand.py ../routed/mso74-plata.kicad_pcb
 """
 import sys
 import uuid
+from pathlib import Path
 
 from eco_text import Board
-from sexp import parse
+from sexp import Q, find, findall, parse
+
+NEW = ('Q10', 'Q11', 'Q12', 'R119', 'R120', 'R121', 'R122', 'U24')
+SCH = Path(__file__).resolve().parent.parent / 'io.kicad_sch'
+
+
+def sch_fields():
+    out = {}
+    tree = parse(SCH.read_text(encoding='utf-8'))
+    for sym in findall(tree, 'symbol'):
+        props = {str(p[1]): str(p[2]) for p in findall(sym, 'property')}
+        if props.get('Reference') in NEW:
+            out[props['Reference']] = {k: props.get(k, '') for k in ('LCSC', 'MPN')}
+    return out
+
+
+def fix_fields(b):
+    want = sch_fields()
+    n = 0
+    for fp in b.footprints():
+        r = b.ref(fp)
+        if r not in want:
+            continue
+        for p in findall(fp, 'property'):
+            k = str(p[1])
+            if k in want[r] and want[r][k] and str(p[2]) != want[r][k]:
+                p[2] = Q(want[r][k])
+                n += 1
+    missing = set(NEW) - set(want)
+    if missing:
+        raise SystemExit('нет в схеме: %s' % sorted(missing))
+    return n
 
 E, P5, P24 = '/MDB и входы/MDB_TX_E', '+5V', '+24V_P'
 
@@ -97,8 +131,9 @@ def main(path):
         idx = max(i for i, n in enumerate(b.tree) if isinstance(n, list) and n and n[0] in ('segment', 'via'))
         b.tree.insert(idx + 1, node)
         added += 1
+    fields = fix_fields(b)
     b.save()
-    print('снято %d, добавлено %d' % (removed, added))
+    print('снято %d, добавлено %d, полей LCSC/MPN %d' % (removed, added, fields))
 
 
 def fill(path):

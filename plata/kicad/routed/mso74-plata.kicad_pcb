@@ -3975,7 +3975,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C23162"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -3987,7 +3987,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "0603WAF4701T5E"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24625,7 +24625,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C25804"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -24637,7 +24637,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "0603WAF1002T5E"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -39509,7 +39509,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C916375"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -39521,7 +39521,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "MMBT3906"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -42991,7 +42991,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C20526"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -43003,7 +43003,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "MMBT3904"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -55182,7 +55182,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C17480"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -55194,7 +55194,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "0805W8F150JT5E"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -63272,7 +63272,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C916375"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -63284,7 +63284,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "MMBT3906"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -70378,7 +70378,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C21190"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -70390,7 +70390,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "0603WAF1001T5E"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -72691,7 +72691,7 @@
 				)
 			)
 		)
-		(property "LCSC" ""
+		(property "LCSC" "C42379244"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -72703,7 +72703,7 @@
 				)
 			)
 		)
-		(property "MPN" ""
+		(property "MPN" "EL357N(C)-G"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
