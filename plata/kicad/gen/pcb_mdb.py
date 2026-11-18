@@ -371,15 +371,12 @@ def add_gnd_vias(board):
     others = [t for t in board.GetTracks() if t.GetNetname() != 'GND']
     pads = [(f, p) for f in board.GetFootprints() for p in f.Pads()]
 
-    def track_shape(t):
-        if isinstance(t, pcbnew.PCB_VIA):
-            return pcbnew.SHAPE_CIRCLE(t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2), None
-        return pcbnew.SHAPE_SEGMENT(t.GetStart(), t.GetEnd(), t.GetWidth()), t.GetLayer()
-
     def free(shape, layers, skip_pad):
         for t in others:
-            sh, L = track_shape(t)
-            if (L is None or L in layers) and sh.Collide(shape, clr):
+            if isinstance(t, pcbnew.PCB_VIA):
+                if t.GetEffectiveShape(pcbnew.F_Cu).Collide(shape, clr):
+                    return False
+            elif t.GetLayer() in layers and t.GetEffectiveShape(t.GetLayer()).Collide(shape, clr):
                 return False
         for f, p in pads:
             if p is skip_pad or p.GetNetname() == 'GND':
