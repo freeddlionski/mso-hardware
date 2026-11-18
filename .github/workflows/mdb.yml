@@ -10,7 +10,7 @@ permissions:
 on:
   push:
     branches-ignore: [main]
-    paths: ['plata/kicad/gen/pcb_mdb.py']
+    paths: ['plata/kicad/gen/pcb_mdb.py', 'plata/kicad/gen/eco_text.py']
   workflow_dispatch:
 
 jobs:
@@ -30,18 +30,19 @@ jobs:
           cp /usr/share/kicad/template/sym-lib-table ~/.config/kicad/9.0/ || true
           cp /usr/share/kicad/template/fp-lib-table ~/.config/kicad/9.0/ || true
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
-      - name: Плата ← схема (ECO), закрепить прочую медь
+      - name: Плата ← схема (ECO) — pcbnew добавляет, текст снимает
         run: |
           set -ex
           mkdir -p /tmp/w
           kicad-cli sch export netlist --format kicadsexpr --output /tmp/w/n.net plata/kicad/mso74-plata.kicad_sch
           cd plata/kicad/gen
-          python3 -u pcb_mdb.py prepare ../routed/mso74-plata.kicad_pcb /tmp/w/n.net ../placement.json /tmp/w/snap.json
-      - name: Freerouting — только связи MDB
+          python3 -u pcb_mdb.py prepare ../routed/mso74-plata.kicad_pcb /tmp/w/n.net ../placement.json /tmp/w/eco.json
+          python3 -u eco_text.py clean ../routed/mso74-plata.kicad_pcb /tmp/w/eco.json
+      - name: Freerouting — только связи MDB и +5V
         timeout-minutes: 60
         run: |
           set -e
-          (cd plata/kicad/gen && python3 -u pcb_mdb.py export ../routed/mso74-plata.kicad_pcb /tmp/w/mdb.dsn)
+          (cd plata/kicad/gen && python3 -u pcb_mdb.py export ../routed/mso74-plata.kicad_pcb /tmp/w/eco.json /tmp/w/snap.json /tmp/w/mdb.dsn)
           mkdir -p /tmp/fr
           python3 - <<'PY'
           import urllib.request, tarfile, io
@@ -58,15 +59,17 @@ jobs:
             --router.automatic_neckdown=false > /tmp/w/freerouting.log 2>&1
           echo "код завершения Freerouting: $?"
           set -e
-          grep -E "INFO|WARN|ERROR" /tmp/w/freerouting.log | grep -v -i "analytics\|deprecated" | cut -c1-260 | tail -30 || true
+          grep -E "Auto-routing stage|unrouted" /tmp/w/freerouting.log | cut -c1-200 | tail -5 || true
           [ -s /tmp/w/mdb.ses ] || { echo "Freerouting не выдал результат"; exit 1; }
           python3 plata/kicad/gen/pcb_route.py import $PCB /tmp/w/mdb.ses
-      - name: Чужая медь на месте, снять закрепление, обозначения
+      - name: Проверка закреплённой меди, дочистка, переходы GND, обозначения
         run: |
-          set -e
+          set -ex
           cd plata/kicad/gen
-          python3 -u pcb_mdb.py finish ../routed/mso74-plata.kicad_pcb /tmp/w/snap.json
-          python3 pcb_silk.py ../routed/mso74-plata.kicad_pcb
+          python3 -u pcb_mdb.py check ../routed/mso74-plata.kicad_pcb /tmp/w/snap.json
+          python3 -u eco_text.py prune ../routed/mso74-plata.kicad_pcb /tmp/w/eco.json
+          python3 -u pcb_mdb.py finish ../routed/mso74-plata.kicad_pcb
+          python3 -u pcb_silk.py ../routed/mso74-plata.kicad_pcb
       - name: DRC готовой платы (кратко)
         run: |
           kicad-cli pcb drc --format json --severity-all --output /tmp/w/drc.json $PCB || true
