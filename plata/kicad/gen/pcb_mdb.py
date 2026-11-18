@@ -177,7 +177,7 @@ def prepare(board_path, net_path, placement, snapshot):
             continue
         for p in f.Pads():
             if p.GetNetname():
-                dirty.append((p.GetPosition(), p.GetNetname(), p.GetEffectiveShape(pcbnew.F_Cu)))
+                dirty.append((p.GetPosition(), p.GetNetname(), pcbnew.BOX2I(p.GetBoundingBox())))
         board.Remove(f)
         print('снята деталь', ref)
     for ref, c in comps.items():
@@ -222,7 +222,7 @@ def prepare(board_path, net_path, placement, snapshot):
             have = p.GetNetname()
             if want != have:
                 if have:
-                    dirty.append((p.GetPosition(), have, p.GetEffectiveShape(pcbnew.F_Cu)))
+                    dirty.append((p.GetPosition(), have, pcbnew.BOX2I(p.GetBoundingBox())))
                 if want:
                     new_nets.add(want)
                 if want:
@@ -269,8 +269,14 @@ def prepare(board_path, net_path, placement, snapshot):
         for t in list(board.GetTracks()):
             if t.GetNetname() != net:
                 continue
-            hit = (shape.Collide(t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2) if isinstance(t, pcbnew.PCB_VIA)
-                   else shape.Collide(t.GetStart(), 0) or shape.Collide(t.GetEnd(), 0))
+            # shape — копия рамки площадки (BOX2I): форму площадки хранить нельзя — GetEffectiveShape отдаёт ссылку на
+            # кэш внутри площадки, после снятия детали она недействительна (падение 139 в прогоне 44379977742)
+            box = pcbnew.BOX2I(shape)
+            if isinstance(t, pcbnew.PCB_VIA):
+                box.Inflate(t.GetWidth(pcbnew.F_Cu) // 2)
+                hit = box.Contains(t.GetPosition())
+            else:
+                hit = box.Contains(t.GetStart()) or box.Contains(t.GetEnd())
             if hit:
                 removed += remove_with_ends(board, t, queue)
     removed += prune(board, queue=queue)
