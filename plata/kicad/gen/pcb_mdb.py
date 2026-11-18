@@ -84,11 +84,17 @@ def prepare(board_path, net_path, placement, snapshot):
             f.SetValue(c.value)
         for key in ('LCSC', 'MPN'):
             v = c.props.get(key, '')
-            if v and f.GetFieldText(key) != v:
-                f.SetField(key, v)
-                fld = f.GetFieldByName(key)
-                if fld:
-                    fld.SetVisible(False)
+            if not v:
+                continue
+            fld = next((x for x in f.GetFields() if x.GetName() == key), None)
+            if fld is None:
+                fld = pcbnew.PCB_FIELD(f, f.GetNextFieldId(), key)
+                fld.SetVisible(False)
+                fld.SetLayer(pcbnew.F_Fab)
+                f.AddField(fld)
+            if fld.GetText() != v:
+                print('поле %s %s: %s → %s' % (ref, key, fld.GetText() or '—', v))
+                fld.SetText(v)
         if f.IsDNP() != bool(c.dnp):
             f.SetDNP(bool(c.dnp))
         for p in f.Pads():
