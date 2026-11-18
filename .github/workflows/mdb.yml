@@ -32,16 +32,16 @@ jobs:
           git config --global --add safe.directory "$GITHUB_WORKSPACE"
       - name: Плата ← схема (ECO), закрепить прочую медь
         run: |
-          set -e
+          set -ex
           mkdir -p /tmp/w
           kicad-cli sch export netlist --format kicadsexpr --output /tmp/w/n.net plata/kicad/mso74-plata.kicad_sch
           cd plata/kicad/gen
-          python3 pcb_mdb.py prepare ../routed/mso74-plata.kicad_pcb /tmp/w/n.net ../placement.json /tmp/w/snap.json
+          python3 -u pcb_mdb.py prepare ../routed/mso74-plata.kicad_pcb /tmp/w/n.net ../placement.json /tmp/w/snap.json
       - name: Freerouting — только связи MDB
         timeout-minutes: 60
         run: |
           set -e
-          (cd plata/kicad/gen && python3 pcb_mdb.py export ../routed/mso74-plata.kicad_pcb /tmp/w/mdb.dsn)
+          (cd plata/kicad/gen && python3 -u pcb_mdb.py export ../routed/mso74-plata.kicad_pcb /tmp/w/mdb.dsn)
           mkdir -p /tmp/fr
           python3 - <<'PY'
           import urllib.request, tarfile, io
@@ -65,7 +65,7 @@ jobs:
         run: |
           set -e
           cd plata/kicad/gen
-          python3 pcb_mdb.py finish ../routed/mso74-plata.kicad_pcb /tmp/w/snap.json
+          python3 -u pcb_mdb.py finish ../routed/mso74-plata.kicad_pcb /tmp/w/snap.json
           python3 pcb_silk.py ../routed/mso74-plata.kicad_pcb
       - name: DRC готовой платы (кратко)
         run: |

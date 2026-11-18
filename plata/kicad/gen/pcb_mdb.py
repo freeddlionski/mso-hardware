@@ -13,9 +13,12 @@
 3. Закрепляет (locked) все оставшиеся дорожки и переходы: KiCad передаёт их в Specctra как защищённые — Freerouting
    разводит только недостающие связи и чужую медь не двигает. Снимок чужой меди — в SNAPSHOT.json для finish.
 """
+import faulthandler
 import json
 import math
 import sys
+
+faulthandler.enable()
 
 import pcbnew
 
