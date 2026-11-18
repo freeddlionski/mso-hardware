@@ -56,27 +56,54 @@ def build(proj):
 
     # ---------- MDB ----------
     x, y = 40.64, 50.8
-    sh.text('MDB (CashCode): 1 +24 В, 2 минус, 4 Master Receive, 5 Master Transmit, 6 общий сигналов. Передача ~10–13 мА от 5 В.',
+    sh.text('MDB по MDB/ICP 4.2 §4.2 (одно устройство): передача ≥ 15 мА при ≥ 4 В, КЗ — ограничение ~40 мА; '
+            'приём — 15 мА при 1 В через оптрон. 1 +24 В, 2 минус, 4 Master Receive, 5 Master Transmit, 6 общий.',
             (20.32, 25.4), 1.5)
-    # Аудит 3: один 74AHCT1G125 нормирован до 8 мА, а нужно ~9–10 мА → два буфера параллельно, каждый через свой BAT46W
-    # (≈ 4,5–5 мА на буфер — в пределах таблицы TI, VOH ≥ 3,94 В при 8 мА и VCC 4,5 В).
-    # Ток петли: (VOH − 0,4 В диод − 1,2 В светодиод оптрона CashCode) / (150 Ом + ~220 Ом внутри CashCode) ≈ 9 мА;
-    # 1,2 В и 220 Ом — данные стенда (mso-firmware/docs/MDB.md), гарантии нет — замерить ток и напряжение на конт. 5 на прототипе.
+    # 18.11.2026 (Павел: «Да, делай», сверка с MDB/ICP 4.2 и VMflow): прежняя передача — два 74AHCT1G125 по ~5 мА
+    # (~9 мА в петле, только CashCode); приём — подтяжка 10 кОм (~0,3 мА против 15 мА по стандарту).
+    # Номера U13, U14 (буферы) и D18 (второй диод) сняты — пропущены, чтобы не сдвигать нумерацию остальных.
+    # Передача: GPIO → 4,7 кОм → NPN MMBT3904 → 1 кОм → база PNP MMBT3906 (эмиттер — через 15 Ом от +5 В);
+    # второй PNP (база на эмиттере первого) ограничивает ток при КЗ: 0,6 В / 15 Ом ≈ 40 мА (≈ 33 мА при +70 °C).
+    # Линия при 15 мА: 5 − 0,23 (15 Ом) − 0,1 (Uкэ нас.) − 0,45 (BAT46W) − ≤ 0,2 (nSMD010) ≈ 4,0–4,2 В.
+    # GPIO = 1 (покой UART) → ток в петле, как раньше; прошивка не меняется. +24 В на линии запирает D17.
     for k, yy in enumerate((y, y - 15.24)):
-        b = sh.part('74xGxx:74AHCT1G125', 'U', '74AHCT1G125', (x + 12.7, yy), fp='Package_TO_SOT_SMD:SOT-23-5', mpn='SN74AHCT1G125DBVR')
-        sh.connect(b, {'1': 'GND', '2': 'MDB_TX', '4': 'MDB_TX_B%d' % k, '5': '+5V', '3': 'GND'})
-        d = sh.part('Device:D_Schottky', 'D', 'BAT46W', (x + 38.1, yy), fp='Diode_SMD:D_SOD-123', mpn='BAT46W')
-        sh.connect(d, {'A': 'MDB_TX_B%d' % k, 'K': 'MDB_TX_D'})   # +24 В на линии запирает диоды — в выходы буферов ток не идёт
+        sh.proj.next_ref('U')                       # U13 / U14 — сняты
+        if k == 0:
+            d = sh.part('Device:D_Schottky', 'D', 'BAT46W', (x + 38.1, yy), fp='Diode_SMD:D_SOD-123', mpn='BAT46W')
+            sh.connect(d, {'A': 'MDB_TX_C', 'K': 'MDB_TX_D'})   # +24 В на линии запирает диод
+        else:
+            sh.proj.next_ref('D')                   # D18 — снят
     C(sh, '100n', x - 10.16, y + 20.32, '+5V', 'GND')
     C(sh, '100n', x - 10.16, y + 10.16, '+5V', 'GND')
     sh.late = True
     R(sh, '100k', x - 10.16, y + 30.48, '+3V3', 'MDB_TX')     # Kimi K-005: при старте ESP32 линия в покое (UART idle = 1)
     sh.late = False
-    R(sh, '150', x + 63.5, y, 'MDB_TX_D', 'MDB_TX_P', 'R0805')
-    two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', x + 101.6, y, 'MDB_TX_P', 'MDB_TX_L', **PTC50)
+    R(sh, '15', x + 12.7, y, '+5V', 'MDB_TX_E', 'R0805')        # R63: эмиттерный датчик тока (был 150 Ом последовательно)
+    two(sh, 'Device:Polyfuse', 'F', '100mA удерж.', x + 101.6, y, 'MDB_TX_D', 'MDB_TX_L', **PTC50)   # 1,6 Ом (было 50 мА, до 20 Ом)
     tvs(sh, 'SMAJ33A', x + 101.6, y + 10.16, 'MDB_TX_L')
-    # приём: купюрник замыкает линию на общий; подтяжка 10 кОм (при 4,7 кОм падение на диоде и резисторе поднимает «0»)
-    blocked_input(sh, x + 25.4, y + 30.48, 'MDB_RX_L', 'MDB_RX', 'MDBRX')
+    # приём: купюрник замыкает линию на общий; ток петли от +5 В через светодиод оптрона:
+    # (5 − 1,2 светодиод − 0,45 BAT46W − 1,0 линия) / (120 + до 20 Ом PTC) ≥ 16,8 мА; при 0,2 В на линии ≤ 26 мА (EL357N до 50 мА).
+    # +24 В на линии запирает D21 — светодиод не видит обратного напряжения. Выход оптрона: 1 кОм к 3,3 В (быстрее 10 кОм).
+    tvs(sh, 'SMAJ33A', x + 101.6, y + 40.64, 'MDB_RX_L')
+    two(sh, 'Device:Polyfuse', 'F', '50mA удерж.', x + 101.6, y + 30.48, 'MDB_RX_L', 'MDBRX_P', **PTC50)
+    d = sh.part('Device:D_Schottky', 'D', 'BAT46W', (x + 63.5, y + 30.48), fp='Diode_SMD:D_SOD-123', mpn='BAT46W')
+    sh.connect(d, {'K': 'MDBRX_P', 'A': 'MDBRX_N'})
+    R(sh, '120', x + 12.7, y + 30.48, '+5V', 'MDBRX_LA')       # R64 (был 330 Ом к GPIO)
+    R(sh, '1k', x + 12.7, y + 40.64, '+3V3', 'MDB_RX')          # R65 (был 10 кОм)
+    clamp(sh, x - 12.7, y + 38.1, 'MDB_RX')
+    sh.late = 3            # третья волна номеров (18.11.2026): новые детали MDB — в конец нумерации
+    o = sh.part('Isolator:PC817', 'U', 'EL357N(C)', (x + 38.1, y + 33.02), fp='Package_SO:SOP-4_3.8x4.1mm_P2.54mm', mpn='EL357N(C)-G')
+    sh.connect(o, {'1': 'MDBRX_LA', '2': 'MDBRX_N', '4': 'MDB_RX', '3': 'GND'})
+    R(sh, '4.7k', x + 25.4, y - 15.24, 'MDB_TX', 'MDB_TX_NB')
+    q = sh.part('Transistor_BJT:MMBT3904', 'Q', 'MMBT3904', (x + 45.72, y - 15.24), mpn='MMBT3904')
+    sh.connect(q, {'B': 'MDB_TX_NB', 'E': 'GND', 'C': 'MDB_TX_NC'})
+    R(sh, '1k', x + 63.5, y - 15.24, 'MDB_TX_NC', 'MDB_TX_QB')
+    R(sh, '10k', x + 63.5, y - 5.08, '+5V', 'MDB_TX_QB')
+    q = sh.part('Transistor_BJT:MMBT3906', 'Q', 'MMBT3906', (x + 83.82, y - 15.24), mpn='MMBT3906')
+    sh.connect(q, {'B': 'MDB_TX_QB', 'E': 'MDB_TX_E', 'C': 'MDB_TX_C'})
+    q = sh.part('Transistor_BJT:MMBT3906', 'Q', 'MMBT3906', (x + 83.82, y + 5.08), mpn='MMBT3906')
+    sh.connect(q, {'B': 'MDB_TX_E', 'E': '+5V', 'C': 'MDB_TX_QB'})
+    sh.late = False
     j = sh.part('Connector_Generic:Conn_02x03_Odd_Even', 'J', 'MDB Mini-Fit Jr 2×3', (x + 142.24, y + 15.24),
                 fp='Connector_Molex:Molex_Mini-Fit_Jr_5566-06A_2x03_P4.20mm_Vertical', mpn='Molex 5566-06A',
                 fields={'Шелкография': 'MDB; 1 +24V, 2 GND, 4 RX, 5 TX, 6 COM'})

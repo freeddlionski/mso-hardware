@@ -2518,6 +2518,466 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Transistor_BJT:MMBT3904"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(symbol "MMBT3904_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0)
+						(xy 0.635 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905)
+						(xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "MMBT3904_1_1"
+				(polyline
+					(pts
+						(xy 0.635 0.635)
+						(xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635)
+						(xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.778)
+						(xy 1.778 -1.27)
+						(xy 2.286 -2.286)
+						(xy 1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "MMBT3904"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "0.2A Ic, 40V Vce, Small Signal NPN Transistor, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "NPN"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=B 2=E 3=C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "NPN Transistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+		)
+		(symbol "Transistor_BJT:MMBT3906"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(symbol "MMBT3906_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0)
+						(xy 0.635 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905)
+						(xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 0.635)
+						(xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635)
+						(xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 -1.778)
+						(xy 1.778 -2.286)
+						(xy 1.27 -1.27)
+						(xy 2.286 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "MMBT3906_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+			(property "Reference" "Q"
+				(at 5.08 1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "MMBT3906"
+				(at 5.08 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+				(at 5.08 -1.905 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+						(italic yes)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3906-d.pdf"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+					(hide yes)
+				)
+			)
+			(property "Description" "-0.2A Ic, -40V Vce, Small Signal PNP Transistor, SOT-23"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Device" "PNP"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Sim.Pins" "1=B 2=E 3=C"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "PNP Transistor"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SOT?23*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+		)
 		(symbol "Transistor_FET:BSP89"
 			(pin_names
 				(hide yes)
@@ -3072,347 +3532,6 @@
 		)
 	)
 	(symbol
-		(lib_id "74xGxx:74AHCT1G125")
-		(at 53.34 50.8 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3bdbdb09-cd7c-5721-8bfa-59b902c2c5e4")
-		(property "Reference" "U13"
-			(at 50.8 46.99 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "74AHCT1G125"
-			(at 53.34 54.61 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
-			(at 53.34 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf"
-			(at 53.34 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7484"
-			(at 53.34 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SN74AHCT1G125DBVR"
-			(at 53.34 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "3684de1e-abf1-5846-a027-38f92b8547a9")
-		)
-		(pin "2"
-			(uuid "b7a1e2f6-de0c-59c2-8245-641b281a84fd")
-		)
-		(pin "3"
-			(uuid "ec8aca95-7703-5487-902d-3cf003c6edaa")
-		)
-		(pin "4"
-			(uuid "c1714036-e80e-59ef-a268-39644df92c28")
-		)
-		(pin "5"
-			(uuid "c00e477f-a8d8-5f60-bff6-7484f1af1537")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "U13")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 38.1 50.8)
-			(xy 35.56 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "45456a63-73da-5894-b220-528ddbf49977")
-	)
-	(global_label "MDB_TX"
-		(shape bidirectional)
-		(at 35.56 50.8 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "ce5bd3fb-d98d-596a-8639-809b71cde30a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 35.56 50.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 48.26 40.64)
-			(xy 48.26 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4e4daf30-49fa-58f0-a308-33b3601c2812")
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 48.26 38.1 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "d777ddb2-2d55-5c61-895a-e9f9e307120e")
-		(property "Reference" "#PWR0273"
-			(at 48.26 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 48.26 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 48.26 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 48.26 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "449b1494-2c38-59c4-8e36-91599f9cf327")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0273")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 48.26 60.96)
-			(xy 48.26 63.5)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0fa65bae-209f-5978-8b86-e0d583044001")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 48.26 63.5 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "92f07030-d445-55eb-89d3-9e0502ff6731")
-		(property "Reference" "#PWR0274"
-			(at 48.26 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 48.26 68.58 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 48.26 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 48.26 63.5 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "712d9bcf-30e7-555c-b0f8-1378ec512cad")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0274")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 53.34 40.64)
-			(xy 53.34 38.1)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aa4d1777-f27a-54ae-a41e-417d3f59559a")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 53.34 38.1 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3f495681-403f-5c14-8a0b-d7c4e385e7ae")
-		(property "Reference" "#PWR0275"
-			(at 53.34 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 53.34 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 53.34 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 53.34 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "a15eb8f6-7fae-5796-9c41-43fa349c680f")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0275")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 66.04 50.8)
-			(xy 68.58 50.8)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d70e77bf-8b41-57e9-9db3-2a5ff52f4e45")
-	)
-	(label "MDB_TX_B0"
-		(at 68.58 50.8 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "01904287-d41e-5a66-b1c0-64c3e47cd9f2")
-	)
-	(symbol
 		(lib_id "Device:D_Schottky")
 		(at 78.74 50.8 0)
 		(unit 1)
@@ -3520,7 +3639,7 @@
 		)
 		(uuid "c7760478-1926-5915-b2a6-46fb507d5df6")
 	)
-	(label "MDB_TX_B0"
+	(label "MDB_TX_C"
 		(at 85.09 50.8 0)
 		(effects
 			(font
@@ -3529,465 +3648,6 @@
 			(justify left bottom)
 		)
 		(uuid "f043cf7e-acd9-575c-8d0b-13835e44e23b")
-	)
-	(symbol
-		(lib_id "74xGxx:74AHCT1G125")
-		(at 53.34 35.56 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "c5a28994-c319-59ff-8f70-2d4c95740c38")
-		(property "Reference" "U14"
-			(at 50.8 31.75 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "74AHCT1G125"
-			(at 53.34 39.37 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
-			(at 53.34 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "http://www.ti.com/lit/sg/scyt129e/scyt129e.pdf"
-			(at 53.34 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7484"
-			(at 53.34 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "SN74AHCT1G125DBVR"
-			(at 53.34 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "5c76e02b-0f65-5b31-b317-6470e12a263a")
-		)
-		(pin "2"
-			(uuid "db1f19cb-d781-5e5b-96dd-93596b8c4c7a")
-		)
-		(pin "3"
-			(uuid "c0f675f2-eac5-5c62-96c4-83914cf76a6c")
-		)
-		(pin "4"
-			(uuid "362f7b9f-eb5a-5b35-bd4f-b623338ef1a0")
-		)
-		(pin "5"
-			(uuid "5e736ec7-afc4-5960-bcf9-7134ee5abdae")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "U14")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 38.1 35.56)
-			(xy 35.56 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b909d3bd-0189-5225-8492-f750fcaa3af2")
-	)
-	(global_label "MDB_TX"
-		(shape bidirectional)
-		(at 35.56 35.56 180)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right)
-		)
-		(uuid "af501722-7d8d-54cd-9106-11cf26cf95f4")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 35.56 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 48.26 25.4)
-			(xy 48.26 22.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c75ced09-c954-53cd-80bf-0e16527cd79d")
-	)
-	(symbol
-		(lib_id "power:+5V")
-		(at 48.26 22.86 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "bd0140f2-cc2a-5716-b9ab-7ae2fc640ea9")
-		(property "Reference" "#PWR0276"
-			(at 48.26 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "+5V"
-			(at 48.26 17.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 48.26 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 48.26 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "0f09eff1-533e-59aa-a437-54cf7dfb1a52")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0276")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 48.26 45.72)
-			(xy 48.26 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2eef2c47-13f6-50c4-ad90-a44b1fb993cc")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 48.26 48.26 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "5916f7e1-8af6-562a-9c13-893c8e225afa")
-		(property "Reference" "#PWR0277"
-			(at 48.26 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 48.26 53.34 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 48.26 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 48.26 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "4be64dc1-ae71-5add-a07b-a8b12682c56f")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0277")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 53.34 25.4)
-			(xy 53.34 22.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "30a98474-11b2-5583-8fa6-794a00b890ed")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 53.34 22.86 180)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "74f81891-f1ba-5544-a905-ff9c6c655fc2")
-		(property "Reference" "#PWR0278"
-			(at 53.34 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 53.34 17.78 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" ""
-			(at 53.34 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 53.34 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "1f87d9e3-d4e2-5503-9cd6-c0c4babbf80a")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0278")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 66.04 35.56)
-			(xy 68.58 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "03fd6665-2ae5-5c16-9931-ed376d2a55ac")
-	)
-	(label "MDB_TX_B1"
-		(at 68.58 35.56 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "d33fe1ab-7762-5e72-b6d2-74e1672a3da3")
-	)
-	(symbol
-		(lib_id "Device:D_Schottky")
-		(at 78.74 35.56 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "b19ace09-ce88-5baf-93fc-4576530f5ef2")
-		(property "Reference" "D18"
-			(at 78.74 33.02 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "BAT46W"
-			(at 78.74 38.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Diode_SMD:D_SOD-123"
-			(at 78.74 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 78.74 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C7420332"
-			(at 78.74 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "BAT46W"
-			(at 78.74 35.56 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "63450b0b-87b4-5f28-a3a1-9bb00e620d90")
-		)
-		(pin "2"
-			(uuid "417e480a-e984-5cc0-a293-2d352ace944f")
-		)
-		(instances
-			(project "mso74-plata"
-				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "D18")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 74.93 35.56)
-			(xy 72.39 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b31c2246-17c3-5960-9221-9c9db952d6c9")
-	)
-	(label "MDB_TX_D"
-		(at 72.39 35.56 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
-		(uuid "25ef127b-4717-544a-a1c6-c053529f8317")
-	)
-	(wire
-		(pts
-			(xy 82.55 35.56)
-			(xy 85.09 35.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "8fe9d00d-4b33-5646-acac-b43cc5034b2e")
-	)
-	(label "MDB_TX_B1"
-		(at 85.09 35.56 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "cae13ceb-c950-5b78-9654-372701118607")
 	)
 	(symbol
 		(lib_id "Device:C")
@@ -4085,7 +3745,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "01b3dc42-a450-542d-95c7-d6bf515872ab")
-		(property "Reference" "#PWR0279"
+		(property "Reference" "#PWR0273"
 			(at 24.13 71.12 0)
 			(effects
 				(font
@@ -4127,7 +3787,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0279")
+					(reference "#PWR0273")
 					(unit 1)
 				)
 			)
@@ -4153,7 +3813,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "35a8d4bf-4415-5a26-bb77-aec181e7733b")
-		(property "Reference" "#PWR0280"
+		(property "Reference" "#PWR0274"
 			(at 36.83 71.12 0)
 			(effects
 				(font
@@ -4196,7 +3856,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0280")
+					(reference "#PWR0274")
 					(unit 1)
 				)
 			)
@@ -4298,7 +3958,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "449e5820-e747-5206-a992-e55814dc98ad")
-		(property "Reference" "#PWR0281"
+		(property "Reference" "#PWR0275"
 			(at 24.13 60.96 0)
 			(effects
 				(font
@@ -4340,7 +4000,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0281")
+					(reference "#PWR0275")
 					(unit 1)
 				)
 			)
@@ -4366,7 +4026,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "4e9df4fd-eba6-5625-87be-2400a4ed5e56")
-		(property "Reference" "#PWR0282"
+		(property "Reference" "#PWR0276"
 			(at 36.83 60.96 0)
 			(effects
 				(font
@@ -4409,7 +4069,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0282")
+					(reference "#PWR0276")
 					(unit 1)
 				)
 			)
@@ -4511,7 +4171,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "19e5702e-69e8-5b20-931b-6a010b43c4bb")
-		(property "Reference" "#PWR0283"
+		(property "Reference" "#PWR0277"
 			(at 24.13 81.28 0)
 			(effects
 				(font
@@ -4553,7 +4213,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0283")
+					(reference "#PWR0277")
 					(unit 1)
 				)
 			)
@@ -4593,7 +4253,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 104.14 50.8 90)
+		(at 53.34 50.8 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -4601,15 +4261,15 @@
 		(dnp no)
 		(uuid "5a2f027e-fc94-51ad-8434-cbec3a4527c2")
 		(property "Reference" "R63"
-			(at 104.14 46.99 90)
+			(at 53.34 46.99 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "150"
-			(at 104.14 54.61 90)
+		(property "Value" "15"
+			(at 53.34 54.61 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4617,7 +4277,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0805_2012Metric"
-			(at 104.14 52.07 0)
+			(at 53.34 52.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4626,7 +4286,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 104.14 50.8 0)
+			(at 53.34 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4634,8 +4294,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C17471"
-			(at 104.14 50.8 0)
+		(property "LCSC" "C17480"
+			(at 53.34 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4643,8 +4303,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0805W8F1500T5E"
-			(at 104.14 50.8 0)
+		(property "MPN" "0805W8F150JT5E"
+			(at 53.34 50.8 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4669,8 +4329,8 @@
 	)
 	(wire
 		(pts
-			(xy 100.33 50.8)
-			(xy 97.79 50.8)
+			(xy 49.53 50.8)
+			(xy 46.99 50.8)
 		)
 		(stroke
 			(width 0)
@@ -4678,20 +4338,67 @@
 		)
 		(uuid "4c93190e-cce8-5c6d-9067-4cc2a3e1d615")
 	)
-	(label "MDB_TX_D"
-		(at 97.79 50.8 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
+	(symbol
+		(lib_id "power:+5V")
+		(at 46.99 50.8 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(uuid "2619cbc3-928f-5773-b8ae-0ef6c991d56e")
+		(property "Reference" "#PWR0278"
+			(at 46.99 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 43.18 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 46.99 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f93d1a0b-0333-5687-b5c9-35fc8cbfcd4f")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "#PWR0278")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(wire
 		(pts
-			(xy 107.95 50.8)
-			(xy 110.49 50.8)
+			(xy 57.15 50.8)
+			(xy 59.69 50.8)
 		)
 		(stroke
 			(width 0)
@@ -4699,8 +4406,8 @@
 		)
 		(uuid "67acba85-78cd-587d-8fa9-c4df3d10f733")
 	)
-	(label "MDB_TX_P"
-		(at 110.49 50.8 0)
+	(label "MDB_TX_E"
+		(at 59.69 50.8 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4726,7 +4433,7 @@
 				)
 			)
 		)
-		(property "Value" "50mA удерж."
+		(property "Value" "100mA удерж."
 			(at 142.24 54.61 90)
 			(effects
 				(font
@@ -4753,7 +4460,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C315892"
+		(property "LCSC" "C70065"
 			(at 142.24 50.8 0)
 			(effects
 				(font
@@ -4762,7 +4469,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "1206L005/60WR"
+		(property "MPN" "nSMD010"
 			(at 142.24 50.8 0)
 			(effects
 				(font
@@ -4797,7 +4504,7 @@
 		)
 		(uuid "18665264-1d4d-5c7f-b77d-7ff72e36ddef")
 	)
-	(label "MDB_TX_P"
+	(label "MDB_TX_D"
 		(at 135.89 50.8 180)
 		(effects
 			(font
@@ -4945,7 +4652,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "8fd0b48f-9d69-55aa-b813-7e4f779c7dbc")
-		(property "Reference" "#PWR0284"
+		(property "Reference" "#PWR0279"
 			(at 148.59 60.96 0)
 			(effects
 				(font
@@ -4988,7 +4695,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0284")
+					(reference "#PWR0279")
 					(unit 1)
 				)
 			)
@@ -5111,7 +4818,7 @@
 		(on_board yes)
 		(dnp no)
 		(uuid "7935eefa-c359-51bf-b574-7311159bcd92")
-		(property "Reference" "#PWR0285"
+		(property "Reference" "#PWR0280"
 			(at 148.59 91.44 0)
 			(effects
 				(font
@@ -5154,7 +4861,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0285")
+					(reference "#PWR0280")
 					(unit 1)
 				)
 			)
@@ -5399,7 +5106,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 66.04 81.28 90)
+		(at 53.34 81.28 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5407,15 +5114,15 @@
 		(dnp no)
 		(uuid "3e9de8ed-7a4e-5b39-bc35-e7719f86d6ae")
 		(property "Reference" "R64"
-			(at 66.04 77.47 90)
+			(at 53.34 77.47 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "330"
-			(at 66.04 85.09 90)
+		(property "Value" "120"
+			(at 53.34 85.09 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5423,7 +5130,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 66.04 82.55 0)
+			(at 53.34 82.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5432,7 +5139,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 66.04 81.28 0)
+			(at 53.34 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5440,8 +5147,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C23138"
-			(at 66.04 81.28 0)
+		(property "LCSC" "C22787"
+			(at 53.34 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5449,8 +5156,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0603WAF3300T5E"
-			(at 66.04 81.28 0)
+		(property "MPN" "0603WAF1200T5E"
+			(at 53.34 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5475,8 +5182,8 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 81.28)
-			(xy 59.69 81.28)
+			(xy 49.53 81.28)
+			(xy 46.99 81.28)
 		)
 		(stroke
 			(width 0)
@@ -5484,40 +5191,17 @@
 		)
 		(uuid "dbfc53e7-cd90-5ea6-8cc9-9a62f7d41d52")
 	)
-	(label "MDBRX_N"
-		(at 59.69 81.28 180)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify right bottom)
-		)
+	(symbol
+		(lib_id "power:+5V")
+		(at 46.99 81.28 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
 		(uuid "cf7b490b-b000-5b8f-b0cc-f9b9c40bc6fc")
-	)
-	(wire
-		(pts
-			(xy 69.85 81.28)
-			(xy 72.39 81.28)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "b8fea3c7-ab6f-5b3a-b34c-244c3bfc09f0")
-	)
-	(global_label "MDB_RX"
-		(shape bidirectional)
-		(at 72.39 81.28 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "8165dd71-b929-55f5-b3f4-338d0a2c8ed5")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 72.39 81.28 0)
+		(property "Reference" "#PWR0281"
+			(at 46.99 81.28 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5525,10 +5209,69 @@
 				(hide yes)
 			)
 		)
+		(property "Value" "+5V"
+			(at 43.18 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 46.99 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 46.99 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dc97c46d-f121-5ddf-9292-3ec1f1884ebe")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "#PWR0281")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 57.15 81.28)
+			(xy 59.69 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b8fea3c7-ab6f-5b3a-b34c-244c3bfc09f0")
+	)
+	(label "MDBRX_LA"
+		(at 59.69 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8165dd71-b929-55f5-b3f4-338d0a2c8ed5")
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 66.04 91.44 90)
+		(at 53.34 91.44 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5536,15 +5279,15 @@
 		(dnp no)
 		(uuid "f5f2adc8-16ce-55cd-b71b-ab8d33be8b41")
 		(property "Reference" "R65"
-			(at 66.04 87.63 90)
+			(at 53.34 87.63 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "10k"
-			(at 66.04 95.25 90)
+		(property "Value" "1k"
+			(at 53.34 95.25 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5552,7 +5295,7 @@
 			)
 		)
 		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 66.04 92.71 0)
+			(at 53.34 92.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5561,7 +5304,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 66.04 91.44 0)
+			(at 53.34 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5569,8 +5312,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25804"
-			(at 66.04 91.44 0)
+		(property "LCSC" "C21190"
+			(at 53.34 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5578,8 +5321,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "0603WAF1002T5E"
-			(at 66.04 91.44 0)
+		(property "MPN" "0603WAF1001T5E"
+			(at 53.34 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5604,8 +5347,8 @@
 	)
 	(wire
 		(pts
-			(xy 62.23 91.44)
-			(xy 59.69 91.44)
+			(xy 49.53 91.44)
+			(xy 46.99 91.44)
 		)
 		(stroke
 			(width 0)
@@ -5615,15 +5358,15 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 59.69 91.44 90)
+		(at 46.99 91.44 90)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "1dcd0277-a02f-5c82-987f-7e3390301f31")
-		(property "Reference" "#PWR0286"
-			(at 59.69 91.44 0)
+		(property "Reference" "#PWR0282"
+			(at 46.99 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5632,7 +5375,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 55.88 91.44 0)
+			(at 43.18 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5641,7 +5384,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 59.69 91.44 0)
+			(at 46.99 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5650,7 +5393,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 59.69 91.44 0)
+			(at 46.99 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5664,7 +5407,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0286")
+					(reference "#PWR0282")
 					(unit 1)
 				)
 			)
@@ -5672,8 +5415,8 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 91.44)
-			(xy 72.39 91.44)
+			(xy 57.15 91.44)
+			(xy 59.69 91.44)
 		)
 		(stroke
 			(width 0)
@@ -5683,7 +5426,7 @@
 	)
 	(global_label "MDB_RX"
 		(shape bidirectional)
-		(at 72.39 91.44 0)
+		(at 59.69 91.44 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5693,7 +5436,7 @@
 		)
 		(uuid "58dedd96-5cb2-5624-a850-87716d9e41cc")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 72.39 91.44 0)
+			(at 59.69 91.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5704,7 +5447,7 @@
 	)
 	(symbol
 		(lib_id "Diode:BAT54S")
-		(at 40.64 88.9 0)
+		(at 27.94 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -5712,7 +5455,7 @@
 		(dnp no)
 		(uuid "2256630f-cb13-5fa5-af2d-7ec37d07aebd")
 		(property "Reference" "D22"
-			(at 43.18 93.98 0)
+			(at 30.48 93.98 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5721,7 +5464,7 @@
 			)
 		)
 		(property "Value" "BAT54S"
-			(at 34.29 86.36 0)
+			(at 21.59 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5730,7 +5473,7 @@
 			)
 		)
 		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
-			(at 43.18 86.36 0)
+			(at 30.48 86.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5740,7 +5483,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/ds11005.pdf"
-			(at 38.1 88.9 0)
+			(at 25.4 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5749,7 +5492,7 @@
 			)
 		)
 		(property "LCSC" "C47546"
-			(at 40.64 88.9 0)
+			(at 27.94 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5758,7 +5501,7 @@
 			)
 		)
 		(property "MPN" "BAT54S"
-			(at 40.64 88.9 0)
+			(at 27.94 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5786,8 +5529,8 @@
 	)
 	(wire
 		(pts
-			(xy 33.02 88.9)
-			(xy 30.48 88.9)
+			(xy 20.32 88.9)
+			(xy 17.78 88.9)
 		)
 		(stroke
 			(width 0)
@@ -5797,15 +5540,15 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 30.48 88.9 270)
+		(at 17.78 88.9 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "c3624672-20be-5624-8642-c55f3ba21ab8")
-		(property "Reference" "#PWR0287"
-			(at 30.48 88.9 0)
+		(property "Reference" "#PWR0283"
+			(at 17.78 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5814,7 +5557,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 26.67 88.9 0)
+			(at 13.97 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5824,7 +5567,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 30.48 88.9 0)
+			(at 17.78 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5833,7 +5576,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 30.48 88.9 0)
+			(at 17.78 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5847,7 +5590,7 @@
 		(instances
 			(project "mso74-plata"
 				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
-					(reference "#PWR0287")
+					(reference "#PWR0283")
 					(unit 1)
 				)
 			)
@@ -5855,8 +5598,8 @@
 	)
 	(wire
 		(pts
-			(xy 40.64 93.98)
-			(xy 40.64 96.52)
+			(xy 27.94 93.98)
+			(xy 27.94 96.52)
 		)
 		(stroke
 			(width 0)
@@ -5866,7 +5609,7 @@
 	)
 	(global_label "MDB_RX"
 		(shape bidirectional)
-		(at 40.64 96.52 270)
+		(at 27.94 96.52 270)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -5876,7 +5619,7 @@
 		)
 		(uuid "ca5184ed-81da-5221-814d-592c831fd0a4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 40.64 96.52 0)
+			(at 27.94 96.52 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5887,8 +5630,8 @@
 	)
 	(wire
 		(pts
-			(xy 48.26 88.9)
-			(xy 50.8 88.9)
+			(xy 35.56 88.9)
+			(xy 38.1 88.9)
 		)
 		(stroke
 			(width 0)
@@ -5898,15 +5641,15 @@
 	)
 	(symbol
 		(lib_id "power:+5V")
-		(at 50.8 88.9 270)
+		(at 38.1 88.9 270)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
 		(uuid "62659f30-f97a-5145-8200-7ed751da77af")
-		(property "Reference" "#PWR0288"
-			(at 50.8 88.9 0)
+		(property "Reference" "#PWR0284"
+			(at 38.1 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5915,7 +5658,7 @@
 			)
 		)
 		(property "Value" "+3V3"
-			(at 54.61 88.9 0)
+			(at 41.91 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5924,7 +5667,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 50.8 88.9 0)
+			(at 38.1 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5933,7 +5676,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 50.8 88.9 0)
+			(at 38.1 88.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5943,6 +5686,1178 @@
 		)
 		(pin "1"
 			(uuid "4841d950-1b17-5f9f-a05a-f7b5a8d79297")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "#PWR0284")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Isolator:PC817")
+		(at 78.74 83.82 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6169dbb1-3863-581a-8187-b1427e1cbe3b")
+		(property "Reference" "U24"
+			(at 73.66 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "EL357N(C)"
+			(at 78.74 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_SO:SOP-4_3.8x4.1mm_P2.54mm"
+			(at 73.66 88.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://www.soselectronic.cz/a_info/resource/d/pc817.pdf"
+			(at 78.74 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C42379244"
+			(at 78.74 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "EL357N(C)-G"
+			(at 78.74 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "25946bb9-bdce-56a9-99b9-eac415278575")
+		)
+		(pin "2"
+			(uuid "da692773-0c37-5a50-aa6d-44076edfd15a")
+		)
+		(pin "3"
+			(uuid "afeb0698-6795-5806-b416-b6651d46e88e")
+		)
+		(pin "4"
+			(uuid "53347d92-16c4-58a6-834d-e26e24f775aa")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "U24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 71.12 81.28)
+			(xy 68.58 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6265460a-4a74-5a1a-bfc9-44301fe996d0")
+	)
+	(label "MDBRX_LA"
+		(at 68.58 81.28 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "008a15d0-c9ee-5257-af0d-f2fc9620d343")
+	)
+	(wire
+		(pts
+			(xy 71.12 86.36)
+			(xy 68.58 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2583b376-3fea-5c53-a734-21568ff6f024")
+	)
+	(label "MDBRX_N"
+		(at 68.58 86.36 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "4851adc9-ae9d-5444-b9a1-1b945cf1894a")
+	)
+	(wire
+		(pts
+			(xy 86.36 81.28)
+			(xy 88.9 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d6f81a20-9cfb-59a1-921d-d979e8e2a3c5")
+	)
+	(global_label "MDB_RX"
+		(shape bidirectional)
+		(at 88.9 81.28 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c9088208-d2b0-5a1c-9087-c0cf541c8f8b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 88.9 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 86.36 86.36)
+			(xy 88.9 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4198503e-fca0-5ac4-ba59-3253d8043c76")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 88.9 86.36 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d8e1ee71-9ac3-5284-901e-6e7fd99fd8af")
+		(property "Reference" "#PWR0285"
+			(at 88.9 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 92.71 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ebd88ae9-9d70-5c60-95f9-97a125999521")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "#PWR0285")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 66.04 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "be2c10e0-32e1-51de-a750-cf1b41f9d1a7")
+		(property "Reference" "R119"
+			(at 66.04 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "4.7k"
+			(at 66.04 39.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 66.04 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 66.04 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C23162"
+			(at 66.04 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0603WAF4701T5E"
+			(at 66.04 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "86fa6484-9fb9-5f6d-88ce-6cf24940c04a")
+		)
+		(pin "2"
+			(uuid "318f5c83-b300-5eb5-97f5-fbcb06084578")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "R119")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 62.23 35.56)
+			(xy 59.69 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9fb0281-f3c4-5689-897d-6e727c759f7c")
+	)
+	(global_label "MDB_TX"
+		(shape bidirectional)
+		(at 59.69 35.56 180)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "9ac49004-32ac-52c9-af28-757fd4e8a0ee")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 59.69 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 69.85 35.56)
+			(xy 72.39 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1483b4d9-5f8c-5ae1-8245-6857f26e9c67")
+	)
+	(label "MDB_TX_NB"
+		(at 72.39 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f31f9941-b637-569d-8510-2c3911f00eb1")
+	)
+	(symbol
+		(lib_id "Transistor_BJT:MMBT3904")
+		(at 86.36 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "afc874e3-ad4f-5643-b215-f807e748b48b")
+		(property "Reference" "Q10"
+			(at 91.44 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MMBT3904"
+			(at 91.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 91.44 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3904-d.pdf"
+			(at 86.36 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C20526"
+			(at 86.36 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MMBT3904"
+			(at 86.36 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "369e4f57-6436-5cca-a44d-45fec2ed71d0")
+		)
+		(pin "2"
+			(uuid "ecf28af7-3a01-5e26-a3b2-d89feec074fd")
+		)
+		(pin "3"
+			(uuid "b0a709d6-0e90-5c62-89de-56a5e757c236")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "Q10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 81.28 35.56)
+			(xy 78.74 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "423c1102-35ea-5758-b405-e58eb5057a7a")
+	)
+	(label "MDB_TX_NB"
+		(at 78.74 35.56 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "45df412f-6b67-5129-a629-6ac980e35d96")
+	)
+	(wire
+		(pts
+			(xy 88.9 30.48)
+			(xy 88.9 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "efecffc5-986c-55f3-b31f-a0ad38b7301c")
+	)
+	(label "MDB_TX_NC"
+		(at 88.9 27.94 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "f77703ce-aff8-5e98-be2f-cfdfd3b1eb4c")
+	)
+	(wire
+		(pts
+			(xy 88.9 40.64)
+			(xy 88.9 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d88fe3c3-9f3b-5aaf-b64f-debd23f298d9")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 88.9 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "2ebc23aa-2cb0-567c-a8a2-8eb1ce7ff51e")
+		(property "Reference" "#PWR0286"
+			(at 88.9 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 88.9 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 88.9 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 88.9 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a441f0f3-24d9-561f-8e11-02fa63ec9e15")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "#PWR0286")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 104.14 35.56 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "7ee5d285-632d-51a5-aca1-693b7dafe65e")
+		(property "Reference" "R120"
+			(at 104.14 31.75 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "1k"
+			(at 104.14 39.37 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 104.14 36.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 104.14 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C21190"
+			(at 104.14 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0603WAF1001T5E"
+			(at 104.14 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "27401117-934e-5feb-a628-7baf25daf1b1")
+		)
+		(pin "2"
+			(uuid "ef070b5d-9cbb-5e3d-b9d2-f46ab54ff9d9")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "R120")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 100.33 35.56)
+			(xy 97.79 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f52d6682-f88f-509e-87f5-5c4349c6af35")
+	)
+	(label "MDB_TX_NC"
+		(at 97.79 35.56 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "76b7c5d5-3a5f-5154-a4e1-26e228960775")
+	)
+	(wire
+		(pts
+			(xy 107.95 35.56)
+			(xy 110.49 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0ff9ad4a-5eea-5e48-b2eb-726a332630c6")
+	)
+	(label "MDB_TX_QB"
+		(at 110.49 35.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ab659a83-3bb7-5e30-9f36-ef89ce3d8623")
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 104.14 45.72 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "49115b13-8df7-5359-948e-97065ded7ba0")
+		(property "Reference" "R121"
+			(at 104.14 41.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "10k"
+			(at 104.14 49.53 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 104.14 46.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 104.14 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C25804"
+			(at 104.14 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "0603WAF1002T5E"
+			(at 104.14 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1608c73d-5a0b-5faa-b489-824219339797")
+		)
+		(pin "2"
+			(uuid "36f47c67-908f-528e-85e2-5be8c3a9e33b")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "R121")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 100.33 45.72)
+			(xy 97.79 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "492ad541-10e8-5547-9069-5f67b2c912a6")
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 97.79 45.72 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b58b921e-4834-5a87-b74d-e30bc05c1c4a")
+		(property "Reference" "#PWR0287"
+			(at 97.79 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 93.98 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 97.79 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 97.79 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77f81072-00f0-535a-8265-33f828484e45")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "#PWR0287")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 107.95 45.72)
+			(xy 110.49 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0b16494-56d6-5ffb-9227-3603968c15d7")
+	)
+	(label "MDB_TX_QB"
+		(at 110.49 45.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "60f230f7-c0c3-500b-b089-d553848fe188")
+	)
+	(symbol
+		(lib_id "Transistor_BJT:MMBT3906")
+		(at 124.46 35.56 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "bf60e29f-6c3a-5946-92c5-eed7d826a15a")
+		(property "Reference" "Q11"
+			(at 129.54 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MMBT3906"
+			(at 129.54 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 129.54 38.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3906-d.pdf"
+			(at 124.46 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C916375"
+			(at 124.46 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MMBT3906"
+			(at 124.46 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "562e7fde-1bcf-5cec-a1ff-e384e8b656cd")
+		)
+		(pin "2"
+			(uuid "5760b143-e742-531c-a98f-8ad88692bbf4")
+		)
+		(pin "3"
+			(uuid "ba60df44-7238-5f42-a392-0bf26891c5e9")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "Q11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 119.38 35.56)
+			(xy 116.84 35.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "98e5f3a0-298e-5996-a48f-bb77c3ad5bdd")
+	)
+	(label "MDB_TX_QB"
+		(at 116.84 35.56 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "b6f8f3ea-7337-5ddd-afcc-1eff9358d325")
+	)
+	(wire
+		(pts
+			(xy 127 30.48)
+			(xy 127 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e56e8090-9c2a-5dc7-9a53-2029cec5e276")
+	)
+	(label "MDB_TX_C"
+		(at 127 27.94 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ad8f779a-fd8f-5555-a302-cca09dbdc25e")
+	)
+	(wire
+		(pts
+			(xy 127 40.64)
+			(xy 127 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "29f2731d-a696-5613-86fd-b47ceba602dd")
+	)
+	(label "MDB_TX_E"
+		(at 127 43.18 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "0cc18c88-d2c6-5bf6-a91b-1cc457b7b511")
+	)
+	(symbol
+		(lib_id "Transistor_BJT:MMBT3906")
+		(at 124.46 55.88 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "d7108edf-e598-559c-9a9a-a25e797e6e7b")
+		(property "Reference" "Q12"
+			(at 129.54 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MMBT3906"
+			(at 129.54 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
+			(at 129.54 58.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.onsemi.com/pdf/datasheet/pzt3906-d.pdf"
+			(at 124.46 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C916375"
+			(at 124.46 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "MMBT3906"
+			(at 124.46 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ba99497c-08ad-522e-9880-30f4f4162a89")
+		)
+		(pin "2"
+			(uuid "3551fd95-2ad4-5b29-8a49-8f4ba2eaa261")
+		)
+		(pin "3"
+			(uuid "634b5781-b4f6-5863-aed9-3fef09f0347e")
+		)
+		(instances
+			(project "mso74-plata"
+				(path "/2a62deec-1c98-5178-bbd2-bd42fc96dec4/68564ffc-cef7-588d-a4f8-105d9d2433da"
+					(reference "Q12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 119.38 55.88)
+			(xy 116.84 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2e3374e-848a-5310-bf02-9ee8e223cf67")
+	)
+	(label "MDB_TX_E"
+		(at 116.84 55.88 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "3968c2de-79d5-57d5-a2ab-4173a9f01207")
+	)
+	(wire
+		(pts
+			(xy 127 50.8)
+			(xy 127 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d3c9547c-ea3c-59b7-a7a5-a76dd943b9fd")
+	)
+	(label "MDB_TX_QB"
+		(at 127 48.26 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "79710355-d22d-5fc2-915b-0b1927298227")
+	)
+	(wire
+		(pts
+			(xy 127 60.96)
+			(xy 127 63.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6f642c2f-440e-50a3-a107-046fba24a1c8")
+	)
+	(symbol
+		(lib_id "power:+5V")
+		(at 127 63.5 180)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "206fdad0-5d18-50ca-ae6b-7c0f6cb2ade2")
+		(property "Reference" "#PWR0288"
+			(at 127 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "+5V"
+			(at 127 68.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 127 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 127 63.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "515d1c20-8b0f-5573-a52c-0b41785cb0c3")
 		)
 		(instances
 			(project "mso74-plata"
@@ -11992,7 +12907,7 @@
 			)
 		)
 	)
-	(text "MDB (CashCode): 1 +24 В, 2 минус, 4 Master Receive, 5 Master Transmit, 6 общий сигналов. Передача ~10–13 мА от 5 В."
+	(text "MDB по MDB/ICP 4.2 §4.2 (одно устройство): передача ≥ 15 мА при ≥ 4 В, КЗ — ограничение ~40 мА; приём — 15 мА при 1 В через оптрон. 1 +24 В, 2 минус, 4 Master Receive, 5 Master Transmit, 6 общий."
 		(exclude_from_sim no)
 		(at 20.32 25.4 0)
 		(effects
@@ -12001,7 +12916,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "a9f99c09-03e6-561f-bdf9-2bf1f75b7da0")
+		(uuid "bce0728a-81a4-54d7-bbf5-ecffcb2be8cd")
 	)
 	(text "Импульсные входы: аппарат замыкает «импульс» на минус (открытый коллектор), 14 мс / 14 мс. Оптрон от +12 В."
 		(exclude_from_sim no)
