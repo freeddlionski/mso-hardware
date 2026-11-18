@@ -1,0 +1,98 @@
+name: "Правка готовой платы — MDB по стандарту (pcb_mdb.py)"
+
+# Меняется pcb_mdb.py в рабочей ветке → плата plata/kicad/routed приводится к схеме (ECO), Freerouting разводит
+# только недостающие связи (прочая медь закреплена), проверка, что чужая медь не сдвинулась, обозначения, коммит в ветку.
+# Проверка результата — обычный kicad.yml в PR (ERC, DRC, сверка схема ↔ плата).
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches-ignore: [main]
+    paths: ['plata/kicad/gen/pcb_mdb.py', 'plata/kicad/gen/eco_text.py']
+  workflow_dispatch:
+
+jobs:
+  mdb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    container:
+      image: kicad/kicad:9.0
+      options: --user root
+    env:
+      PCB: plata/kicad/routed/mso74-plata.kicad_pcb
+    steps:
+      - uses: actions/checkout@v4
+      - name: Таблицы библиотек
+        run: |
+          mkdir -p ~/.config/kicad/9.0
+          cp /usr/share/kicad/template/sym-lib-table ~/.config/kicad/9.0/ || true
+          cp /usr/share/kicad/template/fp-lib-table ~/.config/kicad/9.0/ || true
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+      - name: Плата ← схема (ECO) — pcbnew добавляет, текст снимает
+        run: |
+          set -ex
+          mkdir -p /tmp/w
+          kicad-cli sch export netlist --format kicadsexpr --output /tmp/w/n.net plata/kicad/mso74-plata.kicad_sch
+          cd plata/kicad/gen
+          python3 -u pcb_mdb.py prepare ../routed/mso74-plata.kicad_pcb /tmp/w/n.net ../placement.json /tmp/w/eco.json
+          python3 -u eco_text.py clean ../routed/mso74-plata.kicad_pcb /tmp/w/eco.json
+      - name: Freerouting — только связи MDB и +5V
+        timeout-minutes: 60
+        run: |
+          set -e
+          (cd plata/kicad/gen && python3 -u pcb_mdb.py export ../routed/mso74-plata.kicad_pcb /tmp/w/eco.json /tmp/w/snap.json /tmp/w/mdb.dsn)
+          mkdir -p /tmp/fr
+          python3 - <<'PY'
+          import urllib.request, tarfile, io
+          urllib.request.urlretrieve('https://github.com/freerouting/freerouting/releases/download/v2.5.0/freerouting-2.5.0.jar',
+                                     '/tmp/fr/freerouting.jar')
+          u = 'https://api.adoptium.net/v3/binary/latest/25/ga/linux/x64/jre/hotspot/normal/eclipse'
+          req = urllib.request.Request(u, headers={'User-Agent': 'curl/8.0'})
+          tarfile.open(fileobj=io.BytesIO(urllib.request.urlopen(req).read())).extractall('/tmp/fr/jre')
+          PY
+          JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
+          set +e
+          timeout 50m "$JAVA" -jar /tmp/fr/freerouting.jar -de /tmp/w/mdb.dsn -do /tmp/w/mdb.ses -mt 2 \
+            --gui.enabled=false --router.optimizer.enabled=false --router.autorouter.max_passes=20 \
+            --router.automatic_neckdown=false > /tmp/w/freerouting.log 2>&1
+          echo "код завершения Freerouting: $?"
+          set -e
+          grep -E "Auto-routing stage|unrouted" /tmp/w/freerouting.log | cut -c1-200 | tail -5 || true
+          [ -s /tmp/w/mdb.ses ] || { echo "Freerouting не выдал результат"; exit 1; }
+          python3 plata/kicad/gen/pcb_route.py import $PCB /tmp/w/mdb.ses
+      - name: Проверка закреплённой меди, дочистка, переходы GND, обозначения
+        run: |
+          set -ex
+          cd plata/kicad/gen
+          python3 -u pcb_mdb.py check ../routed/mso74-plata.kicad_pcb /tmp/w/snap.json
+          python3 -u eco_text.py prune ../routed/mso74-plata.kicad_pcb /tmp/w/eco.json
+          python3 -u pcb_mdb.py finish ../routed/mso74-plata.kicad_pcb
+          python3 -u pcb_silk.py ../routed/mso74-plata.kicad_pcb
+      - name: DRC готовой платы (кратко)
+        run: |
+          kicad-cli pcb drc --format json --severity-all --output /tmp/w/drc.json $PCB || true
+          python3 - <<'PY'
+          import json, collections
+          d = json.load(open('/tmp/w/drc.json'))
+          c = collections.Counter(v['type'] for v in d.get('violations', []))
+          for k, n in c.most_common(): print('%5d  %s' % (n, k))
+          print('не разведено связей:', len(d.get('unconnected_items', [])))
+          def pos(i):
+              q = i.get('pos', {})
+              return '(%.2f; %.2f)' % (q.get('x', 0), q.get('y', 0))
+          for u in d.get('unconnected_items', [])[:20]:
+              print('   ', ' / '.join(i.get('description', '') + ' ' + pos(i) for i in u.get('items', [])))
+          print('нарушения (без шелкографии):')
+          for v in d.get('violations', []):
+              if v['type'].startswith('silk'):
+                  continue
+              print('  ', v['type'], '|', ' / '.join(i.get('description', '') + ' ' + pos(i) for i in v.get('items', [])))
+          PY
+      - name: Коммит в ветку
+        run: |
+          git add plata/kicad/routed
+          git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com \
+            commit -qm "MDB по стандарту: плата ← схема, трассировка новых связей (pcb_mdb.py)" || exit 0
+          git push -q origin HEAD:${GITHUB_REF_NAME}

@@ -1,0 +1,58 @@
+name: "Ручная доводка меди MDB (mdb_hand.py)"
+
+# Меняется mdb_hand.py в рабочей ветке → правка меди по тексту, перезаливка зон, DRC, коммит в ветку.
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches-ignore: [main]
+    paths: ['plata/kicad/gen/mdb_hand.py']
+  workflow_dispatch:
+
+jobs:
+  hand:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    container:
+      image: kicad/kicad:9.0
+      options: --user root
+    env:
+      PCB: plata/kicad/routed/mso74-plata.kicad_pcb
+    steps:
+      - uses: actions/checkout@v4
+      - name: Правка и перезаливка
+        run: |
+          set -ex
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          mkdir -p /tmp/w
+          cd plata/kicad/gen
+          python3 -u mdb_hand.py ../routed/mso74-plata.kicad_pcb
+          python3 -u mdb_hand.py fill ../routed/mso74-plata.kicad_pcb
+      - name: DRC готовой платы (кратко)
+        run: |
+          kicad-cli pcb drc --format json --severity-all --output /tmp/w/drc.json $PCB || true
+          python3 - <<'PY'
+          import json, collections
+          d = json.load(open('/tmp/w/drc.json'))
+          c = collections.Counter(v['type'] for v in d.get('violations', []))
+          for k, n in c.most_common(): print('%5d  %s' % (n, k))
+          print('не разведено связей:', len(d.get('unconnected_items', [])))
+          def pos(i):
+              q = i.get('pos', {})
+              return '(%.2f; %.2f)' % (q.get('x', 0), q.get('y', 0))
+          for u in d.get('unconnected_items', [])[:20]:
+              print('   ', ' / '.join(i.get('description', '') + ' ' + pos(i) for i in u.get('items', [])))
+          print('нарушения (без шелкографии):')
+          for v in d.get('violations', []):
+              if v['type'].startswith('silk'):
+                  continue
+              print('  ', v['type'], '|', ' / '.join(i.get('description', '') + ' ' + pos(i) for i in v.get('items', [])))
+          PY
+      - name: Коммит в ветку
+        run: |
+          git add plata/kicad/routed
+          git -c user.name=github-actions -c user.email=github-actions@users.noreply.github.com \
+            commit -qm "MDB: ручная доводка меди (mdb_hand.py)" || exit 0
+          git push -q origin HEAD:${GITHUB_REF_NAME}
