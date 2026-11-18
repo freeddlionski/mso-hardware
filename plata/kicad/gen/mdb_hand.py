@@ -16,7 +16,7 @@ import uuid
 from pathlib import Path
 
 from eco_text import Board
-from sexp import find, findall, parse
+from sexp import Q, find, findall, parse
 
 NEW = ('Q10', 'Q11', 'Q12', 'R119', 'R120', 'R121', 'R122', 'U24')
 SCH = Path(__file__).resolve().parent.parent / 'io.kicad_sch'
@@ -42,7 +42,7 @@ def fix_fields(b):
         for p in findall(fp, 'property'):
             k = str(p[1])
             if k in want[r] and want[r][k] and str(p[2]) != want[r][k]:
-                p[2] = want[r][k]
+                p[2] = Q(want[r][k])
                 n += 1
     missing = set(NEW) - set(want)
     if missing:
