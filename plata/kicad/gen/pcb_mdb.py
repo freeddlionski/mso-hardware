@@ -66,6 +66,7 @@ def prepare(board_path, net_path, placement, snapshot):
             print('новая цепь', name)
 
     dirty = []          # (точка, имя прежней цепи) — откуда снимать дорожки
+    added = []          # новые посадочные места
     on_board = {f.GetReference(): f for f in board.GetFootprints()}
     for ref, f in list(on_board.items()):
         if ref.startswith(('H', 'TP')) and ref not in comps:
@@ -88,6 +89,7 @@ def prepare(board_path, net_path, placement, snapshot):
             f.Reference().SetVisible(True)
             f.Value().SetVisible(False)
             board.Add(f)
+            added.append(f)
             print('новая деталь', ref, c.value, c.fp, (x, y, rot))
         try:
             f.SetPath(pcbnew.KIID_PATH(c.path))
@@ -127,6 +129,29 @@ def prepare(board_path, net_path, placement, snapshot):
 
     # --- дорожки: снять цепи, которых нет, и обрывки у изменённых площадок ---
     removed = 0
+    # медь чужих цепей под площадками новых деталей (с зазором 0,2 мм) — снять, дальше по цепочке висящих концов
+    clr = MM(0.2)
+    for f in added:
+        for p in f.Pads():
+            ps = p.GetEffectiveShape(pcbnew.F_Cu)
+            for t in list(board.GetTracks()):
+                if t.GetNetname() == p.GetNetname():
+                    continue
+                if isinstance(t, pcbnew.PCB_VIA):
+                    hit = ps.Collide(pcbnew.SHAPE_CIRCLE(t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2), clr)
+                    ends = [t.GetPosition()]
+                else:
+                    if t.GetLayer() != pcbnew.F_Cu:
+                        continue
+                    hit = ps.Collide(pcbnew.SHAPE_SEGMENT(t.GetStart(), t.GetEnd(), t.GetWidth()), clr)
+                    ends = [t.GetStart(), t.GetEnd()]
+                if hit:
+                    print('под %s.%s снято: %s' % (f.GetReference(), p.GetNumber(), seg_key(t)))
+                    net = t.GetNetname()
+                    board.Remove(t)
+                    removed += 1
+                    for e in ends:
+                        dirty.append((e, net, pcbnew.SHAPE_CIRCLE(e, MM(0.05))))
     for t in list(board.GetTracks()):
         if t.GetNetname() and t.GetNetname() not in nets:
             board.Remove(t)
