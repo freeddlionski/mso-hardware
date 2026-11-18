@@ -47,6 +47,16 @@ def key(t):
     return ['seg', ends[0], ends[1], round(pcbnew.ToMM(t.GetWidth()), 3), t.GetLayer(), t.GetNetname()]
 
 
+def raw(t):
+    """Всё, чтобы вернуть элемент меди точно (нм)."""
+    if isinstance(t, pcbnew.PCB_VIA):
+        p = t.GetPosition()
+        return ['via', int(p.x), int(p.y), int(t.GetWidth(pcbnew.F_Cu)), int(t.GetDrillValue()), t.GetNetname(),
+                int(t.TopLayer()), int(t.BottomLayer()), int(t.GetViaType())]
+    a, b = t.GetStart(), t.GetEnd()
+    return ['seg', int(a.x), int(a.y), int(b.x), int(b.y), int(t.GetWidth()), int(t.GetLayer()), t.GetNetname()]
+
+
 def prepare(board_path, net_path, placement, eco_path):
     board = pcb_route.load(board_path)
     comps, nets = netlist.read(net_path)
@@ -137,7 +147,7 @@ def export(board_path, eco_path, snap_path, dsn):
             free += 1
         else:
             t.SetLocked(True)
-            snap.append(key(t))
+            snap.append({'key': key(t), 'raw': raw(t)})
     json.dump(snap, open(snap_path, 'w'), ensure_ascii=False)
     print('цепи правки: %s; открыто для переукладки %d, закреплено %d' % (', '.join(sorted(touched)), free, len(snap)))
     # заливки внешних слоёв: незакреплённые — убрать (в памяти), закреплённые — фиксированная медь (как pcb_route.export)
@@ -188,15 +198,47 @@ def export(board_path, eco_path, snap_path, dsn):
 
 
 def check(board_path, snap_path):
+    """Закреплённая медь после трассировки: Freerouting не пишет в результат провода цепей, у которых в экспорте не
+    было площадок (они препятствия) — такие возвращаются по снимку точно. Сдвинутым считается только элемент цепи
+    трассировки (WANTED) — тогда ошибка."""
     board = pcb_route.load(board_path)
-    before = {json.dumps(k) for k in json.load(open(snap_path))}
+    snap = json.load(open(snap_path))
     now = {json.dumps(key(t)) for t in board.GetTracks()}
-    lost = sorted(before - now)
-    print('закреплённой меди было %d, пропало %d; всего сейчас %d' % (len(before), len(lost), len(now)))
-    for k in lost[:30]:
-        print('   пропало:', k)
-    if lost:
-        raise SystemExit('Freerouting сдвинул закреплённую медь — плату не сохраняю')
+    lost = [it for it in snap if json.dumps(it['key']) not in now]
+    moved = [it for it in lost if WANTED(it['key'][-1])]
+    print('закреплённой меди было %d, нет в результате %d (из них цепей трассировки %d); всего сейчас %d'
+          % (len(snap), len(lost), len(moved), len(now)))
+    for it in moved[:30]:
+        print('   сдвинуто:', it['key'])
+    if moved:
+        raise SystemExit('Freerouting сдвинул закреплённую медь цепей MDB/+5V — плату не сохраняю')
+    for it in lost:
+        r = it['raw']
+        if r[0] == 'seg':
+            if r[1] == r[3] and r[2] == r[4]:
+                continue
+            t = pcbnew.PCB_TRACK(board)
+            t.SetStart(pcbnew.VECTOR2I(r[1], r[2]))
+            t.SetEnd(pcbnew.VECTOR2I(r[3], r[4]))
+            t.SetWidth(r[5])
+            t.SetLayer(r[6])
+            t.SetNet(board.FindNet(r[7]))
+        else:
+            t = pcbnew.PCB_VIA(board)
+            t.SetViaType(r[8])
+            t.SetPosition(pcbnew.VECTOR2I(r[1], r[2]))
+            try:
+                t.SetWidth(r[3])
+            except TypeError:
+                t.SetWidth(pcbnew.F_Cu, r[3])
+            t.SetDrill(r[4])
+            t.SetLayerPair(r[6], r[7])
+            t.SetNet(board.FindNet(r[5]))
+        t.SetLocked(True)
+        board.Add(t)
+        t.thisown = False
+    pcb_route.save(board, board_path)
+    print('возвращено по снимку:', len(lost))
 
 
 def _d_pt_seg(px, py, ax, ay, bx, by):
