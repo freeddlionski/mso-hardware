@@ -151,6 +151,8 @@ def prepare(board_path, net_path, placement, snapshot):
         for o in board.GetTracks():
             if o is tr or o.GetNetname() != net:
                 continue
+            if not isinstance(o, pcbnew.PCB_VIA) and o.GetStart() == o.GetEnd():
+                continue                                   # отрезок нулевой длины — не опора
             if isinstance(o, pcbnew.PCB_VIA):
                 if (o.GetPosition() - pos).EuclideanNorm() <= o.GetWidth(pcbnew.F_Cu) // 2:
                     return True
@@ -184,6 +186,11 @@ def prepare(board_path, net_path, placement, snapshot):
                 continue
             board.Remove(t)
             removed += 1
+            for o in list(board.GetTracks()):
+                if (not isinstance(o, pcbnew.PCB_VIA) and o.GetNetname() == net and o.GetStart() == o.GetEnd()
+                        and any(o.GetStart() == e for e in ends)):
+                    board.Remove(o)
+                    removed += 1
             for e in ends:
                 sh = pcbnew.SHAPE_CIRCLE(e, MM(0.05))
                 queue.append((e, net, sh))
@@ -287,6 +294,14 @@ def finish(board_path, snapshot):
             t.SetDrill(r[4])
             t.SetLayerPair(r[6], r[7])
             t.SetNet(board.FindNet(r[5]))
+        net = r[7] if r[0] == 'seg' else r[5]
+        shape = (pcbnew.SHAPE_SEGMENT(t.GetStart(), t.GetEnd(), t.GetWidth()) if r[0] == 'seg'
+                 else pcbnew.SHAPE_CIRCLE(t.GetPosition(), r[3] // 2))
+        for f in board.GetFootprints():
+            for p in f.Pads():
+                if p.GetNetname() != net and p.GetEffectiveShape(pcbnew.F_Cu).Collide(shape, pcbnew.FromMM(0.15)):
+                    raise SystemExit('возврат %s задевает %s.%s (%s) — плату не сохраняю'
+                                     % (key, f.GetReference(), p.GetNumber(), p.GetNetname()))
         board.Add(t)
         restored += 1
         print('   возвращено:', key)
