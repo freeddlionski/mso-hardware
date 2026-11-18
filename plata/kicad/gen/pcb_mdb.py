@@ -164,7 +164,7 @@ def prepare(board_path, net_path, placement, snapshot):
     def anchored(pos, net, tr):
         """Точка держится: площадка той же цепи, другой элемент меди той же цепи (кроме tr) или заливка."""
         for p in pads:
-            if p['net'] == net and p['shape'].Collide(pos, 0):
+            if p['net'] == net and p['shape'].Collide(pcbnew.SEG(pos, pos), 0):
                 return True
         layers = [tr.GetLayer()] if not isinstance(tr, pcbnew.PCB_VIA) else list(tr.GetLayerSet().CuStack())
         for z in board.Zones():
@@ -187,10 +187,13 @@ def prepare(board_path, net_path, placement, snapshot):
                         return True
         return False
 
+    def at(shape, v, r=0):
+        return shape.Collide(pcbnew.SEG(v, v), r)
+
     def touches(t, point, shape):
         if isinstance(t, pcbnew.PCB_VIA):
-            return shape.Collide(t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2)
-        return shape.Collide(t.GetStart(), 0) or shape.Collide(t.GetEnd(), 0)
+            return at(shape, t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2)
+        return at(shape, t.GetStart()) or at(shape, t.GetEnd())
 
     queue = list(dirty)
     while queue:
