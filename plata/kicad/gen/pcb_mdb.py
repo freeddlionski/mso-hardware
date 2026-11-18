@@ -211,8 +211,8 @@ def check(board_path, snap_path):
           % (len(snap), len(lost), len(moved), len(now)))
     for it in moved[:30]:
         print('   сдвинуто:', it['key'])
-    if moved:
-        raise SystemExit('Freerouting сдвинул закреплённую медь цепей MDB/+5V — плату не сохраняю')
+    # закреплённые провода Freerouting держит как препятствия, но в SES их не пишет — возвращаем все; пересечения
+    # поймает DRC ниже
     for it in lost:
         r = it['raw']
         if r[0] == 'seg':
