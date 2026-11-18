@@ -34,7 +34,8 @@ NEW_REFS = ('Q10', 'Q11', 'Q12', 'R119', 'R120', 'R121', 'R122', 'U24')
 
 def WANTED(net):
     """Цепи, которые разводит Freerouting: цепи MDB и +5V. Остальные для него — препятствия без цепи."""
-    return 'MDB' in net or net == '+5V'
+    leaf = net.rsplit('/', 1)[-1]
+    return 'MDB' in leaf or leaf == '+5V'
 
 
 def key(t):
