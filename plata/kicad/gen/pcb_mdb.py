@@ -30,6 +30,20 @@ def to_mm(v):
     return round(pcbnew.ToMM(v), 2)          # 10 мкм: Specctra округляет координаты при обмене
 
 
+def WANTED(net):
+    """Цепи, которые разводит Freerouting: все цепи MDB и +5V. Остальные для него — препятствия без цепи."""
+    return 'MDB' in net or net == '+5V'
+
+
+def seg_raw(t):
+    if isinstance(t, pcbnew.PCB_VIA):
+        p = t.GetPosition()
+        return ['via', p.x, p.y, t.GetWidth(pcbnew.F_Cu), t.GetDrillValue(), t.GetNetname(),
+                t.TopLayer(), t.BottomLayer(), int(t.GetViaType())]
+    a, b = t.GetStart(), t.GetEnd()
+    return ['seg', a.x, a.y, b.x, b.y, t.GetWidth(), t.GetLayer(), t.GetNetname()]
+
+
 def seg_key(t):
     if isinstance(t, pcbnew.PCB_VIA):
         p = t.GetPosition()
@@ -179,7 +193,7 @@ def prepare(board_path, net_path, placement, snapshot):
     snap = []
     for t in board.GetTracks():
         t.SetLocked(True)
-        snap.append(list(seg_key(t)))
+        snap.append({'key': list(seg_key(t)), 'raw': seg_raw(t)})
     json.dump(snap, open(snapshot, 'w'), ensure_ascii=False)
     board.BuildConnectivity()
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
@@ -187,17 +201,98 @@ def prepare(board_path, net_path, placement, snapshot):
     print('закреплено элементов меди:', len(snap))
 
 
-def finish(board_path, snapshot):
+def export(board_path, dsn):
+    """Specctra только для цепей WANTED: площадки прочих цепей — без цепи (препятствия), вся медь закреплена.
+    Незакреплённые заливки внешних слоёв убираются в памяти (как в pcb_route.export), закреплённые — фиксированная медь."""
     board = pcb_route.load(board_path)
-    before = {tuple(tuple(x) if isinstance(x, list) else x for x in s) for s in json.load(open(snapshot))}
+    fixed_areas, outer = [], []
+    for z in board.Zones():
+        if z.GetIsRuleArea() or z.GetLayer() not in (pcbnew.F_Cu, pcbnew.B_Cu):
+            continue
+        outer.append(z)
+        if not z.IsLocked():
+            continue
+        polys = z.GetFilledPolysList(z.GetLayer())
+        for i in range(polys.OutlineCount()):
+            chains = [polys.COutline(i)] + [polys.CHole(i, h) for h in range(polys.HoleCount(i))]
+            rings = [[(c.CPoint(j).x, c.CPoint(j).y) for j in range(c.PointCount())] for c in chains]
+            fixed_areas.append((z.GetNetname(), z.GetLayer(), rings))
+    for z in outer:
+        board.Remove(z)
+    for net, layer, rings in fixed_areas:
+        z = pcbnew.ZONE(board)
+        z.SetLayer(layer)
+        z.SetNet(board.FindNet(net))
+        z.SetLocked(True)
+        poly = pcbnew.SHAPE_POLY_SET()
+        for i, ring in enumerate(rings):
+            chain = pcbnew.SHAPE_LINE_CHAIN()
+            for x, y in ring:
+                chain.Append(x, y)
+            chain.SetClosed(True)
+            if i == 0:
+                poly.AddOutline(chain)
+            else:
+                poly.AddHole(chain)
+        z.SetOutline(poly)
+        poly.thisown = False
+        board.Add(z)
+    kept, hidden = set(), set()
+    for f in board.GetFootprints():
+        for p in f.Pads():
+            n = p.GetNetname()
+            if not n:
+                continue
+            if WANTED(n):
+                kept.add(n)
+            else:
+                hidden.add(n)
+                p.SetNetCode(0)
+    print('экспорт: разводятся %d цепей (%s), остальные %d — препятствия'
+          % (len(kept), ', '.join(sorted(kept)), len(hidden)))
+    if not pcbnew.ExportSpecctraDSN(board, dsn):
+        raise SystemExit('экспорт DSN не удался')
+
+
+def finish(board_path, snapshot):
+    """После импорта SES: закреплённая медь должна остаться. Пропавшие элементы чужих цепей возвращаются по снимку
+    (Freerouting иногда выбрасывает «висящие» для него переходы плоскостей); вырожденные отрезки нулевой длины — нет."""
+    board = pcb_route.load(board_path)
+    snap = json.load(open(snapshot))
     now = {seg_key(t) for t in board.GetTracks()}
-    lost = before - now
-    print('элементов меди: было закреплено %d, сейчас всего %d, новых %d, пропало %d'
-          % (len(before), len(now), len(now - before), len(lost)))
-    for k in list(lost)[:20]:
-        print('   пропало:', k)
-    if lost:
-        raise SystemExit('Freerouting сдвинул закреплённую медь — плату не сохраняю')
+    restored = skipped = 0
+    for item in snap:
+        key = tuple(tuple(x) if isinstance(x, list) else x for x in item['key'])
+        if key in now:
+            continue
+        r = item['raw']
+        if r[0] == 'seg':
+            if r[1] == r[3] and r[2] == r[4]:
+                skipped += 1
+                continue
+            t = pcbnew.PCB_TRACK(board)
+            t.SetStart(pcbnew.VECTOR2I(r[1], r[2]))
+            t.SetEnd(pcbnew.VECTOR2I(r[3], r[4]))
+            t.SetWidth(r[5])
+            t.SetLayer(r[6])
+            t.SetNet(board.FindNet(r[7]))
+        else:
+            t = pcbnew.PCB_VIA(board)
+            t.SetViaType(r[8])
+            t.SetPosition(pcbnew.VECTOR2I(r[1], r[2]))
+            try:
+                t.SetWidth(r[3])
+            except TypeError:
+                t.SetWidth(pcbnew.F_Cu, r[3])
+            t.SetDrill(r[4])
+            t.SetLayerPair(r[6], r[7])
+            t.SetNet(board.FindNet(r[5]))
+        board.Add(t)
+        restored += 1
+        print('   возвращено:', key)
+    total = len({seg_key(t) for t in board.GetTracks()})
+    print('элементов меди: закреплено было %d, возвращено %d, отброшено нулевых %d, сейчас %d'
+          % (len(snap), restored, skipped, total))
     for t in board.GetTracks():
         t.SetLocked(False)
     board.BuildConnectivity()
@@ -209,7 +304,9 @@ if __name__ == '__main__':
     cmd = sys.argv[1]
     if cmd == 'prepare':
         prepare(*sys.argv[2:6])
+    elif cmd == 'export':
+        export(*sys.argv[2:4])
     elif cmd == 'finish':
         finish(*sys.argv[2:4])
     else:
-        raise SystemExit('prepare | finish')
+        raise SystemExit('prepare | export | finish')

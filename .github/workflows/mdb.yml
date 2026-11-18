@@ -41,7 +41,7 @@ jobs:
         timeout-minutes: 60
         run: |
           set -e
-          python3 plata/kicad/gen/pcb_route.py export $PCB mdb /tmp/w/mdb.dsn
+          (cd plata/kicad/gen && python3 pcb_mdb.py export ../routed/mso74-plata.kicad_pcb /tmp/w/mdb.dsn)
           mkdir -p /tmp/fr
           python3 - <<'PY'
           import urllib.request, tarfile, io
