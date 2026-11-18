@@ -58,16 +58,113 @@ def seg_key(t):
     return ('seg', ends[0], ends[1], to_mm(t.GetWidth()), t.GetLayer(), t.GetNetname())
 
 
+def touches_point(t, v, r=MM(0.02)):
+    if isinstance(t, pcbnew.PCB_VIA):
+        return (t.GetPosition() - v).EuclideanNorm() <= t.GetWidth(pcbnew.F_Cu) // 2 + r
+    return (t.GetStart() - v).EuclideanNorm() <= r or (t.GetEnd() - v).EuclideanNorm() <= r
+
+
+def ends_of(t):
+    return [t.GetPosition()] if isinstance(t, pcbnew.PCB_VIA) else [t.GetStart(), t.GetEnd()]
+
+
+def remove_with_ends(board, t, queue):
+    """Снять элемент меди и отрезки нулевой длины той же цепи на его концах; концы — в очередь на проверку."""
+    net, ends = t.GetNetname(), ends_of(t)
+    board.Remove(t)
+    n = 1
+    for o in list(board.GetTracks()):
+        if (not isinstance(o, pcbnew.PCB_VIA) and o.GetNetname() == net and o.GetStart() == o.GetEnd()
+                and any(touches_point(o, e) for e in ends)):
+            board.Remove(o)
+            n += 1
+    queue += [(e, net) for e in ends]
+    return n
+
+
+def anchored(board, pos, net, tr):
+    """Конец держится: площадка той же цепи, заливка той же цепи, другой элемент меди той же цепи."""
+    for f in board.GetFootprints():
+        for p in f.Pads():
+            if p.GetNetname() == net and p.GetEffectiveShape(pcbnew.F_Cu if p.IsOnLayer(pcbnew.F_Cu)
+                                                            else pcbnew.B_Cu).Collide(pos, 0):
+                return True
+    via = isinstance(tr, pcbnew.PCB_VIA)
+    layers = list(tr.GetLayerSet().CuStack()) if via else [tr.GetLayer()]
+    for z in board.Zones():
+        if z.GetIsRuleArea() or z.GetNetname() != net:
+            continue
+        for L in layers:
+            if z.IsOnLayer(L) and z.HitTestFilledArea(L, pos):
+                return True
+    for o in board.GetTracks():
+        if o is tr or o.GetNetname() != net:
+            continue
+        if isinstance(o, pcbnew.PCB_VIA):
+            if (o.GetPosition() - pos).EuclideanNorm() <= o.GetWidth(pcbnew.F_Cu) // 2:
+                return True
+        elif o.GetStart() != o.GetEnd() and (via or o.GetLayer() == tr.GetLayer()):
+            if touches_point(o, pos) or o.HitTest(pos, 0):
+                return True
+    return False
+
+
+def prune(board, nets=None, queue=None):
+    """Висящие концы: отрезок, у которого конец ни на чём не держится, и переход не плоскости, к которому подходит
+    не больше одного отрезка. С очередью — только от точек очереди; без неё — по цепям nets на всей плате."""
+    planes = ('GND', '+3V3', '+24V_P')
+    removed = 0
+    while True:
+        cand = []
+        if queue is not None:
+            if not queue:
+                break
+            pts = queue[:]
+            del queue[:]
+            for pos, net in pts:
+                cand += [t for t in board.GetTracks() if t.GetNetname() == net and touches_point(t, pos)]
+        else:
+            cand = [t for t in board.GetTracks() if t.GetNetname() in nets]
+        changed = False
+        seen = set()
+        for t in cand:
+            if id(t) in seen:
+                continue
+            seen.add(id(t))
+            net = t.GetNetname()
+            if isinstance(t, pcbnew.PCB_VIA):
+                if any(p.GetNetname() == net and p.GetEffectiveShape(pcbnew.F_Cu).Collide(t.GetPosition(), 0)
+                       for f in board.GetFootprints() for p in f.Pads()):
+                    continue
+                n = sum(1 for o in board.GetTracks() if not isinstance(o, pcbnew.PCB_VIA) and o.GetNetname() == net
+                        and o.GetStart() != o.GetEnd() and touches_point(o, t.GetPosition()))
+                if n == 0 or (n == 1 and net not in planes):
+                    removed += remove_with_ends(board, t, queue if queue is not None else [])
+                    changed = True
+                continue
+            if t.GetStart() == t.GetEnd():
+                continue
+            if all(anchored(board, e, net, t) for e in ends_of(t)):
+                continue
+            removed += remove_with_ends(board, t, queue if queue is not None else [])
+            changed = True
+        if queue is None and not changed:
+            break
+    return removed
+
+
 def prepare(board_path, net_path, placement, snapshot):
     board = pcb_route.load(board_path)
     comps, nets = netlist.read(net_path)
     pl = json.load(open(placement, encoding='utf-8'))
 
     # --- цепи: новые имена ---
+    new_nets = set()
     for name in sorted(nets):
         if name and not name.startswith('unconnected-') and not board.FindNet(name):
             ni = pcbnew.NETINFO_ITEM(board, name)
             board.Add(ni)
+            new_nets.add(name)
             print('новая цепь', name)
 
     dirty = []          # (точка, имя прежней цепи) — откуда снимать дорожки
@@ -127,6 +224,8 @@ def prepare(board_path, net_path, placement, snapshot):
                 if have:
                     dirty.append((p.GetPosition(), have, p.GetEffectiveShape(pcbnew.F_Cu)))
                 if want:
+                    new_nets.add(want)
+                if want:
                     p.SetNet(board.FindNet(want))
                 else:
                     p.SetNetCode(0)
@@ -156,80 +255,31 @@ def prepare(board_path, net_path, placement, snapshot):
                     board.Remove(t)
                     removed += 1
                     for e in ends:
-                        dirty.append((e, net, pcbnew.SHAPE_CIRCLE(e, MM(0.05))))
+                        dirty.append((e, net, None))
     for t in list(board.GetTracks()):
         if t.GetNetname() and t.GetNetname() not in nets:
             board.Remove(t)
             removed += 1
-    pads = []
-    for f in board.GetFootprints():
-        for p in f.Pads():
-            pads.append({'net': p.GetNetname(), 'shape': p.GetEffectiveShape(pcbnew.F_Cu), 'pos': p.GetPosition()})
-
-    def anchored(pos, net, tr):
-        """Точка держится: площадка той же цепи, другой элемент меди той же цепи (кроме tr) или заливка."""
-        for p in pads:
-            if p['net'] == net and p['shape'].Collide(pcbnew.SEG(pos, pos), 0):
-                return True
-        layers = [tr.GetLayer()] if not isinstance(tr, pcbnew.PCB_VIA) else list(tr.GetLayerSet().CuStack())
-        for z in board.Zones():
-            if z.GetIsRuleArea() or z.GetNetname() != net:
-                continue
-            for L in layers:
-                if z.IsOnLayer(L) and z.HitTestFilledArea(L, pos):
-                    return True
-        for o in board.GetTracks():
-            if o is tr or o.GetNetname() != net:
-                continue
-            if not isinstance(o, pcbnew.PCB_VIA) and o.GetStart() == o.GetEnd():
-                continue                                   # отрезок нулевой длины — не опора
-            if isinstance(o, pcbnew.PCB_VIA):
-                if (o.GetPosition() - pos).EuclideanNorm() <= o.GetWidth(pcbnew.F_Cu) // 2:
-                    return True
-            else:
-                if isinstance(tr, pcbnew.PCB_VIA) or o.GetLayer() == tr.GetLayer():
-                    if o.GetStart() == pos or o.GetEnd() == pos or o.HitTest(pos, 0):
-                        return True
-        return False
-
-    def at(shape, v, r=0):
-        return shape.Collide(pcbnew.SEG(v, v), r)
-
-    def touches(t, point, shape):
-        if isinstance(t, pcbnew.PCB_VIA):
-            return at(shape, t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2)
-        return at(shape, t.GetStart()) or at(shape, t.GetEnd())
-
-    queue = list(dirty)
-    while queue:
-        point, net, shape = queue.pop()
+    # площадки со сменившейся цепью и снятых деталей: все дорожки прежней цепи, касающиеся их, — снять
+    queue = []
+    for point, net, shape in dirty:
+        if shape is None:
+            queue.append((point, net))          # конец снятой чужой меди — только проверка «висит ли»
+            continue
         for t in list(board.GetTracks()):
-            if t.GetNetname() != net or not touches(t, point, shape):
+            if t.GetNetname() != net:
                 continue
-            ends = [t.GetPosition()] if isinstance(t, pcbnew.PCB_VIA) else [t.GetStart(), t.GetEnd()]
-            # снимаем, если хотя бы один конец ни на чём не держится (висит)
-            hanging = [e for e in ends if not anchored(e, net, t)]
-            if isinstance(t, pcbnew.PCB_VIA):
-                n = sum(1 for o in board.GetTracks() if not isinstance(o, pcbnew.PCB_VIA) and o.GetNetname() == net
-                        and (o.GetStart() == t.GetPosition() or o.GetEnd() == t.GetPosition()))
-                plane = net in ('GND', '+3V3', '+24V_P')
-                if not (n == 0 or (n == 1 and not plane)):
-                    continue
-            elif not hanging:
-                continue
-            board.Remove(t)
-            removed += 1
-            for o in list(board.GetTracks()):
-                if (not isinstance(o, pcbnew.PCB_VIA) and o.GetNetname() == net and o.GetStart() == o.GetEnd()
-                        and any(o.GetStart() == e for e in ends)):
-                    board.Remove(o)
-                    removed += 1
-            for e in ends:
-                sh = pcbnew.SHAPE_CIRCLE(e, MM(0.05))
-                queue.append((e, net, sh))
+            hit = (shape.Collide(t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2) if isinstance(t, pcbnew.PCB_VIA)
+                   else shape.Collide(t.GetStart(), 0) or shape.Collide(t.GetEnd(), 0))
+            if hit:
+                removed += remove_with_ends(board, t, queue)
+    removed += prune(board, queue=queue)
     print('снято дорожек и переходов:', removed)
 
     # --- закрепить всё оставшееся, снимок для проверки после трассировки ---
+    touched = {n for _, n, _ in dirty} | new_nets | {p.GetNetname() for f in added for p in f.Pads()}
+    touched = {n for n in touched if WANTED(n)}
+    print('цепи правки:', ', '.join(sorted(touched)))
     snap = []
     x0, y0, x1, y1 = (MM(v) for v in REGION)
     def inside(v):
@@ -237,7 +287,7 @@ def prepare(board_path, net_path, placement, snapshot):
     free = 0
     for t in board.GetTracks():
         pts = [t.GetPosition()] if isinstance(t, pcbnew.PCB_VIA) else [t.GetStart(), t.GetEnd()]
-        if WANTED(t.GetNetname()) and all(inside(v) for v in pts):
+        if t.GetNetname() in touched and all(inside(v) for v in pts):
             t.SetLocked(False)                      # медь MDB и +5V в зоне правки — можно переложить
             free += 1
             continue
@@ -351,6 +401,8 @@ def finish(board_path, snapshot):
     total = len({seg_key(t) for t in board.GetTracks()})
     print('элементов меди: закреплено было %d, возвращено %d, отброшено нулевых %d, сейчас %d'
           % (len(snap), restored, skipped, total))
+    nets = {t.GetNetname() for t in board.GetTracks() if WANTED(t.GetNetname())}
+    print('дочищено висящих после трассировки:', prune(board, nets=nets))
     add_gnd_vias(board)
     for t in board.GetTracks():
         t.SetLocked(False)
