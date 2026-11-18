@@ -60,7 +60,7 @@ def prepare(board_path, net_path, placement, snapshot):
             continue
         for p in f.Pads():
             if p.GetNetname():
-                dirty.append((p.GetPosition(), p.GetNetname(), p.GetEffectiveShape()))
+                dirty.append((p.GetPosition(), p.GetNetname(), p.GetEffectiveShape(pcbnew.F_Cu)))
         board.Remove(f)
         print('снята деталь', ref)
     for ref, c in comps.items():
@@ -98,7 +98,7 @@ def prepare(board_path, net_path, placement, snapshot):
             have = p.GetNetname()
             if want != have:
                 if have:
-                    dirty.append((p.GetPosition(), have, p.GetEffectiveShape()))
+                    dirty.append((p.GetPosition(), have, p.GetEffectiveShape(pcbnew.F_Cu)))
                 if want:
                     p.SetNet(board.FindNet(want))
                 else:
@@ -114,7 +114,7 @@ def prepare(board_path, net_path, placement, snapshot):
     pads = []
     for f in board.GetFootprints():
         for p in f.Pads():
-            pads.append({'net': p.GetNetname(), 'shape': p.GetEffectiveShape(), 'pos': p.GetPosition()})
+            pads.append({'net': p.GetNetname(), 'shape': p.GetEffectiveShape(pcbnew.F_Cu), 'pos': p.GetPosition()})
 
     def anchored(pos, net, tr):
         """Точка держится: площадка той же цепи, другой элемент меди той же цепи (кроме tr) или заливка."""
