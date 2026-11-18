@@ -107,6 +107,12 @@ jobs:
           mkdir -p out/jlc && (cd out/fab/gerber && python3 -m zipfile -c ../../jlc/gerber_mso74.zip $(ls | grep -v -e _map -e gbrjob))
           python3 plata/kicad/gen/jlc_files.py $R/mso74-plata.kicad_pcb out/fab/positions.csv out/jlc || true
           ls -la out/jlc
+          # заводы в России (Резонит, pcbrussia): сборочный чертёж, спецификация, координаты от угла платы
+          apt-get update -qq && apt-get install -y -qq python3-reportlab python3-openpyxl fonts-dejavu-core >/dev/null || true
+          mkdir -p out/rf && cp out/jlc/gerber_mso74.zip out/rf/
+          python3 plata/kicad/gen/spec.py $R/mso74-plata.kicad_pcb out/rf/spec_mso74.xlsx out/rf/pnp_mso74.csv
+          python3 plata/kicad/gen/assembly.py $R/mso74-plata.kicad_pcb out/rf/sb_mso74.pdf
+          ls -la out/rf
 
       - name: DRC платы
         if: always()
