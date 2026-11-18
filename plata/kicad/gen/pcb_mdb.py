@@ -58,6 +58,15 @@ def seg_key(t):
     return ('seg', ends[0], ends[1], to_mm(t.GetWidth()), t.GetLayer(), t.GetNetname())
 
 
+def rect(b):
+    """Копия рамки как чисел: объекты KiCad, полученные от площадки, могут ссылаться на её внутренности."""
+    return (b.GetLeft(), b.GetTop(), b.GetRight(), b.GetBottom())
+
+
+def in_rect(r, v, grow=0):
+    return r[0] - grow <= v.x <= r[2] + grow and r[1] - grow <= v.y <= r[3] + grow
+
+
 def touches_point(t, v, r=MM(0.02)):
     if isinstance(t, pcbnew.PCB_VIA):
         return (t.GetPosition() - v).EuclideanNorm() <= t.GetWidth(pcbnew.F_Cu) // 2 + r
@@ -177,7 +186,7 @@ def prepare(board_path, net_path, placement, snapshot):
             continue
         for p in f.Pads():
             if p.GetNetname():
-                dirty.append((p.GetPosition(), p.GetNetname(), pcbnew.BOX2I(p.GetBoundingBox())))
+                dirty.append((p.GetPosition(), p.GetNetname(), rect(p.GetBoundingBox())))
         board.Remove(f)
         print('снята деталь', ref)
     for ref, c in comps.items():
@@ -222,7 +231,7 @@ def prepare(board_path, net_path, placement, snapshot):
             have = p.GetNetname()
             if want != have:
                 if have:
-                    dirty.append((p.GetPosition(), have, pcbnew.BOX2I(p.GetBoundingBox())))
+                    dirty.append((p.GetPosition(), have, rect(p.GetBoundingBox())))
                 if want:
                     new_nets.add(want)
                 if want:
@@ -271,12 +280,10 @@ def prepare(board_path, net_path, placement, snapshot):
                 continue
             # shape — копия рамки площадки (BOX2I): форму площадки хранить нельзя — GetEffectiveShape отдаёт ссылку на
             # кэш внутри площадки, после снятия детали она недействительна (падение 139 в прогоне 44379977742)
-            box = pcbnew.BOX2I(shape)
             if isinstance(t, pcbnew.PCB_VIA):
-                box.Inflate(t.GetWidth(pcbnew.F_Cu) // 2)
-                hit = box.Contains(t.GetPosition())
+                hit = in_rect(shape, t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2)
             else:
-                hit = box.Contains(t.GetStart()) or box.Contains(t.GetEnd())
+                hit = in_rect(shape, t.GetStart()) or in_rect(shape, t.GetEnd())
             if hit:
                 removed += remove_with_ends(board, t, queue)
     removed += prune(board, queue=queue)
