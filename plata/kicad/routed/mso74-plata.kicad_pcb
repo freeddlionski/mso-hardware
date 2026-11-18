@@ -5766,7 +5766,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C148198"
+		(property "LCSC" "C176917"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -5778,7 +5778,7 @@
 				)
 			)
 		)
-		(property "MPN" "74AHCT125PW"
+		(property "MPN" "74AHCT125T14-13"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -9195,7 +9195,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5289730"
+		(property "LCSC" "C2905295"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -9207,7 +9207,7 @@
 				)
 			)
 		)
-		(property "MPN" "EMK1CM471GB0D00R"
+		(property "MPN" "25TLV470M10X10.5"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -82831,7 +82831,7 @@
 				)
 			)
 		)
-		(property "LCSC" "C5289730"
+		(property "LCSC" "C2905295"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)
@@ -82843,7 +82843,7 @@
 				)
 			)
 		)
-		(property "MPN" "EMK1CM471GB0D00R"
+		(property "MPN" "25TLV470M10X10.5"
 			(at 0 0 0)
 			(layer "F.SilkS")
 			(hide yes)

@@ -21720,7 +21720,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C5289730"
+		(property "LCSC" "C2905295"
 			(at 414.02 86.36 0)
 			(effects
 				(font
@@ -21729,7 +21729,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "EMK1CM471GB0D00R"
+		(property "MPN" "25TLV470M10X10.5"
 			(at 414.02 86.36 0)
 			(effects
 				(font
@@ -26611,7 +26611,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C5289730"
+		(property "LCSC" "C2905295"
 			(at 414.02 213.36 0)
 			(effects
 				(font
@@ -26620,7 +26620,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "EMK1CM471GB0D00R"
+		(property "MPN" "25TLV470M10X10.5"
 			(at 414.02 213.36 0)
 			(effects
 				(font
