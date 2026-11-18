@@ -24,6 +24,8 @@ import pcb_build
 import pcb_route
 
 MM = pcbnew.FromMM
+REGION = (140.0, 108.0, 175.0, 142.0)   # зона правки на листе, мм: x0, y0, x1, y1
+GND_VIA = (0.6, 0.3)                            # переход на плоскость GND: диаметр, сверло, мм
 
 
 def to_mm(v):
@@ -226,9 +228,19 @@ def prepare(board_path, net_path, placement, snapshot):
 
     # --- закрепить всё оставшееся, снимок для проверки после трассировки ---
     snap = []
+    x0, y0, x1, y1 = (MM(v) for v in REGION)
+    def inside(v):
+        return x0 <= v.x <= x1 and y0 <= v.y <= y1
+    free = 0
     for t in board.GetTracks():
+        pts = [t.GetPosition()] if isinstance(t, pcbnew.PCB_VIA) else [t.GetStart(), t.GetEnd()]
+        if WANTED(t.GetNetname()) and all(inside(v) for v in pts):
+            t.SetLocked(False)                      # медь MDB и +5V в зоне правки — можно переложить
+            free += 1
+            continue
         t.SetLocked(True)
         snap.append({'key': list(seg_key(t)), 'raw': seg_raw(t)})
+    print('открыто для переукладки (MDB, +5V в зоне правки):', free)
     json.dump(snap, open(snapshot, 'w'), ensure_ascii=False)
     board.BuildConnectivity()
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
@@ -336,11 +348,91 @@ def finish(board_path, snapshot):
     total = len({seg_key(t) for t in board.GetTracks()})
     print('элементов меди: закреплено было %d, возвращено %d, отброшено нулевых %d, сейчас %d'
           % (len(snap), restored, skipped, total))
+    add_gnd_vias(board)
     for t in board.GetTracks():
         t.SetLocked(False)
     board.BuildConnectivity()
     pcbnew.ZONE_FILLER(board).Fill(board.Zones())
     pcb_route.save(board, board_path)
+
+
+NEW_REFS = ('Q10', 'Q11', 'Q12', 'R119', 'R120', 'R121', 'R122', 'U24')
+
+
+def add_gnd_vias(board):
+    """Каждой площадке GND новых деталей — свой переход на плоскость In1 рядом, дорожкой 0,3 мм по F.Cu.
+    Место — первое из кругов 1,0–2,6 мм вокруг площадки, где переход и дорожка не ближе 0,2 мм к чужой меди."""
+    clr = MM(0.2)
+    d, drill = MM(GND_VIA[0]), MM(GND_VIA[1])
+    gnd = board.FindNet('GND')
+    others = [t for t in board.GetTracks() if t.GetNetname() != 'GND']
+    pads = [(f, p) for f in board.GetFootprints() for p in f.Pads()]
+
+    def track_shape(t):
+        if isinstance(t, pcbnew.PCB_VIA):
+            return pcbnew.SHAPE_CIRCLE(t.GetPosition(), t.GetWidth(pcbnew.F_Cu) // 2), None
+        return pcbnew.SHAPE_SEGMENT(t.GetStart(), t.GetEnd(), t.GetWidth()), t.GetLayer()
+
+    def free(shape, layers, skip_pad):
+        for t in others:
+            sh, L = track_shape(t)
+            if (L is None or L in layers) and sh.Collide(shape, clr):
+                return False
+        for f, p in pads:
+            if p is skip_pad or p.GetNetname() == 'GND':
+                continue
+            for L in layers:
+                if p.IsOnLayer(L) and p.GetEffectiveShape(L).Collide(shape, clr):
+                    return False
+        return True
+
+    def under_part(v):
+        for f in board.GetFootprints():          # не ставить переход под корпус детали
+            cy = f.GetCourtyard(pcbnew.F_CrtYd)
+            if cy.OutlineCount() and cy.Contains(v):
+                return True
+        return False
+
+    for f in board.GetFootprints():
+        if f.GetReference() not in NEW_REFS:
+            continue
+        for p in f.Pads():
+            if p.GetNetname() != 'GND':
+                continue
+            c = p.GetPosition()
+            done = False
+            for r in [x / 10 for x in range(10, 27, 2)]:
+                for k in range(16):
+                    a = 2 * math.pi * k / 16
+                    v = pcbnew.VECTOR2I(c.x + MM(r * math.cos(a)), c.y + MM(r * math.sin(a)))
+                    via_sh = pcbnew.SHAPE_CIRCLE(v, d // 2)
+                    seg_sh = pcbnew.SHAPE_SEGMENT(c, v, MM(0.3))
+                    if under_part(v) or not free(via_sh, [pcbnew.F_Cu, pcbnew.B_Cu], p) or not free(seg_sh, [pcbnew.F_Cu], p):
+                        continue
+                    via = pcbnew.PCB_VIA(board)
+                    via.SetPosition(v)
+                    try:
+                        via.SetWidth(d)
+                    except TypeError:
+                        via.SetWidth(pcbnew.F_Cu, d)
+                    via.SetDrill(drill)
+                    via.SetNet(gnd)
+                    board.Add(via)
+                    tr = pcbnew.PCB_TRACK(board)
+                    tr.SetStart(c)
+                    tr.SetEnd(v)
+                    tr.SetWidth(MM(0.3))
+                    tr.SetLayer(pcbnew.F_Cu)
+                    tr.SetNet(gnd)
+                    board.Add(tr)
+                    print('%s.%s → переход GND (%.2f; %.2f)' % (f.GetReference(), p.GetNumber(),
+                                                               pcbnew.ToMM(v.x), pcbnew.ToMM(v.y)))
+                    done = True
+                    break
+                if done:
+                    break
+            if not done:
+                raise SystemExit('нет места для перехода GND у %s.%s' % (f.GetReference(), p.GetNumber()))
 
 
 if __name__ == '__main__':

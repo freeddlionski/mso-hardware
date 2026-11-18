@@ -76,8 +76,16 @@ jobs:
           c = collections.Counter(v['type'] for v in d.get('violations', []))
           for k, n in c.most_common(): print('%5d  %s' % (n, k))
           print('не разведено связей:', len(d.get('unconnected_items', [])))
+          def pos(i):
+              q = i.get('pos', {})
+              return '(%.2f; %.2f)' % (q.get('x', 0), q.get('y', 0))
           for u in d.get('unconnected_items', [])[:20]:
-              print('   ', ' / '.join(i.get('description', '') for i in u.get('items', [])))
+              print('   ', ' / '.join(i.get('description', '') + ' ' + pos(i) for i in u.get('items', [])))
+          print('нарушения (без шелкографии):')
+          for v in d.get('violations', []):
+              if v['type'].startswith('silk'):
+                  continue
+              print('  ', v['type'], '|', ' / '.join(i.get('description', '') + ' ' + pos(i) for i in v.get('items', [])))
           PY
       - name: Коммит в ветку
         run: |
