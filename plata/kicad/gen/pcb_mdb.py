@@ -287,6 +287,26 @@ def export(board_path, eco_path, snap_path, dsn):
     print('Specctra: разводятся %d цепей, площадки прочих — препятствия' % len(kept))
     if not pcbnew.ExportSpecctraDSN(board, dsn):
         raise SystemExit('экспорт DSN не удался')
+    narrow_5v(dsn)
+
+
+def narrow_5v(dsn):
+    """+5V в классе PWR (0,6 мм) не проходит между SOT-89 Q11 и соседями (проход 15: Freerouting оставил Q12.2 и U24.1
+    без питания). Ток веток MDB ≤ 80 мА — для трассировки ширина +5V 0,3 мм; меняется только DSN, правила платы прежние."""
+    import re
+    txt = open(dsn, encoding='utf-8').read()
+    m = re.search(r'\(resolution\s+(\w+)\s+(\d+)\)', txt)
+    unit = m.group(1) if m else 'um'
+    w = {'um': 300, 'mm': 0.3, 'mil': 11.8}.get(unit, 300)
+    out, n = [], 0
+    for blk in re.split(r'(?=\(class )', txt):
+        if blk.startswith('(class ') and re.search(r'[\s"]\+5V[\s")]', blk.split('(circuit')[0]):
+            print('класс +5V в DSN:', ' '.join(blk.split())[:300])
+            blk, k = re.subn(r'\(width\s+[\d.]+\)', '(width %s)' % w, blk, count=1)
+            n += k
+        out.append(blk)
+    open(dsn, 'w', encoding='utf-8').write(''.join(out))
+    print('ширина +5V для трассировки: %s %s (замен %d)' % (w, unit, n))
 
 
 def check(board_path, snap_path):
