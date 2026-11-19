@@ -55,7 +55,7 @@ jobs:
           JAVA=$(ls -d /tmp/fr/jre/*/bin/java)
           set +e
           timeout 50m "$JAVA" -jar /tmp/fr/freerouting.jar -de /tmp/w/mdb.dsn -do /tmp/w/mdb.ses -mt 2 \
-            --gui.enabled=false --router.optimizer.enabled=false --router.autorouter.max_passes=20 \
+            --gui.enabled=false --router.optimizer.enabled=false --router.autorouter.max_passes=60 \
             --router.automatic_neckdown=false > /tmp/w/freerouting.log 2>&1
           echo "код завершения Freerouting: $?"
           set -e

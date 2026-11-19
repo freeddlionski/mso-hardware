@@ -262,6 +262,30 @@ def clean(board_path, eco_path):
             print('снята деталь', b.ref(fp))
     c = Cleaner(b)
     queue = []
+    # 1а) точечно: элементы меди из ECO['remove_items'] — ('via', цепь, (x, y)) или ('seg', цепь, (x1, y1), (x2, y2))
+    for spec in eco.get('remove_items', []):
+        hit = None
+        for n in b.tracks():
+            kind, pts, hw, layer, net = c.info(n)
+            if kind != spec[0] or net != spec[1]:
+                continue
+            want = [tuple(p) for p in spec[2:]]
+            if all(any(close(p, q) for q in pts) for p in want):
+                hit = n
+                break
+        if hit is None:
+            print('нет (уже снято?):', spec)
+            continue
+        b.remove(hit)
+        c.removed.append((spec[0], [tuple(p) for p in spec[2:]], spec[1], 'по списку'))
+        print('снято по списку:', spec)
+    # 1б) медь цепей ECO['rip'] в рамке — развести заново: [цепь, (x0, y0, x1, y1)]
+    for net, box in eco.get('rip', []):
+        for n in list(b.tracks()):
+            kind, pts, hw, layer, tnet = c.info(n)
+            if tnet == net and any(box[0] <= p[0] <= box[2] and box[1] <= p[1] <= box[3] for p in pts) \
+                    and any(x is n for x in b.tree):
+                c.drop(n, queue, 'переразводка')
     # 2) медь цепей, которых нет в схеме
     for n in list(b.tracks()):
         net = c.info(n)[4]

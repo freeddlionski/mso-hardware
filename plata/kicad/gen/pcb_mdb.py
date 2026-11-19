@@ -1,4 +1,7 @@
 """MDB по стандарту (18.11.2026): правка готовой платы по новой схеме, трассировка только изменённых связей.
+19.11.2026, проход 15: Q11 → PBSS5540X (SOT-89), D17/D21 → BAT46WJ (SOD-323F), F6 → 1812, R64 → 1206, D50 (новый) —
+детали из RELAYOUT ставятся заново по placement.json (старая снимается вместе с медью на её площадках); медь цепей
+RIP снимается и разводится заново; у F3 переходы выведены из площадок (F3_ADD / F3_REMOVE).
 
 Шаги (mdb.yml); снятие меди и деталей — в eco_text.py (текст файла), здесь — только то, что pcbnew делает надёжно:
   python3 pcb_mdb.py prepare BOARD NETLIST.net PLACEMENT.json ECO.json — новые цепи и детали, значения, LCSC/MPN, цепи
@@ -27,15 +30,42 @@ import pcb_build
 import pcb_route
 
 MM = pcbnew.FromMM
-REGION = (140.0, 108.0, 175.0, 142.0)   # зона правки на листе, мм: x0, y0, x1, y1
+REGION = (140.0, 108.0, 190.0, 146.0)   # зона правки на листе, мм: x0, y0, x1, y1 (19.11: до F6 и J10)
 GND_VIA = (0.6, 0.3)                     # переход на плоскость GND: диаметр, сверло, мм
-NEW_REFS = ('Q10', 'Q11', 'Q12', 'R119', 'R120', 'R121', 'R122', 'U24')
+# детали этого прохода (переходы GND — только им; у Q10/U24 переходы уже есть с 18.11)
+NEW_REFS = ('Q11', 'Q12', 'R120', 'D17', 'D21', 'R64', 'F6', 'D50')
+# поставить заново по placement.json: смена корпуса (Q11, D17, D21, F6, R64) или место под SOT-89 (Q12, R120)
+RELAYOUT = ('Q11', 'Q12', 'R120', 'D17', 'D21', 'R64', 'F6')
+M = '/MDB и входы/'
+EXTRA = ('BI_K',)        # не MDB, но разводится заново: проходит под новым местом R64
+# медь, которую снять перед трассировкой: [цепь, рамка x0, y0, x1, y1]
+RIP = [[M + n, REGION] for n in ('MDB_TX_NC', 'MDB_TX_QB', 'MDB_TX_E', 'MDB_TX_C', 'MDB_TX_D', 'MDB_TX_P',
+                                 'MDB_TX_L', 'MDBRX_K', 'MDBRX_N', 'MDBRX_P')] + [[M + 'BI_K', (155.0, 131.0, 163.0, 140.0)]]
+# F3 (2920): переход +24V_P был в площадке F3.1, у F3.2 — один переход и перемычка 0,6 мм (аудит, проход 15, п. 3в)
+F3_REMOVE = [('via', '+24V_P', (157.62, 118.6)),
+             ('seg', 'MDB_24V', (164.1105, 118.6), (162.798, 118.6)),
+             ('seg', 'MDB_24V', (164.11, 118.6), (164.1105, 118.6))]
+F3_ADD = [('via', '+24V_P', (156.82, 115.2)), ('via', '+24V_P', (157.62, 115.2)), ('via', '+24V_P', (157.62, 114.4)),
+          ('seg', '+24V_P', 'F.Cu', 1.0, (156.82, 115.2), (157.62, 115.2)),
+          ('seg', '+24V_P', 'F.Cu', 1.5, (157.62, 114.4), (157.62, 116.6)),
+          ('seg', '+24V_P', 'B.Cu', 1.0, (156.82, 115.2), (157.62, 115.2)),
+          ('via', 'MDB_24V', (162.294, 117.978)), ('via', 'MDB_24V', (161.79, 117.36)),
+          ('seg', 'MDB_24V', 'F.Cu', 1.0, (161.79, 117.36), (162.294, 117.978)),
+          ('seg', 'MDB_24V', 'F.Cu', 1.0, (162.294, 117.978), (162.798, 118.6)),
+          ('seg', 'MDB_24V', 'F.Cu', 1.0, (162.798, 118.6), (164.11, 118.6)),
+          # по B.Cu — поверх прежней дорожки к R10, чтобы переходы были концами отрезков (иначе eco_text сочтёт висящими)
+          ('seg', 'MDB_24V', 'B.Cu', 1.0, (162.798, 118.6), (162.294, 117.978)),
+          ('seg', 'MDB_24V', 'B.Cu', 1.0, (162.294, 117.978), (161.79, 117.36))]
+# запретные для Freerouting зоны (только в DSN): площадки F3 + 0,4 мм — Freerouting не держит зазор 0,3 мм класса P24
+KEEPOUT_REFS = ('F3',)
+KEEPOUT_GROW = 0.4
 
 
 def WANTED(net):
     """Цепи, которые разводит Freerouting: цепи MDB и +5V. Остальные для него — препятствия без цепи."""
     leaf = net.rsplit('/', 1)[-1]
-    return 'MDB' in leaf or leaf == '+5V'
+    # MDB_24V и LED_MDB_24V — силовые (класс P24), их медь не трогаем (проход 15: Freerouting переукладывал MDB_24V)
+    return leaf.startswith(('MDB_TX', 'MDB_RX', 'MDBRX')) or leaf == '+5V' or leaf in EXTRA
 
 
 def key(t):
@@ -71,6 +101,41 @@ def prepare(board_path, net_path, placement, eco_path):
             ni.thisown = False
             print('новая цепь', name)
     on_board = {f.GetReference(): f for f in board.GetFootprints()}
+    for ref in RELAYOUT:                           # старую — под снятие (eco_text.py), новую поставит цикл ниже
+        f = on_board.pop(ref, None)
+        if f is not None:
+            f.SetReference(ref + '_OLD')
+            on_board[ref + '_OLD'] = f
+            print('поставить заново', ref)
+    for ref, c in comps.items():
+        f = on_board.get(ref)
+        if f is not None and f.GetFPID().GetLibItemName().wx_str() != c.fp.split(':', 1)[-1]:
+            raise SystemExit('%s: корпус на плате %s, в схеме %s — добавить в RELAYOUT'
+                             % (ref, f.GetFPID().GetLibItemName().wx_str(), c.fp))
+    eco['rip'] = RIP
+    eco['remove_items'] = F3_REMOVE
+    for spec in F3_ADD:
+        net = board.FindNet(spec[1])
+        if spec[0] == 'via':
+            v = pcbnew.PCB_VIA(board)
+            v.SetPosition(pcbnew.VECTOR2I(MM(spec[2][0]), MM(spec[2][1])))   # координаты листа, не раскладки
+            try:
+                v.SetWidth(MM(0.6))
+            except TypeError:
+                v.SetWidth(pcbnew.F_Cu, MM(0.6))
+            v.SetDrill(MM(0.3))
+            v.SetNet(net)
+            board.Add(v)
+            v.thisown = False
+        else:
+            t = pcbnew.PCB_TRACK(board)
+            t.SetStart(pcbnew.VECTOR2I(MM(spec[4][0]), MM(spec[4][1])))
+            t.SetEnd(pcbnew.VECTOR2I(MM(spec[5][0]), MM(spec[5][1])))
+            t.SetWidth(MM(spec[3]))
+            t.SetLayer(board.GetLayerID(spec[2]))
+            t.SetNet(net)
+            board.Add(t)
+            t.thisown = False
     for ref in on_board:
         if ref not in comps and not ref.startswith(('H', 'TP')):
             eco['remove_refs'].append(ref)          # снимет eco_text.py
@@ -193,9 +258,55 @@ def export(board_path, eco_path, snap_path, dsn):
                 kept.add(n)
             elif n:
                 p.SetNetCode(0)
+    for f in board.GetFootprints():
+        if f.GetReference() not in KEEPOUT_REFS:
+            continue
+        for p in f.Pads():
+            bb = p.GetBoundingBox()
+            g = MM(KEEPOUT_GROW)
+            ra = pcbnew.ZONE(board)
+            ra.SetIsRuleArea(True)
+            ra.SetDoNotAllowTracks(True)
+            ra.SetDoNotAllowVias(True)
+            ra.SetDoNotAllowCopperPour(False)
+            ra.SetDoNotAllowPads(False)
+            ra.SetDoNotAllowFootprints(False)
+            ra.SetLayerSet(pcbnew.LSET.AllCuMask())
+            chain = pcbnew.SHAPE_LINE_CHAIN()
+            for x, y in ((bb.GetLeft() - g, bb.GetTop() - g), (bb.GetRight() + g, bb.GetTop() - g),
+                         (bb.GetRight() + g, bb.GetBottom() + g), (bb.GetLeft() - g, bb.GetBottom() + g)):
+                chain.Append(int(x), int(y))
+            chain.SetClosed(True)
+            poly = pcbnew.SHAPE_POLY_SET()
+            poly.AddOutline(chain)
+            ra.SetOutline(poly)
+            poly.thisown = False
+            board.Add(ra)
+            ra.thisown = False
+            print('запрет для трассировки у %s.%s' % (f.GetReference(), p.GetNumber()))
     print('Specctra: разводятся %d цепей, площадки прочих — препятствия' % len(kept))
     if not pcbnew.ExportSpecctraDSN(board, dsn):
         raise SystemExit('экспорт DSN не удался')
+    narrow_5v(dsn)
+
+
+def narrow_5v(dsn):
+    """+5V в классе PWR (0,6 мм) не проходит между SOT-89 Q11 и соседями (проход 15: Freerouting оставил Q12.2 и U24.1
+    без питания). Ток веток MDB ≤ 80 мА — для трассировки ширина +5V 0,3 мм; меняется только DSN, правила платы прежние."""
+    import re
+    txt = open(dsn, encoding='utf-8').read()
+    m = re.search(r'\(resolution\s+(\w+)\s+(\d+)\)', txt)
+    unit = m.group(1) if m else 'um'
+    w = {'um': 300, 'mm': 0.3, 'mil': 11.8}.get(unit, 300)
+    out, n = [], 0
+    for blk in re.split(r'(?=\(class )', txt):
+        if blk.startswith('(class ') and re.search(r'[\s"]\+5V[\s")]', blk.split('(circuit')[0]):
+            print('класс +5V в DSN:', ' '.join(blk.split())[:300])
+            blk, k = re.subn(r'\(width\s+[\d.]+\)', '(width %s)' % w, blk, count=1)
+            n += k
+        out.append(blk)
+    open(dsn, 'w', encoding='utf-8').write(''.join(out))
+    print('ширина +5V для трассировки: %s %s (замен %d)' % (w, unit, n))
 
 
 def check(board_path, snap_path):
