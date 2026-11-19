@@ -52,13 +52,20 @@ F3_ADD = [('via', '+24V_P', (156.82, 115.2)), ('via', '+24V_P', (157.62, 115.2))
           ('via', 'MDB_24V', (162.294, 117.978)), ('via', 'MDB_24V', (161.79, 117.36)),
           ('seg', 'MDB_24V', 'F.Cu', 1.0, (161.79, 117.36), (162.294, 117.978)),
           ('seg', 'MDB_24V', 'F.Cu', 1.0, (162.294, 117.978), (162.798, 118.6)),
-          ('seg', 'MDB_24V', 'F.Cu', 1.0, (162.798, 118.6), (164.11, 118.6))]
+          ('seg', 'MDB_24V', 'F.Cu', 1.0, (162.798, 118.6), (164.11, 118.6)),
+          # по B.Cu — поверх прежней дорожки к R10, чтобы переходы были концами отрезков (иначе eco_text сочтёт висящими)
+          ('seg', 'MDB_24V', 'B.Cu', 1.0, (162.798, 118.6), (162.294, 117.978)),
+          ('seg', 'MDB_24V', 'B.Cu', 1.0, (162.294, 117.978), (161.79, 117.36))]
+# запретные для Freerouting зоны (только в DSN): площадки F3 + 0,4 мм — Freerouting не держит зазор 0,3 мм класса P24
+KEEPOUT_REFS = ('F3',)
+KEEPOUT_GROW = 0.4
 
 
 def WANTED(net):
     """Цепи, которые разводит Freerouting: цепи MDB и +5V. Остальные для него — препятствия без цепи."""
     leaf = net.rsplit('/', 1)[-1]
-    return 'MDB' in leaf or leaf == '+5V' or leaf in EXTRA
+    # MDB_24V и LED_MDB_24V — силовые (класс P24), их медь не трогаем (проход 15: Freerouting переукладывал MDB_24V)
+    return leaf.startswith(('MDB_TX', 'MDB_RX', 'MDBRX')) or leaf == '+5V' or leaf in EXTRA
 
 
 def key(t):
@@ -251,6 +258,32 @@ def export(board_path, eco_path, snap_path, dsn):
                 kept.add(n)
             elif n:
                 p.SetNetCode(0)
+    for f in board.GetFootprints():
+        if f.GetReference() not in KEEPOUT_REFS:
+            continue
+        for p in f.Pads():
+            bb = p.GetBoundingBox()
+            g = MM(KEEPOUT_GROW)
+            ra = pcbnew.ZONE(board)
+            ra.SetIsRuleArea(True)
+            ra.SetDoNotAllowTracks(True)
+            ra.SetDoNotAllowVias(True)
+            ra.SetDoNotAllowCopperPour(False)
+            ra.SetDoNotAllowPads(False)
+            ra.SetDoNotAllowFootprints(False)
+            ra.SetLayerSet(pcbnew.LSET.AllCuMask())
+            chain = pcbnew.SHAPE_LINE_CHAIN()
+            for x, y in ((bb.GetLeft() - g, bb.GetTop() - g), (bb.GetRight() + g, bb.GetTop() - g),
+                         (bb.GetRight() + g, bb.GetBottom() + g), (bb.GetLeft() - g, bb.GetBottom() + g)):
+                chain.Append(int(x), int(y))
+            chain.SetClosed(True)
+            poly = pcbnew.SHAPE_POLY_SET()
+            poly.AddOutline(chain)
+            ra.SetOutline(poly)
+            poly.thisown = False
+            board.Add(ra)
+            ra.thisown = False
+            print('запрет для трассировки у %s.%s' % (f.GetReference(), p.GetNumber()))
     print('Specctra: разводятся %d цепей, площадки прочих — препятствия' % len(kept))
     if not pcbnew.ExportSpecctraDSN(board, dsn):
         raise SystemExit('экспорт DSN не удался')
