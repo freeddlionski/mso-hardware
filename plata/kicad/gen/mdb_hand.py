@@ -7,6 +7,11 @@
   выпадают из BOM заводу);
 - REMOVE / ADD — доводка после трассировки прохода 15 (если понадобится по DRC).
 
+20.11.2026, Резонит (заказ 116221): переходы в площадках SMD — недопустимо для монтажа. Переходы, у которых отверстие
+заходит в окно маски площадки (площадка + 0,05 мм): C21, C30, C41, U5.1, U6.1 — сдвинуты из площадки (MOVE);
+C93.2, Q9.3, C114.2 — одиночные переходы GND (сшивка), сняты. Остаются осознанно: тепловые переходы под площадкой U22
+(QFN), TP6 (контрольная площадка, без пайки). Проверка — vias_in_pads(), печатается при каждом запуске.
+
 Повторный запуск ничего не меняет (снимаем только найденное, добавляем только отсутствующее).
 Запуск: python3 mdb_hand.py ../routed/mso74-plata.kicad_pcb
 """
@@ -53,9 +58,61 @@ E, P5, P24 = '/MDB и входы/MDB_TX_E', '+5V', '+24V_P'
 REMOVE = [
     # проход 15: обрезок 0,14 мм от прежней дорожки +5V к U24.1 (DRC track_dangling)
     ('seg', P5, (157.916, 127.232), (157.814, 127.334)),
+    # 20.11.2026: одиночные переходы GND в площадках (Резонит)
+    ('via', 'GND', (233.05, 67.334)),   # C93.2
+    ('via', 'GND', (268.8, 118.0)),     # Q9.3 (теплоотвод SOT-223)
+    ('via', 'GND', (243.5, 64.0)),      # C114.2
 ]
 
 ADD = []
+
+# (цепь, было, стало): переход и концы его дорожек на обоих слоях
+MOVE = [
+    ('+3V3', (93.8, 110.075), (94.6, 110.075)),          # C21.1
+    ('+5V_LCD2', (55.45, 92.275), (56.55, 92.275)),      # C41.1
+    ('+5V_LCD1', (55.45, 62.275), (56.55, 62.275)),      # C30.1
+    ('+5V_LCD1', (78.15, 57.45), (78.3, 57.65)),         # U5.1
+    ('+5V_LCD2', (78.15, 87.45), (78.3, 87.65)),         # U6.1
+]
+
+KEEP = ('U22', 'TP6')   # тепловые переходы QFN; контрольная площадка
+
+
+def move_vias(b):
+    n = 0
+    for net, old, new in MOVE:
+        for t in b.tracks():
+            k, pts, hw, L, nn = b.tinfo(t)
+            if nn.split('/')[-1] != net:
+                continue
+            if k == 'via' and near(pts[0], old):
+                at = find(t, 'at')
+                at[1], at[2] = new[0], new[1]
+                n += 1
+            elif k == 'seg':
+                for tag in ('start', 'end'):
+                    q = find(t, tag)
+                    if near((float(q[1]), float(q[2])), old):
+                        q[1], q[2] = new[0], new[1]
+    return n
+
+
+def vias_in_pads(b, mask=0.05):
+    """Переходы, у которых отверстие заходит в окно маски площадки SMD."""
+    vias = []
+    for t in b.tracks():
+        if t[0] == 'via':
+            at = find(t, 'at')
+            vias.append((float(at[1]), float(at[2]), float(find(t, 'drill')[1]) / 2))
+    out = []
+    for r, n, net, (a, c, d, e), f, bb in b.pads():
+        if (f and bb) or r in KEEP:
+            continue
+        for x, y, dr in vias:
+            dx, dy = max(a - mask - x, 0, x - d - mask), max(c - mask - y, 0, y - e - mask)
+            if (dx * dx + dy * dy) ** 0.5 < dr:
+                out.append('%s.%s (%.2f; %.2f)' % (r, n, x, y))
+    return out
 
 
 def near(a, b, r=0.02):
@@ -105,9 +162,12 @@ def main(path):
         idx = max(i for i, n in enumerate(b.tree) if isinstance(n, list) and n and n[0] in ('segment', 'via'))
         b.tree.insert(idx + 1, node)
         added += 1
+    moved = move_vias(b)
     fields = fix_fields(b)
     b.save()
-    print('снято %d, добавлено %d, полей LCSC/MPN %d' % (removed, added, fields))
+    print('снято %d, добавлено %d, сдвинуто переходов %d, полей LCSC/MPN %d' % (removed, added, moved, fields))
+    bad = vias_in_pads(b)
+    print('переходы в площадках SMD:', ', '.join(bad) or 'нет')
 
 
 def fill(path):
