@@ -1,0 +1,36 @@
+ERC report (2026-11-20T09:47:33+0000, Encoding UTF8)
+Report includes: Errors, Warnings, Exclusions
+
+***** Sheet /
+
+***** Sheet /Питание/
+
+***** Sheet /ESP32-S3 и USB/
+
+***** Sheet /Ethernet/
+
+***** Sheet /RS-485 и RS-232/
+
+***** Sheet /MDB и входы/
+
+***** Sheet /Табло и часы/
+[pin_to_pin]: Pins of type Tri-state and Power input are connected
+    ; warning
+    @(88.90 mm, 142.24 mm): Symbol U18 Pin 7 [A5, Tri-state, Line]
+    @(86.36 mm, 142.24 mm): Symbol #PWR0324 Pin 1 [Power input, Line]
+[pin_to_pin]: Pins of type Tri-state and Power input are connected
+    ; warning
+    @(88.90 mm, 144.78 mm): Symbol U18 Pin 8 [A6, Tri-state, Line]
+    @(86.36 mm, 144.78 mm): Symbol #PWR0325 Pin 1 [Power input, Line]
+[pin_to_pin]: Pins of type Tri-state and Power input are connected
+    ; warning
+    @(88.90 mm, 147.32 mm): Symbol U18 Pin 9 [A7, Tri-state, Line]
+    @(86.36 mm, 147.32 mm): Symbol #PWR0326 Pin 1 [Power input, Line]
+
+***** Sheet /Расширитель входов-выходов/
+
+***** Sheet /Коммутатор Ethernet/
+
+***** Sheet /Тестовые точки/
+
+ ** ERC messages: 3  Errors 0  Warnings 3
